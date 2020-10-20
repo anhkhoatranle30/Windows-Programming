@@ -20,9 +20,35 @@ namespace Project_1_Food_Recipe
     /// </summary>
     public partial class MainWindow : Window
     {
+        public delegate void MenuButton_Click(object sender, RoutedEventArgs e);
+
+        public event MenuButton_Click MenuBtn_Click;
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void closeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void addButton_Click(object sender, RoutedEventArgs e)
+        {
+            addButton.Background = new SolidColorBrush(Color.FromArgb(192, 192, 192, 192));
+        }
+
+        private void homeButton_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void favoriteButton_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void settingButton_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

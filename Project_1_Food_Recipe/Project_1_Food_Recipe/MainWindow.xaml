@@ -5,8 +5,424 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_1_Food_Recipe"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="1080"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+
+        ResizeMode="NoResize">
+    <Window.Resources>
+
+        <Style x:Key="menuStyle" TargetType="Button">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver"
+                         Value="True">
+                    <Setter Property="Background"
+                            Value="#C0C0C0C0" />
+                </Trigger>
+
+                <Trigger Property="IsPressed"
+                         Value="True">
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="5"
+                                              ShadowDepth="5" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="fontStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily"
+                    Value="font/Backslash-RpJol.otf #Backslash" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Left" />
+            <Setter Property="Foreground"
+                    Value="Black" />
+            <Setter Property="FontSize"
+                    Value="18" />
+            <Setter Property="Margin"
+                    Value="24,0,0,0" />
+        </Style>
+
+        <ImageBrush x:Key="closeBtn" ImageSource="Images/closeBtn.png" />
+
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD" />
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070" />
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD" />
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1" />
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6" />
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B" />
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4" />
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5" />
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383" />
+        <Style x:Key="closeBtnStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}" />
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Padding" Value="1" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource closeBtn}" />
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource closeBtn}" />
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}" />
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}" />
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ImageBrush x:Key="tbMouseOver"
+                    ImageSource="Images/tgBtn_MouseOver.png" />
+        <Style x:Key="tb_style" TargetType="{x:Type ToggleButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border x:Name="border"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                SnapsToDevicePixels="True">
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background"
+                                        TargetName="border"
+                                        Value="{StaticResource tbMouseOver}" />
+                                <Setter Property="BorderBrush"
+                                        TargetName="border"
+                                        Value="{StaticResource tbMouseOver}" />
+                            </Trigger>
+
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Background"
+                                        TargetName="border"
+                                        Value="{StaticResource tbMouseOver}" />
+                                <Setter Property="BorderBrush"
+                                        TargetName="border"
+                                        Value="{StaticResource tbMouseOver}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        
+        <Grid Height="34" VerticalAlignment="Top" Background="Orange">
+            <TextBlock Text="Food Recipes" FontSize="20" Foreground="White" Padding="10,0,0,0" />
+
+            <Button Name="closeBtn"
+                    Click="closeBtn_Click"
+                    Width="30" Height="30"
+                    Margin="0,0,10,0"
+                    BorderThickness="0"
+                    HorizontalAlignment="Right"
+                    Style="{DynamicResource closeBtnStyle}">
+                <Button.Background>
+                    <ImageBrush ImageSource="Images/closeBtn.png" />
+                </Button.Background>
+            </Button>
+        </Grid>
+
+        <StackPanel Orientation="Horizontal"
+                    Margin="0,34,0,0">
+            <Grid x:Name="navPnl"
+                      Background="#8C8C90"
+                      HorizontalAlignment="Left"
+                      Width="80" Height="566">
+
+                <StackPanel x:Name="stackMenuPnl">
+
+                    <Grid Height="90">
+
+                        <TextBlock Text="MENU"
+                               Foreground="White"
+                               FontSize="35"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="center"
+                               Margin="90,0,0,0"
+                               Style="{StaticResource fontStyle}">
+
+                            <TextBlock.Effect>
+                                <DropShadowEffect
+                                BlurRadius="10"
+                                ShadowDepth="1"
+                                Direction="-90"
+                                Color="White" />
+                            </TextBlock.Effect>
+                        </TextBlock>
+
+                        <ToggleButton x:Name="TgBtn"
+                                  VerticalAlignment="Center"
+                                  HorizontalAlignment="Left"
+                                  Width="35"
+                                  Height="35"
+                                  Margin="22,0,0,0"
+                                  BorderThickness="0"
+                                  Style="{StaticResource tb_style}">
+                            <ToggleButton.Background>
+                                <ImageBrush ImageSource="Images/tgBtn_default.png" />
+                            </ToggleButton.Background>
+
+                            <ToggleButton.Triggers>
+                                <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                                    <BeginStoryboard>
+                                        <Storyboard x:Name="HideStackPanel">
+                                            <DoubleAnimation
+                                            Storyboard.TargetName="navPnl"
+                                            Storyboard.TargetProperty="Width"
+                                            BeginTime="0:0:0"
+                                            From="200" To="80"
+                                            Duration="0:0:0.2">
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+
+                                <EventTrigger RoutedEvent="ToggleButton.Checked">
+                                    <BeginStoryboard>
+                                        <Storyboard x:Name="ShowStackPanel">
+                                            <DoubleAnimation
+                                            Storyboard.TargetName="navPnl"
+                                            Storyboard.TargetProperty="Width"
+                                            BeginTime="0:0:0"
+                                            From="80" To="200"
+                                            Duration="0:0:0.2">
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </ToggleButton.Triggers>
+                        </ToggleButton>
+                    </Grid>
+
+                    <!--<ListView x:Name="LV"
+                          Background="Transparent"
+                          BorderBrush="Transparent"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                            <Border x:Name="BD"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                    Background="{TemplateBinding Background}"
+                                                    Padding="{TemplateBinding Padding}"
+                                                    SnapsToDevicePixels="True">
+
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                                  VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                                            </Border>
+
+                                            <ControlTemplate.Triggers>
+                                                <MultiTrigger>
+                                                    <MultiTrigger.Conditions>
+                                                        <Condition Property="IsMouseOver" Value="True" />
+                                                    </MultiTrigger.Conditions>
+
+                                                    <Setter Property="Background"
+                                                            TargetName="BD"
+                                                            Value="#C0C0C0" />
+
+                                                    <Setter Property="BorderBrush"
+                                                            TargetName="BD"
+                                                            Value="#C0C0C0" />
+                                                </MultiTrigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+
+                        <ListViewItem HorizontalAlignment="Left"
+                                  Margin="0,10,0,0">
+
+                            <StackPanel Orientation="Horizontal"
+                                    Width="210">
+                                <Image Source="Images/img_home.png"
+                                   Margin="14,0,0,0" Height="37" Width="37"
+                                   Stretch="Fill" />
+
+                                <TextBlock Text="Home"
+                                       Margin="22,0,0,0"
+                                       Style="{StaticResource fontStyle}" />
+                            </StackPanel>
+                        </ListViewItem>
+
+                        <ListViewItem HorizontalAlignment="Left"
+                                  Margin="0,10,0,0">
+
+                            <StackPanel Orientation="Horizontal"
+                                    Width="210">
+                                <Image Source="Images/img_add.png"
+                                   Margin="14,0,0,0" Height="37" Width="37" />
+
+                                <TextBlock Text="New Recipe"
+                                       Margin="22,0,0,0"
+                                       Style="{StaticResource fontStyle}" />
+                            </StackPanel>
+                        </ListViewItem>
+
+                        <ListViewItem HorizontalAlignment="Left"
+                                  Margin="0,10,0,0">
+
+                            <StackPanel Orientation="Horizontal"
+                                    Width="210">
+                                <Image Source="Images/img_favorite.png"
+                                   Margin="14,0,0,0" Height="37" Width="37" />
+
+                                <TextBlock Text="Favorite"
+                                       Margin="22,0,0,0"
+                                       Style="{StaticResource fontStyle}" />
+                            </StackPanel>
+                        </ListViewItem>
+
+                        <ListViewItem HorizontalAlignment="Left"
+                                  Margin="0,10,0,0">
+
+                            <StackPanel Orientation="Horizontal"
+                                    Width="210">
+                                <Image Source="Images/img_setting.png"
+                                   Margin="14,0,0,0" Height="37" Width="37" />
+
+                                <TextBlock Text="Setting"
+                                       Margin="22,0,0,0"
+                                       Style="{StaticResource fontStyle}" />
+                            </StackPanel>
+                        </ListViewItem>
+                    </ListView>-->
+
+                    <Button x:Name="homeButton"
+                            Style="{StaticResource menuStyle}"
+                            Click="homeButton_Click"
+                            Height="60">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal"
+                                        Width="210">
+                                <Image Source="Images/img_home.png"
+                                   Margin="19,0,0,0" Height="37" Width="37"
+                                   Stretch="Fill" />
+
+                                <TextBlock Text="Home"
+                                           Style="{StaticResource fontStyle}" />
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="addButton"
+                            Style="{StaticResource menuStyle}"
+                            Click="addButton_Click"
+                            Height="60">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal"
+                                    Width="210">
+                                <Image Source="Images/img_add.png"
+                                   Margin="19,0,0,0" Height="37" Width="37"
+                                   Stretch="Fill" />
+
+                                <TextBlock Text="New Recipe"
+                                           Style="{StaticResource fontStyle}" />
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+
+                    <Button x:Name="favoriteButton"
+                            Style="{StaticResource menuStyle}"
+                            Click="favoriteButton_Click"
+                            Height="60">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal"
+                                    Width="210">
+
+                                <Image Source="Images/img_favorite.png"
+                                   Margin="19,0,0,0" Height="37" Width="37"
+                                   Stretch="Fill" />
+
+                                <TextBlock Text="Favorite"
+                                           Style="{StaticResource fontStyle}" />
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+
+                    <Button x:Name="settingButton"
+                            Style="{StaticResource menuStyle}"
+                            Click="settingButton_Click"
+                            Height="60">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal"
+                                    Width="210">
+
+                                <Image Source="Images/img_setting.png"
+                                   Margin="19,0,0,0" Height="37" Width="37"
+                                   Stretch="Fill" />
+
+                                <TextBlock Text="Setting"
+                                           Style="{StaticResource fontStyle}" />
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <Grid x:Name="infor"
+                  Background="#EEEEFC" Width="1001">
+
+                <TextBlock Text="hello" Margin="0,0,0,-0.6" Grid.RowSpan="3" />
+            </Grid>
+        </StackPanel>
     </Grid>
 </Window>

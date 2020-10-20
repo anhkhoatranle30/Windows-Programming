@@ -86,6 +86,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Font\Backslash-RpJol.otf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +94,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\img_home.png" />
+    <Resource Include="Images\img_setting.png" />
+    <Resource Include="Images\tgBtn_default.png" />
+    <Resource Include="Images\tgBtn_MouseOver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\closeBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Font\info.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\img_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\img_favorite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\img_bg.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

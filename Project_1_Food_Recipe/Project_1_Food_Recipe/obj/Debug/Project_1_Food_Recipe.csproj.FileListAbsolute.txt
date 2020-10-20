@@ -1,0 +1,14 @@
+E:\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\bin\Debug\Project_1_Food_Recipe.exe.config
+E:\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\bin\Debug\Project_1_Food_Recipe.exe
+E:\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\bin\Debug\Project_1_Food_Recipe.pdb
+E:\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\MainWindow.g.cs
+E:\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\App.g.cs
+E:\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe_MarkupCompile.cache
+E:\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe_MarkupCompile.lref
+E:\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\MainWindow.baml
+E:\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.g.resources
+E:\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.Properties.Resources.resources
+E:\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.csproj.GenerateResource.cache
+E:\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.csproj.CoreCompileInputs.cache
+E:\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.exe
+E:\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.pdb
