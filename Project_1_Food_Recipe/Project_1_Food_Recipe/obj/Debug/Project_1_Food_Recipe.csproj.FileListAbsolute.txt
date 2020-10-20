@@ -12,3 +12,4 @@ E:\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Pro
 E:\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.csproj.CoreCompileInputs.cache
 E:\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.exe
 E:\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.pdb
+E:\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.csprojAssemblyReference.cache

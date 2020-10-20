@@ -10,6 +10,9 @@
         WindowStyle="None"
 
         ResizeMode="NoResize">
+    <Window.Icon>
+        <BitmapImage UriSource="Images/icon.png" RenderOptions.BitmapScalingMode="HighQuality" />
+    </Window.Icon>
     <Window.Resources>
 
         <Style x:Key="menuStyle" TargetType="Button">
@@ -34,17 +37,28 @@
                 <Trigger Property="IsMouseOver"
                          Value="True">
                     <Setter Property="Background"
-                            Value="#C0C0C0C0" />
+                            Value="#B2B2A5" />
                 </Trigger>
-
-                <Trigger Property="IsPressed"
-                         Value="True">
-                    <Setter Property="Effect">
-                        <Setter.Value>
-                            <DropShadowEffect BlurRadius="5"
-                                              ShadowDepth="5" />
-                        </Setter.Value>
-                    </Setter>
+                <Trigger Property="IsPressed" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation  Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                                 From="#B2B2A5" To="#202020"
+                                                 FillBehavior="Stop"
+                                                 Duration="0:0:1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                                 From="#202020" To="#B2B2A5"
+                                                 Duration="0:0:1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -355,9 +369,12 @@
                         <Button.Content>
                             <StackPanel Orientation="Horizontal"
                                         Width="210">
+                                <Canvas Name="homePressed"
+                                        Background="Transparent"
+                                        Width="10" />
                                 <Image Source="Images/img_home.png"
-                                   Margin="19,0,0,0" Height="37" Width="37"
-                                   Stretch="Fill" />
+                                       Margin="9,0,0,0" Height="37" Width="37"
+                                       Stretch="Fill" />
 
                                 <TextBlock Text="Home"
                                            Style="{StaticResource fontStyle}" />
@@ -370,10 +387,13 @@
                             Height="60">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal"
-                                    Width="210">
+                                        Width="210">
+                                <Canvas x:Name="addPressed"
+                                        Background="Transparent"
+                                        Width="10" />
                                 <Image Source="Images/img_add.png"
-                                   Margin="19,0,0,0" Height="37" Width="37"
-                                   Stretch="Fill" />
+                                       Margin="9,0,0,0" Height="37" Width="37"
+                                       Stretch="Fill" />
 
                                 <TextBlock Text="New Recipe"
                                            Style="{StaticResource fontStyle}" />
@@ -387,11 +407,13 @@
                             Height="60">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal"
-                                    Width="210">
-
+                                        Width="210">
+                                <Canvas x:Name="favoritePressed"
+                                        Background="Transparent"
+                                        Width="10" />
                                 <Image Source="Images/img_favorite.png"
-                                   Margin="19,0,0,0" Height="37" Width="37"
-                                   Stretch="Fill" />
+                                       Margin="9,0,0,0" Height="37" Width="37"
+                                       Stretch="Fill" />
 
                                 <TextBlock Text="Favorite"
                                            Style="{StaticResource fontStyle}" />
@@ -405,11 +427,14 @@
                             Height="60">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal"
-                                    Width="210">
-
+                                        Width="210">
+                                <Canvas x:Name="settingPressed"
+                                        Background="Transparent"
+                                        Width="10" />
                                 <Image Source="Images/img_setting.png"
-                                   Margin="19,0,0,0" Height="37" Width="37"
-                                   Stretch="Fill" />
+                                       Margin="9,0,0,0"
+                                       Height="37" Width="37"
+                                       Stretch="Fill" />
 
                                 <TextBlock Text="Setting"
                                            Style="{StaticResource fontStyle}" />
@@ -421,7 +446,7 @@
             <Grid x:Name="infor"
                   Background="#EEEEFC" Width="1001">
 
-                <TextBlock Text="hello" Margin="0,0,0,-0.6" Grid.RowSpan="3" />
+                <TextBlock Text="hello" Margin="0,0,0,-0.6" Grid.RowSpan="3" FontSize="50" />
             </Grid>
         </StackPanel>
     </Grid>

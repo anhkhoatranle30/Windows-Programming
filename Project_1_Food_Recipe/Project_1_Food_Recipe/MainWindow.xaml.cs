@@ -20,10 +20,6 @@ namespace Project_1_Food_Recipe
     /// </summary>
     public partial class MainWindow : Window
     {
-        public delegate void MenuButton_Click(object sender, RoutedEventArgs e);
-
-        public event MenuButton_Click MenuBtn_Click;
-
         public MainWindow()
         {
             InitializeComponent();
@@ -36,19 +32,54 @@ namespace Project_1_Food_Recipe
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            addButton.Background = new SolidColorBrush(Color.FromArgb(192, 192, 192, 192));
+            homeButton.ClearValue(BackgroundProperty);
+            favoriteButton.ClearValue(BackgroundProperty);
+            settingButton.ClearValue(BackgroundProperty);
+            homePressed.ClearValue(BackgroundProperty);
+            favoritePressed.ClearValue(BackgroundProperty);
+            settingPressed.ClearValue(BackgroundProperty);
+
+            //addButton.Background = new SolidColorBrush(Color.FromArgb(192, 192, 192, 192));
+            addPressed.Background = Brushes.Orange;
         }
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
+            addButton.ClearValue(BackgroundProperty);
+            favoriteButton.ClearValue(BackgroundProperty);
+            settingButton.ClearValue(BackgroundProperty);
+            addPressed.ClearValue(BackgroundProperty);
+            favoritePressed.ClearValue(BackgroundProperty);
+            settingPressed.ClearValue(BackgroundProperty);
+
+            //homeButton.Background = new SolidColorBrush(Color.FromArgb(192, 192, 192, 192));
+            homePressed.Background = Brushes.Orange;
         }
 
         private void favoriteButton_Click(object sender, RoutedEventArgs e)
         {
+            addButton.ClearValue(BackgroundProperty);
+            homeButton.ClearValue(BackgroundProperty);
+            settingButton.ClearValue(BackgroundProperty);
+            addPressed.ClearValue(BackgroundProperty);
+            homePressed.ClearValue(BackgroundProperty);
+            settingPressed.ClearValue(BackgroundProperty);
+
+            //favoriteButton.Background = new SolidColorBrush(Color.FromArgb(192, 192, 192, 192));
+            favoritePressed.Background = Brushes.Orange;
         }
 
         private void settingButton_Click(object sender, RoutedEventArgs e)
         {
+            addButton.ClearValue(BackgroundProperty);
+            homeButton.ClearValue(BackgroundProperty);
+            favoriteButton.ClearValue(BackgroundProperty);
+            addPressed.ClearValue(BackgroundProperty);
+            homePressed.ClearValue(BackgroundProperty);
+            favoritePressed.ClearValue(BackgroundProperty);
+
+            //settingButton.Background = new SolidColorBrush(Color.FromArgb(192, 192, 192, 192));
+            settingPressed.Background = Brushes.Orange;
         }
     }
 }
