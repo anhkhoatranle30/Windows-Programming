@@ -1,0 +1,13 @@
+Recipe {
+	title : string
+	desPicture : string, absolute
+	description : string
+	videolink : string
+	[]Step 
+}
+Step {
+	ImgSource : string
+	Instruction : string
+}
+
+isFavorite : bool
