@@ -99,31 +99,39 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\img_home.png" />
-    <Resource Include="Images\img_setting.png" />
-    <Resource Include="Images\tgBtn_default.png" />
-    <Resource Include="Images\tgBtn_MouseOver.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\closeBtn.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Font\info.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\img_add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\img_favorite.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\img_bg.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\img_home_default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\img_add_default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\img_favorite_checked.png" />
+    <Resource Include="Images\img_favorite_default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\img_add_checked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\img_setting_checked.png" />
+    <Resource Include="Images\img_setting_default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\img_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\img_shutdown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\img_home_checked.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
