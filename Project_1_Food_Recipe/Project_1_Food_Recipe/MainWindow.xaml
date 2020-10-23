@@ -19,7 +19,7 @@
 
         <Style x:Key="fontStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontFamily"
-                    Value="Font/Backslash-RpJol.otf #Backslash" />
+                    Value="Font/Poppins-Medium.ttf #Poppins" />
             <Setter Property="Foreground"
                     Value="White" />
             <Setter Property="FontSize"
@@ -226,7 +226,7 @@
                     <Image Source="Images/img_user.png" Height="60" Width="60" Canvas.Top="1" Canvas.Left="6" />
                 </Canvas>
             </Border>
-            <TextBlock Style="{StaticResource fontStyle}" Text="Hi User!" Canvas.Top="98" Foreground="White" FontSize="18" Margin="0" Canvas.Left="31" />
+            <TextBlock Style="{StaticResource fontStyle}" Text="Hi User!" Canvas.Top="96" Foreground="White" FontSize="23" Margin="0" Canvas.Left="18" />
             <Grid Width="120" Height="450" Canvas.Top="210">
                 <Grid.RowDefinitions>
                     <RowDefinition />

@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/img_home_checked.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("font/ofl.txt")]
 
 
