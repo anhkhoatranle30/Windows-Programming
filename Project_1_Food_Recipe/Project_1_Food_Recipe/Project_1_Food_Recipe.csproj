@@ -115,27 +115,19 @@
     <Resource Include="Images\img_add_default.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\img_favorite_checked.png" />
     <Resource Include="Images\img_favorite_default.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\img_add_checked.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\img_setting_checked.png" />
     <Resource Include="Images\img_setting_default.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\img_user.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\img_shutdown.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\img_home_checked.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Font\OFL.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\img_shutdown.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

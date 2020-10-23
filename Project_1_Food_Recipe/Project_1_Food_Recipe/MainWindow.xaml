@@ -55,13 +55,18 @@
                             </Border>
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalAlignment}" />
-                            <Image x:Name="img" Source="Images/img_home_default.png" Width="40" Height="40" Margin="30,25,30,35" />
+                            <!--<Image x:Name="img" Source="Images/img_home_default.png" Width="40" Height="40" Margin="30,25,30,35" />-->
+                            <Grid x:Name="img" Width="40" Height="40" Margin="30,25,30,35" Background="White">
+                                <Grid.OpacityMask>
+                                    <ImageBrush ImageSource="Images/img_home_default.png" />
+                                </Grid.OpacityMask>
+                            </Grid>
                             <TextBlock x:Name="text" Text="Home" Style="{StaticResource fontStyle}" />
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="White" />
-                                <Setter TargetName="img" Property="Source" Value="Images/img_home_checked.png" />
+                                <Setter TargetName="img" Property="Background" Value="#3498DB" />
                                 <Setter TargetName="text" Property="Foreground" Value="#3498DB" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
@@ -101,13 +106,17 @@
                             </Border>
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalAlignment}" />
-                            <Image x:Name="img" Source="Images/img_favorite_default.png" Width="40" Height="40" Margin="30,25,30,35" />
+                            <Grid x:Name="img" Width="40" Height="40" Margin="30,25,30,35" Background="White">
+                                <Grid.OpacityMask>
+                                    <ImageBrush ImageSource="Images/img_favorite_default.png" />
+                                </Grid.OpacityMask>
+                            </Grid>
                             <TextBlock x:Name="text" Text="Favorite" Style="{StaticResource fontStyle}" />
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="White" />
-                                <Setter TargetName="img" Property="Source" Value="Images/img_favorite_checked.png" />
+                                <Setter TargetName="img" Property="Background" Value="#3498DB" />
                                 <Setter TargetName="text" Property="Foreground" Value="#3498DB" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
@@ -147,13 +156,17 @@
                             </Border>
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalAlignment}" />
-                            <Image x:Name="img" Source="Images/img_add_default.png" Width="40" Height="40" Margin="30,25,30,35" />
+                            <Grid x:Name="img" Width="40" Height="40" Margin="30,25,30,35" Background="White">
+                                <Grid.OpacityMask>
+                                    <ImageBrush ImageSource="Images/img_add_default.png" />
+                                </Grid.OpacityMask>
+                            </Grid>
                             <TextBlock x:Name="text" Text="Add" Style="{StaticResource fontStyle}" />
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="White" />
-                                <Setter TargetName="img" Property="Source" Value="Images/img_add_checked.png" />
+                                <Setter TargetName="img" Property="Background" Value="#3498DB" />
                                 <Setter TargetName="text" Property="Foreground" Value="#3498DB" />
                             </Trigger>
 
@@ -194,13 +207,17 @@
                             </Border>
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalAlignment}" />
-                            <Image x:Name="img" Source="Images/img_setting_default.png" Width="40" Height="40" Margin="30,25,30,35" />
+                            <Grid x:Name="img" Width="40" Height="40" Margin="30,25,30,35" Background="White">
+                                <Grid.OpacityMask>
+                                    <ImageBrush ImageSource="Images/img_setting_default.png" />
+                                </Grid.OpacityMask>
+                            </Grid>
                             <TextBlock x:Name="text" Text="Setting" Style="{StaticResource fontStyle}" />
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="White" />
-                                <Setter TargetName="img" Property="Source" Value="Images/img_setting_checked.png" />
+                                <Setter TargetName="img" Property="Background" Value="#3498DB" />
                                 <Setter TargetName="text" Property="Foreground" Value="#3498DB" />
                             </Trigger>
 
@@ -220,29 +237,59 @@
     </Window.Resources>
 
     <Border CornerRadius="40" Background="#3498DB">
-        <Canvas Width="120" Margin="-1,0,961,0">
-            <Border Width="60" Height="60" CornerRadius="10" Background="White" Canvas.Left="30" Canvas.Top="19">
-                <Canvas Margin="-6,0,6,0">
-                    <Image Source="Images/img_user.png" Height="60" Width="60" Canvas.Top="1" Canvas.Left="6" />
-                </Canvas>
-            </Border>
-            <TextBlock Style="{StaticResource fontStyle}" Text="Hi User!" Canvas.Top="96" Foreground="White" FontSize="23" Margin="0" Canvas.Left="18" />
-            <Grid Width="120" Height="450" Canvas.Top="210">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition Height="9*" />
-                </Grid.RowDefinitions>
 
-                <StackPanel Margin="0,-55,0,22" Grid.RowSpan="2">
+        <Grid>
+            <WrapPanel>
+                <Grid Width="120" Height="800">
+                    <Border Width="60" Height="60" CornerRadius="10" Background="White" Canvas.Left="30" Canvas.Top="19" Margin="29,46,31,694">
+                        <Canvas>
+                            <Image Source="Images/img_user.png" Height="60" Width="60" />
+                            <TextBlock Style="{StaticResource fontStyle}" Text="Hi User!" Canvas.Top="81" Foreground="White" FontSize="23" Margin="0" Canvas.Left="-13" />
+                        </Canvas>
+                    </Border>
 
-                    <Button x:Name="homeBtn" Style="{StaticResource homeBtnStyle}" MouseLeave="homeBtn_MouseLeave" MouseEnter="homeBtn_MouseEnter" Click="homeBtn_Click" />
+                    <Grid Width="120" Height="450" Canvas.Top="210">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="9*" />
+                        </Grid.RowDefinitions>
 
-                    <Button x:Name="favoriteBtn" Style="{StaticResource favoriteBtnStyle}" MouseLeave="favoriteBtn_MouseLeave" MouseEnter="favoriteBtn_MouseEnter" Click="favoriteBtn_Click" />
-                    <Button x:Name="addBtn" Style="{StaticResource addBtnStyle}" MouseLeave="addBtn_MouseLeave" MouseEnter="addBtn_MouseEnter" Click="addBtn_Click" />
+                        <StackPanel Margin="0,-1,0,-32.4" Grid.RowSpan="2">
 
-                    <Button x:Name="settingBtn" Style="{DynamicResource settingBtnStyle}" MouseLeave="settingBtn_MouseLeave" MouseEnter="settingBtn_MouseEnter" Click="settingBtn_Click" />
-                </StackPanel>
-            </Grid>
-        </Canvas>
+                            <Button x:Name="homeBtn" Style="{StaticResource homeBtnStyle}"  Click="homeBtn_Click" />
+                            <Button x:Name="favoriteBtn" Style="{StaticResource favoriteBtnStyle}"  Click="favoriteBtn_Click" />
+                            <Button x:Name="addBtn" Style="{StaticResource addBtnStyle}"  Click="addBtn_Click" />
+                            <Button x:Name="settingBtn" Style="{DynamicResource settingBtnStyle}" Click="settingBtn_Click" />
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+                <Border Background="White" Height="800" Width="960" CornerRadius="40">
+                    <Grid Margin="50,30">
+
+                        <Grid x:Name="homeScreen" Margin="2,2,-2,-2">
+                            <TextBox x:Name="title" Width="500" Height="40" Margin="44,42,316,658">
+                            </TextBox>
+                            <TextBox x:Name="description" AcceptsReturn="True" TextWrapping="Wrap" Width="500" Height="100" Margin="44,134,316,506">
+                            </TextBox>
+
+                            <TextBox x:Name="linkYt" Width="500" Height="40" Margin="44,319,316,381">
+                            </TextBox>
+                        </Grid>
+                        <Grid x:Name="favoriteScreen">
+                        </Grid>
+
+                        <Grid x:Name="addScreen">
+                        </Grid>
+
+                        <Grid x:Name="settingScreen">
+                        </Grid>
+
+                        <Button Name="shuwdownBtn" Click="shuwdownBtn_Click" Width="40" Height="40" BorderThickness="0" Background="Transparent" Margin="832,10,-12,690">
+                            <Image Source="Images/img_shutdown.png" />
+                        </Button>
+                    </Grid>
+                </Border>
+            </WrapPanel>
+        </Grid>
     </Border>
 </Window>
