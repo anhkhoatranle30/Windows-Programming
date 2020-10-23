@@ -233,6 +233,101 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="aboutBtnStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Width"
+                    Value="40" />
+            <Setter Property="Height"
+                    Value="40" />
+            <Setter Property="Margin"
+                    Value="5" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border x:Name="border"
+                                CornerRadius="40"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                            </Border>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                            <Grid x:Name="img" Width="20" Height="20" Background="White">
+                                <Grid.OpacityMask>
+                                    <ImageBrush ImageSource="Images/img_about.png" />
+                                </Grid.OpacityMask>
+                            </Grid>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="White" />
+                                <Setter TargetName="img" Property="Background" Value="#3498DB" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="7" ShadowDepth="7" Color="#808080" Direction="300" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD" />
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070" />
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD" />
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1" />
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6" />
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B" />
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4" />
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5" />
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383" />
+        <Style x:Key="shutdownStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}" />
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Padding" Value="1" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Cursor" Value="Hand" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
 
     <Border CornerRadius="40" Background="#3498DB">
@@ -243,7 +338,7 @@
                     <Border Width="60" Height="60" CornerRadius="10" Background="White" Canvas.Left="30" Canvas.Top="19" Margin="29,46,31,694">
                         <Canvas>
                             <Image Source="Images/img_user.png" Height="60" Width="60" />
-                            <TextBlock Style="{StaticResource fontStyle}" Text="Hi User!" Canvas.Top="81" Foreground="White" FontSize="23" Margin="0" Canvas.Left="-13" />
+                            <TextBlock x:Name="userName" Style="{StaticResource fontStyle}" Text="Hi User!" Canvas.Top="81" Foreground="White" FontSize="23" Margin="0" Canvas.Left="-13" />
                         </Canvas>
                     </Border>
 
@@ -261,11 +356,38 @@
                             <Button x:Name="settingBtn" Style="{DynamicResource settingBtnStyle}" Click="settingBtn_Click" />
                         </StackPanel>
                     </Grid>
+
+                    <Button Style="{StaticResource aboutBtnStyle}" Margin="10,658,10,42">
+                    </Button>
                 </Grid>
                 <Border Background="White" Height="800" Width="960" CornerRadius="40">
                     <Grid Margin="50,30">
 
-                        <Grid x:Name="homeScreen" Margin="2,2,-2,-2">
+                        <Grid x:Name="homeScreen">
+                            <ListView x:Name="dataListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button>
+                                            <Button.Content>
+                                                <StackPanel>
+
+                                                    <!--hình ảnh và tên món ăn sẽ ở đây-->
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                        <Grid x:Name="favoriteScreen"  Visibility="Hidden">
+                        </Grid>
+
+                        <Grid x:Name="addScreen" Visibility="Hidden">
                             <TextBox x:Name="title" Width="500" Height="40" Margin="44,42,316,658">
                             </TextBox>
                             <TextBox x:Name="description" AcceptsReturn="True" TextWrapping="Wrap" Width="500" Height="100" Margin="44,134,316,506">
@@ -274,16 +396,11 @@
                             <TextBox x:Name="linkYt" Width="500" Height="40" Margin="44,319,316,381">
                             </TextBox>
                         </Grid>
-                        <Grid x:Name="favoriteScreen">
+
+                        <Grid x:Name="settingScreen" Visibility="Hidden">
                         </Grid>
 
-                        <Grid x:Name="addScreen">
-                        </Grid>
-
-                        <Grid x:Name="settingScreen">
-                        </Grid>
-
-                        <Button Name="shuwdownBtn" Click="shuwdownBtn_Click" Width="40" Height="40" BorderThickness="0" Background="Transparent" Margin="832,10,-12,690">
+                        <Button Name="shuwdownBtn" Click="shuwdownBtn_Click" Width="40" Height="40" BorderThickness="0" Background="Transparent" Margin="832,10,-12,690" Style="{DynamicResource shutdownStyle}">
                             <Image Source="Images/img_shutdown.png" />
                         </Button>
                     </Grid>

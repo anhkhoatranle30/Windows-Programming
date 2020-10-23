@@ -28,3 +28,5 @@ E:\Windows Programming\git\Windows-Programming\Project_1_Food_Recipe\Project_1_F
 E:\Windows Programming\git\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.Properties.Resources.resources
 E:\Windows Programming\git\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.csproj.GenerateResource.cache
 E:\Windows Programming\git\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.csproj.CoreCompileInputs.cache
+E:\Windows Programming\git\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\SplashWindow.g.cs
+E:\Windows Programming\git\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\SplashWindow.baml
