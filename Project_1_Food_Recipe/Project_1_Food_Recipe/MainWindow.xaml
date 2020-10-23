@@ -55,7 +55,6 @@
                             </Border>
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalAlignment}" />
-                            <!--<Image x:Name="img" Source="Images/img_home_default.png" Width="40" Height="40" Margin="30,25,30,35" />-->
                             <Grid x:Name="img" Width="40" Height="40" Margin="30,25,30,35" Background="White">
                                 <Grid.OpacityMask>
                                     <ImageBrush ImageSource="Images/img_home_default.png" />
