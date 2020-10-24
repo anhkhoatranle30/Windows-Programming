@@ -89,3 +89,4 @@ E:\GitHub\Windows Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\De
 E:\GitHub\Windows Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.exe
 E:\GitHub\Windows Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.pdb
 E:\GitHub\Windows Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\App.baml
+E:\GitHub\Windows Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\GeneratedInternalTypeHelper.g.cs

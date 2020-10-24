@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_1_Food_Recipe"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1080"
+        Title="MainWindow" Height="800" Width="1280"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -17,6 +17,18 @@
     </Window.Icon>
 
     <Window.Resources>
+
+        <SolidColorBrush x:Key="brushWatermarkBackground" Color="White" />
+        <SolidColorBrush x:Key="brushWatermarkForeground" Color="LightSteelBlue" />
+        <SolidColorBrush x:Key="brushWatermarkBorder" Color="Indigo" />
+
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
+
+        <Style x:Key="EntryFieldStyle" TargetType="Grid">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
 
         <Style x:Key="fontStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontFamily"
@@ -408,6 +420,38 @@
             </Setter>
         </Style>
         <!--#endregion-->
+
+        <Style x:Key="watermarkTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="Gray" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+        <Style x:Key="watermarkTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Foreground" Value="Gray" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Padding" Value="3" />
+            <Setter Property="Margin" Value="0,7" />
+            <Setter Property="BorderThickness" Value="3" />
+            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="Background" Value="Transparent" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{Binding Color}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
 
     <Border CornerRadius="40" Background="{Binding Color}">
@@ -441,10 +485,10 @@
                     <Button Style="{StaticResource aboutBtnStyle}" Margin="10,658,10,42" />
                 </Grid>
                 <!--#endregion-->
-                <Border Background="White" Height="800" Width="960" CornerRadius="40">
-                    <Grid Margin="50,30">
+                <Border Background="White" Height="800" Width="1160" CornerRadius="40">
+                    <Grid Margin="30,30">
 
-                        <Grid x:Name="homeScreen">
+                        <Grid x:Name="homeScreen" Visibility="Hidden">
                             <ListView x:Name="dataListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
@@ -491,14 +535,39 @@
                             </ListView>
                         </Grid>
 
-                        <Grid x:Name="addScreen" Visibility="Hidden">
-                            <TextBox x:Name="title" Width="500" Height="40" Margin="44,42,316,658">
-                            </TextBox>
-                            <TextBox x:Name="description" AcceptsReturn="True" TextWrapping="Wrap" Width="500" Height="100" Margin="44,134,316,506">
+                        <Grid x:Name="addScreen">
+
+                            <Grid Style="{StaticResource EntryFieldStyle}" Width="500" Height="55" Margin="10,32,590,653">
+
+                                <TextBlock x:Name="titleWatermark"
+                                           Text="Title"
+                                           Margin="-1,4"
+                                           Style="{StaticResource watermarkTextBlockStyle}"
+                                           Visibility="{Binding ElementName=title, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                <TextBox x:Name="title" Style="{StaticResource watermarkTextBoxStyle}" />
+                            </Grid>
+
+                            <Grid Style="{StaticResource EntryFieldStyle}" Width="500" Height="200" Margin="10,115,590,425">
+
+                                <TextBlock x:Name="descriptionWatermark"
+                                           Text="Description"
+                                           Margin="-1,4"
+                                           Style="{StaticResource watermarkTextBlockStyle}"
+                                           Visibility="{Binding ElementName=description, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                <TextBox x:Name="description" Style="{StaticResource watermarkTextBoxStyle}"
+                                         AcceptsReturn="True" TextWrapping="Wrap" />
+                            </Grid>
+                            <!--<Grid Grid.Row="0" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}">
+                                <TextBlock Margin="5,2" Text="This prompt dissappears as you type..." Foreground="{StaticResource brushWatermarkForeground}"
+                       Visibility="{Binding ElementName=txtUserEntry, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                <TextBox Name="txtUserEntry" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+                            </Grid>-->
+
+                            <!--<TextBox x:Name="description" AcceptsReturn="True" TextWrapping="Wrap" Width="500" Height="100" Margin="44,134,316,506">
                             </TextBox>
 
                             <TextBox x:Name="linkYt" Width="500" Height="40" Margin="44,319,316,381">
-                            </TextBox>
+                            </TextBox>-->
                         </Grid>
 
                         <Grid x:Name="settingScreen" Visibility="Hidden">
@@ -516,7 +585,7 @@
                             </StackPanel>
                         </Grid>
 
-                        <Button Name="shuwdownBtn" Click="shuwdownBtn_Click" Width="40" Height="40" BorderThickness="0" Background="Transparent" Margin="832,10,-12,690" Style="{DynamicResource shutdownStyle}">
+                        <Button Name="shuwdownBtn" Click="shuwdownBtn_Click" Width="40" Height="40" BorderThickness="0" Background="Transparent" Margin="1050,10,10,690" Style="{DynamicResource shutdownStyle}">
                         </Button>
                     </Grid>
                 </Border>
