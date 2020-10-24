@@ -507,7 +507,7 @@
                                        VerticalAlignment="Top" HorizontalAlignment="Left"
                                        FontSize="20" />
                                 <WrapPanel>
-                                    <RadioButton GroupName="colorBg" Name="defaultColor"  Background="#3498DB" Style="{DynamicResource RadioButtonStyle}"  Margin="10" IsChecked="True" Checked="defaultColor_Checked" />
+                                    <RadioButton GroupName="colorBg" Name="defaultColor"  Background="#3498DB" Style="{DynamicResource RadioButtonStyle}"  Margin="10" Checked="defaultColor_Checked" />
                                     <RadioButton GroupName="colorBg" Name="redColor" Background="Red" Style="{DynamicResource RadioButtonStyle}"  Margin="10" Checked="redColor_Checked" />
                                     <RadioButton GroupName="colorBg" Name="blueColor"  Background="Blue" Style="{DynamicResource RadioButtonStyle}" Margin="10" Checked="blueColor_Checked" />
                                     <RadioButton GroupName="colorBg" Name="yellowColor"  Background="Yellow" Style="{DynamicResource RadioButtonStyle}" Margin="10" Checked="yellowColor_Checked" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -266,12 +267,21 @@ namespace Project_1_Food_Recipe
 
         private BackgroundColor _backgroundColor;
 
+        private void setDefaultColor(string buttonName)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(
+                ConfigurationUserLevel.None);
+            config.AppSettings.Settings["colorDefault"].Value = buttonName;
+            config.Save(ConfigurationSaveMode.Minimal);
+        }
+
         private void redColor_Checked(object sender, RoutedEventArgs e)
         {
             _backgroundColor.Color = "Red";
             _backgroundColor.SolidColor = new SolidColorBrush(Colors.Red);
 
             settingBtn_Click(sender, e);
+            setDefaultColor("redColor");
         }
 
         private void blueColor_Checked(object sender, RoutedEventArgs e)
@@ -280,6 +290,7 @@ namespace Project_1_Food_Recipe
             _backgroundColor.SolidColor = new SolidColorBrush(Colors.Blue);
 
             settingBtn_Click(sender, e);
+            setDefaultColor("blueColor");
         }
 
         private void yellowColor_Checked(object sender, RoutedEventArgs e)
@@ -288,6 +299,7 @@ namespace Project_1_Food_Recipe
             _backgroundColor.SolidColor = new SolidColorBrush(Colors.Yellow);
 
             settingBtn_Click(sender, e);
+            setDefaultColor("yellowColor");
         }
 
         private void greenColor_Checked(object sender, RoutedEventArgs e)
@@ -296,9 +308,19 @@ namespace Project_1_Food_Recipe
             _backgroundColor.SolidColor = new SolidColorBrush(Colors.Green);
 
             settingBtn_Click(sender, e);
+            setDefaultColor("greenColor");
         }
 
         private void defaultColor_Checked(object sender, RoutedEventArgs e)
+        {
+            _backgroundColor.Color = "#3498DB";
+            _backgroundColor.SolidColor = new SolidColorBrush(Color.FromRgb(52, 152, 219));
+
+            settingBtn_Click(sender, e);
+            setDefaultColor("defaultColor");
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             if (_backgroundColor == null)
             {
@@ -309,28 +331,12 @@ namespace Project_1_Food_Recipe
                 };
             }
 
-            _backgroundColor.Color = "#3498DB";
-            _backgroundColor.SolidColor = new SolidColorBrush(Color.FromRgb(52, 152, 219));
-
-            Grid _img = settingBtn.Template.FindName("img", settingBtn) as Grid;
-
-            if (_img != null)
-                _img.Background = _backgroundColor.SolidColor;
-
-            Border _border = settingBtn.Template.FindName("border", settingBtn) as Border;
-
-            if (_border != null)
-                _border.Background = Brushes.White;
-
-            TextBlock _text = settingBtn.Template.FindName("text", settingBtn) as TextBlock;
-
-            if (_text != null)
-                _text.Foreground = _backgroundColor.SolidColor;
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
             this.DataContext = _backgroundColor;
+            var value = ConfigurationManager.AppSettings["colorDefault"];
+            var myRadioButton = (RadioButton)this.FindName(value);
+
+            myRadioButton.IsChecked = true;
+            homeBtn_Click(sender, e);
         }
     }
 }
