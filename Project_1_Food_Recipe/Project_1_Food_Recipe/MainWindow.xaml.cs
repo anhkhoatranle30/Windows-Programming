@@ -387,5 +387,9 @@ namespace Project_1_Food_Recipe
             myRadioButton.IsChecked = true;
             homeBtn_Click(sender, e);
         }
+
+        private void title_TextChanged(object sender, TextChangedEventArgs e)
+        {
+        }
     }
 }
