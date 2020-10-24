@@ -30,7 +30,7 @@ namespace Project_1_Food_Recipe
         //functional
         private BindingList<Recipe> _recipeList;
 
-        BindingList<Recipe> _favoriteRecipeList;
+        private BindingList<Recipe> _favoriteRecipeList;
 
         public static String toAbsolutePath(String relative)
         {
@@ -63,6 +63,7 @@ namespace Project_1_Food_Recipe
         {
             //Properties
             public int RecipeID { get; set; }
+
             public string Title { get; set; }
             public string DesPicture { get; set; } //absolute path
             public string Description { get; set; }
@@ -108,7 +109,7 @@ namespace Project_1_Food_Recipe
                     //Recipe
                     var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], DesPicture = toAbsolutePath(tokens[2]), Description = tokens[2], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
                     //Add to list
-                    if(recipe.IsFavorite == true)
+                    if (recipe.IsFavorite == true)
                     {
                         result.Add(recipe);
                     }
@@ -117,6 +118,7 @@ namespace Project_1_Food_Recipe
                 return result;
             }
         }
+
         public class RecipeDAOTextFile : FactoryDAO<Recipe>
         {
             public override BindingList<Recipe> GetAll()
@@ -137,7 +139,7 @@ namespace Project_1_Food_Recipe
                 path.Append("Database.txt");
 
                 var lines = File.ReadAllLines(path.ToString());
-                    //recipes
+                //recipes
                 foreach (var line in lines)
                 {
                     var tokens = line.Split(
@@ -386,10 +388,6 @@ namespace Project_1_Food_Recipe
 
             myRadioButton.IsChecked = true;
             homeBtn_Click(sender, e);
-        }
-
-        private void title_TextChanged(object sender, TextChangedEventArgs e)
-        {
         }
     }
 }
