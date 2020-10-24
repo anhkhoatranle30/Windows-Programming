@@ -10,7 +10,8 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Loaded="Window_Loaded">
     <Window.Icon>
         <BitmapImage UriSource="Images/icon.png" RenderOptions.BitmapScalingMode="HighQuality" />
     </Window.Icon>
@@ -65,11 +66,13 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="White" />
-                                <Setter TargetName="img" Property="Background" Value="#3498DB" />
-                                <Setter TargetName="text" Property="Foreground" Value="#3498DB" />
+                                <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
+                                <Setter TargetName="text" Property="Foreground" Value="{Binding Color}" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-
+                                <Setter TargetName="border" Property="Background" Value="White" />
+                                <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
+                                <Setter TargetName="text" Property="Foreground" Value="{Binding Color}" />
                                 <Setter Property="Effect">
                                     <Setter.Value>
                                         <DropShadowEffect BlurRadius="7" ShadowDepth="7" Color="#808080" Direction="300" />
@@ -115,11 +118,13 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="White" />
-                                <Setter TargetName="img" Property="Background" Value="#3498DB" />
-                                <Setter TargetName="text" Property="Foreground" Value="#3498DB" />
+                                <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
+                                <Setter TargetName="text" Property="Foreground" Value="{Binding Color}" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-
+                                <Setter TargetName="border" Property="Background" Value="White" />
+                                <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
+                                <Setter TargetName="text" Property="Foreground" Value="{Binding Color}" />
                                 <Setter Property="Effect">
                                     <Setter.Value>
                                         <DropShadowEffect BlurRadius="7" ShadowDepth="7" Color="#808080" Direction="300" />
@@ -165,12 +170,14 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="White" />
-                                <Setter TargetName="img" Property="Background" Value="#3498DB" />
-                                <Setter TargetName="text" Property="Foreground" Value="#3498DB" />
+                                <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
+                                <Setter TargetName="text" Property="Foreground" Value="{Binding Color}" />
                             </Trigger>
 
                             <Trigger Property="IsPressed" Value="True">
-
+                                <Setter TargetName="border" Property="Background" Value="White" />
+                                <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
+                                <Setter TargetName="text" Property="Foreground" Value="{Binding Color}" />
                                 <Setter Property="Effect">
                                     <Setter.Value>
                                         <DropShadowEffect BlurRadius="7" ShadowDepth="7" Color="#808080" Direction="300" />
@@ -216,12 +223,14 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="White" />
-                                <Setter TargetName="img" Property="Background" Value="#3498DB" />
-                                <Setter TargetName="text" Property="Foreground" Value="#3498DB" />
+                                <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
+                                <Setter TargetName="text" Property="Foreground" Value="{Binding Color}" />
                             </Trigger>
 
                             <Trigger Property="IsPressed" Value="True">
-
+                                <Setter TargetName="border" Property="Background" Value="White" />
+                                <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
+                                <Setter TargetName="text" Property="Foreground" Value="{Binding Color}" />
                                 <Setter Property="Effect">
                                     <Setter.Value>
                                         <DropShadowEffect BlurRadius="7" ShadowDepth="7" Color="#808080" Direction="300" />
@@ -266,11 +275,12 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="White" />
-                                <Setter TargetName="img" Property="Background" Value="#3498DB" />
+                                <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
                             </Trigger>
 
                             <Trigger Property="IsPressed" Value="True">
-
+                                <Setter TargetName="border" Property="Background" Value="White" />
+                                <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
                                 <Setter Property="Effect">
                                     <Setter.Value>
                                         <DropShadowEffect BlurRadius="7" ShadowDepth="7" Color="#808080" Direction="300" />
@@ -283,6 +293,7 @@
             </Setter>
         </Style>
 
+        <!--#region shutdown button -->
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -313,9 +324,16 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
-                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                        </Border>
+                        <Grid>
+                            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Border>
+                            <Grid x:Name="img" Background="{Binding Color}">
+                                <Grid.OpacityMask>
+                                    <ImageBrush ImageSource="Images/img_shutdown.png" />
+                                </Grid.OpacityMask>
+                            </Grid>
+                        </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsDefaulted" Value="true">
                                 <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
@@ -328,12 +346,75 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <!--#endregion-->
+
+        <!--#region change color background -->
+        <Style x:Key="RadioButtonStyle" TargetType="{x:Type RadioButton}">
+            <Setter Property="FocusVisualStyle">
+                <Setter.Value>
+                    <Style>
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Rectangle SnapsToDevicePixels="True" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="#FFDDDDDD" />
+            <Setter Property="BorderBrush" Value="#FF707070" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Width" Value="50" />
+            <Setter Property="Height" Value="50" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid>
+                            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Border>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                            <Grid Name="ticked" Background="White" Width="25" Height="25" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Hidden">
+                                <Image Source="Images/img_tick.png" VerticalAlignment="Top" HorizontalAlignment="Right" Stretch="Fill" Height="Auto" Margin="-5,-4,-4,-5" Width="34" />
+                            </Grid>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Button.IsDefaulted" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderThickness" TargetName="border" Value="2" />
+                                <Setter Property="BorderBrush" TargetName="border" Value="black" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="BorderThickness" TargetName="border" Value="2" />
+                                <Setter Property="BorderBrush" TargetName="border" Value="black" />
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="BorderThickness" TargetName="border" Value="2" />
+                                <Setter Property="BorderBrush" TargetName="border" Value="black" />
+                                <Setter Property="Visibility" TargetName="ticked" Value="Visible" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--#endregion-->
     </Window.Resources>
 
-    <Border CornerRadius="40" Background="#3498DB">
+    <Border CornerRadius="40" Background="{Binding Color}">
 
         <Grid>
             <WrapPanel>
+                <!--#region menu -->
                 <Grid Width="120" Height="800">
                     <Border Width="60" Height="60" CornerRadius="10" Background="White" Canvas.Left="30" Canvas.Top="19" Margin="29,46,31,694">
                         <Canvas>
@@ -350,16 +431,16 @@
 
                         <StackPanel Margin="0,-1,0,-32.4" Grid.RowSpan="2">
 
-                            <Button x:Name="homeBtn" Style="{StaticResource homeBtnStyle}"  Click="homeBtn_Click" />
+                            <Button x:Name="homeBtn" Style="{StaticResource homeBtnStyle}"  Click="homeBtn_Click" IsDefault="True" />
                             <Button x:Name="favoriteBtn" Style="{StaticResource favoriteBtnStyle}"  Click="favoriteBtn_Click" />
                             <Button x:Name="addBtn" Style="{StaticResource addBtnStyle}"  Click="addBtn_Click" />
                             <Button x:Name="settingBtn" Style="{DynamicResource settingBtnStyle}" Click="settingBtn_Click" />
                         </StackPanel>
                     </Grid>
 
-                    <Button Style="{StaticResource aboutBtnStyle}" Margin="10,658,10,42">
-                    </Button>
+                    <Button Style="{StaticResource aboutBtnStyle}" Margin="10,658,10,42" />
                 </Grid>
+                <!--#endregion-->
                 <Border Background="White" Height="800" Width="960" CornerRadius="40">
                     <Grid Margin="50,30">
 
@@ -376,8 +457,8 @@
                                             <Button.Content>
                                                 <StackPanel>
                                                     <!--hình ảnh và tên món ăn sẽ ở đây-->
-                                                    <TextBlock Text="{Binding Title}"/>
-                                                    <Image Source="{Binding DesPicture}" Width="100"/>
+                                                    <Image Source="{Binding DesPicture}" Width="200" />
+                                                    <TextBlock Text="{Binding Title}" Style="{StaticResource fontStyle}" />
                                                     <!--end here-->
                                                 </StackPanel>
                                             </Button.Content>
@@ -387,6 +468,27 @@
                             </ListView>
                         </Grid>
                         <Grid x:Name="favoriteScreen"  Visibility="Hidden">
+
+                            <ListView x:Name="favoriteListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button>
+                                            <Button.Content>
+                                                <StackPanel>
+                                                    <!--hình ảnh và tên món ăn sẽ ở đây-->
+
+                                                    <!--end here-->
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
                         </Grid>
 
                         <Grid x:Name="addScreen" Visibility="Hidden">
@@ -400,10 +502,21 @@
                         </Grid>
 
                         <Grid x:Name="settingScreen" Visibility="Hidden">
+                            <StackPanel>
+                                <TextBlock Text="Choose your background color:" Style="{StaticResource fontStyle}" Foreground="Black"
+                                       VerticalAlignment="Top" HorizontalAlignment="Left"
+                                       FontSize="20" />
+                                <WrapPanel>
+                                    <RadioButton GroupName="colorBg" Name="defaultColor"  Background="#3498DB" Style="{DynamicResource RadioButtonStyle}"  Margin="10" IsChecked="True" Checked="defaultColor_Checked" />
+                                    <RadioButton GroupName="colorBg" Name="redColor" Background="Red" Style="{DynamicResource RadioButtonStyle}"  Margin="10" Checked="redColor_Checked" />
+                                    <RadioButton GroupName="colorBg" Name="blueColor"  Background="Blue" Style="{DynamicResource RadioButtonStyle}" Margin="10" Checked="blueColor_Checked" />
+                                    <RadioButton GroupName="colorBg" Name="yellowColor"  Background="Yellow" Style="{DynamicResource RadioButtonStyle}" Margin="10" Checked="yellowColor_Checked" />
+                                    <RadioButton GroupName="colorBg" Name="greenColor" Background="Green" Style="{DynamicResource RadioButtonStyle}" Margin="10" Checked="greenColor_Checked" />
+                                </WrapPanel>
+                            </StackPanel>
                         </Grid>
 
                         <Button Name="shuwdownBtn" Click="shuwdownBtn_Click" Width="40" Height="40" BorderThickness="0" Background="Transparent" Margin="832,10,-12,690" Style="{DynamicResource shutdownStyle}">
-                            <Image Source="Images/img_shutdown.png" />
                         </Button>
                     </Grid>
                 </Border>

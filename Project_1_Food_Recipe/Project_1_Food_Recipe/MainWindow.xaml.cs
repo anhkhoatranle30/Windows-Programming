@@ -27,7 +27,8 @@ namespace Project_1_Food_Recipe
     public partial class MainWindow : Window
     {
         //functional
-        BindingList<Recipe> _recipeList;
+        private BindingList<Recipe> _recipeList;
+
         //BindingList<Recipe> _favoriteList;
 
         public static String toAbsolutePath(String relative)
@@ -44,22 +45,27 @@ namespace Project_1_Food_Recipe
         public abstract class FactoryDAO<T>
         {
             public abstract BindingList<T> GetAll();
+
             //public abstract void Update();
             //public abstract void Delete();
-            
         }
+
         public class Step
         {
             //properties
             public string ImgSource { get; set; }
+
             public string Content { get; set; }
         }
+
         public class Recipe
         {
             //Attributes
             public List<Step> stepsList;
+
             //Properties
             public string Title { get; set; }
+
             public string DesPicture { get; set; } //absolute path
             public string Description { get; set; }
             public string VideoLink { get; set; }
@@ -74,7 +80,6 @@ namespace Project_1_Food_Recipe
                 //
                 var result = new BindingList<Recipe>()
                 {
-
                 };
 
                 //
@@ -93,14 +98,14 @@ namespace Project_1_Food_Recipe
                         StringSplitOptions.None);
                     //StepsList
                     var steplist = new List<Step>();
-                    for(int i = 4; i < tokens.Length; i += 2)
+                    for (int i = 4; i < tokens.Length; i += 2)
                     {
                         var step = new Step() { ImgSource = toAbsolutePath(tokens[i]), Content = tokens[i + 1] };
-                        
+
                         steplist.Add(step);
                     }
                     //Recipe
-                    var recipe = new Recipe() { Title = tokens[0], DesPicture = toAbsolutePath(tokens[1]), Description = tokens[2], VideoLink = tokens[3], stepsList = steplist};
+                    var recipe = new Recipe() { Title = tokens[0], DesPicture = toAbsolutePath(tokens[1]), Description = tokens[2], VideoLink = tokens[3], stepsList = steplist };
                     //Add to list
                     result.Add(recipe);
                 }
@@ -108,7 +113,7 @@ namespace Project_1_Food_Recipe
                 return result;
             }
         }
-        
+
         //end functional
 
         public MainWindow()
@@ -123,13 +128,25 @@ namespace Project_1_Food_Recipe
         private void Clear(Button btn)
         {
             Grid _img = btn.Template.FindName("img", btn) as Grid;
-            _img.ClearValue(BackgroundProperty);
+
+            if (_img != null)
+            {
+                _img.ClearValue(BackgroundProperty);
+            }
 
             Border _border = btn.Template.FindName("border", btn) as Border;
-            _border.ClearValue(BackgroundProperty);
+
+            if (_border != null)
+            {
+                _border.ClearValue(BackgroundProperty);
+            }
 
             TextBlock _text = btn.Template.FindName("text", btn) as TextBlock;
-            _text.ClearValue(ForegroundProperty);
+
+            if (_text != null)
+            {
+                _text.ClearValue(ForegroundProperty);
+            }
         }
 
         private void ClearAll()
@@ -140,48 +157,73 @@ namespace Project_1_Food_Recipe
             Clear(settingBtn);
         }
 
+        private void HideScreen()
+        {
+            homeScreen.Visibility = Visibility.Hidden;
+            addScreen.Visibility = Visibility.Hidden;
+            favoriteScreen.Visibility = Visibility.Hidden;
+            settingScreen.Visibility = Visibility.Hidden;
+        }
+
         private void homeBtn_Click(object sender, RoutedEventArgs e)
         {
             ClearAll();
+            HideScreen();
+            homeScreen.Visibility = Visibility.Visible;
+
             Grid _img = homeBtn.Template.FindName("img", homeBtn) as Grid;
-            _img.Background = new SolidColorBrush(Color.FromRgb(52, 152, 219));
+            if (_img != null)
+                _img.Background = _backgroundColor.SolidColor;
 
             Border _border = homeBtn.Template.FindName("border", homeBtn) as Border;
-            _border.Background = Brushes.White;
+            if (_border != null)
+                _border.Background = Brushes.White;
 
             TextBlock _text = homeBtn.Template.FindName("text", homeBtn) as TextBlock;
-            _text.Foreground = new SolidColorBrush(Color.FromRgb(52, 152, 219));
+            if (_text != null)
+                _text.Foreground = _backgroundColor.SolidColor;
         }
 
         private void favoriteBtn_Click(object sender, RoutedEventArgs e)
         {
             ClearAll();
+            HideScreen();
+            favoriteScreen.Visibility = Visibility.Visible;
 
             Grid _img = favoriteBtn.Template.FindName("img", favoriteBtn) as Grid;
-            _img.Background = new SolidColorBrush(Color.FromRgb(52, 152, 219));
+            if (_img != null)
+                _img.Background = _backgroundColor.SolidColor;
 
             Border _border = favoriteBtn.Template.FindName("border", favoriteBtn) as Border;
-            _border.Background = Brushes.White;
+            if (_border != null)
+                _border.Background = Brushes.White;
 
             TextBlock _text = favoriteBtn.Template.FindName("text", favoriteBtn) as TextBlock;
-            _text.Foreground = new SolidColorBrush(Color.FromRgb(52, 152, 219));
+            if (_text != null)
+                _text.Foreground = _backgroundColor.SolidColor;
 
             //functional
-
         }
 
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
             ClearAll();
-
+            HideScreen();
+            addScreen.Visibility = Visibility.Visible;
             Grid _img = addBtn.Template.FindName("img", addBtn) as Grid;
-            _img.Background = new SolidColorBrush(Color.FromRgb(52, 152, 219));
+
+            if (_img != null)
+                _img.Background = _backgroundColor.SolidColor;
 
             Border _border = addBtn.Template.FindName("border", addBtn) as Border;
-            _border.Background = Brushes.White;
+
+            if (_border != null)
+                _border.Background = Brushes.White;
 
             TextBlock _text = addBtn.Template.FindName("text", addBtn) as TextBlock;
-            _text.Foreground = new SolidColorBrush(Color.FromRgb(52, 152, 219));
+
+            if (_text != null)
+                _text.Foreground = _backgroundColor.SolidColor;
 
             //functional
         }
@@ -189,15 +231,22 @@ namespace Project_1_Food_Recipe
         private void settingBtn_Click(object sender, RoutedEventArgs e)
         {
             ClearAll();
-
+            HideScreen();
+            settingScreen.Visibility = Visibility.Visible;
             Grid _img = settingBtn.Template.FindName("img", settingBtn) as Grid;
-            _img.Background = new SolidColorBrush(Color.FromRgb(52, 152, 219));
+
+            if (_img != null)
+                _img.Background = _backgroundColor.SolidColor;
 
             Border _border = settingBtn.Template.FindName("border", settingBtn) as Border;
-            _border.Background = Brushes.White;
+
+            if (_border != null)
+                _border.Background = Brushes.White;
 
             TextBlock _text = settingBtn.Template.FindName("text", settingBtn) as TextBlock;
-            _text.Foreground = new SolidColorBrush(Color.FromRgb(52, 152, 219));
+
+            if (_text != null)
+                _text.Foreground = _backgroundColor.SolidColor;
 
             //functional
         }
@@ -205,6 +254,70 @@ namespace Project_1_Food_Recipe
         private void shuwdownBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private class BackgroundColor : INotifyPropertyChanged
+        {
+            public string Color { set; get; }
+            public SolidColorBrush SolidColor { set; get; }
+
+            public event PropertyChangedEventHandler PropertyChanged;
+        }
+
+        private BackgroundColor _backgroundColor;
+
+        private void redColor_Checked(object sender, RoutedEventArgs e)
+        {
+            _backgroundColor.Color = "Red";
+            _backgroundColor.SolidColor = new SolidColorBrush(Colors.Red);
+
+            settingBtn_Click(sender, e);
+        }
+
+        private void blueColor_Checked(object sender, RoutedEventArgs e)
+        {
+            _backgroundColor.Color = "Blue";
+            _backgroundColor.SolidColor = new SolidColorBrush(Colors.Blue);
+
+            settingBtn_Click(sender, e);
+        }
+
+        private void yellowColor_Checked(object sender, RoutedEventArgs e)
+        {
+            _backgroundColor.Color = "Yellow";
+            _backgroundColor.SolidColor = new SolidColorBrush(Colors.Yellow);
+
+            settingBtn_Click(sender, e);
+        }
+
+        private void greenColor_Checked(object sender, RoutedEventArgs e)
+        {
+            _backgroundColor.Color = "Green";
+            _backgroundColor.SolidColor = new SolidColorBrush(Colors.Green);
+
+            settingBtn_Click(sender, e);
+        }
+
+        private void defaultColor_Checked(object sender, RoutedEventArgs e)
+        {
+            if (_backgroundColor == null)
+            {
+                _backgroundColor = new BackgroundColor
+                {
+                    Color = "#3498DB",
+                    SolidColor = new SolidColorBrush(Color.FromRgb(52, 152, 219))
+                };
+            }
+
+            _backgroundColor.Color = "#3498DB";
+            _backgroundColor.SolidColor = new SolidColorBrush(Color.FromRgb(52, 152, 219));
+
+            settingBtn_Click(sender, e);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.DataContext = _backgroundColor;
         }
     }
 }
