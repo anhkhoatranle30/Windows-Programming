@@ -521,7 +521,8 @@
                                             <Button.Content>
                                                 <StackPanel>
                                                     <!--hình ảnh và tên món ăn sẽ ở đây-->
-
+                                                    <Image Source="{Binding DesPicture}" Width="200" />
+                                                    <TextBlock Text="{Binding Title}" Style="{StaticResource fontStyle}" />     
                                                     <!--end here-->
                                                 </StackPanel>
                                             </Button.Content>
