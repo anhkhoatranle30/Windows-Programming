@@ -30,7 +30,7 @@ namespace Project_1_Food_Recipe
         //functional
         private BindingList<Recipe> _recipeList;
 
-        //BindingList<Recipe> _favoriteList;
+        BindingList<Recipe> _favoriteRecipeList;
 
         public static String toAbsolutePath(String relative)
         {
@@ -61,17 +61,62 @@ namespace Project_1_Food_Recipe
 
         public class Recipe
         {
-            //Attributes
-            public List<Step> stepsList;
-
             //Properties
+            public int RecipeID { get; set; }
             public string Title { get; set; }
-
             public string DesPicture { get; set; } //absolute path
             public string Description { get; set; }
             public string VideoLink { get; set; }
+            public BindingList<Step> StepsList { set; get; }
+            public bool IsFavorite { get; set; }
         }
 
+        public class FavoriteRecipeDAOTextFile : FactoryDAO<Recipe>
+        {
+            public override BindingList<Recipe> GetAll()
+            {
+                //
+                //Initialize list
+                //
+                var result = new BindingList<Recipe>()
+                {
+                };
+
+                //
+                //Read file txt
+                //
+                var path = new StringBuilder();
+
+                path.Append(AppDomain.CurrentDomain.BaseDirectory);
+                path.Append("Database.txt");
+
+                var lines = File.ReadAllLines(path.ToString());
+                //recipes
+                foreach (var line in lines)
+                {
+                    var tokens = line.Split(
+                        new String[] { "*" },
+                        StringSplitOptions.None);
+                    //StepsList
+                    var steplist = new BindingList<Step>();
+                    for (int i = 5; i < tokens.Length - 1; i += 2)
+                    {
+                        var step = new Step() { ImgSource = toAbsolutePath(tokens[i]), Content = tokens[i + 1] };
+
+                        steplist.Add(step);
+                    }
+                    //Recipe
+                    var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], DesPicture = toAbsolutePath(tokens[2]), Description = tokens[2], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
+                    //Add to list
+                    if(recipe.IsFavorite == true)
+                    {
+                        result.Add(recipe);
+                    }
+                }
+                //return
+                return result;
+            }
+        }
         public class RecipeDAOTextFile : FactoryDAO<Recipe>
         {
             public override BindingList<Recipe> GetAll()
@@ -92,21 +137,22 @@ namespace Project_1_Food_Recipe
                 path.Append("Database.txt");
 
                 var lines = File.ReadAllLines(path.ToString());
+                    //recipes
                 foreach (var line in lines)
                 {
                     var tokens = line.Split(
                         new String[] { "*" },
                         StringSplitOptions.None);
                     //StepsList
-                    var steplist = new List<Step>();
-                    for (int i = 4; i < tokens.Length; i += 2)
+                    var steplist = new BindingList<Step>();
+                    for (int i = 5; i < tokens.Length - 1; i += 2)
                     {
                         var step = new Step() { ImgSource = toAbsolutePath(tokens[i]), Content = tokens[i + 1] };
 
                         steplist.Add(step);
                     }
                     //Recipe
-                    var recipe = new Recipe() { Title = tokens[0], DesPicture = toAbsolutePath(tokens[1]), Description = tokens[2], VideoLink = tokens[3], stepsList = steplist };
+                    var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], DesPicture = toAbsolutePath(tokens[2]), Description = tokens[2], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
                     //Add to list
                     result.Add(recipe);
                 }
@@ -120,10 +166,13 @@ namespace Project_1_Food_Recipe
         public MainWindow()
         {
             InitializeComponent();
-            var temp = new RecipeDAOTextFile();
-            _recipeList = temp.GetAll();
-            Debug.WriteLine(_recipeList[0].DesPicture);
+            var recipeDAOTextFile = new RecipeDAOTextFile();
+            _recipeList = recipeDAOTextFile.GetAll();
+            var favoriteRecipeDAOTextFile = new FavoriteRecipeDAOTextFile();
+            _favoriteRecipeList = favoriteRecipeDAOTextFile.GetAll();
+
             dataListView.ItemsSource = _recipeList;
+            favoriteListView.ItemsSource = _favoriteRecipeList;
         }
 
         private void Clear(Button btn)
