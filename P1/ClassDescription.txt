@@ -1,13 +1,13 @@
 Recipe {
-	title : string
-	desPicture : string, absolute
-	description : string
-	videolink : string
-	[]Step 
+	Title : string
+	DesPicture : string, absolute
+	Description : string
+	Videolink : string
+	stepsList : List<Step>
 }
 Step {
 	ImgSource : string
-	Instruction : string
+	Content: string
 }
 
 isFavorite : bool

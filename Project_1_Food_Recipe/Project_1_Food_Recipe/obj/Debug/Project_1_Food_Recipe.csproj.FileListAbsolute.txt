@@ -30,3 +30,21 @@ E:\Windows Programming\git\Windows-Programming\Project_1_Food_Recipe\Project_1_F
 E:\Windows Programming\git\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.csproj.CoreCompileInputs.cache
 E:\Windows Programming\git\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\SplashWindow.g.cs
 E:\Windows Programming\git\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\SplashWindow.baml
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\bin\Debug\Project_1_Food_Recipe.exe.config
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\bin\Debug\Project_1_Food_Recipe.exe
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\bin\Debug\Project_1_Food_Recipe.pdb
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.csprojAssemblyReference.cache
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\MainWindow.g.cs
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\SplashWindow.g.cs
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\App.g.cs
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe_MarkupCompile.cache
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe_MarkupCompile.lref
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\MainWindow.baml
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\SplashWindow.baml
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.g.resources
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.Properties.Resources.resources
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.csproj.GenerateResource.cache
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.csproj.CoreCompileInputs.cache
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.exe
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.pdb
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\bin\Debug\Images\Recipes\FriedChicken\friedChickenMain.jpg

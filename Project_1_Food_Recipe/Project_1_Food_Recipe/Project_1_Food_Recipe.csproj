@@ -139,5 +139,11 @@
   <ItemGroup>
     <Resource Include="Images\img_about.png" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Images\Recipes\FriedChicken\friedChickenMain.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

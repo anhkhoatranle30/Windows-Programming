@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,12 +21,103 @@ namespace Project_1_Food_Recipe
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
+    /// UI/UX : Hoang
+    /// Functional : Khoa
     /// </summary>
     public partial class MainWindow : Window
     {
+        //functional
+        BindingList<Recipe> _recipeList;
+        //BindingList<Recipe> _favoriteList;
+
+        public static String toAbsolutePath(String relative)
+        {
+            String result;
+
+            var path = new StringBuilder();
+            path.Append(AppDomain.CurrentDomain.BaseDirectory);
+
+            result = $"{path}{relative}";
+            return result;
+        }
+
+        public abstract class FactoryDAO<T>
+        {
+            public abstract BindingList<T> GetAll();
+            //public abstract void Update();
+            //public abstract void Delete();
+            
+        }
+        public class Step
+        {
+            //properties
+            public string ImgSource { get; set; }
+            public string Content { get; set; }
+        }
+        public class Recipe
+        {
+            //Attributes
+            public List<Step> stepsList;
+            //Properties
+            public string Title { get; set; }
+            public string DesPicture { get; set; } //absolute path
+            public string Description { get; set; }
+            public string VideoLink { get; set; }
+        }
+
+        public class RecipeDAOTextFile : FactoryDAO<Recipe>
+        {
+            public override BindingList<Recipe> GetAll()
+            {
+                //
+                //Initialize list
+                //
+                var result = new BindingList<Recipe>()
+                {
+
+                };
+
+                //
+                //Read file txt
+                //
+                var path = new StringBuilder();
+
+                path.Append(AppDomain.CurrentDomain.BaseDirectory);
+                path.Append("Database.txt");
+
+                var lines = File.ReadAllLines(path.ToString());
+                foreach (var line in lines)
+                {
+                    var tokens = line.Split(
+                        new String[] { "*" },
+                        StringSplitOptions.None);
+                    //StepsList
+                    var steplist = new List<Step>();
+                    for(int i = 4; i < tokens.Length; i += 2)
+                    {
+                        var step = new Step() { ImgSource = toAbsolutePath(tokens[i]), Content = tokens[i + 1] };
+                        
+                        steplist.Add(step);
+                    }
+                    //Recipe
+                    var recipe = new Recipe() { Title = tokens[0], DesPicture = toAbsolutePath(tokens[1]), Description = tokens[2], VideoLink = tokens[3], stepsList = steplist};
+                    //Add to list
+                    result.Add(recipe);
+                }
+                //return
+                return result;
+            }
+        }
+        
+        //end functional
+
         public MainWindow()
         {
             InitializeComponent();
+            var temp = new RecipeDAOTextFile();
+            _recipeList = temp.GetAll();
+            Debug.WriteLine(_recipeList[0].DesPicture);
+            dataListView.ItemsSource = _recipeList;
         }
 
         private void Clear(Button btn)
@@ -72,6 +165,9 @@ namespace Project_1_Food_Recipe
 
             TextBlock _text = favoriteBtn.Template.FindName("text", favoriteBtn) as TextBlock;
             _text.Foreground = new SolidColorBrush(Color.FromRgb(52, 152, 219));
+
+            //functional
+
         }
 
         private void addBtn_Click(object sender, RoutedEventArgs e)
@@ -86,6 +182,8 @@ namespace Project_1_Food_Recipe
 
             TextBlock _text = addBtn.Template.FindName("text", addBtn) as TextBlock;
             _text.Foreground = new SolidColorBrush(Color.FromRgb(52, 152, 219));
+
+            //functional
         }
 
         private void settingBtn_Click(object sender, RoutedEventArgs e)
@@ -100,6 +198,8 @@ namespace Project_1_Food_Recipe
 
             TextBlock _text = settingBtn.Template.FindName("text", settingBtn) as TextBlock;
             _text.Foreground = new SolidColorBrush(Color.FromRgb(52, 152, 219));
+
+            //functional
         }
 
         private void shuwdownBtn_Click(object sender, RoutedEventArgs e)

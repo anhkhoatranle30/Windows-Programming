@@ -375,8 +375,10 @@
                                         <Button>
                                             <Button.Content>
                                                 <StackPanel>
-
                                                     <!--hình ảnh và tên món ăn sẽ ở đây-->
+                                                    <TextBlock Text="{Binding Title}"/>
+                                                    <Image Source="{Binding DesPicture}" Width="100"/>
+                                                    <!--end here-->
                                                 </StackPanel>
                                             </Button.Content>
                                         </Button>
