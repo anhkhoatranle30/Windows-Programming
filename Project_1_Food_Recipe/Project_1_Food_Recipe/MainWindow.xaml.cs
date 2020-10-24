@@ -312,7 +312,20 @@ namespace Project_1_Food_Recipe
             _backgroundColor.Color = "#3498DB";
             _backgroundColor.SolidColor = new SolidColorBrush(Color.FromRgb(52, 152, 219));
 
-            settingBtn_Click(sender, e);
+            Grid _img = settingBtn.Template.FindName("img", settingBtn) as Grid;
+
+            if (_img != null)
+                _img.Background = _backgroundColor.SolidColor;
+
+            Border _border = settingBtn.Template.FindName("border", settingBtn) as Border;
+
+            if (_border != null)
+                _border.Background = Brushes.White;
+
+            TextBlock _text = settingBtn.Template.FindName("text", settingBtn) as TextBlock;
+
+            if (_text != null)
+                _text.Foreground = _backgroundColor.SolidColor;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
