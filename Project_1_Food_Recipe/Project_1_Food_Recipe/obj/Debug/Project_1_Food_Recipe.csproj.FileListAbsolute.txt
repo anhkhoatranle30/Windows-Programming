@@ -47,7 +47,6 @@ C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Foo
 C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.csproj.CoreCompileInputs.cache
 C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.exe
 C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.pdb
-C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\bin\Debug\Images\Recipes\FriedChicken\friedChickenMain.jpg
 E:\Windows Programming\git\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\bin\Debug\Images\Recipes\FriedChicken\friedChickenMain.jpg
 E:\Windows Programming\git\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.csproj.Fody.CopyLocal.cache
 E:\GitHub\Project_1_Food_Recipe\Project_1_Food_Recipe\bin\Debug\Images\Recipes\FriedChicken\friedChickenMain.jpg
@@ -89,3 +88,11 @@ E:\GitHub\Windows Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\De
 E:\GitHub\Windows Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.exe
 E:\GitHub\Windows Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.pdb
 E:\GitHub\Windows Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\App.baml
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\App.baml
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\obj\Debug\Project_1_Food_Recipe.csproj.Fody.CopyLocal.cache
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\bin\Debug\Images\Recipes\1\Steps\1.jpg
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\bin\Debug\Images\Recipes\1\Steps\2.jpg
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\bin\Debug\Images\Recipes\1\Steps\3.jpg
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\bin\Debug\Images\Recipes\1\Steps\4.jpg
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\bin\Debug\Images\Recipes\1\Steps\5.jpg
+C:\Users\KHoa\Desktop\Windows_Project\Projects\Windows-Programming\Project_1_Food_Recipe\Project_1_Food_Recipe\bin\Debug\Images\Recipes\1\main.jpg
