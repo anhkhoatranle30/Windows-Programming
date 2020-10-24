@@ -18,10 +18,6 @@
 
     <Window.Resources>
 
-        <SolidColorBrush x:Key="brushWatermarkBackground" Color="White" />
-        <SolidColorBrush x:Key="brushWatermarkForeground" Color="LightSteelBlue" />
-        <SolidColorBrush x:Key="brushWatermarkBorder" Color="Indigo" />
-
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
 
