@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -388,6 +389,25 @@ namespace Project_1_Food_Recipe
 
             myRadioButton.IsChecked = true;
             homeBtn_Click(sender, e);
+        }
+
+        private void addImgBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fd = new OpenFileDialog();
+
+            if (fd.ShowDialog() == true)
+            {
+                ImageBrush myBrush = new ImageBrush();
+                Image image = new Image();
+                image.Source = new BitmapImage(
+                    new Uri(fd.FileName));
+                myBrush.ImageSource = image.Source;
+                addImgBtn.Background = myBrush;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }
