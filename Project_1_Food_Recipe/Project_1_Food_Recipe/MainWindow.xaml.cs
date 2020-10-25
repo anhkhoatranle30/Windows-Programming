@@ -208,6 +208,7 @@ namespace Project_1_Food_Recipe
             Clear(addBtn);
             Clear(favoriteBtn);
             Clear(settingBtn);
+            Clear(aboutBtn);
         }
 
         private void HideScreen()
@@ -216,6 +217,7 @@ namespace Project_1_Food_Recipe
             addScreen.Visibility = Visibility.Hidden;
             favoriteScreen.Visibility = Visibility.Hidden;
             settingScreen.Visibility = Visibility.Hidden;
+            aboutScreen.Visibility = Visibility.Hidden;
         }
 
         private void homeBtn_Click(object sender, RoutedEventArgs e)
@@ -302,6 +304,22 @@ namespace Project_1_Food_Recipe
                 _text.Foreground = _backgroundColor.SolidColor;
 
             //functional
+        }
+
+        private void aboutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ClearAll();
+            HideScreen();
+            aboutScreen.Visibility = Visibility.Visible;
+            Grid _img = aboutBtn.Template.FindName("img", aboutBtn) as Grid;
+
+            if (_img != null)
+                _img.Background = _backgroundColor.SolidColor;
+
+            Border _border = aboutBtn.Template.FindName("border", aboutBtn) as Border;
+
+            if (_border != null)
+                _border.Background = Brushes.White;
         }
 
         private void shuwdownBtn_Click(object sender, RoutedEventArgs e)
@@ -404,10 +422,6 @@ namespace Project_1_Food_Recipe
                 myBrush.ImageSource = image.Source;
                 addImgBtn.Background = myBrush;
             }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
         }
     }
 }

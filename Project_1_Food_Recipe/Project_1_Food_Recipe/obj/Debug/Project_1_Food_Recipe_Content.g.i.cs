@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("font/utmtimes-info.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/img_about_khoa.jpg")]
 
 
