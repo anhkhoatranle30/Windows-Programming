@@ -8,6 +8,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/recipes/9/steps/1.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/recipes/9/steps/2.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/recipes/9/steps/3.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/recipes/9/steps/4.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/recipes/9/steps/5.jpg")]
+=======
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/img_about_khoa.jpg")]
+>>>>>>> main
 
 
