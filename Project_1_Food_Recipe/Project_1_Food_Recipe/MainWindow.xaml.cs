@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -30,7 +31,7 @@ namespace Project_1_Food_Recipe
         //functional
         private BindingList<Recipe> _recipeList;
 
-        BindingList<Recipe> _favoriteRecipeList;
+        private BindingList<Recipe> _favoriteRecipeList;
 
         public static String toAbsolutePath(String relative)
         {
@@ -63,6 +64,7 @@ namespace Project_1_Food_Recipe
         {
             //Properties
             public int RecipeID { get; set; }
+
             public string Title { get; set; }
             public string DesPicture { get; set; } //absolute path
             public string Description { get; set; }
@@ -134,6 +136,7 @@ namespace Project_1_Food_Recipe
                 return result;
             }
         }
+
         public class RecipeDAOTextFile : FactoryDAO<Recipe>
         {
             public override BindingList<Recipe> GetAll()
@@ -154,7 +157,7 @@ namespace Project_1_Food_Recipe
                 path.Append("Database.txt");
 
                 var lines = File.ReadAllLines(path.ToString());
-                    //recipes
+                //recipes
                 foreach (var line in lines)
                 {
                     var tokens = line.Split(
@@ -240,6 +243,7 @@ namespace Project_1_Food_Recipe
             Clear(addBtn);
             Clear(favoriteBtn);
             Clear(settingBtn);
+            Clear(aboutBtn);
         }
 
         private void HideScreen()
@@ -248,6 +252,7 @@ namespace Project_1_Food_Recipe
             addScreen.Visibility = Visibility.Hidden;
             favoriteScreen.Visibility = Visibility.Hidden;
             settingScreen.Visibility = Visibility.Hidden;
+            aboutScreen.Visibility = Visibility.Hidden;
         }
 
         private void homeBtn_Click(object sender, RoutedEventArgs e)
@@ -336,6 +341,22 @@ namespace Project_1_Food_Recipe
             //functional
         }
 
+        private void aboutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ClearAll();
+            HideScreen();
+            aboutScreen.Visibility = Visibility.Visible;
+            Grid _img = aboutBtn.Template.FindName("img", aboutBtn) as Grid;
+
+            if (_img != null)
+                _img.Background = _backgroundColor.SolidColor;
+
+            Border _border = aboutBtn.Template.FindName("border", aboutBtn) as Border;
+
+            if (_border != null)
+                _border.Background = Brushes.White;
+        }
+
         private void shuwdownBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -421,6 +442,21 @@ namespace Project_1_Food_Recipe
 
             myRadioButton.IsChecked = true;
             homeBtn_Click(sender, e);
+        }
+
+        private void addImgBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fd = new OpenFileDialog();
+
+            if (fd.ShowDialog() == true)
+            {
+                ImageBrush myBrush = new ImageBrush();
+                Image image = new Image();
+                image.Source = new BitmapImage(
+                    new Uri(fd.FileName));
+                myBrush.ImageSource = image.Source;
+                addImgBtn.Background = myBrush;
+            }
         }
     }
 }

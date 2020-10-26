@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_1_Food_Recipe"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1080"
+        Title="MainWindow" Height="800" Width="1280"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -18,6 +18,14 @@
 
     <Window.Resources>
 
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
+
+        <Style x:Key="EntryFieldStyle" TargetType="Grid">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
         <Style x:Key="fontStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontFamily"
                     Value="Font/Poppins-Medium.ttf #Poppins" />
@@ -27,6 +35,23 @@
                     Value="15" />
             <Setter Property="Margin"
                     Value="17" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="VerticalAlignment"
+                    Value="Bottom" />
+        </Style>
+
+        <Style x:Key="foodNameStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily"
+                    Value="Font/UtmTimes-xOlr.ttf #UtmTimes" />
+            <Setter Property="Foreground"
+                    Value="Black" />
+            <Setter Property="FontSize"
+                    Value="17" />
+            <Setter Property="Padding"
+                    Value="8" />
+            <Setter Property="Margin"
+                    Value="0,2,0,10" />
             <Setter Property="HorizontalAlignment"
                     Value="Center" />
             <Setter Property="VerticalAlignment"
@@ -70,14 +95,27 @@
                                 <Setter TargetName="text" Property="Foreground" Value="{Binding Color}" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="White" />
-                                <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
-                                <Setter TargetName="text" Property="Foreground" Value="{Binding Color}" />
-                                <Setter Property="Effect">
-                                    <Setter.Value>
-                                        <DropShadowEffect BlurRadius="7" ShadowDepth="7" Color="#808080" Direction="300" />
-                                    </Setter.Value>
-                                </Setter>
+
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0:0:0.2" From="White"
+                                                            To="#202020" Storyboard.TargetName="border"
+                                                            Storyboard.TargetProperty="Background.Color"
+                                                            AutoReverse="True" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0:0:0.2" From="#202020"
+                                                            To="White" Storyboard.TargetName="border"
+                                                            Storyboard.TargetProperty="Background.Color"
+                                                            AutoReverse="True" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -122,14 +160,27 @@
                                 <Setter TargetName="text" Property="Foreground" Value="{Binding Color}" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="White" />
-                                <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
-                                <Setter TargetName="text" Property="Foreground" Value="{Binding Color}" />
-                                <Setter Property="Effect">
-                                    <Setter.Value>
-                                        <DropShadowEffect BlurRadius="7" ShadowDepth="7" Color="#808080" Direction="300" />
-                                    </Setter.Value>
-                                </Setter>
+
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0:0:0.2" From="White"
+                                                            To="#202020" Storyboard.TargetName="border"
+                                                            Storyboard.TargetProperty="Background.Color"
+                                                            AutoReverse="True" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0:0:0.2" From="#202020"
+                                                            To="White" Storyboard.TargetName="border"
+                                                            Storyboard.TargetProperty="Background.Color"
+                                                            AutoReverse="True" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -175,14 +226,27 @@
                             </Trigger>
 
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="White" />
-                                <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
-                                <Setter TargetName="text" Property="Foreground" Value="{Binding Color}" />
-                                <Setter Property="Effect">
-                                    <Setter.Value>
-                                        <DropShadowEffect BlurRadius="7" ShadowDepth="7" Color="#808080" Direction="300" />
-                                    </Setter.Value>
-                                </Setter>
+
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0:0:0.2" From="White"
+                                                            To="#202020" Storyboard.TargetName="border"
+                                                            Storyboard.TargetProperty="Background.Color"
+                                                            AutoReverse="True" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0:0:0.2" From="#202020"
+                                                            To="White" Storyboard.TargetName="border"
+                                                            Storyboard.TargetProperty="Background.Color"
+                                                            AutoReverse="True" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -228,14 +292,27 @@
                             </Trigger>
 
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="White" />
-                                <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
-                                <Setter TargetName="text" Property="Foreground" Value="{Binding Color}" />
-                                <Setter Property="Effect">
-                                    <Setter.Value>
-                                        <DropShadowEffect BlurRadius="7" ShadowDepth="7" Color="#808080" Direction="300" />
-                                    </Setter.Value>
-                                </Setter>
+
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0:0:0.2" From="White"
+                                                            To="#202020" Storyboard.TargetName="border"
+                                                            Storyboard.TargetProperty="Background.Color"
+                                                            AutoReverse="True" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0:0:0.2" From="#202020"
+                                                            To="White" Storyboard.TargetName="border"
+                                                            Storyboard.TargetProperty="Background.Color"
+                                                            AutoReverse="True" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -279,13 +356,27 @@
                             </Trigger>
 
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="White" />
-                                <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
-                                <Setter Property="Effect">
-                                    <Setter.Value>
-                                        <DropShadowEffect BlurRadius="7" ShadowDepth="7" Color="#808080" Direction="300" />
-                                    </Setter.Value>
-                                </Setter>
+
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0:0:1" From="White"
+                                                            To="#202020" Storyboard.TargetName="border"
+                                                            Storyboard.TargetProperty="Background.Color"
+                                                            AutoReverse="True" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0:0:1" From="#202020"
+                                                            To="White" Storyboard.TargetName="border"
+                                                            Storyboard.TargetProperty="Background.Color"
+                                                            AutoReverse="True" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -408,18 +499,163 @@
             </Setter>
         </Style>
         <!--#endregion-->
+
+        <Style x:Key="watermarkTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="Gray" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+
+        <Style x:Key="watermarkTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Foreground" Value="Gray" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Padding" Value="3" />
+            <Setter Property="Margin" Value="0,7" />
+            <Setter Property="BorderThickness" Value="3" />
+            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="Background" Value="Transparent" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#404040" />
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{Binding Color}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ControlTemplate x:Key="addImageBtnStyle" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="#404040" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{Binding Color}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style x:Key="foodBtnStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Width"
+                    Value="260" />
+            <Setter Property="Height"
+                    Value="190" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border x:Name="border"
+
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}">
+                            </Border>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+
+                            <Border  CornerRadius="20"
+                                     Width="250" Height="150"
+                                     BorderThickness="{TemplateBinding BorderThickness}"
+                                     BorderBrush="{TemplateBinding BorderBrush}"
+                                     VerticalAlignment="Top"
+                                     HorizontalAlignment="Center">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="{Binding DesPicture}" />
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="{Binding Title}" Style="{StaticResource foodNameStyle}" Margin="0,4" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#C0C0C0" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0:0:1" From="#C0C0C0"
+                                                            To="#606060" Storyboard.TargetName="border"
+                                                            Storyboard.TargetProperty="Background.Color"
+                                                            AutoReverse="True" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0:0:1" From="#606060"
+                                                            To="#C0C0C0" Storyboard.TargetName="border"
+                                                            Storyboard.TargetProperty="Background.Color"
+                                                            AutoReverse="True" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type ListViewItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}"
+                                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                                            Background="{TemplateBinding Background}"
+                                                            SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                                          VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Transparent" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
 
     <Border CornerRadius="40" Background="{Binding Color}">
 
         <Grid>
             <WrapPanel>
+
                 <!--#region menu -->
                 <Grid Width="120" Height="800">
                     <Border Width="60" Height="60" CornerRadius="10" Background="White" Canvas.Left="30" Canvas.Top="19" Margin="29,46,31,694">
                         <Canvas>
                             <Image Source="Images/img_user.png" Height="60" Width="60" />
-                            <TextBlock x:Name="userName" Style="{StaticResource fontStyle}" Text="Hi User!" Canvas.Top="81" Foreground="White" FontSize="23" Margin="0" Canvas.Left="-13" />
+                            <Border HorizontalAlignment="Center" Canvas.Left="-28" Canvas.Top="65" VerticalAlignment="Center" Width="117">
+                                <TextBlock x:Name="userName" Style="{StaticResource fontStyle}" Text="Hi!" Canvas.Top="81" Foreground="White" FontSize="23" Margin="0" Canvas.Left="-27" />
+                            </Border>
                         </Canvas>
                     </Border>
 
@@ -438,13 +674,14 @@
                         </StackPanel>
                     </Grid>
 
-                    <Button Style="{StaticResource aboutBtnStyle}" Margin="10,658,10,42" />
+                    <Button x:Name="aboutBtn" Style="{StaticResource aboutBtnStyle}" Click="aboutBtn_Click" Margin="10,658,10,42" />
                 </Grid>
                 <!--#endregion-->
-                <Border Background="White" Height="800" Width="960" CornerRadius="40">
-                    <Grid Margin="50,30">
 
-                        <Grid x:Name="homeScreen">
+                <Border Background="White" Height="800" Width="1160" CornerRadius="40">
+                    <Grid Margin="35,55">
+
+                        <Grid x:Name="homeScreen" Visibility="Hidden">
                             <ListView x:Name="dataListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
@@ -453,20 +690,12 @@
                                 </ListView.ItemsPanel>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <Button>
-                                            <Button.Content>
-                                                <StackPanel>
-                                                    <!--hình ảnh và tên món ăn sẽ ở đây-->
-                                                    <Image Source="{Binding DesPicture}" Width="200" />
-                                                    <TextBlock Text="{Binding Title}" Style="{StaticResource fontStyle}" />
-                                                    <!--end here-->
-                                                </StackPanel>
-                                            </Button.Content>
-                                        </Button>
+                                        <Button Style="{StaticResource foodBtnStyle}" />
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
                         </Grid>
+
                         <Grid x:Name="favoriteScreen"  Visibility="Hidden">
 
                             <ListView x:Name="favoriteListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
@@ -477,29 +706,62 @@
                                 </ListView.ItemsPanel>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <Button>
-                                            <Button.Content>
-                                                <StackPanel>
-                                                    <!--hình ảnh và tên món ăn sẽ ở đây-->
-                                                    <Image Source="{Binding DesPicture}" Width="200" />
-                                                    <TextBlock Text="{Binding Title}" Style="{StaticResource fontStyle}" />     
-                                                    <!--end here-->
-                                                </StackPanel>
-                                            </Button.Content>
-                                        </Button>
+                                        <Button Style="{StaticResource foodBtnStyle}" />
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
                         </Grid>
 
                         <Grid x:Name="addScreen" Visibility="Hidden">
-                            <TextBox x:Name="title" Width="500" Height="40" Margin="44,42,316,658">
-                            </TextBox>
-                            <TextBox x:Name="description" AcceptsReturn="True" TextWrapping="Wrap" Width="500" Height="100" Margin="44,134,316,506">
-                            </TextBox>
 
-                            <TextBox x:Name="linkYt" Width="500" Height="40" Margin="44,319,316,381">
-                            </TextBox>
+                            <Grid x:Name="titleGrid" Style="{StaticResource EntryFieldStyle}" Width="500" Height="55" Margin="0,0,589.6,634.6">
+
+                                <TextBlock x:Name="titleWatermark"
+                                           Text="Title"
+                                           Margin="-1,4"
+                                           Style="{StaticResource watermarkTextBlockStyle}"
+                                           Visibility="{Binding ElementName=title, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                <TextBox x:Name="title" Style="{StaticResource watermarkTextBoxStyle}" />
+                            </Grid>
+
+                            <Grid x:Name="descriptionGrid" Style="{StaticResource EntryFieldStyle}" Width="500" Height="200" Margin="0,74,589.6,415.6">
+
+                                <TextBlock x:Name="descriptionWatermark"
+                                           Text="Description"
+                                           Margin="-1,4"
+                                           Style="{StaticResource watermarkTextBlockStyle}"
+                                           Visibility="{Binding ElementName=description, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                <TextBox x:Name="description" Style="{StaticResource watermarkTextBoxStyle}"
+                                         AcceptsReturn="True" TextWrapping="Wrap" />
+                            </Grid>
+
+                            <Grid x:Name="youtubeLinkGrid" Style="{StaticResource EntryFieldStyle}" Width="500" Height="55" Margin="0,279,589.6,355.6">
+
+                                <TextBlock x:Name="ytWatermark"
+                                           Text="Youtube Link"
+                                           Margin="-1,4"
+                                           Style="{StaticResource watermarkTextBlockStyle}"
+                                           Visibility="{Binding ElementName=yt, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                <TextBox x:Name="yt" Style="{StaticResource watermarkTextBoxStyle}" />
+                            </Grid>
+
+                            <Grid x:Name="addImageGrid" Style="{StaticResource EntryFieldStyle}"  Width="500" Height="312" Margin="0,378,589.6,-0.4">
+
+                                <Button x:Name="addImgBtn" Background="Transparent"
+                                        BorderBrush="Gray"
+                                        BorderThickness="3"
+                                        VerticalAlignment="Bottom" Template="{DynamicResource addImageBtnStyle}"
+                                        Click="addImgBtn_Click">
+                                    <Button.Content>
+                                        <Grid Height="300" VerticalAlignment="Bottom" Width="500">
+                                            <Grid Background="#808080" Opacity="0.6" Margin="0,238,0,0">
+                                                <Image Source="Images/img_add_img.png" VerticalAlignment="top" Width="40" Height="40" />
+                                                <TextBlock Text="Click to add image" FontSize="13" Foreground="White" Margin="196,40,197,5" />
+                                            </Grid>
+                                        </Grid>
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
                         </Grid>
 
                         <Grid x:Name="settingScreen" Visibility="Hidden">
@@ -517,7 +779,53 @@
                             </StackPanel>
                         </Grid>
 
-                        <Button Name="shuwdownBtn" Click="shuwdownBtn_Click" Width="40" Height="40" BorderThickness="0" Background="Transparent" Margin="832,10,-12,690" Style="{DynamicResource shutdownStyle}">
+                        <Grid x:Name="aboutScreen">
+                            <StackPanel Margin="10">
+                                <Grid Background="Transparent" Height="352" Margin="0,0,105.6,0">
+                                    <Image Source="Images/img_about_Khoa.jpg" Margin="0,0,642,0" />
+                                    <StackPanel HorizontalAlignment="Left" Margin="384,10,0,-10">
+                                        <TextBlock Text="Name: Trần Lê Anh Khoa"
+                                                   FontSize="26"
+                                                   Padding="10"
+                                                   HorizontalAlignment="Left"
+                                                   Style="{StaticResource foodNameStyle}" />
+                                        <TextBlock Text="MSSV: 18120421"
+                                                   FontSize="26"
+                                                   Padding="10"
+                                                   HorizontalAlignment="Left"
+                                                   Style="{StaticResource foodNameStyle}" />
+                                        <TextBlock Text="Email: 18120421@student.hcmus.edu.vn"
+                                                   FontSize="26"
+                                                   Padding="10"
+                                                   HorizontalAlignment="Left"
+                                                   Style="{StaticResource foodNameStyle}" />
+                                    </StackPanel>
+                                </Grid>
+
+                                <Grid Background="Transparent" Height="339" Margin="0,0,105.6,0">
+                                    <Image  Margin="0,0,642,0" />
+                                    <StackPanel HorizontalAlignment="Left" Margin="384,10,0,-10">
+                                        <TextBlock Text="Name:Võ Nguyễn Lê Hoàng "
+                                                   FontSize="26"
+                                                   Padding="10"
+                                                   HorizontalAlignment="Left"
+                                                   Style="{StaticResource foodNameStyle}" />
+                                        <TextBlock Text="MSSV: 18120388"
+                                                   FontSize="26"
+                                                   Padding="10"
+                                                   HorizontalAlignment="Left"
+                                                   Style="{StaticResource foodNameStyle}" />
+                                        <TextBlock Text="Email: 18120388@student.hcmus.edu.vn"
+                                                   FontSize="26"
+                                                   Padding="10"
+                                                   HorizontalAlignment="Left"
+                                                   Style="{StaticResource foodNameStyle}" />
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+
+                        <Button Name="shuwdownBtn" Click="shuwdownBtn_Click" Width="25" Height="25" BorderThickness="0" Background="Transparent" Margin="1065,-37,-10,702" Style="{DynamicResource shutdownStyle}">
                         </Button>
                     </Grid>
                 </Border>
