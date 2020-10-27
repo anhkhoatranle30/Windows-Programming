@@ -33,6 +33,9 @@ namespace Project_1_Food_Recipe
 
         private BindingList<Recipe> _favoriteRecipeList;
 
+        private int quantitySystemDishes; //default dishes
+        private int quantityExistences; //when user addm this number increases by 1
+
         public static String toAbsolutePath(String relative)
         {
             String result;
@@ -96,21 +99,40 @@ namespace Project_1_Food_Recipe
                 //recipes
                 foreach (var line in lines)
                 {
+                    var quantityDAOTextFile = new QuantityDAOTextFile();
+                    int quantitySystemDishes = quantityDAOTextFile.GetAll()[0];
+
                     var tokens = line.Split(
                         new String[] { "*" },
                         StringSplitOptions.None);
+                    //Recipe
+                    var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], /*DesPicture = toAbsolutePath(tokens[2]),*/ Description = tokens[2], VideoLink = tokens[4], /*StepsList = steplist,*/ IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
+                    if (recipe.RecipeID < quantitySystemDishes)
+                    {
+                        recipe.DesPicture = toAbsolutePath(tokens[2]);
+                    }
+                    else
+                    {
+                        recipe.DesPicture = tokens[2];
+                    }
                     //StepsList
                     var steplist = new BindingList<Step>();
                     for (int i = 5; i < tokens.Length - 1; i += 2)
                     {
-                        var step = new Step() { ImgSource = toAbsolutePath(tokens[i]), Content = tokens[i + 1] };
-
+                        var step = new Step() { /*ImgSource = toAbsolutePath(tokens[i]),*/ Content = tokens[i + 1] };
+                        if (recipe.RecipeID < quantitySystemDishes)
+                        {
+                            step.ImgSource = toAbsolutePath(tokens[i]);
+                        }
+                        else
+                        {
+                            step.ImgSource = tokens[i];
+                        }
                         steplist.Add(step);
                     }
-                    //Recipe
-                    var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], DesPicture = toAbsolutePath(tokens[2]), Description = tokens[2], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
-                    //Add to list
-                    if (recipe.IsFavorite == true)
+                    recipe.StepsList = steplist;
+                    //Add to result
+                    if(recipe.IsFavorite)
                     {
                         result.Add(recipe);
                     }
@@ -163,32 +185,45 @@ namespace Project_1_Food_Recipe
                 path.Append("Database.txt");
 
                 var lines = File.ReadAllLines(path.ToString());
-                //recipes
+                //read lines file
                 foreach (var line in lines)
                 {
+                    var quantityDAOTextFile = new QuantityDAOTextFile();
+                    int quantitySystemDishes = quantityDAOTextFile.GetAll()[0];
+
                     var tokens = line.Split(
                         new String[] { "*" },
                         StringSplitOptions.None);
+                    //Recipe
+                    var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], /*DesPicture = toAbsolutePath(tokens[2]),*/ Description = tokens[2], VideoLink = tokens[4], /*StepsList = steplist,*/ IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
+                    if (recipe.RecipeID < quantitySystemDishes)
+                    {
+                        recipe.DesPicture = toAbsolutePath(tokens[2]);
+                    }
+                    else
+                    {
+                        recipe.DesPicture = tokens[2];
+                    }
                     //StepsList
                     var steplist = new BindingList<Step>();
                     for (int i = 5; i < tokens.Length - 1; i += 2)
                     {
-                        var step = new Step() { ImgSource = toAbsolutePath(tokens[i]), Content = tokens[i + 1] };
-
+                        var step = new Step() { /*ImgSource = toAbsolutePath(tokens[i]),*/ Content = tokens[i + 1] };
+                        if(recipe.RecipeID < quantitySystemDishes)
+                        {
+                            step.ImgSource = toAbsolutePath(tokens[i]);
+                        }
+                        else
+                        {
+                            step.ImgSource = tokens[i];
+                        }
                         steplist.Add(step);
                     }
-                    //Recipe
-                    var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], DesPicture = toAbsolutePath(tokens[2]), Description = tokens[2], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
-                    //Add to list
+                    recipe.StepsList = steplist;
+                    //Add to result
                     result.Add(recipe);
                 }
                 //return
-                return result;
-            }
-            public BindingList<Recipe> GetAll(int productsPerPage)
-            {
-                var result = new BindingList<Recipe>();
-
                 return result;
             }
             public BindingList<Recipe> GetAll(int productsPerPage, int noPage)
@@ -216,16 +251,44 @@ namespace Project_1_Food_Recipe
             }
         }
 
+        public class QuantityDAOTextFile : FactoryDAO<int> { 
+            public override BindingList<int> GetAll()
+            {
+                var result = new BindingList<int>();
+
+                //
+                //Read file txt
+                //
+                var path = new StringBuilder();
+
+                path.Append(AppDomain.CurrentDomain.BaseDirectory);
+                path.Append("Database_quantity.txt");
+
+                var lines = File.ReadAllLines(path.ToString());
+                //read lines file
+                foreach (var line in lines)
+                {
+                    result.Add(int.Parse(line));
+                }
+
+                return result;
+            }
+        }
         //end functional
 
         public MainWindow()
         {
             InitializeComponent();
+            var quantityDAOTextFile = new QuantityDAOTextFile();
+            quantitySystemDishes = quantityDAOTextFile.GetAll()[0];
+            quantityExistences = quantityDAOTextFile.GetAll()[1];
+            
             var recipeDAOTextFile = new RecipeDAOTextFile();
             _recipeList = recipeDAOTextFile.GetAll();
             var favoriteRecipeDAOTextFile = new FavoriteRecipeDAOTextFile();
             _favoriteRecipeList = favoriteRecipeDAOTextFile.GetAll();
 
+            
             dataListView.ItemsSource = _recipeList;
             favoriteListView.ItemsSource = _favoriteRecipeList;
         }
