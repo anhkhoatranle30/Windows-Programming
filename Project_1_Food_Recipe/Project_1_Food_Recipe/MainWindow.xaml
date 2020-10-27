@@ -502,14 +502,14 @@
 
         <Style x:Key="watermarkTextBlockStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="Foreground" Value="Gray" />
-            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontSize" Value="18" />
             <Setter Property="Padding" Value="10" />
             <Setter Property="Background" Value="Transparent" />
         </Style>
 
         <Style x:Key="watermarkTextBoxStyle" TargetType="{x:Type TextBox}">
             <Setter Property="Foreground" Value="Gray" />
-            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontSize" Value="18" />
             <Setter Property="Padding" Value="3" />
             <Setter Property="Margin" Value="0,7" />
             <Setter Property="BorderThickness" Value="3" />
@@ -712,9 +712,9 @@
                             </ListView>
                         </Grid>
 
-                        <Grid x:Name="addScreen" Visibility="Hidden">
+                        <Grid x:Name="addScreen">
 
-                            <Grid x:Name="titleGrid" Style="{StaticResource EntryFieldStyle}" Width="500" Height="55" Margin="0,0,589.6,634.6">
+                            <Grid x:Name="titleGrid" Style="{StaticResource EntryFieldStyle}" Width="394" Height="55" Margin="0,0,695.6,634.6">
 
                                 <TextBlock x:Name="titleWatermark"
                                            Text="Title"
@@ -724,7 +724,7 @@
                                 <TextBox x:Name="title" Style="{StaticResource watermarkTextBoxStyle}" />
                             </Grid>
 
-                            <Grid x:Name="descriptionGrid" Style="{StaticResource EntryFieldStyle}" Width="500" Height="200" Margin="0,74,589.6,415.6">
+                            <Grid x:Name="descriptionGrid" Style="{StaticResource EntryFieldStyle}" Width="394" Height="200" Margin="0,74,695.6,415.6">
 
                                 <TextBlock x:Name="descriptionWatermark"
                                            Text="Description"
@@ -735,7 +735,7 @@
                                          AcceptsReturn="True" TextWrapping="Wrap" />
                             </Grid>
 
-                            <Grid x:Name="youtubeLinkGrid" Style="{StaticResource EntryFieldStyle}" Width="500" Height="55" Margin="0,279,589.6,355.6">
+                            <Grid x:Name="youtubeLinkGrid" Style="{StaticResource EntryFieldStyle}" Width="394" Height="55" Margin="0,279,695.6,355.6">
 
                                 <TextBlock x:Name="ytWatermark"
                                            Text="Youtube Link"
@@ -745,7 +745,7 @@
                                 <TextBox x:Name="yt" Style="{StaticResource watermarkTextBoxStyle}" />
                             </Grid>
 
-                            <Grid x:Name="addImageGrid" Style="{StaticResource EntryFieldStyle}"  Width="500" Height="312" Margin="0,378,589.6,-0.4">
+                            <Grid x:Name="addImageGrid" Style="{StaticResource EntryFieldStyle}"  Width="394" Height="312" Margin="0,378,695.6,-0.4">
 
                                 <Button x:Name="addImgBtn" Background="Transparent"
                                         BorderBrush="Gray"
@@ -753,15 +753,95 @@
                                         VerticalAlignment="Bottom" Template="{DynamicResource addImageBtnStyle}"
                                         Click="addImgBtn_Click">
                                     <Button.Content>
-                                        <Grid Height="300" VerticalAlignment="Bottom" Width="500">
+                                        <Grid Height="300" VerticalAlignment="Bottom" Width="384">
                                             <Grid Background="#808080" Opacity="0.6" Margin="0,238,0,0">
                                                 <Image Source="Images/img_add_img.png" VerticalAlignment="top" Width="40" Height="40" />
-                                                <TextBlock Text="Click to add image" FontSize="13" Foreground="White" Margin="196,40,197,5" />
+                                                <TextBlock Text="Click to add image" FontSize="13" Foreground="White" Margin="137,40,140,0" />
                                             </Grid>
                                         </Grid>
                                     </Button.Content>
                                 </Button>
                             </Grid>
+
+                            <Grid x:Name="stepDescriptionGrid" Style="{StaticResource EntryFieldStyle}" Width="317" Height="274" Margin="417,0,355.6,415.6">
+
+                                <TextBlock x:Name="stepDescriptionWatermark"
+                                           Text="Step Description"
+                                           Margin="-1,4"
+                                           Style="{StaticResource watermarkTextBlockStyle}"
+                                           Visibility="{Binding ElementName=stepDescription, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                <TextBox x:Name="stepDescription" Style="{StaticResource watermarkTextBoxStyle}"
+                                         AcceptsReturn="True" TextWrapping="Wrap" />
+                            </Grid>
+
+                            <Grid x:Name="addStepImageGrid" Style="{StaticResource EntryFieldStyle}"  Width="334" Height="276" Margin="756,-2,-0.4,415.6">
+
+                                <Button x:Name="addStepImgBtn" Background="Transparent"
+                                        BorderBrush="Gray"
+                                        BorderThickness="3"
+                                        VerticalAlignment="Bottom" Template="{DynamicResource addImageBtnStyle}"
+                                        Click="addStepImgBtn_Click" Height="256" Margin="0,0,0,10">
+                                    <Button.Content>
+                                        <Grid Height="293" VerticalAlignment="Bottom" Width="324">
+                                            <ListView x:Name="listStepImage" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,42,0,2">
+                                                <ListView.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <WrapPanel />
+                                                    </ItemsPanelTemplate>
+                                                </ListView.ItemsPanel>
+                                                <ListView.ItemContainerStyle>
+                                                    <Style TargetType="ListViewItem">
+                                                        <Setter Property="Height" Value="120" />
+                                                        <Setter Property="Width" Value="150" />
+                                                        <Setter Property="Image.Stretch" Value="Fill" />
+                                                    </Style>
+                                                </ListView.ItemContainerStyle>
+                                            </ListView>
+
+                                            <Grid Background="#808080" Opacity="0.6" Margin="0,238,0,0">
+                                                <Image Source="Images/img_add_img.png" VerticalAlignment="top" Width="40" Height="40" />
+                                                <TextBlock Text="Click to add step images" FontSize="13" Foreground="White" Margin="91,38,89,-0.2" />
+                                            </Grid>
+                                        </Grid>
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+
+                            <Button x:Name="addStepBtn" Click="addStepBtn_Click" Margin="686,279,286.6,332.6" Background="Gray">
+                                <Button.Content>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="23*" />
+                                            <RowDefinition Height="52*" />
+                                        </Grid.RowDefinitions>
+                                        <Image Source="Images/img_add_step.png" Margin="6,5,3.8,21.2" Grid.RowSpan="2" />
+                                        <TextBlock Text="Add Step" Style="{StaticResource foodNameStyle}" Margin="0,0,-0.2,-6.8" Grid.Row="1" />
+                                    </Grid>
+                                </Button.Content>
+                            </Button>
+
+                            <Border Margin="417,382,-0.4,-0.4" BorderThickness="3" BorderBrush="Gray">
+                                <Grid x:Name="stepViewGrid" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                    <StackPanel ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                        <TextBlock x:Name="numberOfStep" FontFamily="Font/UtmTimes-xOlr.ttf #UtmTimes" Padding="10"  FontSize="20" Foreground="Red" FontWeight="Bold" Height="46" Margin="0,0,0.2,0" />
+                                        <TextBlock x:Name="stepDesc" FontFamily="Font/UtmTimes-xOlr.ttf #UtmTimes" TextWrapping="Wrap" Padding="10" FontSize="20" />
+                                        <ListView x:Name="listStepImageView" Height="150">
+                                            <ListView.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <WrapPanel />
+                                                </ItemsPanelTemplate>
+                                            </ListView.ItemsPanel>
+                                            <ListView.ItemContainerStyle>
+                                                <Style TargetType="ListViewItem">
+                                                    <Setter Property="Height" Value="120" />
+                                                    <Setter Property="Width" Value="150" />
+                                                    <Setter Property="Image.Stretch" Value="Fill" />
+                                                </Style>
+                                            </ListView.ItemContainerStyle>
+                                        </ListView>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
                         </Grid>
 
                         <Grid x:Name="settingScreen" Visibility="Hidden">
@@ -779,7 +859,7 @@
                             </StackPanel>
                         </Grid>
 
-                        <Grid x:Name="aboutScreen">
+                        <Grid x:Name="aboutScreen" Visibility="Hidden">
                             <StackPanel Margin="10">
                                 <Grid Background="Transparent" Height="352" Margin="0,0,105.6,0">
                                     <Image Source="Images/img_about_Khoa.jpg" Margin="0,0,642,0" />

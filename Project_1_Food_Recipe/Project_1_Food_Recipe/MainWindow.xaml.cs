@@ -423,5 +423,35 @@ namespace Project_1_Food_Recipe
                 addImgBtn.Background = myBrush;
             }
         }
+
+        private void addStepImgBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Images *.JPG | *.PNG";
+            open.Multiselect = true;
+            open.Title = "Open Text Files";
+
+            if (open.ShowDialog() == true)
+            {
+                foreach (String file in open.FileNames)
+                {
+                    Image myImage = new Image();
+                    myImage.Source = new BitmapImage(
+                        new Uri(file));
+
+                    listStepImage.Items.Add(myImage);
+                }
+            }
+        }
+
+        private int stepCount = 0;
+
+        private void addStepBtn_Click(object sender, RoutedEventArgs e)
+        {
+            stepCount++;
+            numberOfStep.Text = $"Bước {stepCount}";
+            stepDesc.Text = stepDescription.Text;
+            listStepImageView = listStepImage;
+        }
     }
 }
