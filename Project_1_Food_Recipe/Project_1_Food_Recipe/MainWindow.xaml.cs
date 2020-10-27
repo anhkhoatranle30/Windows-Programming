@@ -103,29 +103,12 @@ namespace Project_1_Food_Recipe
                     var steplist = new BindingList<Step>();
                     for (int i = 5; i < tokens.Length - 1; i += 2)
                     {
-                        var step = new Step() { /*ImgSource = toAbsolutePath(tokens[i]),*/ Content = tokens[i + 1] };
-                        if(int.Parse(tokens[0]) < 10)
-                        {
-                            step.ImgSource = toAbsolutePath(tokens[i]);
-                        }
-                        else
-                        {
-                            step.ImgSource = tokens[i];
-                        }
+                        var step = new Step() { ImgSource = toAbsolutePath(tokens[i]), Content = tokens[i + 1] };
 
                         steplist.Add(step);
                     }
                     //Recipe
-                    var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], /*DesPicture = toAbsolutePath(tokens[2]),*/ Description = tokens[2], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
-                    //if user adds new dishes
-                    if (recipe.RecipeID < 10)
-                    {
-                        recipe.DesPicture = toAbsolutePath(tokens[2]);
-                    }
-                    else
-                    {
-                        recipe.DesPicture = tokens[2];
-                    }
+                    var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], DesPicture = toAbsolutePath(tokens[2]), Description = tokens[2], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
                     //Add to list
                     if (recipe.IsFavorite == true)
                     {
@@ -167,29 +150,12 @@ namespace Project_1_Food_Recipe
                     var steplist = new BindingList<Step>();
                     for (int i = 5; i < tokens.Length - 1; i += 2)
                     {
-                        var step = new Step() { /*ImgSource = toAbsolutePath(tokens[i]),*/ Content = tokens[i + 1] };
-                        if (int.Parse(tokens[0]) < 10)
-                        {
-                            step.ImgSource = toAbsolutePath(tokens[i]);
-                        }
-                        else
-                        {
-                            step.ImgSource = tokens[i];
-                        }
+                        var step = new Step() { ImgSource = toAbsolutePath(tokens[i]), Content = tokens[i + 1] };
 
                         steplist.Add(step);
                     }
                     //Recipe
-                    var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], /*DesPicture = toAbsolutePath(tokens[2]),*/ Description = tokens[2], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
-                        //if user adds new dishes
-                    if(recipe.RecipeID < 10)
-                    {
-                        recipe.DesPicture = toAbsolutePath(tokens[2]);
-                    } 
-                    else
-                    {
-                        recipe.DesPicture = tokens[2];
-                    }
+                    var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], DesPicture = toAbsolutePath(tokens[2]), Description = tokens[2], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
                     //Add to list
                     result.Add(recipe);
                 }
@@ -203,7 +169,6 @@ namespace Project_1_Food_Recipe
         public MainWindow()
         {
             InitializeComponent();
-            //DAO and binding
             var recipeDAOTextFile = new RecipeDAOTextFile();
             _recipeList = recipeDAOTextFile.GetAll();
             var favoriteRecipeDAOTextFile = new FavoriteRecipeDAOTextFile();
@@ -243,6 +208,7 @@ namespace Project_1_Food_Recipe
             Clear(addBtn);
             Clear(favoriteBtn);
             Clear(settingBtn);
+            Clear(aboutBtn);
         }
 
         private void HideScreen()
@@ -251,6 +217,7 @@ namespace Project_1_Food_Recipe
             addScreen.Visibility = Visibility.Hidden;
             favoriteScreen.Visibility = Visibility.Hidden;
             settingScreen.Visibility = Visibility.Hidden;
+            aboutScreen.Visibility = Visibility.Hidden;
         }
 
         private void homeBtn_Click(object sender, RoutedEventArgs e)
@@ -337,6 +304,22 @@ namespace Project_1_Food_Recipe
                 _text.Foreground = _backgroundColor.SolidColor;
 
             //functional
+        }
+
+        private void aboutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ClearAll();
+            HideScreen();
+            aboutScreen.Visibility = Visibility.Visible;
+            Grid _img = aboutBtn.Template.FindName("img", aboutBtn) as Grid;
+
+            if (_img != null)
+                _img.Background = _backgroundColor.SolidColor;
+
+            Border _border = aboutBtn.Template.FindName("border", aboutBtn) as Border;
+
+            if (_border != null)
+                _border.Background = Brushes.White;
         }
 
         private void shuwdownBtn_Click(object sender, RoutedEventArgs e)
@@ -439,10 +422,6 @@ namespace Project_1_Food_Recipe
                 myBrush.ImageSource = image.Source;
                 addImgBtn.Background = myBrush;
             }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
         }
     }
 }
