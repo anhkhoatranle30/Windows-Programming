@@ -653,9 +653,7 @@
                     <Border Width="60" Height="60" CornerRadius="10" Background="White" Canvas.Left="30" Canvas.Top="19" Margin="29,46,31,694">
                         <Canvas>
                             <Image Source="Images/img_user.png" Height="60" Width="60" />
-                            <Border HorizontalAlignment="Center" Canvas.Left="-28" Canvas.Top="65" VerticalAlignment="Center" Width="117">
-                                <TextBlock x:Name="userName" Style="{StaticResource fontStyle}" Text="Hi!" Canvas.Top="81" Foreground="White" FontSize="23" Margin="0" Canvas.Left="-27" />
-                            </Border>
+                            <TextBlock x:Name="userName" Style="{StaticResource fontStyle}" Text="Hi User!" Canvas.Top="81" Foreground="White" FontSize="23" Margin="0" Canvas.Left="-13" />
                         </Canvas>
                     </Border>
 
@@ -674,7 +672,7 @@
                         </StackPanel>
                     </Grid>
 
-                    <Button x:Name="aboutBtn" Style="{StaticResource aboutBtnStyle}" Click="aboutBtn_Click" Margin="10,658,10,42" />
+                    <Button Style="{StaticResource aboutBtnStyle}" Margin="10,658,10,42" />
                 </Grid>
                 <!--#endregion-->
 
@@ -712,7 +710,7 @@
                             </ListView>
                         </Grid>
 
-                        <Grid x:Name="addScreen" Visibility="Hidden">
+                        <Grid x:Name="addScreen">
 
                             <Grid x:Name="titleGrid" Style="{StaticResource EntryFieldStyle}" Width="500" Height="55" Margin="0,0,589.6,634.6">
 
@@ -776,52 +774,6 @@
                                     <RadioButton GroupName="colorBg" Name="yellowColor"  Background="Yellow" Style="{DynamicResource RadioButtonStyle}" Margin="10" Checked="yellowColor_Checked" />
                                     <RadioButton GroupName="colorBg" Name="greenColor" Background="Green" Style="{DynamicResource RadioButtonStyle}" Margin="10" Checked="greenColor_Checked" />
                                 </WrapPanel>
-                            </StackPanel>
-                        </Grid>
-
-                        <Grid x:Name="aboutScreen">
-                            <StackPanel Margin="10">
-                                <Grid Background="Transparent" Height="352" Margin="0,0,105.6,0">
-                                    <Image Source="Images/img_about_Khoa.jpg" Margin="0,0,642,0" />
-                                    <StackPanel HorizontalAlignment="Left" Margin="384,10,0,-10">
-                                        <TextBlock Text="Name: Trần Lê Anh Khoa"
-                                                   FontSize="26"
-                                                   Padding="10"
-                                                   HorizontalAlignment="Left"
-                                                   Style="{StaticResource foodNameStyle}" />
-                                        <TextBlock Text="MSSV: 18120421"
-                                                   FontSize="26"
-                                                   Padding="10"
-                                                   HorizontalAlignment="Left"
-                                                   Style="{StaticResource foodNameStyle}" />
-                                        <TextBlock Text="Email: 18120421@student.hcmus.edu.vn"
-                                                   FontSize="26"
-                                                   Padding="10"
-                                                   HorizontalAlignment="Left"
-                                                   Style="{StaticResource foodNameStyle}" />
-                                    </StackPanel>
-                                </Grid>
-
-                                <Grid Background="Transparent" Height="339" Margin="0,0,105.6,0">
-                                    <Image  Margin="0,0,642,0" />
-                                    <StackPanel HorizontalAlignment="Left" Margin="384,10,0,-10">
-                                        <TextBlock Text="Name:Võ Nguyễn Lê Hoàng "
-                                                   FontSize="26"
-                                                   Padding="10"
-                                                   HorizontalAlignment="Left"
-                                                   Style="{StaticResource foodNameStyle}" />
-                                        <TextBlock Text="MSSV: 18120388"
-                                                   FontSize="26"
-                                                   Padding="10"
-                                                   HorizontalAlignment="Left"
-                                                   Style="{StaticResource foodNameStyle}" />
-                                        <TextBlock Text="Email: 18120388@student.hcmus.edu.vn"
-                                                   FontSize="26"
-                                                   Padding="10"
-                                                   HorizontalAlignment="Left"
-                                                   Style="{StaticResource foodNameStyle}" />
-                                    </StackPanel>
-                                </Grid>
                             </StackPanel>
                         </Grid>
 
