@@ -19,3 +19,7 @@ Step {
 // UI //
 màn hình cho home là homeScreen
 tương tự là addScreen, settingScreen, favoriteScreen
+
+có nút saveAddBtn với nút cancelAddBtn
+
+các step nằm trong allSteps gồm cả đường dẫn ở BitmapImage StepPathImage

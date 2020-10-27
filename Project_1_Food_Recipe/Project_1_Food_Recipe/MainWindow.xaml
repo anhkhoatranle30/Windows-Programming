@@ -724,7 +724,7 @@
                                 <TextBox x:Name="title" Style="{StaticResource watermarkTextBoxStyle}" />
                             </Grid>
 
-                            <Grid x:Name="descriptionGrid" Style="{StaticResource EntryFieldStyle}" Width="394" Height="200" Margin="0,74,695.6,415.6">
+                            <Grid x:Name="descriptionGrid" Style="{StaticResource EntryFieldStyle}" Width="394" Height="253" Margin="0,55,695.6,381.6">
 
                                 <TextBlock x:Name="descriptionWatermark"
                                            Text="Description"
@@ -735,7 +735,7 @@
                                          AcceptsReturn="True" TextWrapping="Wrap" />
                             </Grid>
 
-                            <Grid x:Name="youtubeLinkGrid" Style="{StaticResource EntryFieldStyle}" Width="394" Height="55" Margin="0,279,695.6,355.6">
+                            <Grid x:Name="youtubeLinkGrid" Style="{StaticResource EntryFieldStyle}" Width="394" Height="55" Margin="0,313,695.6,321.6">
 
                                 <TextBlock x:Name="ytWatermark"
                                            Text="Youtube Link"
@@ -745,7 +745,7 @@
                                 <TextBox x:Name="yt" Style="{StaticResource watermarkTextBoxStyle}" />
                             </Grid>
 
-                            <Grid x:Name="addImageGrid" Style="{StaticResource EntryFieldStyle}"  Width="394" Height="312" Margin="0,378,695.6,-0.4">
+                            <Grid x:Name="addImageGrid" Style="{StaticResource EntryFieldStyle}"  Width="394" Height="312" Margin="0,373,695.6,4.6">
 
                                 <Button x:Name="addImgBtn" Background="Transparent"
                                         BorderBrush="Gray"
@@ -763,7 +763,7 @@
                                 </Button>
                             </Grid>
 
-                            <Grid x:Name="stepDescriptionGrid" Style="{StaticResource EntryFieldStyle}" Width="317" Height="274" Margin="417,0,355.6,415.6">
+                            <Grid x:Name="stepDescriptionGrid" Style="{StaticResource EntryFieldStyle}" Width="317" Height="255" Margin="417,0,355.6,434.6">
 
                                 <TextBlock x:Name="stepDescriptionWatermark"
                                            Text="Step Description"
@@ -774,29 +774,16 @@
                                          AcceptsReturn="True" TextWrapping="Wrap" />
                             </Grid>
 
-                            <Grid x:Name="addStepImageGrid" Style="{StaticResource EntryFieldStyle}"  Width="334" Height="276" Margin="756,-2,-0.4,415.6">
+                            <Grid x:Name="addStepImageGrid" Style="{StaticResource EntryFieldStyle}"  Width="334" Height="257" Margin="756,-2,-0.4,434.6">
 
                                 <Button x:Name="addStepImgBtn" Background="Transparent"
                                         BorderBrush="Gray"
                                         BorderThickness="3"
                                         VerticalAlignment="Bottom" Template="{DynamicResource addImageBtnStyle}"
-                                        Click="addStepImgBtn_Click" Height="256" Margin="0,0,0,10">
+                                        Click="addStepImgBtn_Click" Height="237" Margin="0,0,0,10">
                                     <Button.Content>
-                                        <Grid Height="293" VerticalAlignment="Bottom" Width="324">
-                                            <ListView x:Name="listStepImage" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,42,0,2">
-                                                <ListView.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <WrapPanel />
-                                                    </ItemsPanelTemplate>
-                                                </ListView.ItemsPanel>
-                                                <ListView.ItemContainerStyle>
-                                                    <Style TargetType="ListViewItem">
-                                                        <Setter Property="Height" Value="120" />
-                                                        <Setter Property="Width" Value="150" />
-                                                        <Setter Property="Image.Stretch" Value="Fill" />
-                                                    </Style>
-                                                </ListView.ItemContainerStyle>
-                                            </ListView>
+                                        <Grid Height="295" VerticalAlignment="Bottom" Width="324">
+                                            <Image x:Name="stepImage" Margin="0,69,0,0" />
 
                                             <Grid Background="#808080" Opacity="0.6" Margin="0,238,0,0">
                                                 <Image Source="Images/img_add_img.png" VerticalAlignment="top" Width="40" Height="40" />
@@ -807,7 +794,7 @@
                                 </Button>
                             </Grid>
 
-                            <Button x:Name="addStepBtn" Click="addStepBtn_Click" Margin="686,279,286.6,332.6" Background="Gray">
+                            <Button x:Name="addStepBtn" Click="addStepBtn_Click" Margin="702,254,301.6,369.6" Background="Gray">
                                 <Button.Content>
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -820,28 +807,58 @@
                                 </Button.Content>
                             </Button>
 
-                            <Border Margin="417,382,-0.4,-0.4" BorderThickness="3" BorderBrush="Gray">
-                                <Grid x:Name="stepViewGrid" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                                    <StackPanel ScrollViewer.VerticalScrollBarVisibility="Visible">
-                                        <TextBlock x:Name="numberOfStep" FontFamily="Font/UtmTimes-xOlr.ttf #UtmTimes" Padding="10"  FontSize="20" Foreground="Red" FontWeight="Bold" Height="46" Margin="0,0,0.2,0" />
-                                        <TextBlock x:Name="stepDesc" FontFamily="Font/UtmTimes-xOlr.ttf #UtmTimes" TextWrapping="Wrap" Padding="10" FontSize="20" />
-                                        <ListView x:Name="listStepImageView" Height="150">
+                            <Border Margin="417,325,-0.4,4.6" BorderThickness="3" BorderBrush="Gray" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                <Grid x:Name="stepViewGrid">
+                                    <ScrollViewer>
+                                        <ListView x:Name="allStepListView">
                                             <ListView.ItemsPanel>
                                                 <ItemsPanelTemplate>
-                                                    <WrapPanel />
+                                                    <StackPanel />
                                                 </ItemsPanelTemplate>
                                             </ListView.ItemsPanel>
-                                            <ListView.ItemContainerStyle>
-                                                <Style TargetType="ListViewItem">
-                                                    <Setter Property="Height" Value="120" />
-                                                    <Setter Property="Width" Value="150" />
-                                                    <Setter Property="Image.Stretch" Value="Fill" />
-                                                </Style>
-                                            </ListView.ItemContainerStyle>
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                                        <TextBlock x:Name="numberOfStep"
+                                                                   FontFamily="Font/UtmTimes-xOlr.ttf #UtmTimes"
+                                                                   Padding="10"
+                                                                   FontSize="20"
+                                                                   Foreground="Red"
+                                                                   FontWeight="Bold"
+                                                                   Height="46"
+                                                                   Margin="0,0,0.2,0"
+                                                                   Text="{Binding NumberOfStep}" />
+                                                        <TextBlock x:Name="stepDesc"
+                                                                   FontFamily="Font/UtmTimes-xOlr.ttf #UtmTimes"
+                                                                   TextWrapping="Wrap"
+                                                                   Padding="10"
+                                                                   FontSize="20"
+                                                                   Text="{Binding StepDesc}" />
+                                                        <Image Source="{Binding StepPathImage}" Width="150" Height="150" Stretch="Fill" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
                                         </ListView>
-                                    </StackPanel>
+                                    </ScrollViewer>
                                 </Grid>
                             </Border>
+
+                            <Button x:Name="saveAddBtn" Margin="792,697,210.6,-35.4" Background="Transparent" Click="saveAddBtn_Click">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="Images/img_save_add.png" />
+                                        <TextBlock Text="Save" FontSize="18" Padding="9,0,2,9" />
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <Button x:Name="cancelAddBtn" Margin="924,697,75.6,-35.4" Background="Transparent" Click="cancelAddBtn_Click">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="Images/img_cancel_add.png" />
+                                        <TextBlock Text="Cancel" FontSize="18" Padding="9,0,2,9" />
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
                         </Grid>
 
                         <Grid x:Name="settingScreen" Visibility="Hidden">

@@ -118,6 +118,7 @@ namespace Project_1_Food_Recipe
                 //return
                 return result;
             }
+
             public BindingList<Recipe> GetAll(int productsPerPage, int noPage)
             {
                 ///<summary>
@@ -185,12 +186,14 @@ namespace Project_1_Food_Recipe
                 //return
                 return result;
             }
+
             public BindingList<Recipe> GetAll(int productsPerPage)
             {
                 var result = new BindingList<Recipe>();
 
                 return result;
             }
+
             public BindingList<Recipe> GetAll(int productsPerPage, int noPage)
             {
                 ///<summary>
@@ -478,32 +481,55 @@ namespace Project_1_Food_Recipe
 
         private void addStepImgBtn_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Images *.JPG | *.PNG";
-            open.Multiselect = true;
-            open.Title = "Open Text Files";
+            OpenFileDialog fd = new OpenFileDialog();
 
-            if (open.ShowDialog() == true)
+            if (fd.ShowDialog() == true)
             {
-                foreach (String file in open.FileNames)
-                {
-                    Image myImage = new Image();
-                    myImage.Source = new BitmapImage(
-                        new Uri(file));
-
-                    listStepImage.Items.Add(myImage);
-                }
+                Image image = new Image();
+                image.Source = new BitmapImage(
+                    new Uri(fd.FileName));
+                stepImage.Source = image.Source;
             }
         }
 
         private int stepCount = 0;
+        private BindingList<AllSteps> allSteps = new BindingList<AllSteps>();
+
+        private class AllSteps
+        {
+            public string NumberOfStep { get; set; }
+            public string StepDesc { set; get; }
+            public BitmapImage StepPathImage { set; get; }
+        }
 
         private void addStepBtn_Click(object sender, RoutedEventArgs e)
         {
             stepCount++;
-            numberOfStep.Text = $"Bước {stepCount}";
-            stepDesc.Text = stepDescription.Text;
-            listStepImageView = listStepImage;
+            Image clone = new Image();
+            clone.Source = stepImage.Source;
+
+            allSteps.Add(new AllSteps
+            {
+                NumberOfStep = $"Bước {stepCount}",
+                StepDesc = stepDescription.Text,
+                StepPathImage = (BitmapImage)clone.Source
+            });
+
+            Debug.WriteLine(allSteps[stepCount - 1].StepPathImage);
+            allStepListView.ItemsSource = allSteps;
+
+            stepDescription.Clear();
+            stepImage.Source = null;
+        }
+
+        private void saveAddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //
+        }
+
+        private void cancelAddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //
         }
     }
 }
