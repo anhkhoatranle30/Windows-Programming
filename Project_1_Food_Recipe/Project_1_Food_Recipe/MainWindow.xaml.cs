@@ -118,6 +118,29 @@ namespace Project_1_Food_Recipe
                 //return
                 return result;
             }
+            public BindingList<Recipe> GetAll(int productsPerPage, int noPage)
+            {
+                ///<summary>
+                ///Hàm hiển thị trang (paging)
+                ///<para>aaa</para>
+                ///</summary>
+                var result = new BindingList<Recipe>();
+                //total : 30, ppp : 4, nopage : 2
+                //for(ppp*(nopage - 1); i < ppp*nopage && i < total; i++)
+                //  result.Add(fullList[i]);
+                //1. [0 - 3] for(i = 0; i < 4)
+                //2. [4 - 7] for(i = 4
+                var fullList = new BindingList<Recipe>();
+                fullList = GetAll();
+                var total = fullList.Count();
+
+                for (int i = productsPerPage * (noPage - 1); i < productsPerPage * noPage && i < total; i++)
+                {
+                    result.Add(fullList[i]);
+                }
+
+                return result;
+            }
         }
 
         public class RecipeDAOTextFile : FactoryDAO<Recipe>
@@ -160,6 +183,35 @@ namespace Project_1_Food_Recipe
                     result.Add(recipe);
                 }
                 //return
+                return result;
+            }
+            public BindingList<Recipe> GetAll(int productsPerPage)
+            {
+                var result = new BindingList<Recipe>();
+
+                return result;
+            }
+            public BindingList<Recipe> GetAll(int productsPerPage, int noPage)
+            {
+                ///<summary>
+                ///Hàm hiển thị trang (paging)
+                ///<para>aaa</para>
+                ///</summary>
+                var result = new BindingList<Recipe>();
+                //total : 30, ppp : 4, nopage : 2
+                //for(ppp*(nopage - 1); i < ppp*nopage && i < total; i++)
+                //  result.Add(fullList[i]);
+                //1. [0 - 3] for(i = 0; i < 4)
+                //2. [4 - 7] for(i = 4
+                var fullList = new BindingList<Recipe>();
+                fullList = GetAll();
+                var total = fullList.Count();
+
+                for (int i = productsPerPage * (noPage - 1); i < productsPerPage * noPage && i < total; i++)
+                {
+                    result.Add(fullList[i]);
+                }
+
                 return result;
             }
         }
