@@ -20,6 +20,14 @@ Step {
 màn hình cho home là homeScreen
 tương tự là addScreen, settingScreen, favoriteScreen
 
-có nút saveAddBtn với nút cancelAddBtn
 
-các step nằm trong allSteps gồm cả đường dẫn ở BitmapImage StepPathImage
+có nút saveAddBtn với nút cancelAddBtn 
+
+
+title món ăn ở title
+mô tả: description
+youtube link: yt
+
+các bước ở list allSteps gồm: NumberOfStep số bước
+			      StepDesc mô tả của bước
+			      StepPathImage đường dẫn BitmapImage
