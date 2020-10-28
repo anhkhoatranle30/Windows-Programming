@@ -682,146 +682,70 @@
             </Setter>
         </Style>
 
-        <SolidColorBrush x:Key="RadioButton.MouseOver.Background" Color="#FFF3F9FF" />
-        <SolidColorBrush x:Key="RadioButton.MouseOver.Border" Color="#FF5593FF" />
-        <SolidColorBrush x:Key="RadioButton.MouseOver.Glyph" Color="#FF212121" />
-        <SolidColorBrush x:Key="RadioButton.Disabled.Background" Color="#FFE6E6E6" />
-        <SolidColorBrush x:Key="RadioButton.Disabled.Border" Color="#FFBCBCBC" />
-        <SolidColorBrush x:Key="RadioButton.Disabled.Glyph" Color="#FF707070" />
-        <SolidColorBrush x:Key="RadioButton.Pressed.Background" Color="#FFD9ECFF" />
-        <SolidColorBrush x:Key="RadioButton.Pressed.Border" Color="#FF3C77DD" />
-        <SolidColorBrush x:Key="RadioButton.Pressed.Glyph" Color="#FF212121" />
-        <SolidColorBrush x:Key="RadioButton.Static.Glyph" Color="#FF212121" />
-        <Style x:Key="Page1BtnStyle" TargetType="{x:Type RadioButton}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="BorderBrush" Value="{StaticResource RadioButton.Static.Border}" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Width" Value="40" />
-            <Setter Property="Height" Value="40" />
-            <Setter Property="Margin" Value="5" />
+        <Style x:Key="backPageBtnStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Width"
+                    Value="35" />
+            <Setter Property="Height"
+                    Value="35" />
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type RadioButton}">
-                        <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
-
-                            <Border x:Name="radioButtonBorder" CornerRadius="40" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="White" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Height="40" Width="40">
-                                <Grid x:Name="markGrid" Margin="2">
-                                    <Ellipse x:Name="optionMark" Fill="{StaticResource RadioButton.Static.Glyph}" MinWidth="6" MinHeight="6" Opacity="0" />
-                                    <TextBlock x:Name="pageNumber" Text="1" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{Binding Color}" />
-                                </Grid>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border x:Name="border"
+                                CornerRadius="40"
+                                Background="{Binding Color}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
                             </Border>
-                            <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                            <Grid x:Name="img" Width="20" Height="20" Background="White">
+                                <Grid.OpacityMask>
+                                    <ImageBrush ImageSource="Images/img_back_page.png" />
+                                </Grid.OpacityMask>
+                            </Grid>
                         </Grid>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="HasContent" Value="true">
-                                <Setter Property="FocusVisualStyle" Value="{StaticResource OptionMarkFocusVisual}" />
-                                <Setter Property="Padding" Value="4,-1,0,0" />
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Foreground" TargetName="pageNumber" Value="white" />
-                                <Setter Property="Background" TargetName="radioButtonBorder" Value="{Binding Color}" />
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Cursor" Value="Hand" />
                             </Trigger>
 
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Pressed.Background}" />
-                                <Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Pressed.Border}" />
-                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource RadioButton.Pressed.Glyph}" />
-                            </Trigger>
-                            <Trigger Property="IsChecked" Value="true">
-                                <Setter Property="Background" TargetName="radioButtonBorder" Value="{Binding Color}" />
-                                <Setter Property="Foreground" TargetName="pageNumber" Value="white" />
-                            </Trigger>
-                            <Trigger Property="IsChecked" Value="{x:Null}">
-                                <Setter Property="Background" TargetName="radioButtonBorder" Value="white" />
-                                <Setter Property="Foreground" TargetName="pageNumber" Value="{Binding Color}" />
+                            <Trigger Property="IsPressed" Value="True">
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-
-        <Style x:Key="Page2BtnStyle" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource Page1BtnStyle}">
+        <Style x:Key="nextPageBtnStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource backPageBtnStyle}">
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type RadioButton}">
-                        <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
-
-                            <Border x:Name="radioButtonBorder" CornerRadius="40" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="White" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Height="40" Width="40">
-                                <Grid x:Name="markGrid" Margin="2">
-                                    <Ellipse x:Name="optionMark" Fill="{StaticResource RadioButton.Static.Glyph}" MinWidth="6" MinHeight="6" Opacity="0" />
-                                    <TextBlock x:Name="pageNumber" Text="2" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{Binding Color}" />
-                                </Grid>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border x:Name="border"
+                                CornerRadius="40"
+                                Background="{Binding Color}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
                             </Border>
-                            <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                            <Grid x:Name="img" Width="20" Height="20" Background="White">
+                                <Grid.OpacityMask>
+                                    <ImageBrush ImageSource="Images/img_next_page.png" />
+                                </Grid.OpacityMask>
+                            </Grid>
                         </Grid>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="HasContent" Value="true">
-                                <Setter Property="FocusVisualStyle" Value="{StaticResource OptionMarkFocusVisual}" />
-                                <Setter Property="Padding" Value="4,-1,0,0" />
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Foreground" TargetName="pageNumber" Value="white" />
-                                <Setter Property="Background" TargetName="radioButtonBorder" Value="{Binding Color}" />
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Cursor" Value="Hand" />
                             </Trigger>
 
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Pressed.Background}" />
-                                <Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Pressed.Border}" />
-                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource RadioButton.Pressed.Glyph}" />
-                            </Trigger>
-                            <Trigger Property="IsChecked" Value="true">
-                                <Setter Property="Background" TargetName="radioButtonBorder" Value="{Binding Color}" />
-                                <Setter Property="Foreground" TargetName="pageNumber" Value="white" />
-                            </Trigger>
-                            <Trigger Property="IsChecked" Value="{x:Null}">
-                                <Setter Property="Background" TargetName="radioButtonBorder" Value="white" />
-                                <Setter Property="Foreground" TargetName="pageNumber" Value="{Binding Color}" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="Page3BtnStyle" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource Page1BtnStyle}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type RadioButton}">
-                        <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
-
-                            <Border x:Name="radioButtonBorder" CornerRadius="40" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="White" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Height="40" Width="40">
-                                <Grid x:Name="markGrid" Margin="2">
-                                    <Ellipse x:Name="optionMark" Fill="{StaticResource RadioButton.Static.Glyph}" MinWidth="6" MinHeight="6" Opacity="0" />
-                                    <TextBlock x:Name="pageNumber" Text="3" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{Binding Color}" />
-                                </Grid>
-                            </Border>
-                            <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="HasContent" Value="true">
-                                <Setter Property="FocusVisualStyle" Value="{StaticResource OptionMarkFocusVisual}" />
-                                <Setter Property="Padding" Value="4,-1,0,0" />
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Foreground" TargetName="pageNumber" Value="white" />
-                                <Setter Property="Background" TargetName="radioButtonBorder" Value="{Binding Color}" />
-                            </Trigger>
-
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Pressed.Background}" />
-                                <Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Pressed.Border}" />
-                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource RadioButton.Pressed.Glyph}" />
-                            </Trigger>
-                            <Trigger Property="IsChecked" Value="true">
-                                <Setter Property="Background" TargetName="radioButtonBorder" Value="{Binding Color}" />
-                                <Setter Property="Foreground" TargetName="pageNumber" Value="white" />
-                            </Trigger>
-                            <Trigger Property="IsChecked" Value="{x:Null}">
-                                <Setter Property="Background" TargetName="radioButtonBorder" Value="white" />
-                                <Setter Property="Foreground" TargetName="pageNumber" Value="{Binding Color}" />
+                            <Trigger Property="IsPressed" Value="True">
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -894,10 +818,21 @@
                             </ListView>
 
                             <Grid x:Name="page" Margin="718,650,-0.4,-24.4">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <RadioButton x:Name="page1" IsChecked="True" GroupName="page" Style="{DynamicResource Page1BtnStyle}" />
-                                    <RadioButton x:Name="page2" GroupName="page"  Style="{DynamicResource Page2BtnStyle}" />
-                                    <RadioButton x:Name="page3" GroupName="page"  Style="{DynamicResource Page3BtnStyle}" />
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="158,0,38,0" Width="176">
+                                    <Button x:Name="backPageBtn" Style="{StaticResource backPageBtnStyle}" Margin="0,0,5,0" />
+                                    <Border Height="30" Width="30" BorderThickness="1" BorderBrush="Gray">
+
+                                        <TextBox x:Name="pageTextBox" Text="4"
+                                                     VerticalContentAlignment="Center"
+                                                     HorizontalContentAlignment="Center"
+                                                     FontSize="20"
+                                                 FontWeight="Bold"
+                                                 TextChanged="pageTextBox_TextChanged"
+                                                 KeyDown="pageTextBox_KeyDown" />
+                                    </Border>
+                                    <TextBlock Text="/" FontSize="22" Margin="0,15,0,19" FontWeight="Bold" />
+                                    <TextBlock x:Name="pageTextBlock" Text="12" FontSize="20" Margin="0,16,0,18" FontWeight="Bold" Padding="0,3" />
+                                    <Button x:Name="nextPageBtn" Style="{StaticResource nextPageBtnStyle}" Margin="5,0,0,0" />
                                 </StackPanel>
                             </Grid>
                         </Grid>

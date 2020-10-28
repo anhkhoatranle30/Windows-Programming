@@ -34,3 +34,8 @@ các bước ở list allSteps gồm: NumberOfStep số bước
 
 thêm các radio button ở homeScreen là page1, page2, page3 và ô textbox search để tìm kiếm
 
+thêm page:
+	số page hiện tại ở textBox: pageTextBox
+	số page tối đa ở textblock: pageTextBlock
+	nút qua trang tiếp theo ở button: nextPageBtn 
+	nút qua trang ở sau: backPageBtn

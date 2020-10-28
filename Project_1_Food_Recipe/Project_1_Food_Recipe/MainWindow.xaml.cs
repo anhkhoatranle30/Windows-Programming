@@ -725,12 +725,67 @@ namespace Project_1_Food_Recipe
 
         private void saveAddBtn_Click(object sender, RoutedEventArgs e)
         {
+            stepCount = 0;
             //
         }
 
         private void cancelAddBtn_Click(object sender, RoutedEventArgs e)
         {
+            stepCount = 0;
             //
+        }
+
+        private void pageTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (pageTextBlock == null)
+            {
+                Debug.WriteLine("pageTextBlock null");
+                return;
+            }
+
+            if (pageTextBox.Text == "")
+            {
+                Debug.WriteLine("text box is null");
+            }
+            else
+            {
+                int pageNumber = 0;
+                int totalPage = 0;
+
+                bool successParsePageNumber = int.TryParse(pageTextBox.Text, out pageNumber);
+                bool successParseTotalPage = int.TryParse(pageTextBlock.Text, out totalPage);
+
+                if (!successParseTotalPage)
+                {
+                    Debug.WriteLine("cant parse total page");
+                    return;
+                }
+
+                if (!successParsePageNumber)
+                {
+                    pageTextBox.Text = pageTextBox.Text.Remove(pageTextBox.Text.Length - 1);
+                    pageTextBox.CaretIndex = pageTextBox.Text.Length;
+                }
+                else
+                {
+                    if (pageNumber > totalPage)
+                    {
+                        pageTextBox.Text = pageTextBox.Text.Remove(pageTextBox.Text.Length - 1);
+                        pageTextBox.CaretIndex = pageTextBox.Text.Length;
+                    }
+                }
+            }
+        }
+
+        private void pageTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key != System.Windows.Input.Key.Enter)
+            {
+                Debug.WriteLine("chua nhan enter");
+                return;
+            }
+
+            Debug.WriteLine("da nhan enter");
         }
     }
 }
