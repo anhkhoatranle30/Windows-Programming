@@ -278,6 +278,9 @@
     <Resource Include="Images\img_cancel_add.png" />
     <Resource Include="Images\img_save_add.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\img_search.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.3.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.3.0\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
