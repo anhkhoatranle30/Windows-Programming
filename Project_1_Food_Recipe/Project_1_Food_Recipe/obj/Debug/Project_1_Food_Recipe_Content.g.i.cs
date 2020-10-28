@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/img_back_page.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/img_next_page.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/img_favorite_border.png")]
 
 

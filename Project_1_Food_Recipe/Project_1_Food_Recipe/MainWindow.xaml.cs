@@ -777,6 +777,8 @@ namespace Project_1_Food_Recipe
             }
         }
 
+        private int curentPage = 1;
+
         private void pageTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key != System.Windows.Input.Key.Enter)
@@ -786,6 +788,25 @@ namespace Project_1_Food_Recipe
             }
 
             Debug.WriteLine("da nhan enter");
+
+            if (pageTextBox.Text == "")
+            {
+                pageTextBox.Text = curentPage.ToString();
+            }
+            else
+            {
+                curentPage = int.Parse(pageTextBox.Text);
+            }
+
+            pageTextBox.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+        }
+
+        private void pageTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (pageTextBox.Text == "")
+            {
+                pageTextBox.Text = curentPage.ToString();
+            }
         }
     }
 }
