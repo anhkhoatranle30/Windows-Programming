@@ -31,6 +31,3 @@ youtube link: yt
 các bước ở list allSteps gồm: NumberOfStep số bước
 			      StepDesc mô tả của bước
 			      StepPathImage đường dẫn BitmapImage
-
-thêm các radio button ở homeScreen là page1, page2, page3 và ô textbox search để tìm kiếm
-
