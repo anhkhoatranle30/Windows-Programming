@@ -872,7 +872,7 @@
 
                             <Grid x:Name="page" Margin="718,650,-0.4,-24.4">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="158,0,38,0" Width="176">
-                                    <Button x:Name="backPageBtn" Style="{StaticResource backPageBtnStyle}" Margin="0,0,5,0" />
+                                    <Button x:Name="backPageBtn" Style="{StaticResource backPageBtnStyle}" Margin="0,0,5,0" Click="backPageBtn_Click"/>
                                     <Border Height="30" Width="30" BorderThickness="1" BorderBrush="Gray">
 
                                         <TextBox x:Name="pageTextBox" Text="4"
@@ -887,7 +887,7 @@
                                     </Border>
                                     <TextBlock Text="/" FontSize="22" Margin="0,15,0,19" FontWeight="Bold" />
                                     <TextBlock x:Name="pageTextBlock" Text="12" FontSize="20" Margin="0,16,0,18" FontWeight="Bold" Padding="0,3" />
-                                    <Button x:Name="nextPageBtn" Style="{StaticResource nextPageBtnStyle}" Margin="5,0,0,0" />
+                                    <Button x:Name="nextPageBtn" Style="{StaticResource nextPageBtnStyle}" Margin="5,0,0,0" Click="nextPageBtn_Click"/>
                                 </StackPanel>
                             </Grid>
                         </Grid>
