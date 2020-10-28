@@ -44,12 +44,22 @@ namespace Project_1_Food_Recipe
             return result;
         }
 
-        public abstract class FactoryDAO<T>
+        public class RecipesQuantity
         {
-            public abstract BindingList<T> GetAll();
+            public int Total { get; set; }
+            public int Default { get; set; }
+        }
 
-            //public abstract void Update();
-            //public abstract void Delete();
+        public abstract class RecipeDAO
+        {
+            public abstract BindingList<Recipe> GetAll();
+
+            public abstract BindingList<Recipe> GetAll(int productsPerPage, int page, ref int noPages);
+
+            public abstract Recipe CreateRecipe(ref int quantityExisted, String title, String desPicture, String description,
+                String videoLink, BindingList<Step> stepsList /*, bool isFavorite*/);
+
+            public abstract void Add(Recipe recipe);
         }
 
         public class Step
@@ -71,9 +81,35 @@ namespace Project_1_Food_Recipe
             public string VideoLink { get; set; }
             public BindingList<Step> StepsList { set; get; }
             public bool IsFavorite { get; set; }
+
+            //Method
+            public override string ToString()
+            {
+                var result = new StringBuilder();
+                result.Append(this.RecipeID.ToString());
+                result.Append('*');
+                result.Append(this.Title);
+                result.Append('*');
+                result.Append(this.DesPicture);
+                result.Append('*');
+                result.Append(this.Description);
+                result.Append('*');
+                result.Append(this.VideoLink);
+                result.Append('*');
+                foreach (var step in this.StepsList)
+                {
+                    result.Append(step.ImgSource);
+                    result.Append('*');
+                    result.Append(step.Content);
+                    result.Append('*');
+                }
+                result.Append(this.IsFavorite.ToString());
+                //result.Append('\n');
+                return result.ToString();
+            }
         }
 
-        public class FavoriteRecipeDAOTextFile : FactoryDAO<Recipe>
+        public class FavoriteRecipeDAOTextFile : RecipeDAO
         {
             public override BindingList<Recipe> GetAll()
             {
@@ -103,12 +139,29 @@ namespace Project_1_Food_Recipe
                     var steplist = new BindingList<Step>();
                     for (int i = 5; i < tokens.Length - 1; i += 2)
                     {
-                        var step = new Step() { ImgSource = toAbsolutePath(tokens[i]), Content = tokens[i + 1] };
+                        var step = new Step() { /*ImgSource = toAbsolutePath(tokens[i]),*/ Content = tokens[i + 1] };
+                        if (int.Parse(tokens[0]) < 10)
+                        {
+                            step.ImgSource = toAbsolutePath(tokens[i]);
+                        }
+                        else
+                        {
+                            step.ImgSource = tokens[i];
+                        }
 
                         steplist.Add(step);
                     }
                     //Recipe
-                    var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], DesPicture = toAbsolutePath(tokens[2]), Description = tokens[2], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
+                    var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], /*DesPicture = toAbsolutePath(tokens[2]),*/ Description = tokens[2], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
+                    //if user adds new dishes
+                    if (recipe.RecipeID < 10)
+                    {
+                        recipe.DesPicture = toAbsolutePath(tokens[2]);
+                    }
+                    else
+                    {
+                        recipe.DesPicture = tokens[2];
+                    }
                     //Add to list
                     if (recipe.IsFavorite == true)
                     {
@@ -119,12 +172,17 @@ namespace Project_1_Food_Recipe
                 return result;
             }
 
-            public BindingList<Recipe> GetAll(int productsPerPage, int noPage)
+            /// <summary>
+            /// Hàm hiển thị trang (favorite)
+            /// </summary>
+            /// <param name="productsPerPage"></param>
+            /// <param name="page"></param>
+            /// <param name="noPages"></param>
+            /// <returns></returns>
+            public override BindingList<Recipe> GetAll(int productsPerPage, int page, ref int noPages)
             {
-                ///<summary>
-                ///Hàm hiển thị trang (paging)
-                ///<para>aaa</para>
-                ///</summary>
+                //throw new NotImplementedException();
+
                 var result = new BindingList<Recipe>();
                 //total : 30, ppp : 4, nopage : 2
                 //for(ppp*(nopage - 1); i < ppp*nopage && i < total; i++)
@@ -134,17 +192,94 @@ namespace Project_1_Food_Recipe
                 var fullList = new BindingList<Recipe>();
                 fullList = GetAll();
                 var total = fullList.Count();
-
-                for (int i = productsPerPage * (noPage - 1); i < productsPerPage * noPage && i < total; i++)
+                noPages = (total / productsPerPage) + ((total % productsPerPage == 0) ? 0 : 1);
+                for (int i = productsPerPage * (page - 1); i < productsPerPage * page && i < total; i++)
                 {
                     result.Add(fullList[i]);
                 }
 
                 return result;
             }
+
+            /// <summary>
+            /// Hàm tạo công thức nấu ăn
+            /// </summary>
+            /// <param name="quantityExisted"></param>
+            /// <param name="title"></param>
+            /// <param name="desPicture"></param>
+            /// <param name="description"></param>
+            /// <param name="videoLink"></param>
+            /// <param name="stepsList"></param>
+            /// <returns>Trả về công thức nấu ăn</returns>
+            public override Recipe CreateRecipe(ref int quantityExisted, string title, string desPicture,
+                string description, string videoLink, BindingList<Step> stepsList)
+            {
+                //throw new NotImplementedException();
+                var result = new Recipe()
+                {
+                    RecipeID = quantityExisted++,
+                    Title = title,
+                    DesPicture = desPicture,
+                    Description = description,
+                    VideoLink = videoLink,
+                    StepsList = stepsList,
+                    IsFavorite = true
+                };
+
+                return result;
+            }
+
+            public override void Add(Recipe recipe)
+            {
+                var lineToCompare = recipe.ToString();
+                //file name
+                var path = new StringBuilder();
+                path.Append(AppDomain.CurrentDomain.BaseDirectory);
+                path.Append("Database.txt");
+                var filename = path.ToString();
+
+                //Anonymous path
+                var path2 = new StringBuilder();
+                path2.Append(AppDomain.CurrentDomain.BaseDirectory);
+                path2.Append("Database2.txt");
+                var tempFilename = path2.ToString();
+                // Initial values
+
+                int lineNumber = 0;
+                int linesRemoved = 0;
+
+                // Read file
+                using (var sr = new StreamReader(filename))
+                {
+                    // Write new file
+                    using (var sw = new StreamWriter(tempFilename))
+                    {
+                        // Read lines
+                        String line;
+                        while ((line = sr.ReadLine()) != null)
+                        {
+                            lineNumber++;
+                            // Look for text to remove
+                            if (line.Contains(lineToCompare))
+                            {
+                                // Meet the line that needs to be editted
+                                recipe.IsFavorite = true;
+                                var tempLine = recipe.ToString();
+                                sw.Write('\n');
+                                sw.Write(tempLine);
+                            }
+                            else
+                            {
+                                // Ignore lines that DO match
+                                linesRemoved++;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
-        public class RecipeDAOTextFile : FactoryDAO<Recipe>
+        public class RecipeDAOTextFile : RecipeDAO
         {
             public override BindingList<Recipe> GetAll()
             {
@@ -159,7 +294,6 @@ namespace Project_1_Food_Recipe
                 //Read file txt
                 //
                 var path = new StringBuilder();
-
                 path.Append(AppDomain.CurrentDomain.BaseDirectory);
                 path.Append("Database.txt");
 
@@ -174,12 +308,29 @@ namespace Project_1_Food_Recipe
                     var steplist = new BindingList<Step>();
                     for (int i = 5; i < tokens.Length - 1; i += 2)
                     {
-                        var step = new Step() { ImgSource = toAbsolutePath(tokens[i]), Content = tokens[i + 1] };
+                        var step = new Step() { /*ImgSource = toAbsolutePath(tokens[i]),*/ Content = tokens[i + 1] };
+                        if (int.Parse(tokens[0]) < 10)
+                        {
+                            step.ImgSource = toAbsolutePath(tokens[i]);
+                        }
+                        else
+                        {
+                            step.ImgSource = tokens[i];
+                        }
 
                         steplist.Add(step);
                     }
                     //Recipe
-                    var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], DesPicture = toAbsolutePath(tokens[2]), Description = tokens[2], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
+                    var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], /*DesPicture = toAbsolutePath(tokens[2]),*/ Description = tokens[2], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
+                    //if user adds new dishes
+                    if (recipe.RecipeID < 10)
+                    {
+                        recipe.DesPicture = toAbsolutePath(tokens[2]);
+                    }
+                    else
+                    {
+                        recipe.DesPicture = tokens[2];
+                    }
                     //Add to list
                     result.Add(recipe);
                 }
@@ -187,19 +338,21 @@ namespace Project_1_Food_Recipe
                 return result;
             }
 
-            public BindingList<Recipe> GetAll(int productsPerPage)
+            /// <summary>
+            /// Hàm hiển thị số trang (normal type)
+            /// </summary>
+            /// <param name="productsPerPage"></param>
+            /// <param name="page"></param>
+            /// <param name="noPages"></param>
+            /// <returns></returns>
+            public override BindingList<Recipe> GetAll(int productsPerPage, int page, ref int noPages)
             {
-                var result = new BindingList<Recipe>();
-
-                return result;
-            }
-
-            public BindingList<Recipe> GetAll(int productsPerPage, int noPage)
-            {
+                //throw new NotImplementedException();
                 ///<summary>
                 ///Hàm hiển thị trang (paging)
                 ///<para>aaa</para>
                 ///</summary>
+
                 var result = new BindingList<Recipe>();
                 //total : 30, ppp : 4, nopage : 2
                 //for(ppp*(nopage - 1); i < ppp*nopage && i < total; i++)
@@ -209,13 +362,61 @@ namespace Project_1_Food_Recipe
                 var fullList = new BindingList<Recipe>();
                 fullList = GetAll();
                 var total = fullList.Count();
-
-                for (int i = productsPerPage * (noPage - 1); i < productsPerPage * noPage && i < total; i++)
+                noPages = (total / productsPerPage) + ((total % productsPerPage == 0) ? 0 : 1);
+                for (int i = productsPerPage * (page - 1); i < productsPerPage * page && i < total; i++)
                 {
                     result.Add(fullList[i]);
                 }
 
                 return result;
+            }
+
+            /// <summary>
+            /// Hàm tạo ra công thức nấu ăn bình thường
+            /// </summary>
+            /// <param name="quantityExisted"></param>
+            /// <param name="title"></param>
+            /// <param name="desPicture"></param>
+            /// <param name="description"></param>
+            /// <param name="videoLink"></param>
+            /// <param name="stepsList"></param>
+            /// <returns>Trả về kiểu Recipe</returns>
+            public override Recipe CreateRecipe(ref int quantityExisted, string title, string desPicture,
+                string description, string videoLink, BindingList<Step> stepsList)
+            {
+                //throw new NotImplementedException();
+                var result = new Recipe()
+                {
+                    RecipeID = quantityExisted++,
+                    Title = title,
+                    DesPicture = desPicture,
+                    Description = description,
+                    VideoLink = videoLink,
+                    StepsList = stepsList,
+                    IsFavorite = false
+                };
+
+                return result;
+            }
+
+            /// <summary>
+            /// Hàm thêm công thức nấu ăn vào database
+            /// </summary>
+            /// <param name="recipe"></param>
+            public override void Add(Recipe recipe)
+            {
+                //throw new NotImplementedException();
+                //file path
+                var path = new StringBuilder();
+                path.Append(AppDomain.CurrentDomain.BaseDirectory);
+                path.Append("Database.txt");
+                //end file path
+                var newRecipeEncoded = recipe.ToString();
+                using (StreamWriter sw = File.AppendText(path.ToString()))
+                {
+                    sw.Write('\n');
+                    sw.Write(newRecipeEncoded);
+                }
             }
         }
 
