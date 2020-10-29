@@ -595,7 +595,61 @@ namespace Project_1_Food_Recipe
             /// <param name="recipe"></param>
             public override void Delete(Recipe recipe)
             {
-                throw new NotImplementedException();
+                //throw new NotImplementedException();
+                var lineToCompare = recipe.RecipeID.ToString();
+                lineToCompare += "*";
+                lineToCompare += recipe.Title;
+                //file name
+                var path = new StringBuilder();
+                path.Append(AppDomain.CurrentDomain.BaseDirectory);
+                path.Append("Database.txt");
+                var filename = path.ToString();
+
+                //Anonymous path
+                var path2 = new StringBuilder();
+                path2.Append(AppDomain.CurrentDomain.BaseDirectory);
+                path2.Append("Database2.txt");
+                var tempFilename = path2.ToString();
+                // Initial values
+
+                int lineNumber = 0;
+                //int linesRemoved = 0;
+
+                //
+                // Read file
+                //
+                using (var sr = new StreamReader(filename))
+                {
+                    //
+                    // Write new file
+                    //
+                    using (var sw = new StreamWriter(tempFilename))
+                    {
+                        //
+                        // Read lines
+                        //
+                        String line;
+                        while ((line = sr.ReadLine()) != null)
+                        {
+                            lineNumber++;
+                            // if its not the line we re looking for
+                            if (!line.Contains(lineToCompare))
+                            {
+                                sw.WriteLine(line);
+                            }
+                            else
+                            {
+                                // Meet the line that needs to be deleted
+                                //Just ignore it and do nothing
+                            }
+                        }
+                    }
+                }
+                // Delete original file
+                File.Delete(filename);
+
+                // ... and put the temp file in its place.
+                File.Move(tempFilename, filename);
             }
         }
 
