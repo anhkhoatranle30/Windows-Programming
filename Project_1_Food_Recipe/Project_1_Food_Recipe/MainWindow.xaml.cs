@@ -76,6 +76,7 @@ namespace Project_1_Food_Recipe
                 String videoLink, BindingList<Step> stepsList /*, bool isFavorite*/);
 
             public abstract void Add(Recipe recipe);
+            public abstract void Delete(Recipe recipe);
         }
 
         #endregion abstract DAO classes
@@ -188,7 +189,7 @@ namespace Project_1_Food_Recipe
                             steplist.Add(step);
                         }
                         //Recipe
-                        var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], /*DesPicture = toAbsolutePath(tokens[2]),*/ Description = tokens[2], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
+                        var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], /*DesPicture = toAbsolutePath(tokens[2]),*/ Description = tokens[3], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
                         //if user adds new dishes
                         if (recipe.RecipeID < quantity.Default)
                         {
@@ -275,7 +276,9 @@ namespace Project_1_Food_Recipe
             /// <param name="recipe"></param>
             public override void Add(Recipe recipe)
             {
-                var lineToCompare = recipe.ToString();
+                var lineToCompare = recipe.RecipeID.ToString();
+                lineToCompare += "*";
+                lineToCompare += recipe.Title;
                 //file name
                 var path = new StringBuilder();
                 path.Append(AppDomain.CurrentDomain.BaseDirectory);
@@ -317,13 +320,96 @@ namespace Project_1_Food_Recipe
                             else
                             {
                                 // Meet the line that needs to be editted
-                                recipe.IsFavorite = true;
-                                var tempLine = recipe.ToString();
-                                sw.WriteLine(tempLine);
+                                //recipe.IsFavorite = true;
+                                //var tempLine = recipe.ToString();
+                                //sw.WriteLine(tempLine);
+                                var tokens = line.Split(new String[] { "*" }, StringSplitOptions.None);
+                                var toAddLine = new StringBuilder();
+                                for (int i = 0; i < tokens.Length - 1; i++)
+                                {
+                                    toAddLine.Append(tokens[i]);
+                                    toAddLine.Append("*");
+                                }
+                                toAddLine.Append("True");
+                                sw.WriteLine(toAddLine);
                             }
                         }
                     }
                 }
+                // Delete original file
+                File.Delete(filename);
+
+                // ... and put the temp file in its place.
+                File.Move(tempFilename, filename);
+            }
+
+            public override void Delete(Recipe recipe)
+            {
+                var lineToCompare = recipe.RecipeID.ToString();
+                lineToCompare += "*";
+                lineToCompare += recipe.Title;
+                //file name
+                var path = new StringBuilder();
+                path.Append(AppDomain.CurrentDomain.BaseDirectory);
+                path.Append("Database.txt");
+                var filename = path.ToString();
+
+                //Anonymous path
+                var path2 = new StringBuilder();
+                path2.Append(AppDomain.CurrentDomain.BaseDirectory);
+                path2.Append("Database2.txt");
+                var tempFilename = path2.ToString();
+                // Initial values
+
+                int lineNumber = 0;
+                //int linesRemoved = 0;
+
+                //
+                // Read file
+                //
+                using (var sr = new StreamReader(filename))
+                {
+                    //
+                    // Write new file
+                    //
+                    using (var sw = new StreamWriter(tempFilename))
+                    {
+                        //
+                        // Read lines
+                        //
+                        String line;
+                        while ((line = sr.ReadLine()) != null)
+                        {
+                            lineNumber++;
+                            // if its not the line we re looking for
+                            if (!line.Contains(lineToCompare))
+                            {
+                                sw.WriteLine(line);
+                            }
+                            else
+                            {
+                                // Meet the line that needs to be editted
+                                //recipe.IsFavorite = false;
+                                //var tempLine = recipe.ToString();
+                                //sw.WriteLine(tempLine);
+                                var tokens = line.Split(new String[] { "*" }, StringSplitOptions.None);
+                                var toAddLine = new StringBuilder();
+                                for (int i = 0; i < tokens.Length - 1; i++)
+                                {
+                                    toAddLine.Append(tokens[i]);
+                                    toAddLine.Append("*");
+                                }
+                                toAddLine.Append("False");
+                                sw.WriteLine(toAddLine);
+                            }
+                        }
+                    }
+                }
+                // Delete original file
+                File.Delete(filename);
+
+                // ... and put the temp file in its place.
+                File.Move(tempFilename, filename);
             }
         }
 
@@ -380,7 +466,7 @@ namespace Project_1_Food_Recipe
                             steplist.Add(step);
                         }
                         //Recipe
-                        var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], /*DesPicture = toAbsolutePath(tokens[2]),*/ Description = tokens[2], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
+                        var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], /*DesPicture = toAbsolutePath(tokens[2]),*/ Description = tokens[3], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
                         //if user adds new dishes
                         if (recipe.RecipeID < quantity.Default)
                         {
@@ -501,6 +587,15 @@ namespace Project_1_Food_Recipe
                     sw.WriteLine(quantity.Default);
                     sw.Write(quantity.Total);
                 }
+            }
+
+            /// <summary>
+            /// Hàm xóa một món ăn ra khỏi db
+            /// </summary>
+            /// <param name="recipe"></param>
+            public override void Delete(Recipe recipe)
+            {
+                throw new NotImplementedException();
             }
         }
 
