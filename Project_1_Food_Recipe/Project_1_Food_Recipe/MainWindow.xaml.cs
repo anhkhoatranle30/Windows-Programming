@@ -18,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
 
 namespace Project_1_Food_Recipe
 {
@@ -29,11 +30,14 @@ namespace Project_1_Food_Recipe
     public partial class MainWindow : Window
     {
         #region functional
+
         //functional
 
         #region global variables
+
         //Lists
         private BindingList<Recipe> _recipeList;
+
         private BindingList<Recipe> _favoriteRecipeList;
 
         public static String toAbsolutePath(String relative)
@@ -49,16 +53,19 @@ namespace Project_1_Food_Recipe
 
         //paging
         public int noPages;
+
         public int pageNumber;
         public int productsPerPage;
-        #endregion
+
+        #endregion global variables
 
         #region abstract DAO classes
+
         public abstract class RecipesQuantityDAO
         {
             public abstract RecipesQuantity GetAll();
         }
-        
+
         public abstract class RecipeDAO
         {
             public abstract BindingList<Recipe> GetAll();
@@ -70,14 +77,17 @@ namespace Project_1_Food_Recipe
 
             public abstract void Add(Recipe recipe);
         }
-        #endregion
+
+        #endregion abstract DAO classes
 
         #region definition classes
+
         public class RecipesQuantity
         {
             public int Total { get; set; }
             public int Default { get; set; }
         }
+
         public class Step
         {
             //properties
@@ -85,6 +95,7 @@ namespace Project_1_Food_Recipe
 
             public string Content { get; set; }
         }
+
         public class Recipe
         {
             //Properties
@@ -123,15 +134,17 @@ namespace Project_1_Food_Recipe
                 return result.ToString();
             }
         }
-        #endregion
+
+        #endregion definition classes
 
         #region DAOTextFile
+
         public class FavoriteRecipeDAOTextFile : RecipeDAO
         {
             public override BindingList<Recipe> GetAll()
             {
                 //
-                //Get the quantity of default 
+                //Get the quantity of default
                 //
                 var recipesQuantityDAOTextFile = new RecipesQuantityDAOTextFile();
                 var quantity = recipesQuantityDAOTextFile.GetAll();
@@ -186,7 +199,7 @@ namespace Project_1_Food_Recipe
                             recipe.DesPicture = tokens[2];
                         }
                         //Add to list
-                        if(recipe.IsFavorite == true)
+                        if (recipe.IsFavorite == true)
                         {
                             result.Add(recipe);
                         }
@@ -313,16 +326,17 @@ namespace Project_1_Food_Recipe
                 }
             }
         }
+
         public class RecipeDAOTextFile : RecipeDAO
         {
             /// <summary>
-            /// Hàm lấy tất cả dữ liệu 
+            /// Hàm lấy tất cả dữ liệu
             /// </summary>
             /// <returns>Trả về BindingList các món ăn</returns>
             public override BindingList<Recipe> GetAll()
             {
                 //
-                //Get the quantity of default 
+                //Get the quantity of default
                 //
                 var recipesQuantityDAOTextFile = new RecipesQuantityDAOTextFile();
                 var quantity = recipesQuantityDAOTextFile.GetAll();
@@ -347,7 +361,7 @@ namespace Project_1_Food_Recipe
                     var tokens = line.Split(
                         new String[] { "*" },
                         StringSplitOptions.None);
-                    if(tokens.Length > 0)
+                    if (tokens.Length > 0)
                     {
                         //StepsList
                         var steplist = new BindingList<Step>();
@@ -379,7 +393,6 @@ namespace Project_1_Food_Recipe
                         //Add to list
                         result.Add(recipe);
                     }
-                    
                 }
                 //return
                 return result;
@@ -472,7 +485,7 @@ namespace Project_1_Food_Recipe
                 var quantity = recipesQuantityDAOTextFile.GetAll();
 
                 //Check if new dish has ID
-                if(recipe.RecipeID != quantity.Total)
+                if (recipe.RecipeID != quantity.Total)
                 {
                     recipe.RecipeID = quantity.Total++;
                 }
@@ -490,6 +503,7 @@ namespace Project_1_Food_Recipe
                 }
             }
         }
+
         public class RecipesQuantityDAOTextFile : RecipesQuantityDAO
         {
             public override RecipesQuantity GetAll()
@@ -509,10 +523,12 @@ namespace Project_1_Food_Recipe
                 return result;
             }
         }
-        #endregion
+
+        #endregion DAOTextFile
 
         //end functional
-        #endregion
+
+        #endregion functional
 
         public MainWindow()
         {
@@ -526,13 +542,15 @@ namespace Project_1_Food_Recipe
             favoriteListView.ItemsSource = _favoriteRecipeList;
 
             #region test paging
+
             pageNumber = 1;
             productsPerPage = 4;
             _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
             dataListView.ItemsSource = _recipeList;
             pageTextBox.Text = pageNumber.ToString();
             pageTextBlock.Text = noPages.ToString();
-            #endregion
+
+            #endregion test paging
         }
 
         private void Clear(Button btn)
@@ -720,15 +738,6 @@ namespace Project_1_Food_Recipe
             setDefaultColor("blueColor");
         }
 
-        private void yellowColor_Checked(object sender, RoutedEventArgs e)
-        {
-            _backgroundColor.Color = "Yellow";
-            _backgroundColor.SolidColor = new SolidColorBrush(Colors.Yellow);
-
-            settingBtn_Click(sender, e);
-            setDefaultColor("yellowColor");
-        }
-
         private void greenColor_Checked(object sender, RoutedEventArgs e)
         {
             _backgroundColor.Color = "Green";
@@ -795,7 +804,7 @@ namespace Project_1_Food_Recipe
         }
 
         private int stepCount = 0;
-        private BindingList<AllSteps> allSteps = new BindingList<AllSteps>();
+        private BindingList<AllSteps> allSteps = null;
 
         private class AllSteps
         {
@@ -809,6 +818,11 @@ namespace Project_1_Food_Recipe
             stepCount++;
             Image clone = new Image();
             clone.Source = stepImage.Source;
+
+            if (allSteps == null)
+            {
+                allSteps = new BindingList<AllSteps>();
+            }
 
             allSteps.Add(new AllSteps
             {
@@ -827,12 +841,66 @@ namespace Project_1_Food_Recipe
         private void saveAddBtn_Click(object sender, RoutedEventArgs e)
         {
             stepCount = 0;
-            //
+
+            MessageBoxResult choice = MessageBox.Show("Bạn có chắc muốn lưu?",
+                                                        "Thông báo",
+                                                        MessageBoxButton.YesNo,
+                                                        MessageBoxImage.Question);
+
+            if (choice == MessageBoxResult.Yes)
+            {
+                title.Clear();
+                description.Clear();
+                yt.Clear();
+                addImgBtn.Background = null;
+                stepDescription.Clear();
+                addImgBtn.Background = Brushes.White;
+                stepImage.Source = null;
+                allSteps = null;
+                allStepListView.ItemsSource = null;
+                allStepListView.Items.Clear();
+
+                //các bước lưu
+
+                MessageBox.Show("Đã lưu thành công",
+                                "Thông báo",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+            }
+            else if (choice == MessageBoxResult.No)
+            {
+                //do nothing
+            }
         }
 
         private void cancelAddBtn_Click(object sender, RoutedEventArgs e)
         {
             stepCount = 0;
+
+            MessageBoxResult choice = MessageBox.Show("Bạn có chắc muốn hủy?",
+                                                       "Thông báo",
+                                                       MessageBoxButton.YesNo,
+                                                       MessageBoxImage.Question);
+
+            if (choice == MessageBoxResult.Yes)
+            {
+                title.Clear();
+                description.Clear();
+                yt.Clear();
+                addImgBtn.Background = null;
+                stepDescription.Clear();
+                //addStepImgBtn.Background = null;
+                addImgBtn.Background = Brushes.White;
+                stepImage.Source = null;
+                allSteps = null;
+                allStepListView.ItemsSource = null;
+                allStepListView.Items.Clear();
+            }
+            else if (choice == MessageBoxResult.No)
+            {
+                //do nothing
+            }
+
             //
         }
 
@@ -897,6 +965,10 @@ namespace Project_1_Food_Recipe
             else
             {
                 curentPage = int.Parse(pageTextBox.Text);
+                var recipeDAOTextFile = new RecipeDAOTextFile();
+                pageNumber = curentPage;
+                _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
+                dataListView.ItemsSource = _recipeList;
             }
 
             pageTextBox.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
@@ -914,6 +986,7 @@ namespace Project_1_Food_Recipe
         {
             var recipeDAOTextFile = new RecipeDAOTextFile();
             pageNumber++;
+            curentPage = pageNumber;
             _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
             pageTextBox.Text = pageNumber.ToString();
             dataListView.ItemsSource = _recipeList;
@@ -923,9 +996,14 @@ namespace Project_1_Food_Recipe
         {
             var recipeDAOTextFile = new RecipeDAOTextFile();
             pageNumber--;
+            curentPage = pageNumber;
             _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
             pageTextBox.Text = pageNumber.ToString();
             dataListView.ItemsSource = _recipeList;
+        }
+
+        private void checkFavoriteBtn_Checked(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

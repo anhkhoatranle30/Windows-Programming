@@ -625,20 +625,18 @@
                                 <Trigger.EnterActions>
                                     <BeginStoryboard>
                                         <Storyboard>
-                                            <ColorAnimation Duration="0:0:1" From="#C0C0C0"
+                                            <ColorAnimation Duration="0:0:0.5" From="#C0C0C0"
                                                             To="#606060" Storyboard.TargetName="border"
-                                                            Storyboard.TargetProperty="Background.Color"
-                                                            AutoReverse="True" />
+                                                            Storyboard.TargetProperty="Background.Color" />
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </Trigger.EnterActions>
                                 <Trigger.ExitActions>
                                     <BeginStoryboard>
                                         <Storyboard>
-                                            <ColorAnimation Duration="0:0:1" From="#606060"
+                                            <ColorAnimation Duration="0:0:0.5" From="#606060"
                                                             To="#C0C0C0" Storyboard.TargetName="border"
-                                                            Storyboard.TargetProperty="Background.Color"
-                                                            AutoReverse="True" />
+                                                            Storyboard.TargetProperty="Background.Color" />
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </Trigger.ExitActions>
@@ -842,7 +840,7 @@
                 <Border Background="White" Height="800" Width="1160" CornerRadius="40">
                     <Grid Margin="35,55">
 
-                        <Grid x:Name="homeScreen">
+                        <Grid x:Name="homeScreen" Visibility="Hidden">
 
                             <Grid x:Name="searchGrid" Style="{StaticResource EntryFieldStyle}" Height="59" Margin="117,10,121.6,620.6" Width="851">
                                 <Image Source="Images/img_search.png" HorizontalAlignment="Left" Margin="10,14,0,10" Width="31" VerticalAlignment="Center" Height="35" />
@@ -864,15 +862,18 @@
                                     <DataTemplate>
                                         <Grid>
                                             <Button Style="{StaticResource foodBtnStyle}" />
-                                            <ToggleButton x:Name="checkFavoriteBtn" Width="30" Height="30" Margin="180,60,0,0" Style="{DynamicResource isFavoriteTgStyle}" />
+                                            <ToggleButton x:Name="checkFavoriteBtn" Width="30" Height="30" Margin="180,60,0,0" Style="{DynamicResource isFavoriteTgStyle}" Checked="checkFavoriteBtn_Checked" />
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
 
+                            <Grid x:Name="foodDetail">
+                            </Grid>
+
                             <Grid x:Name="page" Margin="718,650,-0.4,-24.4">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="158,0,38,0" Width="176">
-                                    <Button x:Name="backPageBtn" Style="{StaticResource backPageBtnStyle}" Margin="0,0,5,0" Click="backPageBtn_Click"/>
+                                    <Button x:Name="backPageBtn" Style="{StaticResource backPageBtnStyle}" Margin="0,0,5,0" Click="backPageBtn_Click" />
                                     <Border Height="30" Width="30" BorderThickness="1" BorderBrush="Gray">
 
                                         <TextBox x:Name="pageTextBox" Text="4"
@@ -887,7 +888,7 @@
                                     </Border>
                                     <TextBlock Text="/" FontSize="22" Margin="0,15,0,19" FontWeight="Bold" />
                                     <TextBlock x:Name="pageTextBlock" Text="12" FontSize="20" Margin="0,16,0,18" FontWeight="Bold" Padding="0,3" />
-                                    <Button x:Name="nextPageBtn" Style="{StaticResource nextPageBtnStyle}" Margin="5,0,0,0" Click="nextPageBtn_Click"/>
+                                    <Button x:Name="nextPageBtn" Style="{StaticResource nextPageBtnStyle}" Margin="5,0,0,0" Click="nextPageBtn_Click" />
                                 </StackPanel>
                             </Grid>
                         </Grid>
@@ -905,7 +906,7 @@
                                         <Grid>
 
                                             <Button Style="{StaticResource foodBtnStyle}" />
-                                            <ToggleButton x:Name="checkFavoriteBtn" Width="30" Height="30" Margin="180,60,0,0" Style="{DynamicResource isFavoriteTgStyle}" />
+                                            <ToggleButton x:Name="checkFavoriteBtn" Width="30" Height="30" Margin="180,60,0,0" Style="{DynamicResource isFavoriteTgStyle}" IsChecked="True" />
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
@@ -987,7 +988,7 @@
 
                                             <Grid Background="#808080" Opacity="0.6" Margin="0,238,0,0">
                                                 <Image Source="Images/img_add_img.png" VerticalAlignment="top" Width="40" Height="40" />
-                                                <TextBlock Text="Click to add step images" FontSize="13" Foreground="White" Margin="91,38,89,-0.2" />
+                                                <TextBlock Text="Click to add step image" FontSize="13" Foreground="White" Margin="91,38,89,-0.2" />
                                             </Grid>
                                         </Grid>
                                     </Button.Content>
@@ -1061,7 +1062,7 @@
                             </Button>
                         </Grid>
 
-                        <Grid x:Name="settingScreen" Visibility="Hidden">
+                        <Grid x:Name="settingScreen">
                             <StackPanel>
                                 <TextBlock Text="Choose your background color:" Style="{StaticResource fontStyle}" Foreground="Black"
                                        VerticalAlignment="Top" HorizontalAlignment="Left"
@@ -1070,9 +1071,9 @@
                                     <RadioButton GroupName="colorBg" Name="defaultColor"  Background="#3498DB" Style="{DynamicResource RadioButtonStyle}"  Margin="10" Checked="defaultColor_Checked" />
                                     <RadioButton GroupName="colorBg" Name="redColor" Background="Red" Style="{DynamicResource RadioButtonStyle}"  Margin="10" Checked="redColor_Checked" />
                                     <RadioButton GroupName="colorBg" Name="blueColor"  Background="Blue" Style="{DynamicResource RadioButtonStyle}" Margin="10" Checked="blueColor_Checked" />
-                                    <RadioButton GroupName="colorBg" Name="yellowColor"  Background="Yellow" Style="{DynamicResource RadioButtonStyle}" Margin="10" Checked="yellowColor_Checked" />
                                     <RadioButton GroupName="colorBg" Name="greenColor" Background="Green" Style="{DynamicResource RadioButtonStyle}" Margin="10" Checked="greenColor_Checked" />
                                 </WrapPanel>
+                                <CheckBox x:Name="splashScreen" Margin="20,20,0,20" FontSize="18" FontWeight="DemiBold" VerticalAlignment="Bottom" HorizontalAlignment="Left" VerticalContentAlignment="Center" Content="Show splash screen when startup" />
                             </StackPanel>
                         </Grid>
 
@@ -1102,7 +1103,7 @@
                                 <Grid Background="Transparent" Height="339" Margin="0,0,105.6,0">
                                     <Image  Margin="0,0,642,0" />
                                     <StackPanel HorizontalAlignment="Left" Margin="384,10,0,-10">
-                                        <TextBlock Text="Name:Võ Nguyễn Lê Hoàng "
+                                        <TextBlock Text="Name: Võ Nguyễn Lê Hoàng "
                                                    FontSize="26"
                                                    Padding="10"
                                                    HorizontalAlignment="Left"
