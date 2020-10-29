@@ -77,6 +77,7 @@ namespace Project_1_Food_Recipe
 
             public abstract void Add(Recipe recipe);
             public abstract void Delete(Recipe recipe);
+            public abstract BindingList<Recipe> Search(String searchString);
         }
 
         #endregion abstract DAO classes
@@ -343,6 +344,10 @@ namespace Project_1_Food_Recipe
                 File.Move(tempFilename, filename);
             }
 
+            /// <summary>
+            /// Xóa món ăn ưa thích ra khỏi danh sách ưa thích, món ăn vẫn còn trên db
+            /// </summary>
+            /// <param name="recipe"></param>
             public override void Delete(Recipe recipe)
             {
                 var lineToCompare = recipe.RecipeID.ToString();
@@ -410,6 +415,25 @@ namespace Project_1_Food_Recipe
 
                 // ... and put the temp file in its place.
                 File.Move(tempFilename, filename);
+            }
+
+            /// <summary>
+            /// Hàm tìm kiếm món ăn ƯA THÍCH
+            /// </summary>
+            /// <param name="searchString">Chuỗi cần tìm</param>
+            /// <returns></returns>
+            public override BindingList<Recipe> Search(string searchString)
+            {
+                var favoriteRecipes = GetAll();
+                var result = new BindingList<Recipe>();
+                foreach(var recipe in favoriteRecipes)
+                {
+                    if(recipe.Title.Contains(searchString))
+                    {
+                        result.Add(recipe);
+                    }
+                }
+                return result;
             }
         }
 
@@ -650,6 +674,25 @@ namespace Project_1_Food_Recipe
 
                 // ... and put the temp file in its place.
                 File.Move(tempFilename, filename);
+            }
+
+            /// <summary>
+            /// Hàm tìm kiếm món ăn
+            /// </summary>
+            /// <param name="searchString">chuỗi cần tìm</param>
+            /// <returns></returns>
+            public override BindingList<Recipe> Search(string searchString)
+            {
+                var recipes = GetAll();
+                var result = new BindingList<Recipe>();
+                foreach (var recipe in recipes)
+                {
+                    if (recipe.Title.Contains(searchString))
+                    {
+                        result.Add(recipe);
+                    }
+                }
+                return result;
             }
         }
 
