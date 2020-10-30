@@ -4,7 +4,7 @@ to do list
 //function
 (v)sửa hàm search
 (v)cho fav lên đầu
-add recipe
+(v)add recipe
 random splash
 binding step vào detail
 //UI

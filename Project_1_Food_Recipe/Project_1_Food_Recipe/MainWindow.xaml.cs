@@ -72,7 +72,7 @@ namespace Project_1_Food_Recipe
         {
             public abstract BindingList<Recipe> GetAll();
 
-            public abstract BindingList<Recipe> GetAll(int productsPerPage, ref int page, ref int noPages);
+            public abstract BindingList<Recipe> GetAll(int productsPerPage, ref int pageNumber, ref int noPages);
 
             public abstract Recipe CreateRecipe(String title, String desPicture, String description,
                 String videoLink, BindingList<Step> stepsList /*, bool isFavorite*/);
@@ -88,7 +88,24 @@ namespace Project_1_Food_Recipe
 
         #region definition classes
 
-        class SearchString
+        public class PathString
+        {
+            /// <summary>
+            /// Hàm tách từ chuỗi địa chỉ file của hệ thống thành Đường dẫn tuyệt đối
+            /// </summary>
+            /// <param name="toParseString">đường dẫn hệ thống</param>
+            /// <returns>Trả về đường dẫn tuyệt đối</returns>
+            public static string ParseSystemPath(string toParseString)
+            {
+                // path : file: + /// + {absolutePath}
+                var tokens = toParseString.Split(new String[] { "file:///" }, StringSplitOptions.RemoveEmptyEntries);
+                var result = new StringBuilder();
+                result.Append(tokens[0]);
+                return result.ToString();
+            }
+        }
+
+        public class SearchString
         {
             private static readonly string[] VietnameseSigns = new string[] {
 
@@ -331,7 +348,7 @@ namespace Project_1_Food_Recipe
             /// <param name="page"></param>
             /// <param name="noPages"></param>
             /// <returns></returns>
-            public override BindingList<Recipe> GetAll(int productsPerPage, ref int page, ref int noPages)
+            public override BindingList<Recipe> GetAll(int productsPerPage, ref int pageNumber, ref int noPages)
             {
                 //throw new NotImplementedException();
 
@@ -346,9 +363,9 @@ namespace Project_1_Food_Recipe
                 var total = fullList.Count();
                 noPages = (total / productsPerPage) + ((total % productsPerPage == 0) ? 0 : 1);
                 //page
-                page = page % noPages + ((page % noPages == 0) ? noPages : 0);
+                pageNumber = pageNumber % noPages + ((pageNumber % noPages == 0) ? noPages : 0);
                 //end page
-                for (int i = productsPerPage * (page - 1); i < productsPerPage * page && i < total; i++)
+                for (int i = productsPerPage * (pageNumber - 1); i < productsPerPage * pageNumber && i < total; i++)
                 {
                     result.Add(fullList[i]);
                 }
@@ -645,7 +662,7 @@ namespace Project_1_Food_Recipe
             /// <param name="page"></param>
             /// <param name="noPages"></param>
             /// <returns></returns>
-            public override BindingList<Recipe> GetAll(int productsPerPage, ref int page, ref int noPages)
+            public override BindingList<Recipe> GetAll(int productsPerPage, ref int pageNumber, ref int noPages)
             {
                 //throw new NotImplementedException();
                 ///<summary>
@@ -664,9 +681,9 @@ namespace Project_1_Food_Recipe
                 var total = fullList.Count();
                 noPages = (total / productsPerPage) + ((total % productsPerPage == 0) ? 0 : 1);
                 //page
-                page = page % noPages + ((page % noPages == 0) ? noPages : 0);
+                pageNumber = pageNumber % noPages + ((pageNumber % noPages == 0) ? noPages : 0);
                 //end page
-                for (int i = productsPerPage * (page - 1); i < productsPerPage * page && i < total; i++)
+                for (int i = productsPerPage * (pageNumber - 1); i < productsPerPage * pageNumber && i < total; i++)
                 {
                     result.Add(fullList[i]);
                 }
@@ -1155,17 +1172,33 @@ namespace Project_1_Food_Recipe
             });
 
             Debug.WriteLine(allSteps[stepCount - 1].StepPathImage);
-            Debug.WriteLine(((ImageBrush)addImgBtn.Background).ImageSource);
+            //Debug.WriteLine(((ImageBrush)addImgBtn.Background).ImageSource);
             allStepListView.ItemsSource = allSteps;
 
             stepDescription.Clear();
             stepImage.Source = null;
         }
 
+
         private void saveAddBtn_Click(object sender, RoutedEventArgs e)
         {
             stepCount = 0;
+            #region Add Functional 
+            //
+            var recipeDAOTextFile = new RecipeDAOTextFile();
+            // StepsList
+            var stepsList = new BindingList<Step>();
+            foreach (var step in allSteps)
+            {
+                stepsList.Add(new Step() { ImgSource = PathString.ParseSystemPath(step.StepPathImage.ToString()), Content = step.StepDesc });
+            }
 
+            var recipe = recipeDAOTextFile.CreateRecipe(title.Text, PathString.ParseSystemPath(((ImageBrush)addImgBtn.Background).ImageSource.ToString()), description.Text, yt.Text, stepsList);
+
+            
+            
+            //
+            #endregion
             MessageBoxResult choice = MessageBox.Show("Bạn có chắc muốn lưu?",
                                                         "Thông báo",
                                                         MessageBoxButton.YesNo,
@@ -1175,7 +1208,13 @@ namespace Project_1_Food_Recipe
             {
                 //các bước lưu
 
-                Debug.WriteLine(title.Text);
+                //Add to database
+                recipeDAOTextFile.Add(recipe);
+                //end adding to db
+                //Bind list to Home screen
+                _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
+                dataListView.ItemsSource = _recipeList;
+                //end binding list
 
                 title.Clear();
                 description.Clear();
