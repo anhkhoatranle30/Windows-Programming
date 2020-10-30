@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -39,6 +40,7 @@ namespace Project_1_Food_Recipe
         private BindingList<Recipe> _recipeList;
 
         private BindingList<Recipe> _favoriteRecipeList;
+        private BindingList<Recipe> _searchRecipeList;
 
         public static String toAbsolutePath(String relative)
         {
@@ -76,7 +78,9 @@ namespace Project_1_Food_Recipe
                 String videoLink, BindingList<Step> stepsList /*, bool isFavorite*/);
 
             public abstract void Add(Recipe recipe);
+
             public abstract void Delete(Recipe recipe);
+
             public abstract BindingList<Recipe> Search(String searchString);
         }
 
@@ -134,6 +138,29 @@ namespace Project_1_Food_Recipe
                 result.Append(this.IsFavorite.ToString());
                 //result.Append('\n');
                 return result.ToString();
+            }
+
+            public Recipe Parse(string line)
+            {
+                var result = new Recipe();
+                var tokens = line.Split(
+                        new String[] { "*" },
+                        StringSplitOptions.None);
+                if (tokens.Length > 0)
+                {
+                    //StepsList
+                    var steplist = new BindingList<Step>();
+                    for (int i = 5; i < tokens.Length - 1; i += 2)
+                    {
+                        var step = new Step() { ImgSource = toAbsolutePath(tokens[i]), Content = tokens[i + 1] };
+
+                        steplist.Add(step);
+                    }
+                    //Recipe
+                    var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], DesPicture = toAbsolutePath(tokens[2]), Description = tokens[3], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
+                    result = recipe;
+                }
+                return result;
             }
         }
 
@@ -426,9 +453,9 @@ namespace Project_1_Food_Recipe
             {
                 var favoriteRecipes = GetAll();
                 var result = new BindingList<Recipe>();
-                foreach(var recipe in favoriteRecipes)
+                foreach (var recipe in favoriteRecipes)
                 {
-                    if(recipe.Title.Contains(searchString))
+                    if (recipe.Title.Contains(searchString))
                     {
                         result.Add(recipe);
                     }
@@ -780,11 +807,11 @@ namespace Project_1_Food_Recipe
 
         private void HideScreen()
         {
-            homeScreen.Visibility = Visibility.Hidden;
-            addScreen.Visibility = Visibility.Hidden;
-            favoriteScreen.Visibility = Visibility.Hidden;
-            settingScreen.Visibility = Visibility.Hidden;
-            aboutScreen.Visibility = Visibility.Hidden;
+            homeScreen.Visibility = Visibility.Collapsed;
+            addScreen.Visibility = Visibility.Collapsed;
+            favoriteScreen.Visibility = Visibility.Collapsed;
+            settingScreen.Visibility = Visibility.Collapsed;
+            aboutScreen.Visibility = Visibility.Collapsed;
         }
 
         private void homeBtn_Click(object sender, RoutedEventArgs e)
@@ -1024,6 +1051,7 @@ namespace Project_1_Food_Recipe
             });
 
             Debug.WriteLine(allSteps[stepCount - 1].StepPathImage);
+            Debug.WriteLine(((ImageBrush)addImgBtn.Background).ImageSource);
             allStepListView.ItemsSource = allSteps;
 
             stepDescription.Clear();
@@ -1041,6 +1069,10 @@ namespace Project_1_Food_Recipe
 
             if (choice == MessageBoxResult.Yes)
             {
+                //các bước lưu
+
+                Debug.WriteLine(title.Text);
+
                 title.Clear();
                 description.Clear();
                 yt.Clear();
@@ -1051,8 +1083,6 @@ namespace Project_1_Food_Recipe
                 allSteps = null;
                 allStepListView.ItemsSource = null;
                 allStepListView.Items.Clear();
-
-                //các bước lưu
 
                 MessageBox.Show("Đã lưu thành công",
                                 "Thông báo",
@@ -1194,8 +1224,173 @@ namespace Project_1_Food_Recipe
             dataListView.ItemsSource = _recipeList;
         }
 
-        private void checkFavoriteBtn_Checked(object sender, RoutedEventArgs e)
+        private void search_TextChanged(object sender, TextChangedEventArgs e)
         {
+            string text = search.Text;
+            var recipeDAOTextFile = new RecipeDAOTextFile();
+            _searchRecipeList = recipeDAOTextFile.Search(text);
+            searchListView.ItemsSource = _searchRecipeList;
+            Debug.WriteLine("da doi");
+        }
+
+        private void search_GotFocus(object sender, RoutedEventArgs e)
+        {
+            searchListView.Visibility = Visibility.Visible;
+        }
+
+        private void search_LostFocus(object sender, RoutedEventArgs e)
+        {
+            searchListView.Visibility = Visibility.Hidden;
+        }
+
+        private void recipeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var buttonItem = sender as Button;
+            var stringToCompare = buttonItem.DataContext.ToString();
+            var recipe = new Recipe();
+            var recipeToCompare = recipe.Parse(stringToCompare);
+            var resultList = new BindingList<Recipe>();
+
+            var dao = new RecipeDAOTextFile();
+            var fullList = dao.GetAll();
+            foreach (var i in fullList)
+            {
+                if (i.RecipeID == recipeToCompare.RecipeID)
+                {
+                    resultList.Add(i);
+                }
+            }
+
+            detailListView.ItemsSource = resultList;
+            foodDetail.Visibility = Visibility.Visible;
+        }
+
+        private void recipeSearchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var buttonItem = sender as Button;
+            var stringToCompare = buttonItem.DataContext.ToString();
+            var recipe = new Recipe();
+            var recipeToCompare = recipe.Parse(stringToCompare);
+            var resultList = new BindingList<Recipe>();
+
+            var dao = new RecipeDAOTextFile();
+            var fullList = dao.GetAll();
+            foreach (var i in fullList)
+            {
+                if (i.RecipeID == recipeToCompare.RecipeID)
+                {
+                    resultList.Add(i);
+                }
+            }
+
+            detailListView.ItemsSource = resultList;
+            foodDetail.Visibility = Visibility.Visible;
+        }
+
+        private void homeScreen_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Debug.WriteLine("hoho");
+            homeScreen.Focus();
+        }
+
+        private void homeScreen_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Debug.WriteLine("hoho1");
+            homeScreen.Focus();
+        }
+
+        private void recipeSearchBtn_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var buttonItem = sender as Button;
+            var stringToCompare = buttonItem.DataContext.ToString();
+            var recipe = new Recipe();
+            var recipeToCompare = recipe.Parse(stringToCompare);
+            var resultList = new BindingList<Recipe>();
+
+            var dao = new RecipeDAOTextFile();
+            var fullList = dao.GetAll();
+            foreach (var i in fullList)
+            {
+                if (i.RecipeID == recipeToCompare.RecipeID)
+                {
+                    resultList.Add(i);
+                }
+            }
+
+            detailListView.ItemsSource = resultList;
+            foodDetail.Visibility = Visibility.Visible;
+        }
+
+        private void checkFavoriteTBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            var buttonItem = sender as ToggleButton;
+
+            if (buttonItem.Name == "checkFavoriteTBtn")
+            {
+                var stringToAdd = buttonItem.DataContext.ToString();
+                var recipe = new Recipe();
+                var recipeToAdd = recipe.Parse(stringToAdd);
+
+                var favDAO = new FavoriteRecipeDAOTextFile();
+                favDAO.Add(recipeToAdd);
+
+                _favoriteRecipeList = favDAO.GetAll();
+                favoriteListView.ItemsSource = _favoriteRecipeList;
+            }
+        }
+
+        private void checkFavoriteTBtn_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var buttonItem = sender as ToggleButton;
+
+            if (buttonItem.DataContext != null)
+            {
+                var stringToCompare = buttonItem.DataContext.ToString();
+                var recipe = new Recipe();
+                var recipeToCompare = recipe.Parse(stringToCompare);
+
+                var favDAO = new FavoriteRecipeDAOTextFile();
+                var fullList = favDAO.GetAll();
+                foreach (var i in fullList)
+                {
+                    if (i.RecipeID == recipeToCompare.RecipeID)
+                    {
+                        favDAO.Delete(i);
+                    }
+                }
+
+                _favoriteRecipeList = favDAO.GetAll();
+                favoriteListView.ItemsSource = _favoriteRecipeList;
+            }
+        }
+
+        private void checkFavoriteFavScreenTBtn_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var buttonItem = sender as ToggleButton;
+
+            if (buttonItem.DataContext != null)
+            {
+                var stringToCompare = buttonItem.DataContext.ToString();
+                var recipe = new Recipe();
+                var recipeToCompare = recipe.Parse(stringToCompare);
+
+                var favDAO = new FavoriteRecipeDAOTextFile();
+                var fullList = favDAO.GetAll();
+                foreach (var i in fullList)
+                {
+                    if (i.RecipeID == recipeToCompare.RecipeID)
+                    {
+                        favDAO.Delete(i);
+                    }
+                }
+
+                _favoriteRecipeList = favDAO.GetAll();
+                favoriteListView.ItemsSource = _favoriteRecipeList;
+
+                var recipeDAO = new RecipeDAOTextFile();
+                _recipeList = recipeDAO.GetAll(productsPerPage, ref pageNumber, ref noPages);
+                dataListView.ItemsSource = _recipeList;
+            }
         }
     }
 }

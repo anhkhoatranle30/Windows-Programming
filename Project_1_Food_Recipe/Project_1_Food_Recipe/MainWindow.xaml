@@ -800,6 +800,71 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="searchRecipeBtnStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Width"
+                    Value="851" />
+            <Setter Property="Height"
+                    Value="190" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <StackPanel Orientation="Horizontal">
+                            <Border x:Name="border"
+
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}">
+                            </Border>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+
+                            <Border  CornerRadius="20"
+                                     Width="250" Height="150"
+                                     BorderThickness="{TemplateBinding BorderThickness}"
+                                     BorderBrush="{TemplateBinding BorderBrush}"
+                                     VerticalAlignment="Top"
+                                     HorizontalAlignment="Left">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="{Binding DesPicture}" />
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="{Binding Title}" Style="{StaticResource foodNameStyle}" VerticalAlignment="Center" />
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#C0C0C0" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0:0:0.5" From="#C0C0C0"
+                                                            To="#606060" Storyboard.TargetName="border"
+                                                            Storyboard.TargetProperty="Background.Color" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0:0:0.5" From="#606060"
+                                                            To="#C0C0C0" Storyboard.TargetName="border"
+                                                            Storyboard.TargetProperty="Background.Color" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
 
     <Border CornerRadius="40" Background="{Binding Color}">
@@ -840,19 +905,9 @@
                 <Border Background="White" Height="800" Width="1160" CornerRadius="40">
                     <Grid Margin="35,55">
 
-                        <Grid x:Name="homeScreen" Visibility="Hidden">
+                        <Grid x:Name="homeScreen" Visibility="Hidden" PreviewMouseLeftButtonDown="homeScreen_PreviewMouseLeftButtonDown" Focusable="True">
 
-                            <Grid x:Name="searchGrid" Style="{StaticResource EntryFieldStyle}" Height="59" Margin="117,10,121.6,620.6" Width="851">
-                                <Image Source="Images/img_search.png" HorizontalAlignment="Left" Margin="10,14,0,10" Width="31" VerticalAlignment="Center" Height="35" />
-                                <TextBlock x:Name="searchWatermark"
-                                           Text="Search"
-                                           Margin="41,6,10,5"
-                                           Style="{StaticResource watermarkTextBlockStyle}"
-                                           Visibility="{Binding ElementName=search, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                                <TextBox x:Name="search" Style="{StaticResource watermarkSearchTextBoxStyle}" Padding="46,5,0,5" />
-                            </Grid>
-
-                            <ListView x:Name="dataListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Margin="0,74,-0.4,36.6">
+                            <ListView x:Name="dataListView"  VerticalAlignment="Top" MaxHeight="200" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Margin="0,74,-0.4,36.6">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel />
@@ -861,14 +916,41 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <Button Style="{StaticResource foodBtnStyle}" />
-                                            <ToggleButton x:Name="checkFavoriteBtn" Width="30" Height="30" Margin="180,60,0,0" Style="{DynamicResource isFavoriteTgStyle}" Checked="checkFavoriteBtn_Checked" />
+                                            <Button Style="{StaticResource foodBtnStyle}" x:Name="recipeBtn" Click="recipeBtn_Click" />
+                                            <ToggleButton x:Name="checkFavoriteTBtn" Width="30" Height="30" Margin="180,60,0,0" Style="{DynamicResource isFavoriteTgStyle}" Checked="checkFavoriteTBtn_Checked" Unchecked="checkFavoriteTBtn_Unchecked" IsChecked="{Binding IsFavorite}" />
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
+                            <ListView x:Name="searchListView"  BorderThickness="0" Visibility="Hidden" Margin="117,69,121.6,68.6">
 
-                            <Grid x:Name="foodDetail">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Style="{StaticResource searchRecipeBtnStyle}" x:Name="recipeSearchBtn"  PreviewMouseLeftButtonDown="recipeSearchBtn_PreviewMouseLeftButtonDown" />
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <Grid x:Name="searchGrid" Style="{StaticResource EntryFieldStyle}" Height="59" Margin="117,10,121.6,620.6" Width="851">
+                                <Image Source="Images/img_search.png" HorizontalAlignment="Left" Margin="10,14,0,10" Width="31" VerticalAlignment="Center" Height="35" />
+                                <TextBlock x:Name="searchWatermark"
+                                           Text="Search"
+                                           Margin="41,6,10,5"
+                                           Style="{StaticResource watermarkTextBlockStyle}"
+                                           Visibility="{Binding ElementName=search, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                <TextBox x:Name="search" GotFocus="search_GotFocus" LostFocus="search_LostFocus" Style="{StaticResource watermarkSearchTextBoxStyle}" Padding="46,5,0,5" TextChanged="search_TextChanged" />
+                            </Grid>
+
+                            <Grid x:Name="foodDetail" Visibility="Hidden">
+                                <ListView x:Name="detailListView">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Image Source="{Binding DesPicture}" />
+                                                <TextBlock Text="{Binding Title}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
                             </Grid>
 
                             <Grid x:Name="page" Margin="718,650,-0.4,-24.4">
@@ -906,7 +988,7 @@
                                         <Grid>
 
                                             <Button Style="{StaticResource foodBtnStyle}" />
-                                            <ToggleButton x:Name="checkFavoriteBtn" Width="30" Height="30" Margin="180,60,0,0" Style="{DynamicResource isFavoriteTgStyle}" IsChecked="True" />
+                                            <ToggleButton x:Name="checkFavoriteFavScreenTBtn" Unchecked="checkFavoriteFavScreenTBtn_Unchecked" Width="30" Height="30" Margin="180,60,0,0" Style="{DynamicResource isFavoriteTgStyle}" IsChecked="True" />
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
@@ -1062,7 +1144,7 @@
                             </Button>
                         </Grid>
 
-                        <Grid x:Name="settingScreen">
+                        <Grid x:Name="settingScreen" Visibility="Hidden">
                             <StackPanel>
                                 <TextBlock Text="Choose your background color:" Style="{StaticResource fontStyle}" Foreground="Black"
                                        VerticalAlignment="Top" HorizontalAlignment="Left"

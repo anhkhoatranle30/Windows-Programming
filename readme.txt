@@ -1,4 +1,22 @@
 // Functional //
+
+to do list
+//function
+sửa hàm search
+cho fav lên đầu
+add recipe
+random splash
+binding step vào detail
+//UI
+thêm nút back trong detail
+chỉnh hiện món ăn detail
+click hiện detail trong fav
+xử lý chuỗi rỗng
+số món ăn mỗi trang trong setting 4 6 8 (noPages)
+
+deadline: thứ 2 tối
+
+ 
 //Class description
 Recipe {
 	RecipeID : int
@@ -39,3 +57,7 @@ thêm page:
 	số page tối đa ở textblock: pageTextBlock
 	nút qua trang tiếp theo ở button: nextPageBtn 
 	nút qua trang ở sau: backPageBtn
+
+
+Debug.WriteLine(allSteps[stepCount - 1].StepPathImage);
+Debug.WriteLine(((ImageBrush)addImgBtn.Background).ImageSource);
