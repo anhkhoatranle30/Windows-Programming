@@ -204,6 +204,23 @@ namespace Project_1_Food_Recipe
 
             public string Content { get; set; }
         }
+        public class UncompressedStep : Step
+        {
+            public string StepNumber { get; set; }
+            //Methods
+            
+            public static BindingList<UncompressedStep> ToUncrompressStepList(BindingList<Step> stepsList)
+            {
+                var result = new BindingList<UncompressedStep>();
+                for (int i = 0; i < stepsList.Count; i++)
+                {
+                    var stepnumber = new StringBuilder();
+                    stepnumber.Append("Bước " + (i+1).ToString() + ": ");
+                    result.Add(new UncompressedStep() { Content = stepsList[i].Content, ImgSource = stepsList[i].ImgSource, StepNumber = stepnumber.ToString() });
+                }
+                return result;
+            }
+        }
 
         public class Recipe
         {
@@ -1405,6 +1422,8 @@ namespace Project_1_Food_Recipe
             }
 
             detailListView.ItemsSource = resultList;
+            var detailStepsList = UncompressedStep.ToUncrompressStepList(resultList[0].StepsList);
+            detailStepsListView.ItemsSource = detailStepsList;
             foodDetail.Visibility = Visibility.Visible;
         }
 

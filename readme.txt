@@ -5,8 +5,8 @@ to do list
 (v)sửa hàm search
 (v)cho fav lên đầu
 (v)add recipe
+(v)binding step vào detail
 random splash
-binding step vào detail
 //UI
 thêm nút back trong detail
 chỉnh hiện món ăn detail

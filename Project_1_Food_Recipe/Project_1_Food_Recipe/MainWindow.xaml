@@ -940,18 +940,31 @@
                                 <TextBox x:Name="search" GotFocus="search_GotFocus" LostFocus="search_LostFocus" Style="{StaticResource watermarkSearchTextBoxStyle}" Padding="46,5,0,5" TextChanged="search_TextChanged" />
                             </Grid>
 
-                            <Grid x:Name="foodDetail" Visibility="Hidden">
-                                <ListView x:Name="detailListView">
+                            <StackPanel x:Name="foodDetail" Visibility="Hidden">
+                                <ListView x:Name="detailListView" >
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Grid>
-                                                <Image Source="{Binding DesPicture}" />
-                                                <TextBlock Text="{Binding Title}" />
-                                            </Grid>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Height="200" Source="{Binding DesPicture}" />
+                                                <TextBlock Text="{Binding Title}" Margin="0 0 20 0"/>
+                                                <TextBlock Text="{Binding VideoLink}" Margin="0 0 20 0"/>
+                                                <TextBlock Text="{Binding Description}"/>
+                                            </StackPanel>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
-                            </Grid>
+                                <ListView x:Name="detailStepsListView" MaxHeight="450">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <WrapPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding StepNumber}"/>
+                                                <Image Height="200" Width="200" Source="{Binding ImgSource}"/>
+                                                <TextBlock Text="{Binding Content}"/>
+                                            </WrapPanel>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackPanel>
 
                             <Grid x:Name="page" Margin="718,650,-0.4,-24.4">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="158,0,38,0" Width="176">
