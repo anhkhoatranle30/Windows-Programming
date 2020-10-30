@@ -5,8 +5,8 @@ to do list
 (v)sửa hàm search
 (v)cho fav lên đầu
 (v)add recipe
-(v)binding step vào detail
-random splash
+(v)binding step vào detail => Coi cái detailStepsListView
+(v)random splash => _splashScreenRecipe
 //UI
 thêm nút back trong detail
 chỉnh hiện món ăn detail

@@ -38,9 +38,9 @@ namespace Project_1_Food_Recipe
 
         //Lists
         private BindingList<Recipe> _recipeList;
-
         private BindingList<Recipe> _favoriteRecipeList;
         private BindingList<Recipe> _searchRecipeList;
+        private BindingList<Recipe> _splashScreenRecipe;
 
         public static String toAbsolutePath(String relative)
         {
@@ -887,21 +887,32 @@ namespace Project_1_Food_Recipe
 
         #endregion functional
 
+        
+        public Random _rng = new Random();
+        
+
         public MainWindow()
         {
+            
             InitializeComponent();
+            
             var recipeDAOTextFile = new RecipeDAOTextFile();
             _recipeList = recipeDAOTextFile.GetAll();
             var favoriteRecipeDAOTextFile = new FavoriteRecipeDAOTextFile();
             _favoriteRecipeList = favoriteRecipeDAOTextFile.GetAll();
 
+            //splash screen random dish
+            int index = _rng.Next(_recipeList.Count);
+            _splashScreenRecipe = new BindingList<Recipe>();
+            _splashScreenRecipe.Add(_recipeList[index]);
+            //end splash screen
+
             dataListView.ItemsSource = _recipeList;
             favoriteListView.ItemsSource = _favoriteRecipeList;
 
             #region test paging
-
             pageNumber = 1;
-            productsPerPage = 4;
+            productsPerPage = 8;
             _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
             dataListView.ItemsSource = _recipeList;
             pageTextBox.Text = pageNumber.ToString();
