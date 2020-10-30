@@ -2,8 +2,8 @@
 
 to do list
 //function
-sửa hàm search
-cho fav lên đầu
+(v)sửa hàm search
+(v)cho fav lên đầu
 add recipe
 random splash
 binding step vào detail

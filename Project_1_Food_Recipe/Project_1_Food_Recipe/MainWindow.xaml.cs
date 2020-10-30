@@ -88,6 +88,92 @@ namespace Project_1_Food_Recipe
 
         #region definition classes
 
+        class SearchString
+        {
+            private static readonly string[] VietnameseSigns = new string[] {
+
+                "aAeEoOuUiIdDyY",
+
+                "áàạảãâấầậẩẫăắằặẳẵ",
+
+                "ÁÀẠẢÃÂẤẦẬẨẪĂẮẰẶẲẴ",
+
+                "éèẹẻẽêếềệểễ",
+
+                "ÉÈẸẺẼÊẾỀỆỂỄ",
+
+                "óòọỏõôốồộổỗơớờợởỡ",
+
+                "ÓÒỌỎÕÔỐỒỘỔỖƠỚỜỢỞỠ",
+
+                "úùụủũưứừựửữ",
+
+                "ÚÙỤỦŨƯỨỪỰỬỮ",
+
+                "íìịỉĩ",
+
+                "ÍÌỊỈĨ",
+
+                "đ",
+
+                "Đ",
+
+                "ýỳỵỷỹ",
+
+                "ÝỲỴỶỸ"
+
+            };
+            /// <summary>
+            /// Hàm để xóa dấu tiếng việt đi thành không dấu
+            /// </summary>
+            /// <param name="str">Chuỗi có dấu</param>
+            /// <returns>Trả về chuỗi không dấu</returns>
+            public static string RemoveSign4VietnameseString(string str)
+
+            {
+
+                //Tiến hành thay thế , lọc bỏ dấu cho chuỗi
+
+                for (int i = 1; i < VietnameseSigns.Length; i++)
+
+                {
+
+                    for (int j = 0; j < VietnameseSigns[i].Length; j++)
+
+                        str = str.Replace(VietnameseSigns[i][j], VietnameseSigns[0][i - 1]);
+
+                }
+
+                return str;
+
+            }
+            /// <summary>
+            /// Hàm parse từ chuỗi bình thường ra chuỗi để search
+            /// </summary>
+            /// <param name="str">Hàm muốn search</param>
+            /// <returns>Trả về hàm không có dấu và viết thường hết</returns>
+            public static string Parse(string str)
+            {
+                str = RemoveSign4VietnameseString(str);
+                str = str.ToLower();
+                return str;
+            }
+            public static bool CheckSearch(string searchedString, string toSearchString)
+            {
+                searchedString = Parse(searchedString);
+                toSearchString = Parse(toSearchString);
+                var tokens = searchedString.Split(new String[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                foreach(var token in tokens)
+                {
+                    if(toSearchString.Contains(token))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+
         public class RecipesQuantity
         {
             public int Total { get; set; }
@@ -451,11 +537,12 @@ namespace Project_1_Food_Recipe
             /// <returns></returns>
             public override BindingList<Recipe> Search(string searchString)
             {
-                var favoriteRecipes = GetAll();
                 var result = new BindingList<Recipe>();
-                foreach (var recipe in favoriteRecipes)
+
+                var recipes = GetAll();
+                foreach (var recipe in recipes)
                 {
-                    if (recipe.Title.Contains(searchString))
+                    if (SearchString.CheckSearch(searchString, recipe.Title))
                     {
                         result.Add(recipe);
                     }
@@ -480,9 +567,8 @@ namespace Project_1_Food_Recipe
                 //
                 //Initialize list
                 //
-                var result = new BindingList<Recipe>()
-                {
-                };
+                var result = new BindingList<Recipe>();
+                var fullList = new BindingList<Recipe>();
 
                 //
                 //Read file txt
@@ -528,9 +614,26 @@ namespace Project_1_Food_Recipe
                             recipe.DesPicture = tokens[2];
                         }
                         //Add to list
+                        fullList.Add(recipe);
+                    }
+                }
+                //add favorite to head of the list
+                foreach(var recipe in fullList)
+                {
+                    if(recipe.IsFavorite == true)
+                    {
                         result.Add(recipe);
                     }
                 }
+                //add unfavorite to tail of the list
+                foreach (var recipe in fullList)
+                {
+                    if (recipe.IsFavorite == false)
+                    {
+                        result.Add(recipe);
+                    }
+                }
+
                 //return
                 return result;
             }
@@ -710,11 +813,12 @@ namespace Project_1_Food_Recipe
             /// <returns></returns>
             public override BindingList<Recipe> Search(string searchString)
             {
-                var recipes = GetAll();
                 var result = new BindingList<Recipe>();
+
+                var recipes = GetAll();
                 foreach (var recipe in recipes)
                 {
-                    if (recipe.Title.Contains(searchString))
+                    if (SearchString.CheckSearch(searchString, recipe.Title))
                     {
                         result.Add(recipe);
                     }
@@ -1336,6 +1440,10 @@ namespace Project_1_Food_Recipe
 
                 _favoriteRecipeList = favDAO.GetAll();
                 favoriteListView.ItemsSource = _favoriteRecipeList;
+
+                var recipeDAO = new RecipeDAOTextFile();
+                _recipeList = recipeDAO.GetAll(productsPerPage, ref pageNumber, ref noPages);
+                dataListView.ItemsSource = _recipeList;
             }
         }
 
@@ -1361,6 +1469,10 @@ namespace Project_1_Food_Recipe
 
                 _favoriteRecipeList = favDAO.GetAll();
                 favoriteListView.ItemsSource = _favoriteRecipeList;
+
+                var recipeDAO = new RecipeDAOTextFile();
+                _recipeList = recipeDAO.GetAll(productsPerPage, ref pageNumber, ref noPages);
+                dataListView.ItemsSource = _recipeList;
             }
         }
 
