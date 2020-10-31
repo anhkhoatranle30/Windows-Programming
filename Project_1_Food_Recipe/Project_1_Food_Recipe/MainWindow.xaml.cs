@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -38,6 +39,7 @@ namespace Project_1_Food_Recipe
 
         //Lists
         private BindingList<Recipe> _recipeList;
+
         private BindingList<Recipe> _favoriteRecipeList;
         private BindingList<Recipe> _searchRecipeList;
         private BindingList<Recipe> _splashScreenRecipe;
@@ -108,7 +110,6 @@ namespace Project_1_Food_Recipe
         public class SearchString
         {
             private static readonly string[] VietnameseSigns = new string[] {
-
                 "aAeEoOuUiIdDyY",
 
                 "áàạảãâấầậẩẫăắằặẳẵ",
@@ -138,8 +139,8 @@ namespace Project_1_Food_Recipe
                 "ýỳỵỷỹ",
 
                 "ÝỲỴỶỸ"
-
             };
+
             /// <summary>
             /// Hàm để xóa dấu tiếng việt đi thành không dấu
             /// </summary>
@@ -148,22 +149,19 @@ namespace Project_1_Food_Recipe
             public static string RemoveSign4VietnameseString(string str)
 
             {
-
                 //Tiến hành thay thế , lọc bỏ dấu cho chuỗi
 
                 for (int i = 1; i < VietnameseSigns.Length; i++)
 
                 {
-
                     for (int j = 0; j < VietnameseSigns[i].Length; j++)
 
                         str = str.Replace(VietnameseSigns[i][j], VietnameseSigns[0][i - 1]);
-
                 }
 
                 return str;
-
             }
+
             /// <summary>
             /// Hàm parse từ chuỗi bình thường ra chuỗi để search
             /// </summary>
@@ -175,14 +173,15 @@ namespace Project_1_Food_Recipe
                 str = str.ToLower();
                 return str;
             }
+
             public static bool CheckSearch(string searchedString, string toSearchString)
             {
                 searchedString = Parse(searchedString);
                 toSearchString = Parse(toSearchString);
                 var tokens = searchedString.Split(new String[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-                foreach(var token in tokens)
+                foreach (var token in tokens)
                 {
-                    if(toSearchString.Contains(token))
+                    if (toSearchString.Contains(token))
                     {
                         return true;
                     }
@@ -204,18 +203,19 @@ namespace Project_1_Food_Recipe
 
             public string Content { get; set; }
         }
+
         public class UncompressedStep : Step
         {
             public string StepNumber { get; set; }
             //Methods
-            
+
             public static BindingList<UncompressedStep> ToUncrompressStepList(BindingList<Step> stepsList)
             {
                 var result = new BindingList<UncompressedStep>();
                 for (int i = 0; i < stepsList.Count; i++)
                 {
                     var stepnumber = new StringBuilder();
-                    stepnumber.Append("Bước " + (i+1).ToString() + ": ");
+                    stepnumber.Append("Bước " + (i + 1).ToString() + ": ");
                     result.Add(new UncompressedStep() { Content = stepsList[i].Content, ImgSource = stepsList[i].ImgSource, StepNumber = stepnumber.ToString() });
                 }
                 return result;
@@ -652,9 +652,9 @@ namespace Project_1_Food_Recipe
                     }
                 }
                 //add favorite to head of the list
-                foreach(var recipe in fullList)
+                foreach (var recipe in fullList)
                 {
-                    if(recipe.IsFavorite == true)
+                    if (recipe.IsFavorite == true)
                     {
                         result.Add(recipe);
                     }
@@ -887,15 +887,12 @@ namespace Project_1_Food_Recipe
 
         #endregion functional
 
-        
         public Random _rng = new Random();
-        
 
         public MainWindow()
         {
-            
             InitializeComponent();
-            
+
             var recipeDAOTextFile = new RecipeDAOTextFile();
             _recipeList = recipeDAOTextFile.GetAll();
             var favoriteRecipeDAOTextFile = new FavoriteRecipeDAOTextFile();
@@ -911,6 +908,7 @@ namespace Project_1_Food_Recipe
             favoriteListView.ItemsSource = _favoriteRecipeList;
 
             #region test paging
+
             pageNumber = 1;
             productsPerPage = 8;
             _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
@@ -1115,6 +1113,15 @@ namespace Project_1_Food_Recipe
             setDefaultColor("greenColor");
         }
 
+        private void orangeColor_Checked(object sender, RoutedEventArgs e)
+        {
+            _backgroundColor.Color = "Orange";
+            _backgroundColor.SolidColor = new SolidColorBrush(Colors.Orange);
+
+            settingBtn_Click(sender, e);
+            setDefaultColor("orangeColor");
+        }
+
         private void defaultColor_Checked(object sender, RoutedEventArgs e)
         {
             _backgroundColor.Color = "#3498DB";
@@ -1141,7 +1148,14 @@ namespace Project_1_Food_Recipe
 
             myRadioButton.IsChecked = true;
             homeBtn_Click(sender, e);
+
+            var splash = ConfigurationManager.AppSettings["ShowSplashScreen"];
+            var showSplash = bool.Parse(splash);
+
+            splashScreen.IsChecked = showSplash;
         }
+
+        private bool isChooseImage = false;
 
         private void addImgBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -1155,6 +1169,8 @@ namespace Project_1_Food_Recipe
                     new Uri(fd.FileName));
                 myBrush.ImageSource = image.Source;
                 addImgBtn.Background = myBrush;
+
+                isChooseImage = true;
             }
         }
 
@@ -1183,86 +1199,135 @@ namespace Project_1_Food_Recipe
 
         private void addStepBtn_Click(object sender, RoutedEventArgs e)
         {
-            stepCount++;
-            Image clone = new Image();
-            clone.Source = stepImage.Source;
-
-            if (allSteps == null)
+            if (stepDescription.Text == "")
             {
-                allSteps = new BindingList<AllSteps>();
+                MessageBox.Show("Vui lòng điền mô tả bước làm món ăn!",
+                                "Thông báo",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
             }
-
-            allSteps.Add(new AllSteps
+            else if (stepImage.Source == null)
             {
-                NumberOfStep = $"Bước {stepCount}",
-                StepDesc = stepDescription.Text,
-                StepPathImage = (BitmapImage)clone.Source
-            });
+                MessageBox.Show("Vui lòng chọn ảnh trong bước làm món ăn!",
+                                "Thông báo",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
+            }
+            else
+            {
+                stepCount++;
+                Image clone = new Image();
+                clone.Source = stepImage.Source;
 
-            Debug.WriteLine(allSteps[stepCount - 1].StepPathImage);
-            //Debug.WriteLine(((ImageBrush)addImgBtn.Background).ImageSource);
-            allStepListView.ItemsSource = allSteps;
+                if (allSteps == null)
+                {
+                    allSteps = new BindingList<AllSteps>();
+                }
 
-            stepDescription.Clear();
-            stepImage.Source = null;
+                allSteps.Add(new AllSteps
+                {
+                    NumberOfStep = $"Bước {stepCount}",
+                    StepDesc = stepDescription.Text,
+                    StepPathImage = (BitmapImage)clone.Source
+                });
+
+                Debug.WriteLine(allSteps[stepCount - 1].StepPathImage);
+                //Debug.WriteLine(((ImageBrush)addImgBtn.Background).ImageSource);
+                allStepListView.ItemsSource = allSteps;
+
+                stepDescription.Clear();
+                stepImage.Source = null;
+            }
         }
-
 
         private void saveAddBtn_Click(object sender, RoutedEventArgs e)
         {
-            stepCount = 0;
-            #region Add Functional 
-            //
-            var recipeDAOTextFile = new RecipeDAOTextFile();
-            // StepsList
-            var stepsList = new BindingList<Step>();
-            foreach (var step in allSteps)
+            if (title.Text == "")
             {
-                stepsList.Add(new Step() { ImgSource = PathString.ParseSystemPath(step.StepPathImage.ToString()), Content = step.StepDesc });
-            }
-
-            var recipe = recipeDAOTextFile.CreateRecipe(title.Text, PathString.ParseSystemPath(((ImageBrush)addImgBtn.Background).ImageSource.ToString()), description.Text, yt.Text, stepsList);
-
-            
-            
-            //
-            #endregion
-            MessageBoxResult choice = MessageBox.Show("Bạn có chắc muốn lưu?",
-                                                        "Thông báo",
-                                                        MessageBoxButton.YesNo,
-                                                        MessageBoxImage.Question);
-
-            if (choice == MessageBoxResult.Yes)
-            {
-                //các bước lưu
-
-                //Add to database
-                recipeDAOTextFile.Add(recipe);
-                //end adding to db
-                //Bind list to Home screen
-                _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
-                dataListView.ItemsSource = _recipeList;
-                //end binding list
-
-                title.Clear();
-                description.Clear();
-                yt.Clear();
-                addImgBtn.Background = null;
-                stepDescription.Clear();
-                addImgBtn.Background = Brushes.White;
-                stepImage.Source = null;
-                allSteps = null;
-                allStepListView.ItemsSource = null;
-                allStepListView.Items.Clear();
-
-                MessageBox.Show("Đã lưu thành công",
+                MessageBox.Show("Vui lòng điền tên món ăn!",
                                 "Thông báo",
                                 MessageBoxButton.OK,
-                                MessageBoxImage.Information);
+                                MessageBoxImage.Warning);
             }
-            else if (choice == MessageBoxResult.No)
+            else if (description.Text == "")
             {
-                //do nothing
+                MessageBox.Show("Vui lòng điền mô tả món ăn!",
+                                "Thông báo",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
+            }
+            else if (yt.Text == "")
+            {
+                MessageBox.Show("Vui lòng điền link youtube hướng dẫn món ăn!",
+                                "Thông báo",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
+            }
+            else if (isChooseImage == false)
+            {
+                MessageBox.Show("Vui lòng chọn hình ảnh món ăn!",
+                                "Thông báo",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
+            }
+            else
+            {
+                stepCount = 0;
+
+                #region Add Functional
+
+                //
+                var recipeDAOTextFile = new RecipeDAOTextFile();
+                // StepsList
+                var stepsList = new BindingList<Step>();
+                foreach (var step in allSteps)
+                {
+                    stepsList.Add(new Step() { ImgSource = PathString.ParseSystemPath(step.StepPathImage.ToString()), Content = step.StepDesc });
+                }
+
+                var recipe = recipeDAOTextFile.CreateRecipe(title.Text, PathString.ParseSystemPath(((ImageBrush)addImgBtn.Background).ImageSource.ToString()), description.Text, yt.Text, stepsList);
+
+                //
+
+                #endregion Add Functional
+
+                MessageBoxResult choice = MessageBox.Show("Bạn có chắc muốn lưu?",
+                                                            "Thông báo",
+                                                            MessageBoxButton.YesNo,
+                                                            MessageBoxImage.Question);
+
+                if (choice == MessageBoxResult.Yes)
+                {
+                    //các bước lưu
+
+                    //Add to database
+                    recipeDAOTextFile.Add(recipe);
+                    //end adding to db
+                    //Bind list to Home screen
+                    _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
+                    dataListView.ItemsSource = _recipeList;
+                    //end binding list
+
+                    title.Clear();
+                    description.Clear();
+                    yt.Clear();
+                    addImgBtn.Background = null;
+                    stepDescription.Clear();
+                    addImgBtn.Background = Brushes.White;
+                    stepImage.Source = null;
+                    allSteps = null;
+                    allStepListView.ItemsSource = null;
+                    allStepListView.Items.Clear();
+
+                    MessageBox.Show("Đã lưu thành công",
+                                    "Thông báo",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Information);
+                }
+                else if (choice == MessageBoxResult.No)
+                {
+                    //do nothing
+                }
             }
         }
 
@@ -1433,9 +1498,12 @@ namespace Project_1_Food_Recipe
             }
 
             detailListView.ItemsSource = resultList;
+
             var detailStepsList = UncompressedStep.ToUncrompressStepList(resultList[0].StepsList);
             detailStepsListView.ItemsSource = detailStepsList;
+
             foodDetail.Visibility = Visibility.Visible;
+            home.Visibility = Visibility.Hidden;
         }
 
         private void recipeSearchBtn_Click(object sender, RoutedEventArgs e)
@@ -1572,6 +1640,68 @@ namespace Project_1_Food_Recipe
                 _recipeList = recipeDAO.GetAll(productsPerPage, ref pageNumber, ref noPages);
                 dataListView.ItemsSource = _recipeList;
             }
+        }
+
+        private void backToHomeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            foodDetail.Visibility = Visibility.Hidden;
+            home.Visibility = Visibility.Visible;
+        }
+
+        private void recipeFavBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var buttonItem = sender as Button;
+            var stringToCompare = buttonItem.DataContext.ToString();
+            var recipe = new Recipe();
+            var recipeToCompare = recipe.Parse(stringToCompare);
+            var resultList = new BindingList<Recipe>();
+
+            var dao = new RecipeDAOTextFile();
+            var fullList = dao.GetAll();
+            foreach (var i in fullList)
+            {
+                if (i.RecipeID == recipeToCompare.RecipeID)
+                {
+                    resultList.Add(i);
+                }
+            }
+
+            detailFavListView.ItemsSource = resultList;
+
+            var detailStepsList = UncompressedStep.ToUncrompressStepList(resultList[0].StepsList);
+            detailStepsFavListView.ItemsSource = detailStepsList;
+
+            foodFavDetail.Visibility = Visibility.Visible;
+            favoriteListView.Visibility = Visibility.Hidden;
+        }
+
+        private void backToFavBtn_Click(object sender, RoutedEventArgs e)
+        {
+            foodFavDetail.Visibility = Visibility.Hidden;
+            favoriteListView.Visibility = Visibility.Visible;
+        }
+
+        private void cboPpP_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem typeItem = (ComboBoxItem)cboPpP.SelectedItem;
+
+            if (typeItem.Content != null)
+            {
+                string value = typeItem.Content.ToString();
+                int choose = int.Parse(value);
+
+                productsPerPage = choose;
+
+                Debug.WriteLine(choose);
+            }
+        }
+
+        private void splashScreen_Checked(object sender, RoutedEventArgs e)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(
+                ConfigurationUserLevel.None);
+            config.AppSettings.Settings["ShowSplashScreen"].Value = "true";
+            config.Save(ConfigurationSaveMode.Minimal);
         }
     }
 }

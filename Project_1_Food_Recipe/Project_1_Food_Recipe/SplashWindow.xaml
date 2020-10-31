@@ -10,6 +10,7 @@
         AllowsTransparency="True"
         Background="Transparent"
         ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">
     <Border CornerRadius="40" Background="White">
         <Grid>

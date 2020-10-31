@@ -18,6 +18,7 @@
 
     <Window.Resources>
 
+        <SolidColorBrush x:Key="color" Color="{Binding Color}" />
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
 
@@ -907,21 +908,53 @@
 
                         <Grid x:Name="homeScreen" Visibility="Hidden" PreviewMouseLeftButtonDown="homeScreen_PreviewMouseLeftButtonDown" Focusable="True">
 
-                            <ListView x:Name="dataListView"  VerticalAlignment="Top" MaxHeight="200" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Margin="0,74,-0.4,36.6">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <WrapPanel />
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <Button Style="{StaticResource foodBtnStyle}" x:Name="recipeBtn" Click="recipeBtn_Click" />
-                                            <ToggleButton x:Name="checkFavoriteTBtn" Width="30" Height="30" Margin="180,60,0,0" Style="{DynamicResource isFavoriteTgStyle}" Checked="checkFavoriteTBtn_Checked" Unchecked="checkFavoriteTBtn_Unchecked" IsChecked="{Binding IsFavorite}" />
-                                        </Grid>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
+                            <Grid x:Name="home">
+                                <ListView x:Name="dataListView"  VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Margin="0,74,-0.4,36.6">
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel />
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Button Style="{StaticResource foodBtnStyle}" x:Name="recipeBtn" Click="recipeBtn_Click" />
+                                                <ToggleButton x:Name="checkFavoriteTBtn" Width="30" Height="30" Margin="180,60,0,0" Style="{DynamicResource isFavoriteTgStyle}" Checked="checkFavoriteTBtn_Checked" Unchecked="checkFavoriteTBtn_Unchecked" IsChecked="{Binding IsFavorite}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                                <Grid x:Name="searchGrid" Style="{StaticResource EntryFieldStyle}" Height="59" Margin="117,10,121.6,620.6" Width="851">
+                                    <Image Source="Images/img_search.png" HorizontalAlignment="Left" Margin="10,14,0,10" Width="31" VerticalAlignment="Center" Height="35" />
+                                    <TextBlock x:Name="searchWatermark"
+                                           Text="Search"
+                                           Margin="41,6,10,5"
+                                           Style="{StaticResource watermarkTextBlockStyle}"
+                                           Visibility="{Binding ElementName=search, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                    <TextBox x:Name="search" GotFocus="search_GotFocus" LostFocus="search_LostFocus" Style="{StaticResource watermarkSearchTextBoxStyle}" Padding="46,5,0,5" TextChanged="search_TextChanged" />
+                                </Grid>
+                                <Grid x:Name="page" Margin="718,650,-0.4,-24.4">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="158,0,38,0" Width="176">
+                                        <Button x:Name="backPageBtn" Style="{StaticResource backPageBtnStyle}" Margin="0,0,5,0" Click="backPageBtn_Click" />
+                                        <Border Height="30" Width="30" BorderThickness="1" BorderBrush="Gray">
+
+                                            <TextBox x:Name="pageTextBox" Text="4"
+                                                     VerticalContentAlignment="Center"
+                                                     HorizontalContentAlignment="Center"
+                                                     FontSize="20"
+                                                 FontWeight="Bold"
+                                                 TextChanged="pageTextBox_TextChanged"
+                                                 KeyDown="pageTextBox_KeyDown"
+                                                 LostFocus="pageTextBox_LostFocus">
+                                            </TextBox>
+                                        </Border>
+                                        <TextBlock Text="/" FontSize="22" Margin="0,15,0,19" FontWeight="Bold" />
+                                        <TextBlock x:Name="pageTextBlock" Text="12" FontSize="20" Margin="0,16,0,18" FontWeight="Bold" Padding="0,3" />
+                                        <Button x:Name="nextPageBtn" Style="{StaticResource nextPageBtnStyle}" Margin="5,0,0,0" Click="nextPageBtn_Click" />
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+
                             <ListView x:Name="searchListView"  BorderThickness="0" Visibility="Hidden" Margin="117,69,121.6,68.6">
 
                                 <ListView.ItemTemplate>
@@ -930,61 +963,46 @@
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
-                            <Grid x:Name="searchGrid" Style="{StaticResource EntryFieldStyle}" Height="59" Margin="117,10,121.6,620.6" Width="851">
-                                <Image Source="Images/img_search.png" HorizontalAlignment="Left" Margin="10,14,0,10" Width="31" VerticalAlignment="Center" Height="35" />
-                                <TextBlock x:Name="searchWatermark"
-                                           Text="Search"
-                                           Margin="41,6,10,5"
-                                           Style="{StaticResource watermarkTextBlockStyle}"
-                                           Visibility="{Binding ElementName=search, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                                <TextBox x:Name="search" GotFocus="search_GotFocus" LostFocus="search_LostFocus" Style="{StaticResource watermarkSearchTextBoxStyle}" Padding="46,5,0,5" TextChanged="search_TextChanged" />
-                            </Grid>
 
-                            <StackPanel x:Name="foodDetail" Visibility="Hidden">
-                                <ListView x:Name="detailListView" >
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Image Height="200" Source="{Binding DesPicture}" />
-                                                <TextBlock Text="{Binding Title}" Margin="0 0 20 0"/>
-                                                <TextBlock Text="{Binding VideoLink}" Margin="0 0 20 0"/>
-                                                <TextBlock Text="{Binding Description}"/>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
-                                <ListView x:Name="detailStepsListView" MaxHeight="450">
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <WrapPanel Orientation="Horizontal">
-                                                <TextBlock Text="{Binding StepNumber}"/>
-                                                <Image Height="200" Width="200" Source="{Binding ImgSource}"/>
-                                                <TextBlock Text="{Binding Content}"/>
-                                            </WrapPanel>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
-                            </StackPanel>
+                            <Grid x:Name="foodDetail" Visibility="Hidden" Margin="0,37,-0.4,-0.4">
+                                <StackPanel Orientation="Horizontal">
+                                    <ListView x:Name="detailListView" Margin="0,0,30,0" BorderThickness="0" Width="400" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <!--<Image Source="{Binding DesPicture}" />-->
+                                                <StackPanel>
+                                                    <Border Width="380" Height="250" CornerRadius="40" Margin="0,0,0,15">
+                                                        <Border.Background>
+                                                            <ImageBrush ImageSource="{Binding DesPicture}" />
+                                                        </Border.Background>
+                                                    </Border>
+                                                    <TextBlock Text="{Binding Title}" FontSize="28" TextWrapping="Wrap" Style="{StaticResource foodNameStyle}" Padding="-2,5" HorizontalAlignment="Left"  Foreground="{StaticResource color}" />
+                                                    <TextBlock Text="{Binding Description}" Style="{StaticResource foodNameStyle}" Padding="-2,5" TextAlignment="Justify" TextWrapping="Wrap" />
+                                                    <TextBlock Text="{Binding VideoLink}" Style="{StaticResource foodNameStyle}" Margin="0,5" HorizontalAlignment="Left" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
 
-                            <Grid x:Name="page" Margin="718,650,-0.4,-24.4">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="158,0,38,0" Width="176">
-                                    <Button x:Name="backPageBtn" Style="{StaticResource backPageBtnStyle}" Margin="0,0,5,0" Click="backPageBtn_Click" />
-                                    <Border Height="30" Width="30" BorderThickness="1" BorderBrush="Gray">
-
-                                        <TextBox x:Name="pageTextBox" Text="4"
-                                                     VerticalContentAlignment="Center"
-                                                     HorizontalContentAlignment="Center"
-                                                     FontSize="20"
-                                                 FontWeight="Bold"
-                                                 TextChanged="pageTextBox_TextChanged"
-                                                 KeyDown="pageTextBox_KeyDown"
-                                                 LostFocus="pageTextBox_LostFocus">
-                                        </TextBox>
-                                    </Border>
-                                    <TextBlock Text="/" FontSize="22" Margin="0,15,0,19" FontWeight="Bold" />
-                                    <TextBlock x:Name="pageTextBlock" Text="12" FontSize="20" Margin="0,16,0,18" FontWeight="Bold" Padding="0,3" />
-                                    <Button x:Name="nextPageBtn" Style="{StaticResource nextPageBtnStyle}" Margin="5,0,0,0" Click="nextPageBtn_Click" />
+                                    <ListView x:Name="detailStepsListView" Width="680" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <WrapPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding StepNumber}" Foreground="{StaticResource color}" FontSize="23" Style="{StaticResource foodNameStyle}" Margin="0,10,0,0" />
+                                                    <TextBlock Text="{Binding Content}" Style="{StaticResource foodNameStyle}" TextWrapping="WrapWithOverflow" TextAlignment="Justify" Margin="0" />
+                                                    <Grid Width="680" Height="250">
+                                                        <Border CornerRadius="40" Width="400" Height="250" HorizontalAlignment="Center">
+                                                            <Border.Background>
+                                                                <ImageBrush ImageSource="{Binding ImgSource}" />
+                                                            </Border.Background>
+                                                        </Border>
+                                                    </Grid>
+                                                </WrapPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
                                 </StackPanel>
+                                <Button x:Name="backToHomeBtn" Style="{StaticResource backPageBtnStyle}" Margin="0,-55,1055,673" Click="backToHomeBtn_Click" />
                             </Grid>
                         </Grid>
 
@@ -999,13 +1017,53 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
-
-                                            <Button Style="{StaticResource foodBtnStyle}" />
+                                            <Button Style="{StaticResource foodBtnStyle}" x:Name="recipeFavBtn" Click="recipeFavBtn_Click" />
                                             <ToggleButton x:Name="checkFavoriteFavScreenTBtn" Unchecked="checkFavoriteFavScreenTBtn_Unchecked" Width="30" Height="30" Margin="180,60,0,0" Style="{DynamicResource isFavoriteTgStyle}" IsChecked="True" />
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
+
+                            <Grid x:Name="foodFavDetail" Visibility="Hidden" Margin="0,37,-0.4,-0.4">
+                                <StackPanel Orientation="Horizontal">
+                                    <ListView Name="detailFavListView" Margin="0,0,30,0" BorderThickness="0" Width="400" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <!--<Image Source="{Binding DesPicture}" />-->
+                                                <StackPanel>
+                                                    <Border Width="380" Height="250" CornerRadius="40" Margin="0,0,0,15">
+                                                        <Border.Background>
+                                                            <ImageBrush ImageSource="{Binding DesPicture}" />
+                                                        </Border.Background>
+                                                    </Border>
+                                                    <TextBlock Text="{Binding Title}" FontSize="28" TextWrapping="Wrap" Style="{StaticResource foodNameStyle}" Padding="-2,5" HorizontalAlignment="Left"  Foreground="{StaticResource color}" />
+                                                    <TextBlock Text="{Binding Description}" Style="{StaticResource foodNameStyle}" Padding="-2,5" TextAlignment="Justify" TextWrapping="Wrap" />
+                                                    <TextBlock Text="{Binding VideoLink}" Style="{StaticResource foodNameStyle}" Margin="0,5" HorizontalAlignment="Left" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+
+                                    <ListView x:Name="detailStepsFavListView" Width="680" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <WrapPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding StepNumber}" Foreground="{StaticResource color}" FontSize="23" Style="{StaticResource foodNameStyle}" Margin="0,10,0,0" />
+                                                    <TextBlock Text="{Binding Content}" Style="{StaticResource foodNameStyle}" TextWrapping="WrapWithOverflow" TextAlignment="Justify" Margin="0" />
+                                                    <Grid Width="680" Height="250">
+                                                        <Border CornerRadius="40" Width="400" Height="250" HorizontalAlignment="Center">
+                                                            <Border.Background>
+                                                                <ImageBrush ImageSource="{Binding ImgSource}" />
+                                                            </Border.Background>
+                                                        </Border>
+                                                    </Grid>
+                                                </WrapPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackPanel>
+                                <Button x:Name="backToFavBtn" Style="{StaticResource backPageBtnStyle}" Margin="0,-55,1055,673" Click="backToFavBtn_Click" />
+                            </Grid>
                         </Grid>
 
                         <Grid x:Name="addScreen" Visibility="Hidden">
@@ -1157,7 +1215,7 @@
                             </Button>
                         </Grid>
 
-                        <Grid x:Name="settingScreen" Visibility="Hidden">
+                        <Grid x:Name="settingScreen">
                             <StackPanel>
                                 <TextBlock Text="Choose your background color:" Style="{StaticResource fontStyle}" Foreground="Black"
                                        VerticalAlignment="Top" HorizontalAlignment="Left"
@@ -1167,8 +1225,21 @@
                                     <RadioButton GroupName="colorBg" Name="redColor" Background="Red" Style="{DynamicResource RadioButtonStyle}"  Margin="10" Checked="redColor_Checked" />
                                     <RadioButton GroupName="colorBg" Name="blueColor"  Background="Blue" Style="{DynamicResource RadioButtonStyle}" Margin="10" Checked="blueColor_Checked" />
                                     <RadioButton GroupName="colorBg" Name="greenColor" Background="Green" Style="{DynamicResource RadioButtonStyle}" Margin="10" Checked="greenColor_Checked" />
+                                    <RadioButton GroupName="colorBg" Name="orangeColor" Background="Orange" Style="{DynamicResource RadioButtonStyle}" Margin="10" Checked="orangeColor_Checked" />
                                 </WrapPanel>
-                                <CheckBox x:Name="splashScreen" Margin="20,20,0,20" FontSize="18" FontWeight="DemiBold" VerticalAlignment="Bottom" HorizontalAlignment="Left" VerticalContentAlignment="Center" Content="Show splash screen when startup" />
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Number of products per page:" Style="{StaticResource fontStyle}" FontSize="20" Padding="20,10,0,10" Margin="0,10,0,10" Foreground="Black" />
+                                    <StackPanel  Margin="10" VerticalAlignment="Center">
+                                        <ComboBox x:Name="cboPpP" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" SelectionChanged="cboPpP_SelectionChanged" Width="43" Height="34">
+                                            <ComboBoxItem FontSize="20" Content="6" />
+                                            <ComboBoxItem FontSize="20" IsSelected="True" Content="8" />
+                                            <ComboBoxItem FontSize="20" Content="10" />
+                                            <ComboBoxItem FontSize="20" Content="12" />
+                                        </ComboBox>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <CheckBox x:Name="splashScreen" Checked="splashScreen_Checked" Margin="20,20,0,20" FontSize="18" FontWeight="DemiBold" VerticalAlignment="Bottom" HorizontalAlignment="Left" VerticalContentAlignment="Center" Content="Show Splash screen when startup" />
                             </StackPanel>
                         </Grid>
 

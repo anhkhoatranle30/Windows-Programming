@@ -8,11 +8,16 @@ to do list
 (v)binding step vào detail => Coi cái detailStepsListView
 (v)random splash => _splashScreenRecipe
 //UI
-thêm nút back trong detail
-chỉnh hiện món ăn detail
-click hiện detail trong fav
-xử lý chuỗi rỗng
-số món ăn mỗi trang trong setting 4 6 8 (noPages)
+(d)thêm nút back trong detail
+(d)chỉnh hiện món ăn detail
+(d)click hiện detail trong fav
+(d)xử lý chuỗi rỗng
+(d)số món ăn mỗi trang trong setting 6 8 10 12(noPages)
+
+CÒN:
+	video món ăn
+	chỉnh PpP
+	làm detail đẹp dễ nứng
 
 deadline: thứ 2 tối
 
