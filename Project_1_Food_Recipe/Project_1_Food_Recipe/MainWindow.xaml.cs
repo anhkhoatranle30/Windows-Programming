@@ -1133,6 +1133,11 @@ namespace Project_1_Food_Recipe
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            var appName = System.Diagnostics.Process.GetCurrentProcess().ProcessName + ".exe";
+
+            using (var Key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", true))
+                Key.SetValue(appName, 99999, RegistryValueKind.DWord);
+
             if (_backgroundColor == null)
             {
                 _backgroundColor = new BackgroundColor

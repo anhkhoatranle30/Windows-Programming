@@ -8,7 +8,7 @@
         Title="MainWindow" Height="800" Width="1280"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        AllowsTransparency="True"
+        AllowsTransparency="False"
         Background="Transparent"
         ResizeMode="NoResize"
         Loaded="Window_Loaded">
@@ -906,7 +906,7 @@
                 <Border Background="White" Height="800" Width="1160" CornerRadius="40">
                     <Grid Margin="35,55">
 
-                        <Grid x:Name="homeScreen" Visibility="Hidden" PreviewMouseLeftButtonDown="homeScreen_PreviewMouseLeftButtonDown" Focusable="True">
+                        <Grid x:Name="homeScreen" PreviewMouseLeftButtonDown="homeScreen_PreviewMouseLeftButtonDown" Focusable="True">
 
                             <Grid x:Name="home">
                                 <ListView x:Name="dataListView"  VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Margin="0,74,-0.4,36.6">
@@ -971,20 +971,22 @@
                                             <DataTemplate>
                                                 <!--<Image Source="{Binding DesPicture}" />-->
                                                 <StackPanel>
-                                                    <Border Width="380" Height="250" CornerRadius="40" Margin="0,0,0,15">
+                                                    <Border Width="380" Height="230" CornerRadius="40" Margin="0,0,0,15">
                                                         <Border.Background>
                                                             <ImageBrush ImageSource="{Binding DesPicture}" />
                                                         </Border.Background>
                                                     </Border>
                                                     <TextBlock Text="{Binding Title}" FontSize="28" TextWrapping="Wrap" Style="{StaticResource foodNameStyle}" Padding="-2,5" HorizontalAlignment="Left"  Foreground="{StaticResource color}" />
                                                     <TextBlock Text="{Binding Description}" Style="{StaticResource foodNameStyle}" Padding="-2,5" TextAlignment="Justify" TextWrapping="Wrap" />
-                                                    <TextBlock Text="{Binding VideoLink}" Style="{StaticResource foodNameStyle}" Margin="0,5" HorizontalAlignment="Left" />
+                                                    <!--<TextBlock Text="{Binding VideoLink}" Style="{StaticResource foodNameStyle}" Margin="0,5" HorizontalAlignment="Left" />-->
+
+                                                    <WebBrowser Source="https://www.youtube.com/embed/h3h035Eyz5A" Width="380" Height="210" />
                                                 </StackPanel>
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
 
-                                    <ListView x:Name="detailStepsListView" Width="680" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                    <ListView x:Name="detailStepsListView" ScrollViewer.CanContentScroll="False" Margin="0,-10,0,0" Width="680" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <WrapPanel Orientation="Horizontal">
@@ -1215,8 +1217,9 @@
                             </Button>
                         </Grid>
 
-                        <Grid x:Name="settingScreen">
+                        <Grid x:Name="settingScreen" Visibility="Hidden">
                             <StackPanel>
+                                <WebBrowser Source="https://www.youtube.com/embed/h3h035Eyz5A" Width="250" Height="250" />
                                 <TextBlock Text="Choose your background color:" Style="{StaticResource fontStyle}" Foreground="Black"
                                        VerticalAlignment="Top" HorizontalAlignment="Left"
                                        FontSize="20" />
