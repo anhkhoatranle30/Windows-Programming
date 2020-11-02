@@ -1,3 +1,10 @@
+to do list final:
+	xử lý link youtube
+	độ ưu tiên search
+
+
+
+
 // Functional //
 
 to do list

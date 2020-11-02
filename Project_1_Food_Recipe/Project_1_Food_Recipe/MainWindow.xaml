@@ -955,22 +955,69 @@
                                 </Grid>
                             </Grid>
 
-                            <ListView x:Name="searchListView"  BorderThickness="0" Visibility="Hidden" Margin="117,69,121.6,68.6">
+                            <!--<ListView x:Name="searchListView" ScrollViewer.CanContentScroll="False" MaxHeight="300" MinHeight="100" BorderThickness="0" Margin="117,62,121.6,68.6">
 
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <Button Style="{StaticResource searchRecipeBtnStyle}" x:Name="recipeSearchBtn"  PreviewMouseLeftButtonDown="recipeSearchBtn_PreviewMouseLeftButtonDown" />
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
-                            </ListView>
+                            </ListView>-->
 
-                            <Grid x:Name="foodDetail" Visibility="Hidden" Margin="0,37,-0.4,-0.4">
-                                <StackPanel Orientation="Horizontal">
-                                    <ListView x:Name="detailListView" Margin="0,0,30,0" BorderThickness="0" Width="400" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <Grid VerticalAlignment="Top" Margin="120,64,125.6,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <ScrollViewer Grid.Row="1" Margin="0,0,0,0.4" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                    <ListView x:Name="searchListView"  BorderThickness="0" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
-                                                <!--<Image Source="{Binding DesPicture}" />-->
-                                                <StackPanel>
+                                                <Button Style="{StaticResource searchRecipeBtnStyle}" x:Name="recipeSearchBtn"  PreviewMouseLeftButtonDown="recipeSearchBtn_PreviewMouseLeftButtonDown" />
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </ScrollViewer>
+                            </Grid>
+
+                            <Grid x:Name="foodDetail" Visibility="Hidden">
+                                <StackPanel Orientation="Horizontal">
+
+                                    <Grid VerticalAlignment="Top" Width="400" Margin="0,0,10,0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <ScrollViewer Grid.Row="1" Margin="0,0,0,0.4" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+
+                                            <ListView x:Name="detailListView" ScrollViewer.VerticalScrollBarVisibility="Hidden" BorderThickness="0" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <WrapPanel Orientation="Vertical">
+                                                            <Border Width="380" Height="230" CornerRadius="40" Margin="0,0,0,10">
+                                                                <Border.Background>
+                                                                    <ImageBrush ImageSource="{Binding DesPicture}" />
+                                                                </Border.Background>
+                                                            </Border>
+                                                            <TextBlock Text="{Binding Title}" FontSize="28" TextWrapping="Wrap" Style="{StaticResource foodNameStyle}" Padding="-2,5" HorizontalAlignment="Left"  Foreground="{StaticResource color}" />
+                                                            <TextBlock Text="{Binding Description}" Style="{StaticResource foodNameStyle}" Padding="-2,5" TextAlignment="Justify" TextWrapping="Wrap" />
+
+                                                            <!--<WebBrowser local:WebBrowserUtility.BindableSource="{Binding VideoLink}" />-->
+
+                                                            <WebBrowser Source="https://www.youtube.com/embed/6jZVsr7q-tE" Width="380" Height="205" />
+                                                        </WrapPanel>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
+                                        </ScrollViewer>
+                                    </Grid>
+
+                                    <!--<ListView x:Name="detailListView" Margin="0,0,30,0" BorderThickness="0" Width="400" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <WrapPanel Orientation="Vertical">
                                                     <Border Width="380" Height="230" CornerRadius="40" Margin="0,0,0,15">
                                                         <Border.Background>
                                                             <ImageBrush ImageSource="{Binding DesPicture}" />
@@ -978,19 +1025,25 @@
                                                     </Border>
                                                     <TextBlock Text="{Binding Title}" FontSize="28" TextWrapping="Wrap" Style="{StaticResource foodNameStyle}" Padding="-2,5" HorizontalAlignment="Left"  Foreground="{StaticResource color}" />
                                                     <TextBlock Text="{Binding Description}" Style="{StaticResource foodNameStyle}" Padding="-2,5" TextAlignment="Justify" TextWrapping="Wrap" />
-                                                    <!--<TextBlock Text="{Binding VideoLink}" Style="{StaticResource foodNameStyle}" Margin="0,5" HorizontalAlignment="Left" />-->
 
-                                                    <WebBrowser Source="https://www.youtube.com/embed/h3h035Eyz5A" Width="380" Height="210" />
-                                                </StackPanel>
+                                                    -->
+                                    <!--<WebBrowser local:WebBrowserUtility.BindableSource="{Binding VideoLink}" />-->
+                                    <!--
+
+                                                    <WebBrowser Source="https://www.youtube.com/embed/6jZVsr7q-tE" Width="380" Height="280" />
+                                                </WrapPanel>
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
-                                    </ListView>
-
-                                    <ListView x:Name="detailStepsListView" ScrollViewer.CanContentScroll="False" Margin="0,-10,0,0" Width="680" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                    </ListView>-->
+                                    <Grid Background="{StaticResource color}" Width="1" Margin="10,0">
+                                    </Grid>
+                                    <ListView x:Name="detailStepsListView" BorderThickness="0" ScrollViewer.CanContentScroll="False" Margin="0,-10,0,0" Width="680" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <WrapPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{Binding StepNumber}" Foreground="{StaticResource color}" FontSize="23" Style="{StaticResource foodNameStyle}" Margin="0,10,0,0" />
+                                                    <Border CornerRadius="20" BorderThickness="1" BorderBrush="{StaticResource color}" Height="50" Margin="0,10,0,0">
+                                                        <TextBlock Text="{Binding StepNumber}" Foreground="{StaticResource color}" FontSize="23" Style="{StaticResource foodNameStyle}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                    </Border>
                                                     <TextBlock Text="{Binding Content}" Style="{StaticResource foodNameStyle}" TextWrapping="WrapWithOverflow" TextAlignment="Justify" Margin="0" />
                                                     <Grid Width="680" Height="250">
                                                         <Border CornerRadius="40" Width="400" Height="250" HorizontalAlignment="Center">
@@ -1219,7 +1272,6 @@
 
                         <Grid x:Name="settingScreen" Visibility="Hidden">
                             <StackPanel>
-                                <WebBrowser Source="https://www.youtube.com/embed/h3h035Eyz5A" Width="250" Height="250" />
                                 <TextBlock Text="Choose your background color:" Style="{StaticResource fontStyle}" Foreground="Black"
                                        VerticalAlignment="Top" HorizontalAlignment="Left"
                                        FontSize="20" />
@@ -1242,14 +1294,14 @@
                                     </StackPanel>
                                 </StackPanel>
 
-                                <CheckBox x:Name="splashScreen" Checked="splashScreen_Checked" Margin="20,20,0,20" FontSize="18" FontWeight="DemiBold" VerticalAlignment="Bottom" HorizontalAlignment="Left" VerticalContentAlignment="Center" Content="Show Splash screen when startup" />
+                                <CheckBox x:Name="splashScreen" Checked="splashScreen_Checked" Unchecked="splashScreen_Unchecked" Margin="20,20,0,20" FontSize="18" FontWeight="DemiBold" VerticalAlignment="Bottom" HorizontalAlignment="Left" VerticalContentAlignment="Center" Content="Do not show Splash screen when startup" />
                             </StackPanel>
                         </Grid>
 
                         <Grid x:Name="aboutScreen" Visibility="Hidden">
                             <StackPanel Margin="10">
                                 <Grid Background="Transparent" Height="352" Margin="0,0,105.6,0">
-                                    <Image Source="Images/img_about_Khoa.jpg" Margin="0,0,642,0" />
+                                    <Image Source="Images/img_about_Khoa.jpg" Margin="52,0,698,38" Stretch="Fill" />
                                     <StackPanel HorizontalAlignment="Left" Margin="384,10,0,-10">
                                         <TextBlock Text="Name: Trần Lê Anh Khoa"
                                                    FontSize="26"
@@ -1271,6 +1323,7 @@
 
                                 <Grid Background="Transparent" Height="339" Margin="0,0,105.6,0">
                                     <Image  Margin="0,0,642,0" />
+                                    <Image Source="Images/img_about_Hoang.jpg" Margin="0,0,642,-10" />
                                     <StackPanel HorizontalAlignment="Left" Margin="384,10,0,-10">
                                         <TextBlock Text="Name: Võ Nguyễn Lê Hoàng "
                                                    FontSize="26"

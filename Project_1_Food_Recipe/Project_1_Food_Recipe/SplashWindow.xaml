@@ -14,9 +14,25 @@
         Loaded="Window_Loaded">
     <Border CornerRadius="40" Background="White">
         <Grid>
-            <CheckBox Checked="CheckBox_Checked" FontSize="13" FontWeight="DemiBold" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="286,0,281,84" VerticalContentAlignment="Center">
+            <ListView x:Name="splashListVIew" Width="400" Height="500" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="208,16,192,84">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Border CornerRadius="40" Width="300" Height="300" HorizontalAlignment="Center">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="{Binding DesPicture}" />
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="{Binding Title}" />
+                            <TextBlock Text="{Binding Description}" TextWrapping="WrapWithOverflow" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <CheckBox Checked="CheckBox_Checked" FontSize="13" FontWeight="DemiBold" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="303,0,298,56" VerticalContentAlignment="Center">
                 Do not show this dialog again!
             </CheckBox>
+            <ProgressBar x:Name="progressbar" Width="780" Height="8" Margin="0,563,0,29" />
         </Grid>
     </Border>
 </Window>

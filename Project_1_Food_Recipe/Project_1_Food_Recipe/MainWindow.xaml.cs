@@ -215,7 +215,7 @@ namespace Project_1_Food_Recipe
                 for (int i = 0; i < stepsList.Count; i++)
                 {
                     var stepnumber = new StringBuilder();
-                    stepnumber.Append("Bước " + (i + 1).ToString() + ": ");
+                    stepnumber.Append("Bước " + (i + 1).ToString());
                     result.Add(new UncompressedStep() { Content = stepsList[i].Content, ImgSource = stepsList[i].ImgSource, StepNumber = stepnumber.ToString() });
                 }
                 return result;
@@ -898,12 +898,6 @@ namespace Project_1_Food_Recipe
             var favoriteRecipeDAOTextFile = new FavoriteRecipeDAOTextFile();
             _favoriteRecipeList = favoriteRecipeDAOTextFile.GetAll();
 
-            //splash screen random dish
-            int index = _rng.Next(_recipeList.Count);
-            _splashScreenRecipe = new BindingList<Recipe>();
-            _splashScreenRecipe.Add(_recipeList[index]);
-            //end splash screen
-
             dataListView.ItemsSource = _recipeList;
             favoriteListView.ItemsSource = _favoriteRecipeList;
 
@@ -1157,7 +1151,7 @@ namespace Project_1_Food_Recipe
             var splash = ConfigurationManager.AppSettings["ShowSplashScreen"];
             var showSplash = bool.Parse(splash);
 
-            splashScreen.IsChecked = showSplash;
+            splashScreen.IsChecked = !showSplash;
         }
 
         private bool isChooseImage = false;
@@ -1564,7 +1558,12 @@ namespace Project_1_Food_Recipe
             }
 
             detailListView.ItemsSource = resultList;
+
+            var detailStepsList = UncompressedStep.ToUncrompressStepList(resultList[0].StepsList);
+            detailStepsListView.ItemsSource = detailStepsList;
+
             foodDetail.Visibility = Visibility.Visible;
+            home.Visibility = Visibility.Hidden;
         }
 
         private void checkFavoriteTBtn_Checked(object sender, RoutedEventArgs e)
@@ -1697,6 +1696,10 @@ namespace Project_1_Food_Recipe
 
                 productsPerPage = choose;
 
+                var recipeDAO = new RecipeDAOTextFile();
+                _recipeList = recipeDAO.GetAll(productsPerPage, ref pageNumber, ref noPages);
+                dataListView.ItemsSource = _recipeList;
+
                 Debug.WriteLine(choose);
             }
         }
@@ -1705,8 +1708,18 @@ namespace Project_1_Food_Recipe
         {
             var config = ConfigurationManager.OpenExeConfiguration(
                 ConfigurationUserLevel.None);
+            config.AppSettings.Settings["ShowSplashScreen"].Value = "false";
+            config.Save(ConfigurationSaveMode.Minimal);
+            Debug.WriteLine(config.AppSettings.Settings["ShowSplashScreen"].Value);
+        }
+
+        private void splashScreen_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(
+                ConfigurationUserLevel.None);
             config.AppSettings.Settings["ShowSplashScreen"].Value = "true";
             config.Save(ConfigurationSaveMode.Minimal);
+            Debug.WriteLine(config.AppSettings.Settings["ShowSplashScreen"].Value);
         }
     }
 }
