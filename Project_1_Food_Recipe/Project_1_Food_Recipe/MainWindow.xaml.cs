@@ -83,7 +83,7 @@ namespace Project_1_Food_Recipe
 
             public abstract void Delete(Recipe recipe);
 
-            public abstract BindingList<Recipe> Search(String searchString);
+            public abstract BindingList<Recipe> Search(String searchedString);
         }
 
         #endregion abstract DAO classes
@@ -174,6 +174,76 @@ namespace Project_1_Food_Recipe
                 return str;
             }
 
+            /// <summary>
+            /// Tính độ ưu tiên phục vụ tác vụ tìm kiếm
+            /// </summary>
+            /// <param name="searchedString">Chuỗi được user nhập vào để tìm kiếm</param>
+            /// <param name="toSearchString">Chuỗi được so sánh từ dữ liệu</param>
+            /// <returns>Độ ưu tiên(càng lớn càng được ưu tiên)</returns>
+            public static int CalcPriority(string searchedString, string toSearchString)
+            {
+                int priority = 0;
+
+                searchedString = Parse(searchedString); //dui ga sot cam
+                searchedString = " " + searchedString + " ";
+                toSearchString = Parse(toSearchString); //Đùi gà sốt cam
+                var tokens = toSearchString.Split(new String[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                for (var i = 0; i < tokens.Length; i++)
+                {
+                    string transformedSearchString;
+                    if (i == 0)
+                    {
+                        transformedSearchString = tokens[i] + " ";
+                    }
+                    else if (i == tokens.Length - 1)
+                    {
+                        transformedSearchString = " " + tokens[i];
+                    }
+                    else
+                    {
+                        transformedSearchString = " " + tokens[i] + " ";
+                    }
+
+                    if (searchedString.Contains(transformedSearchString))
+                    {
+                        priority++;
+                    }
+                }
+                //foreach (var token in tokens)
+                //{
+                //    var spaceShiftedString = " " + token;
+                //    var spacePushedString = token + " ";
+                //    var spaceAddedString = " " + token + " ";
+                //    if (searchedString.Contains(spaceShiftedString) || searchedString.Contains(spacePushedString) || searchedString.Contains(spaceAddedString))
+                //    {
+                //        priority++;
+                //    }
+                //}
+                return priority;
+            }
+
+            /// <summary>
+            /// Tính độ ưu tiên LỚN NHẤT phục vụ tác vụ tìm kiếm
+            /// </summary>
+            /// <param name="searchedString">Chuỗi được user nhập vào để tìm kiếm</param>
+            /// <param name="toSearchString">Chuỗi được so sánh từ dữ liệu</param>
+            /// <returns>Độ ưu tiên(càng lớn càng được ưu tiên)</returns>
+            public static int CalcMaxPriority(string searchedString)
+            {
+                int maxPriority = 0;
+
+                searchedString = Parse(searchedString);
+                var tokens = searchedString.Split(new String[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                maxPriority = tokens.Length;
+                return maxPriority;
+            }
+
+            /// <summary>
+            /// Hàm để kiểm tra tìm kiếm
+            /// </summary>
+            /// <param name="searchedString">Chuỗi được user nhập vào để tìm kiếm</param>
+            /// <param name="toSearchString">Chuỗi được so sánh từ dữ liệu</param>
+            /// <returns>True nếu tìm thấy có từ trong chuõi, False nếu ngược lại</returns>
             public static bool CheckSearch(string searchedString, string toSearchString)
             {
                 searchedString = Parse(searchedString);
@@ -569,18 +639,25 @@ namespace Project_1_Food_Recipe
             /// </summary>
             /// <param name="searchString">Chuỗi cần tìm</param>
             /// <returns></returns>
-            public override BindingList<Recipe> Search(string searchString)
+            public override BindingList<Recipe> Search(string searchedString)
             {
                 var result = new BindingList<Recipe>();
 
                 var recipes = GetAll();
-                foreach (var recipe in recipes)
+                var maxPriority = SearchString.CalcMaxPriority(searchedString);
+                for (var i = maxPriority; i > 0; i--)
                 {
-                    if (SearchString.CheckSearch(searchString, recipe.Title))
+                    foreach (var recipe in recipes)
                     {
-                        result.Add(recipe);
+                        var toSearchString = recipe.Title;
+                        var priority = SearchString.CalcPriority(searchedString, toSearchString);
+                        if (priority == i)
+                        {
+                            result.Add(recipe);
+                        }
                     }
                 }
+
                 return result;
             }
         }
@@ -845,18 +922,25 @@ namespace Project_1_Food_Recipe
             /// </summary>
             /// <param name="searchString">chuỗi cần tìm</param>
             /// <returns></returns>
-            public override BindingList<Recipe> Search(string searchString)
+            public override BindingList<Recipe> Search(string searchedString)
             {
                 var result = new BindingList<Recipe>();
 
                 var recipes = GetAll();
-                foreach (var recipe in recipes)
+                var maxPriority = SearchString.CalcMaxPriority(searchedString);
+                for (var i = maxPriority; i > 0; i--)
                 {
-                    if (SearchString.CheckSearch(searchString, recipe.Title))
+                    foreach (var recipe in recipes)
                     {
-                        result.Add(recipe);
+                        var toSearchString = recipe.Title;
+                        var priority = SearchString.CalcPriority(searchedString, toSearchString);
+                        if (priority == i)
+                        {
+                            result.Add(recipe);
+                        }
                     }
                 }
+
                 return result;
             }
         }

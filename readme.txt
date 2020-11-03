@@ -9,7 +9,7 @@ to do list final:
 
 to do list
 //function
-sửa hàm search
+(V)sửa hàm search
 parse youtube 
 extra : nhiều step img
 //UI
