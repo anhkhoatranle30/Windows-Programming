@@ -9,11 +9,9 @@ to do list final:
 
 to do list
 //function
-(v)sửa hàm search
-(v)cho fav lên đầu
-(v)add recipe
-(v)binding step vào detail => Coi cái detailStepsListView
-(v)random splash => _splashScreenRecipe
+sửa hàm search
+parse youtube 
+extra : nhiều step img
 //UI
 (d)thêm nút back trong detail
 (d)chỉnh hiện món ăn detail
