@@ -10,7 +10,7 @@ to do list final:
 to do list
 //function
 (V)sửa hàm search
-parse youtube 
+(V)parse youtube 
 extra : nhiều step img
 //UI
 (d)thêm nút back trong detail

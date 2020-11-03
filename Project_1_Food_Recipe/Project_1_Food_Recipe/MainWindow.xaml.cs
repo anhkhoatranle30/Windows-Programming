@@ -105,6 +105,19 @@ namespace Project_1_Food_Recipe
                 result.Append(tokens[0]);
                 return result.ToString();
             }
+            
+            /// <summary>
+            /// Chuyển đổi đường dẫn Youtube thông thường thành đường dẫn nhúng 
+            /// </summary>
+            /// <param name="youtubeLink">Đường link video youtube</param>
+            /// <returns>Đường dẫn nhúng youtube video vào ứng dụng</returns>
+            public static string TransformToEmbedYoutubeLink(string youtubeLink)
+            {
+                var tokens = youtubeLink.Split(new string[] { "https://youtu.be/", "https://www.youtube.com/watch?v=", "?t=" }, StringSplitOptions.RemoveEmptyEntries);
+                var result = tokens[0];
+                result = "https://www.youtube.com/embed/" + result;
+                return result;
+            }
         }
 
         public class SearchString
