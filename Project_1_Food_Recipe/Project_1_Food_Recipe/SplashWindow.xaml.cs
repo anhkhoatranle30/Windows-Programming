@@ -937,14 +937,17 @@ namespace Project_1_Food_Recipe
             if (_counterTime == _target + 2)
             {
                 _dispatcherTimer.Stop();
-
-                var screen = new MainWindow();
-                screen.Show();
-
-                this.Close();
             }
 
             progressbar.Value = _counterTime * 0.3125;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var screen = new MainWindow();
+            screen.Show();
+
+            this.Close();
         }
     }
 }

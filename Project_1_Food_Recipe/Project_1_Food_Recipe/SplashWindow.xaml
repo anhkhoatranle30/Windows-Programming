@@ -5,34 +5,126 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_1_Food_Recipe"
         mc:Ignorable="d"
-        Title="SplashWindow" Height="600" Width="800"
+        Title="SplashWindow" Height="800" Width="800"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style TargetType="{x:Type ListViewItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}"
+                                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                                            Background="{TemplateBinding Background}"
+                                                            SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                                          VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Transparent" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="continueBtnStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="white" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="Green" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+
+                            <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                                <ContentPresenter x:Name="contentPresenter" Margin="5,0,0,0" Focusable="False" HorizontalAlignment="Left" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Border>
+                            <Image Source="Images/img_continue.png" HorizontalAlignment="Right" Margin="0,0,3,0" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Cursor" Value="Hand" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Border CornerRadius="40" Background="White">
         <Grid>
-            <ListView x:Name="splashListVIew" Width="400" Height="500" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="208,16,192,84">
+            <ListView x:Name="splashListVIew" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10,60,10,131">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <Border CornerRadius="40" Width="300" Height="300" HorizontalAlignment="Center">
+                            <Border CornerRadius="40" Width="450" Height="350" HorizontalAlignment="Center"  VerticalAlignment="Top">
                                 <Border.Background>
                                     <ImageBrush ImageSource="{Binding DesPicture}" />
                                 </Border.Background>
                             </Border>
-                            <TextBlock Text="{Binding Title}" />
-                            <TextBlock Text="{Binding Description}" TextWrapping="WrapWithOverflow" />
+                            <TextBlock Text="{Binding Title}" Margin="10" FontSize="25" FontWeight="Bold" FontStretch="Expanded" HorizontalAlignment="Center" FontFamily="Font/UtmTimes-xOlr.ttf #UtmTimes" />
+                            <TextBlock Text="{Binding Description}" Margin="10" FontSize="18" TextAlignment="Justify" TextWrapping="WrapWithOverflow" FontFamily="Font/UtmTimes-xOlr.ttf #UtmTimes" />
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <CheckBox Checked="CheckBox_Checked" FontSize="13" FontWeight="DemiBold" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="303,0,298,56" VerticalContentAlignment="Center">
+            <CheckBox Checked="CheckBox_Checked" FontSize="13" FontWeight="DemiBold" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="303,0,298,131" VerticalContentAlignment="Center">
                 Do not show this dialog again!
             </CheckBox>
-            <ProgressBar x:Name="progressbar" Width="780" Height="8" Margin="0,563,0,29" />
+            <ProgressBar x:Name="progressbar" Width="780" Height="10" Margin="10,759,10,31">
+                <ProgressBar.Triggers>
+                    <EventTrigger RoutedEvent="ProgressBar.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    Storyboard.TargetProperty="Opacity"
+                                    From="1.0" To="0.0" Duration="0:0:1"
+                                    BeginTime="0:0:5.6" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </ProgressBar.Triggers>
+            </ProgressBar>
+
+            <Button Width="120" Click="Button_Click" Height="35" Style="{DynamicResource continueBtnStyle}" Margin="340,804,340,-39">
+                Continue
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Button.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" BeginTime="00:00:6.6">
+                                    <SplineThicknessKeyFrame KeyTime="00:00:00" Value="340,804,340,-39" />
+                                    <SplineThicknessKeyFrame KeyTime="00:00:0.3" Value="340,683,340,82" />
+                                </ThicknessAnimationUsingKeyFrames>
+                                <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" BeginTime="00:00:6.9">
+                                    <SplineThicknessKeyFrame KeyTime="00:00:00" Value="340,683,340,82" />
+                                    <SplineThicknessKeyFrame KeyTime="00:00:0.1" Value="340,702,340,63" />
+                                </ThicknessAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
         </Grid>
     </Border>
 </Window>

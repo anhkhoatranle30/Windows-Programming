@@ -105,9 +105,9 @@ namespace Project_1_Food_Recipe
                 result.Append(tokens[0]);
                 return result.ToString();
             }
-            
+
             /// <summary>
-            /// Chuyển đổi đường dẫn Youtube thông thường thành đường dẫn nhúng 
+            /// Chuyển đổi đường dẫn Youtube thông thường thành đường dẫn nhúng
             /// </summary>
             /// <param name="youtubeLink">Đường link video youtube</param>
             /// <returns>Đường dẫn nhúng youtube video vào ứng dụng</returns>
@@ -1004,8 +1004,36 @@ namespace Project_1_Food_Recipe
             productsPerPage = 8;
             _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
             dataListView.ItemsSource = _recipeList;
-            pageTextBox.Text = pageNumber.ToString();
-            pageTextBlock.Text = noPages.ToString();
+
+            //pageTextBox.Text = pageNumber.ToString();
+            //pageTextBlock.Text = noPages.ToString();
+
+            totalPage.Content = noPages.ToString();
+
+            if (pageNumber == 1)
+            {
+                prePage.Content = pageNumber.ToString();
+                curPage.Content = (pageNumber + 1).ToString();
+                nextPage.Content = (pageNumber + 2).ToString();
+
+                firstPage.Visibility = Visibility.Hidden;
+            }
+            else if (pageNumber == noPages)
+            {
+                prePage.Content = (pageNumber - 2).ToString();
+                curPage.Content = (pageNumber - 1).ToString();
+                nextPage.Content = pageNumber.ToString();
+
+                lastPage.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                curPage.Content = pageNumber.ToString();
+                prePage.Content = (pageNumber - 1).ToString();
+                nextPage.Content = (pageNumber + 1).ToString();
+
+                totalPage.Content = noPages.ToString();
+            }
 
             #endregion test paging
         }
@@ -1458,103 +1486,103 @@ namespace Project_1_Food_Recipe
             //
         }
 
-        private void pageTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (pageTextBlock == null)
-            {
-                Debug.WriteLine("pageTextBlock null");
-                return;
-            }
+        //private void pageTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    if (pageTextBlock == null)
+        //    {
+        //        Debug.WriteLine("pageTextBlock null");
+        //        return;
+        //    }
 
-            if (pageTextBox.Text == "")
-            {
-                Debug.WriteLine("text box is null");
-            }
-            else
-            {
-                int pageNumber = 0;
-                int totalPage = 0;
+        //    if (pageTextBox.Text == "")
+        //    {
+        //        Debug.WriteLine("text box is null");
+        //    }
+        //    else
+        //    {
+        //        int pageNumber = 0;
+        //        int totalPage = 0;
 
-                bool successParsePageNumber = int.TryParse(pageTextBox.Text, out pageNumber);
-                bool successParseTotalPage = int.TryParse(pageTextBlock.Text, out totalPage);
+        //        bool successParsePageNumber = int.TryParse(pageTextBox.Text, out pageNumber);
+        //        bool successParseTotalPage = int.TryParse(pageTextBlock.Text, out totalPage);
 
-                if (!successParseTotalPage)
-                {
-                    Debug.WriteLine("cant parse total page");
-                    return;
-                }
+        //        if (!successParseTotalPage)
+        //        {
+        //            Debug.WriteLine("cant parse total page");
+        //            return;
+        //        }
 
-                if (!successParsePageNumber)
-                {
-                    pageTextBox.Text = pageTextBox.Text.Remove(pageTextBox.Text.Length - 1);
-                    pageTextBox.CaretIndex = pageTextBox.Text.Length;
-                }
-                else
-                {
-                    if (pageNumber > totalPage)
-                    {
-                        pageTextBox.Text = pageTextBox.Text.Remove(pageTextBox.Text.Length - 1);
-                        pageTextBox.CaretIndex = pageTextBox.Text.Length;
-                    }
-                }
-            }
-        }
+        //        if (!successParsePageNumber)
+        //        {
+        //            pageTextBox.Text = pageTextBox.Text.Remove(pageTextBox.Text.Length - 1);
+        //            pageTextBox.CaretIndex = pageTextBox.Text.Length;
+        //        }
+        //        else
+        //        {
+        //            if (pageNumber > totalPage)
+        //            {
+        //                pageTextBox.Text = pageTextBox.Text.Remove(pageTextBox.Text.Length - 1);
+        //                pageTextBox.CaretIndex = pageTextBox.Text.Length;
+        //            }
+        //        }
+        //    }
+        //}
 
-        private int curentPage = 1;
+        //private int curentPage = 1;
 
-        private void pageTextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key != System.Windows.Input.Key.Enter)
-            {
-                Debug.WriteLine("chua nhan enter");
-                return;
-            }
+        //private void pageTextBox_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.Key != System.Windows.Input.Key.Enter)
+        //    {
+        //        Debug.WriteLine("chua nhan enter");
+        //        return;
+        //    }
 
-            Debug.WriteLine("da nhan enter");
+        //    Debug.WriteLine("da nhan enter");
 
-            if (pageTextBox.Text == "")
-            {
-                pageTextBox.Text = curentPage.ToString();
-            }
-            else
-            {
-                curentPage = int.Parse(pageTextBox.Text);
-                var recipeDAOTextFile = new RecipeDAOTextFile();
-                pageNumber = curentPage;
-                _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
-                dataListView.ItemsSource = _recipeList;
-            }
+        //    if (pageTextBox.Text == "")
+        //    {
+        //        pageTextBox.Text = curentPage.ToString();
+        //    }
+        //    else
+        //    {
+        //        curentPage = int.Parse(pageTextBox.Text);
+        //        var recipeDAOTextFile = new RecipeDAOTextFile();
+        //        pageNumber = curentPage;
+        //        _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
+        //        dataListView.ItemsSource = _recipeList;
+        //    }
 
-            pageTextBox.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
-        }
+        //    pageTextBox.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+        //}
 
-        private void pageTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (pageTextBox.Text == "")
-            {
-                pageTextBox.Text = curentPage.ToString();
-            }
-        }
+        //private void pageTextBox_LostFocus(object sender, RoutedEventArgs e)
+        //{
+        //    if (pageTextBox.Text == "")
+        //    {
+        //        pageTextBox.Text = curentPage.ToString();
+        //    }
+        //}
 
-        private void nextPageBtn_Click(object sender, RoutedEventArgs e)
-        {
-            var recipeDAOTextFile = new RecipeDAOTextFile();
-            pageNumber++;
-            curentPage = pageNumber;
-            _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
-            pageTextBox.Text = pageNumber.ToString();
-            dataListView.ItemsSource = _recipeList;
-        }
+        //private void nextPageBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var recipeDAOTextFile = new RecipeDAOTextFile();
+        //    pageNumber++;
+        //    curentPage = pageNumber;
+        //    _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
+        //    pageTextBox.Text = pageNumber.ToString();
+        //    dataListView.ItemsSource = _recipeList;
+        //}
 
-        private void backPageBtn_Click(object sender, RoutedEventArgs e)
-        {
-            var recipeDAOTextFile = new RecipeDAOTextFile();
-            pageNumber--;
-            curentPage = pageNumber;
-            _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
-            pageTextBox.Text = pageNumber.ToString();
-            dataListView.ItemsSource = _recipeList;
-        }
+        //private void backPageBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var recipeDAOTextFile = new RecipeDAOTextFile();
+        //    pageNumber--;
+        //    curentPage = pageNumber;
+        //    _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
+        //    pageTextBox.Text = pageNumber.ToString();
+        //    dataListView.ItemsSource = _recipeList;
+        //}
 
         private void search_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -1572,7 +1600,7 @@ namespace Project_1_Food_Recipe
 
         private void search_LostFocus(object sender, RoutedEventArgs e)
         {
-            searchListView.Visibility = Visibility.Hidden;
+            searchListView.Visibility = Visibility.Collapsed;
         }
 
         private void recipeBtn_Click(object sender, RoutedEventArgs e)
@@ -1745,8 +1773,9 @@ namespace Project_1_Food_Recipe
 
         private void backToHomeBtn_Click(object sender, RoutedEventArgs e)
         {
-            foodDetail.Visibility = Visibility.Hidden;
+            foodDetail.Visibility = Visibility.Collapsed;
             home.Visibility = Visibility.Visible;
+            detailListView.ItemsSource = null;
         }
 
         private void recipeFavBtn_Click(object sender, RoutedEventArgs e)
@@ -1817,6 +1846,140 @@ namespace Project_1_Food_Recipe
             config.AppSettings.Settings["ShowSplashScreen"].Value = "true";
             config.Save(ConfigurationSaveMode.Minimal);
             Debug.WriteLine(config.AppSettings.Settings["ShowSplashScreen"].Value);
+        }
+
+        private void search_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key != System.Windows.Input.Key.Enter)
+            {
+                Debug.WriteLine("chua nhan enter");
+                return;
+            }
+
+            Debug.WriteLine("da nhan enter");
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            home.Focus();
+        }
+
+        private void UpdatePageNumber()
+        {
+            if (pageNumber == 1)
+            {
+                prePage.Content = pageNumber.ToString();
+                curPage.Content = (pageNumber + 1).ToString();
+                nextPage.Content = (pageNumber + 2).ToString();
+
+                firstPage.Visibility = Visibility.Hidden;
+            }
+            else if (pageNumber == noPages)
+            {
+                prePage.Content = (pageNumber - 2).ToString();
+                curPage.Content = (pageNumber - 1).ToString();
+                nextPage.Content = pageNumber.ToString();
+
+                lastPage.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                curPage.Content = pageNumber.ToString();
+                prePage.Content = (pageNumber - 1).ToString();
+                nextPage.Content = (pageNumber + 1).ToString();
+
+                totalPage.Content = noPages.ToString();
+            }
+        }
+
+        private void prePage_Click(object sender, RoutedEventArgs e)
+        {
+            if (pageNumber == 1)
+            {
+                //do nothing
+            }
+            else if (pageNumber == noPages)
+            {
+                var recipeDAOTextFile = new RecipeDAOTextFile();
+                pageNumber -= 2;
+                _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
+                dataListView.ItemsSource = _recipeList;
+                UpdatePageNumber();
+            }
+            else
+            {
+                var recipeDAOTextFile = new RecipeDAOTextFile();
+                pageNumber--;
+                _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
+                dataListView.ItemsSource = _recipeList;
+                UpdatePageNumber();
+            }
+        }
+
+        private void curPage_Click(object sender, RoutedEventArgs e)
+        {
+            if (pageNumber == 1)
+            {
+                var recipeDAOTextFile = new RecipeDAOTextFile();
+                pageNumber++;
+                _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
+                dataListView.ItemsSource = _recipeList;
+                UpdatePageNumber();
+            }
+            else if (pageNumber == noPages)
+            {
+                var recipeDAOTextFile = new RecipeDAOTextFile();
+                pageNumber -= 1;
+                _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
+                dataListView.ItemsSource = _recipeList;
+                UpdatePageNumber();
+            }
+            else
+            {
+                //do nothing
+            }
+        }
+
+        private void nextPage_Click(object sender, RoutedEventArgs e)
+        {
+            if (pageNumber == 1)
+            {
+                var recipeDAOTextFile = new RecipeDAOTextFile();
+                pageNumber += 2;
+                _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
+                dataListView.ItemsSource = _recipeList;
+                UpdatePageNumber();
+            }
+            else if (pageNumber == noPages)
+            {
+                //do nothing
+            }
+            else
+            {
+                var recipeDAOTextFile = new RecipeDAOTextFile();
+                pageNumber += 1;
+                _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
+                dataListView.ItemsSource = _recipeList;
+                UpdatePageNumber();
+            }
+        }
+
+        private void totalPage_Click(object sender, RoutedEventArgs e)
+        {
+            var recipeDAOTextFile = new RecipeDAOTextFile();
+            pageNumber = noPages;
+            _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
+            dataListView.ItemsSource = _recipeList;
+            UpdatePageNumber();
+        }
+
+        private void page1_Click(object sender, RoutedEventArgs e)
+        {
+            var recipeDAOTextFile = new RecipeDAOTextFile();
+            pageNumber = 1;
+            _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
+            dataListView.ItemsSource = _recipeList;
+            UpdatePageNumber();
         }
     }
 }
