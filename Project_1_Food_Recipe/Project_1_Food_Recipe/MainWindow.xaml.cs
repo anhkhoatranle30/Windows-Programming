@@ -198,7 +198,15 @@ namespace Project_1_Food_Recipe
                 int priority = 0;
 
                 searchedString = Parse(searchedString); //dui ga sot cam
-                searchedString = " " + searchedString + " ";
+                if(!searchedString.Contains(" "))
+                {
+
+                } 
+                else
+                {
+                    searchedString = " " + searchedString + " ";
+                }
+               
                 toSearchString = Parse(toSearchString); //Đùi gà sốt cam
                 var tokens = toSearchString.Split(new String[] { " " }, StringSplitOptions.RemoveEmptyEntries);
                 for (var i = 0; i < tokens.Length; i++)
@@ -206,7 +214,15 @@ namespace Project_1_Food_Recipe
                     string transformedSearchString;
                     if (i == 0)
                     {
-                        transformedSearchString = tokens[i] + " ";
+                        if (!searchedString.Contains(" "))
+                        {
+                            transformedSearchString = tokens[i];
+                        }
+                        else
+                        {
+                            transformedSearchString = tokens[i] + " ";
+                        }
+                        
                     }
                     else if (i == tokens.Length - 1)
                     {
@@ -217,10 +233,22 @@ namespace Project_1_Food_Recipe
                         transformedSearchString = " " + tokens[i] + " ";
                     }
 
-                    if (searchedString.Contains(transformedSearchString))
+                    if(searchedString.Length < transformedSearchString.Length)
                     {
-                        priority++;
+                        if (transformedSearchString.Contains(searchedString))
+                        {
+                            priority++;
+                        }
                     }
+                    else
+                    {
+                        if (searchedString.Contains(transformedSearchString))
+                        {
+                            priority++;
+                        }
+                    }
+
+                    
                 }
                 //foreach (var token in tokens)
                 //{
