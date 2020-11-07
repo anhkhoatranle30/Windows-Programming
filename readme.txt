@@ -1,3 +1,6 @@
+paging UI còn bug
+
+
 to do list final:
 	xử lý link youtube
 	độ ưu tiên search

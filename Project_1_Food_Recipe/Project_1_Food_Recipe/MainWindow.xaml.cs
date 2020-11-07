@@ -198,15 +198,14 @@ namespace Project_1_Food_Recipe
                 int priority = 0;
 
                 searchedString = Parse(searchedString); //dui ga sot cam
-                if(!searchedString.Contains(" "))
+                if (!searchedString.Contains(" "))
                 {
-
-                } 
+                }
                 else
                 {
                     searchedString = " " + searchedString + " ";
                 }
-               
+
                 toSearchString = Parse(toSearchString); //Đùi gà sốt cam
                 var tokens = toSearchString.Split(new String[] { " " }, StringSplitOptions.RemoveEmptyEntries);
                 for (var i = 0; i < tokens.Length; i++)
@@ -222,7 +221,6 @@ namespace Project_1_Food_Recipe
                         {
                             transformedSearchString = tokens[i] + " ";
                         }
-                        
                     }
                     else if (i == tokens.Length - 1)
                     {
@@ -233,7 +231,7 @@ namespace Project_1_Food_Recipe
                         transformedSearchString = " " + tokens[i] + " ";
                     }
 
-                    if(searchedString.Length < transformedSearchString.Length)
+                    if (searchedString.Length < transformedSearchString.Length)
                     {
                         if (transformedSearchString.Contains(searchedString))
                         {
@@ -247,8 +245,6 @@ namespace Project_1_Food_Recipe
                             priority++;
                         }
                     }
-
-                    
                 }
                 //foreach (var token in tokens)
                 //{
@@ -388,7 +384,7 @@ namespace Project_1_Food_Recipe
                         steplist.Add(step);
                     }
                     //Recipe
-                    var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], DesPicture = toAbsolutePath(tokens[2]), Description = tokens[3], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
+                    var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], DesPicture = toAbsolutePath(tokens[2]), Description = tokens[3], VideoLink = PathString.TransformToEmbedYoutubeLink(tokens[4]), StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
                     result = recipe;
                 }
                 return result;
@@ -448,7 +444,7 @@ namespace Project_1_Food_Recipe
                             steplist.Add(step);
                         }
                         //Recipe
-                        var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], /*DesPicture = toAbsolutePath(tokens[2]),*/ Description = tokens[3], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
+                        var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], /*DesPicture = toAbsolutePath(tokens[2]),*/ Description = tokens[3], VideoLink = PathString.TransformToEmbedYoutubeLink(tokens[4]), StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
                         //if user adds new dishes
                         if (recipe.RecipeID < quantity.Default)
                         {
@@ -755,7 +751,7 @@ namespace Project_1_Food_Recipe
                             steplist.Add(step);
                         }
                         //Recipe
-                        var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], /*DesPicture = toAbsolutePath(tokens[2]),*/ Description = tokens[3], VideoLink = tokens[4], StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
+                        var recipe = new Recipe() { RecipeID = int.Parse(tokens[0]), Title = tokens[1], /*DesPicture = toAbsolutePath(tokens[2]),*/ Description = tokens[3], VideoLink = PathString.TransformToEmbedYoutubeLink(tokens[4]), StepsList = steplist, IsFavorite = bool.Parse(tokens[tokens.Length - 1]) };
                         //if user adds new dishes
                         if (recipe.RecipeID < quantity.Default)
                         {
@@ -1113,6 +1109,8 @@ namespace Project_1_Food_Recipe
             ClearAll();
             HideScreen();
             homeScreen.Visibility = Visibility.Visible;
+            backToHomeBtn_Click(sender, e);
+            searchResultEnterKeydown.Visibility = Visibility.Hidden;
 
             Grid _img = homeBtn.Template.FindName("img", homeBtn) as Grid;
             if (_img != null)
@@ -1618,7 +1616,15 @@ namespace Project_1_Food_Recipe
             var recipeDAOTextFile = new RecipeDAOTextFile();
             _searchRecipeList = recipeDAOTextFile.Search(text);
             searchListView.ItemsSource = _searchRecipeList;
-            Debug.WriteLine("da doi");
+
+            if (_searchRecipeList.Count == 0 && search.Text != "")
+            {
+                noResult.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                noResult.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void search_GotFocus(object sender, RoutedEventArgs e)
@@ -1629,6 +1635,7 @@ namespace Project_1_Food_Recipe
         private void search_LostFocus(object sender, RoutedEventArgs e)
         {
             searchListView.Visibility = Visibility.Collapsed;
+            noResult.Visibility = Visibility.Collapsed;
         }
 
         private void recipeBtn_Click(object sender, RoutedEventArgs e)
@@ -1656,6 +1663,7 @@ namespace Project_1_Food_Recipe
 
             foodDetail.Visibility = Visibility.Visible;
             home.Visibility = Visibility.Hidden;
+            searchResultEnterKeydown.Visibility = Visibility.Hidden;
         }
 
         private void recipeSearchBtn_Click(object sender, RoutedEventArgs e)
@@ -1678,18 +1686,6 @@ namespace Project_1_Food_Recipe
 
             detailListView.ItemsSource = resultList;
             foodDetail.Visibility = Visibility.Visible;
-        }
-
-        private void homeScreen_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Debug.WriteLine("hoho");
-            homeScreen.Focus();
-        }
-
-        private void homeScreen_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Debug.WriteLine("hoho1");
-            homeScreen.Focus();
         }
 
         private void recipeSearchBtn_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -1885,11 +1881,13 @@ namespace Project_1_Food_Recipe
             }
 
             Debug.WriteLine("da nhan enter");
-        }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            home.Focus();
+            searchResultListView.ItemsSource = searchListView.ItemsSource;
+            searchResultEnterKeydown.Visibility = Visibility.Visible;
+            home.Visibility = Visibility.Hidden;
+            searchResultEnterKeydown.Focus();
+            searchEnterKeyDown.Text = search.Text;
+            resultOf.Text = "Kết quả hiện thị cho \"" + search.Text + "\":";
         }
 
         private void UpdatePageNumber()
@@ -2008,6 +2006,40 @@ namespace Project_1_Food_Recipe
             _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
             dataListView.ItemsSource = _recipeList;
             UpdatePageNumber();
+        }
+
+        private void homeScreen_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            homeScreen.Focus();
+        }
+
+        private void searchEnterKeyDown_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key != System.Windows.Input.Key.Enter)
+            {
+                Debug.WriteLine("chua nhan enter");
+                return;
+            }
+
+            string text = searchEnterKeyDown.Text;
+            var recipeDAOTextFile = new RecipeDAOTextFile();
+            _searchRecipeList = recipeDAOTextFile.Search(text);
+            searchResultListView.ItemsSource = _searchRecipeList;
+
+            if (_searchRecipeList.Count == 0)
+            {
+                resultOf.Text = "Không có kết quả hiện thị phù hợp cho \"" + searchEnterKeyDown.Text + "\"";
+            }
+            else
+            {
+                resultOf.Text = "Kết quả hiện thị cho \"" + searchEnterKeyDown.Text + "\":";
+            }
+        }
+
+        private void backToHomeBtnWhenClickEnterKeyDown_Click(object sender, RoutedEventArgs e)
+        {
+            searchResultEnterKeydown.Visibility = Visibility.Hidden;
+            home.Visibility = Visibility.Visible;
         }
     }
 }
