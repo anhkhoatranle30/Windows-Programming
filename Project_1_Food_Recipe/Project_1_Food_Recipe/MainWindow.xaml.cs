@@ -1327,13 +1327,21 @@ namespace Project_1_Food_Recipe
         private void addStepImgBtn_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fd = new OpenFileDialog();
+            fd.Multiselect = true;
 
             if (fd.ShowDialog() == true)
             {
-                Image image = new Image();
-                image.Source = new BitmapImage(
-                    new Uri(fd.FileName));
-                stepImage.Source = image.Source;
+                var files = fd.FileNames;
+                BindingList<string> source = new BindingList<string>();
+
+                foreach (var file in files)
+                {
+                    var info = new FileInfo(file);
+
+                    source.Add(file);
+                }
+
+                imageItems.ItemsSource = source;
             }
         }
 
@@ -1344,7 +1352,7 @@ namespace Project_1_Food_Recipe
         {
             public string NumberOfStep { get; set; }
             public string StepDesc { set; get; }
-            public BitmapImage StepPathImage { set; get; }
+            public BindingList<string> StepImgs { set; get; }
         }
 
         private void addStepBtn_Click(object sender, RoutedEventArgs e)
@@ -1356,7 +1364,7 @@ namespace Project_1_Food_Recipe
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Warning);
             }
-            else if (stepImage.Source == null)
+            else if (imageItems.Items == null)
             {
                 MessageBox.Show("Vui lòng chọn ảnh trong bước làm món ăn!",
                                 "Thông báo",
@@ -1378,15 +1386,13 @@ namespace Project_1_Food_Recipe
                 {
                     NumberOfStep = $"Bước {stepCount}",
                     StepDesc = stepDescription.Text,
-                    StepPathImage = (BitmapImage)clone.Source
+                    StepImgs = (BindingList<string>)imageItems.ItemsSource
                 });
 
-                Debug.WriteLine(allSteps[stepCount - 1].StepPathImage);
-                //Debug.WriteLine(((ImageBrush)addImgBtn.Background).ImageSource);
                 allStepListView.ItemsSource = allSteps;
 
                 stepDescription.Clear();
-                stepImage.Source = null;
+                imageItems.ItemsSource = null;
             }
         }
 
@@ -1430,10 +1436,10 @@ namespace Project_1_Food_Recipe
                 var recipeDAOTextFile = new RecipeDAOTextFile();
                 // StepsList
                 var stepsList = new BindingList<Step>();
-                foreach (var step in allSteps)
-                {
-                    stepsList.Add(new Step() { ImgSource = PathString.ParseSystemPath(step.StepPathImage.ToString()), Content = step.StepDesc });
-                }
+                //foreach (var step in allSteps)
+                //{
+                //    stepsList.Add(new Step() { ImgSource = PathString.ParseSystemPath(step.StepPathImage.ToString()), Content = step.StepDesc });
+                //}
 
                 var recipe = recipeDAOTextFile.CreateRecipe(title.Text, PathString.ParseSystemPath(((ImageBrush)addImgBtn.Background).ImageSource.ToString()), description.Text, yt.Text, stepsList);
 

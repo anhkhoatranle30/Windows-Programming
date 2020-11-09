@@ -723,38 +723,6 @@
             </Setter>
         </Style>
 
-        <!--<Style x:Key="nextPageBtnStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource backPageBtnStyle}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid>
-                            <Border x:Name="border"
-                                CornerRadius="40"
-                                Background="{Binding Color}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                BorderBrush="{TemplateBinding BorderBrush}">
-                            </Border>
-                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                                              VerticalAlignment="{TemplateBinding VerticalAlignment}" />
-                            <Grid x:Name="img" Width="20" Height="20" Background="White">
-                                <Grid.OpacityMask>
-                                    <ImageBrush ImageSource="Images/img_next_page.png" />
-                                </Grid.OpacityMask>
-                            </Grid>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Cursor" Value="Hand" />
-                            </Trigger>
-
-                            <Trigger Property="IsPressed" Value="True">
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>-->
-
         <Style x:Key="isFavoriteTgStyle" TargetType="{x:Type ToggleButton}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
             <Setter Property="Background" Value="Transparent" />
@@ -951,14 +919,46 @@
                             </Trigger>
                             <Trigger Property="IsChecked" Value="True">
                                 <Setter Property="Foreground" Value="White" />
-                                <Setter Property="Background" TargetName="border" Value="{Binding color}" />
-                                <Setter Property="Background" Value="{Binding color}" />
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource color}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <!--<DataTemplate x:Key="listViewDataTemplate">
+            <StackPanel ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <TextBlock x:Name="numberOfStep"
+                           FontFamily="Font/UtmTimes-xOlr.ttf #UtmTimes"
+                           Padding="10"
+                           FontSize="20"
+                           Foreground="Red"
+                           FontWeight="Bold"
+                           Height="46"
+                           Margin="0,0,0.2,0"
+                           Text="{Binding NumberOfStep}" />
+                <TextBlock x:Name="stepDesc"
+                           FontFamily="Font/UtmTimes-xOlr.ttf #UtmTimes"
+                           TextWrapping="Wrap"
+                           Padding="10"
+                           FontSize="20"
+                           Text="{Binding StepDesc}" />
+                <Image Source="{Binding StepPathImage}" Width="150" Height="150" Stretch="Fill" />
+                <ItemsControl x:Name="imageItemsAllStep" Margin="0,69,0,0">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding StepImgs}" Width="100" Height="100" Stretch="Fill" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </DataTemplate>-->
     </Window.Resources>
 
     <Border CornerRadius="40" Background="{Binding Color}">
@@ -998,7 +998,7 @@
 
                 <Border Background="White" Height="800" Width="1160" CornerRadius="40">
                     <Grid Margin="35,55">
-                        <Grid x:Name="homeScreen" Background="White" Focusable="True" MouseDown="homeScreen_MouseDown">
+                        <Grid x:Name="homeScreen" Background="White" Focusable="True" Visibility="Hidden" MouseDown="homeScreen_MouseDown">
 
                             <Grid x:Name="home">
                                 <ListView x:Name="dataListView"  VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Margin="0,74,-0.4,36.6">
@@ -1198,29 +1198,43 @@
 
                             <Grid x:Name="foodFavDetail" Visibility="Hidden" Margin="0,37,-0.4,-0.4">
                                 <StackPanel Orientation="Horizontal">
-                                    <ListView Name="detailFavListView" Margin="0,0,30,0" BorderThickness="0" Width="400" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                        <ListView.ItemTemplate>
-                                            <DataTemplate>
-                                                <!--<Image Source="{Binding DesPicture}" />-->
-                                                <StackPanel>
-                                                    <Border Width="380" Height="250" CornerRadius="40" Margin="0,0,0,15">
-                                                        <Border.Background>
-                                                            <ImageBrush ImageSource="{Binding DesPicture}" />
-                                                        </Border.Background>
-                                                    </Border>
-                                                    <TextBlock Text="{Binding Title}" FontSize="28" TextWrapping="Wrap" Style="{StaticResource foodNameStyle}" Padding="-2,5" HorizontalAlignment="Left"  Foreground="{StaticResource color}" />
-                                                    <TextBlock Text="{Binding Description}" Style="{StaticResource foodNameStyle}" Padding="-2,5" TextAlignment="Justify" TextWrapping="Wrap" />
-                                                    <TextBlock Text="{Binding VideoLink}" Style="{StaticResource foodNameStyle}" Margin="0,5" HorizontalAlignment="Left" />
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ListView.ItemTemplate>
-                                    </ListView>
 
-                                    <ListView x:Name="detailStepsFavListView" Width="680" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                    <Grid VerticalAlignment="Top" Width="400" Margin="0,0,10,0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <ScrollViewer Grid.Row="1" Margin="0,0,0,0.4" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+
+                                            <ListView x:Name="detailFavListView" ScrollViewer.VerticalScrollBarVisibility="Hidden" BorderThickness="0" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <WrapPanel Orientation="Vertical">
+                                                            <Border Width="380" Height="230" CornerRadius="40" Margin="0,0,0,10">
+                                                                <Border.Background>
+                                                                    <ImageBrush ImageSource="{Binding DesPicture}" />
+                                                                </Border.Background>
+                                                            </Border>
+                                                            <TextBlock Text="{Binding Title}" FontSize="28" TextWrapping="Wrap" Style="{StaticResource foodNameStyle}" Padding="-2,5" HorizontalAlignment="Center"  Foreground="{StaticResource color}" />
+                                                            <WebBrowser x:Name="video" local:WebBrowserUtility.BindableSource="{Binding VideoLink}" Height="250" Margin="5" />
+                                                            <TextBlock Text="{Binding Description}" Style="{StaticResource foodNameStyle}" Padding="-2,5" TextAlignment="Justify" TextWrapping="Wrap" />
+                                                        </WrapPanel>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
+                                        </ScrollViewer>
+                                    </Grid>
+
+                                    <Grid Background="{StaticResource color}" Width="1" Margin="10,0" />
+
+                                    <ListView x:Name="detailStepsFavListView" BorderThickness="0" ScrollViewer.CanContentScroll="False" Margin="0,-10,0,0" Width="680" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <WrapPanel Orientation="Horizontal">
-                                                    <TextBlock Text="{Binding StepNumber}" Foreground="{StaticResource color}" FontSize="23" Style="{StaticResource foodNameStyle}" Margin="0,10,0,0" />
+                                                    <Border CornerRadius="20" BorderThickness="1" BorderBrush="{StaticResource color}" Height="50" Margin="0,10,0,0">
+                                                        <TextBlock Text="{Binding StepNumber}" Foreground="{StaticResource color}" FontSize="23" Margin="8" Style="{StaticResource foodNameStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                    </Border>
                                                     <TextBlock Text="{Binding Content}" Style="{StaticResource foodNameStyle}" TextWrapping="WrapWithOverflow" TextAlignment="Justify" Margin="0" />
                                                     <Grid Width="680" Height="250">
                                                         <Border CornerRadius="40" Width="400" Height="250" HorizontalAlignment="Center">
@@ -1238,7 +1252,7 @@
                             </Grid>
                         </Grid>
 
-                        <Grid x:Name="addScreen" Visibility="Hidden">
+                        <Grid x:Name="addScreen">
 
                             <Grid x:Name="titleGrid" Style="{StaticResource EntryFieldStyle}" Width="394" Height="55" Margin="0,0,695.6,634.6">
 
@@ -1310,10 +1324,21 @@
                                     <Button.Content>
                                         <Grid Height="295" VerticalAlignment="Bottom" Width="324">
                                             <Image x:Name="stepImage" Margin="0,69,0,0" Stretch="Fill" />
-
+                                            <ItemsControl x:Name="imageItems" Margin="0,69,0,0">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <WrapPanel />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Image Source="{Binding}" Width="100" Height="100" Stretch="Fill" />
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
                                             <Grid Background="#808080" Opacity="0.6" Margin="0,238,0,0">
                                                 <Image Source="Images/img_add_img.png" VerticalAlignment="top" Width="40" Height="40" />
-                                                <TextBlock Text="Click to add step image" FontSize="13" Foreground="White" Margin="91,38,89,-0.2" />
+                                                <TextBlock Text="Click to add step images" FontSize="13" Foreground="White" Margin="91,38,89,-0.2" />
                                             </Grid>
                                         </Grid>
                                     </Button.Content>
@@ -1333,19 +1358,19 @@
                                 </Button.Content>
                             </Button>
 
-                            <Border Margin="417,325,-0.4,4.6" BorderThickness="3" BorderBrush="Gray" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                            <Border Margin="417,325,-0.4,4.6" BorderThickness="3" BorderBrush="Gray">
                                 <Grid x:Name="stepViewGrid">
-                                    <ScrollViewer>
-                                        <ListView x:Name="allStepListView">
-                                            <ListView.ItemsPanel>
-                                                <ItemsPanelTemplate>
-                                                    <StackPanel />
-                                                </ItemsPanelTemplate>
-                                            </ListView.ItemsPanel>
-                                            <ListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <StackPanel ScrollViewer.VerticalScrollBarVisibility="Visible">
-                                                        <TextBlock x:Name="numberOfStep"
+
+                                    <ListView x:Name="allStepListView" ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.CanContentScroll="False">
+                                        <ListView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel />
+                                            </ItemsPanelTemplate>
+                                        </ListView.ItemsPanel>
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                                    <TextBlock x:Name="numberOfStep"
                                                                    FontFamily="Font/UtmTimes-xOlr.ttf #UtmTimes"
                                                                    Padding="10"
                                                                    FontSize="20"
@@ -1354,18 +1379,30 @@
                                                                    Height="46"
                                                                    Margin="0,0,0.2,0"
                                                                    Text="{Binding NumberOfStep}" />
-                                                        <TextBlock x:Name="stepDesc"
+                                                    <TextBlock x:Name="stepDesc"
                                                                    FontFamily="Font/UtmTimes-xOlr.ttf #UtmTimes"
                                                                    TextWrapping="Wrap"
                                                                    Padding="10"
                                                                    FontSize="20"
                                                                    Text="{Binding StepDesc}" />
-                                                        <Image Source="{Binding StepPathImage}" Width="150" Height="150" Stretch="Fill" />
-                                                    </StackPanel>
-                                                </DataTemplate>
-                                            </ListView.ItemTemplate>
-                                        </ListView>
-                                    </ScrollViewer>
+
+                                                    <ItemsControl x:Name="imageItemsAllStep"
+                                                                      ItemsSource="{Binding StepImgs}">
+                                                        <ItemsControl.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <WrapPanel />
+                                                            </ItemsPanelTemplate>
+                                                        </ItemsControl.ItemsPanel>
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <Image Source="{Binding}" Width="100" Height="100" Stretch="Fill" />
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
                                 </Grid>
                             </Border>
 

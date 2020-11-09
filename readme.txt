@@ -1,3 +1,6 @@
+mấy tấm ảnh của từng step nằm trong bindinglist<string> StepImgs
+
+
 paging UI còn bug
 
 

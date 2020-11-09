@@ -294,10 +294,6 @@
     <Resource Include="Images\img_about_Hoang.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\img_grid.png" />
-    <Resource Include="Images\img_list.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\img_continue.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
