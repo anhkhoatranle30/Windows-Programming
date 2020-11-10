@@ -43,7 +43,7 @@ namespace Project_1_Food_Recipe
 
         private BindingList<Recipe> _favoriteRecipeList;
         private BindingList<Recipe> _searchRecipeList;
-        private BindingList<Recipe> _splashScreenRecipe;
+        //private BindingList<Recipe> _splashScreenRecipe;
 
         public static String toAbsolutePath(String relative)
         {
@@ -64,8 +64,6 @@ namespace Project_1_Food_Recipe
 
         #endregion global variables
 
-        
-
         //end functional
 
         #endregion functional
@@ -76,52 +74,37 @@ namespace Project_1_Food_Recipe
         {
             InitializeComponent();
 
-            var recipeDAOTextFile = new RecipeDAOTextFile();
-            _recipeList = recipeDAOTextFile.GetAll();
-            var favoriteRecipeDAOTextFile = new FavoriteRecipeDAOTextFile();
-            _favoriteRecipeList = favoriteRecipeDAOTextFile.GetAll();
+            //var value = ConfigurationManager.AppSettings["productsPerPage"];
 
-            dataListView.ItemsSource = _recipeList;
-            favoriteListView.ItemsSource = _favoriteRecipeList;
+            //var recipeDAOTextFile = new RecipeDAOTextFile();
+            //_recipeList = recipeDAOTextFile.GetAll();
+            //var favoriteRecipeDAOTextFile = new FavoriteRecipeDAOTextFile();
+            //_favoriteRecipeList = favoriteRecipeDAOTextFile.GetAll();
 
-            #region test paging
+            //dataListView.ItemsSource = _recipeList;
+            //favoriteListView.ItemsSource = _favoriteRecipeList;
 
-            pageNumber = 1;
-            productsPerPage = 8;
-            _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
-            dataListView.ItemsSource = _recipeList;
+            //#region test paging
 
-            //pageTextBox.Text = pageNumber.ToString();
-            //pageTextBlock.Text = noPages.ToString();
+            //pageNumber = 1;
 
-            totalPage.Content = noPages.ToString();
+            //int index = 2;
+            //var successParse = int.TryParse(value, out index);
 
-            if (pageNumber == 1)
-            {
-                prePage.Content = pageNumber.ToString();
-                curPage.Content = (pageNumber + 1).ToString();
-                nextPage.Content = (pageNumber + 2).ToString();
+            //if (successParse == false)
+            //{
+            //    productsPerPage = 8;
+            //}
+            //else
+            //{
+            //}
 
-                firstPage.Visibility = Visibility.Hidden;
-            }
-            else if (pageNumber == noPages)
-            {
-                prePage.Content = (pageNumber - 2).ToString();
-                curPage.Content = (pageNumber - 1).ToString();
-                nextPage.Content = pageNumber.ToString();
+            //_recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
+            //dataListView.ItemsSource = _recipeList;
 
-                lastPage.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                curPage.Content = pageNumber.ToString();
-                prePage.Content = (pageNumber - 1).ToString();
-                nextPage.Content = (pageNumber + 1).ToString();
+            //UpdatePageNumber();
 
-                totalPage.Content = noPages.ToString();
-            }
-
-            #endregion test paging
+            //#endregion test paging
         }
 
         private void Clear(Button btn)
@@ -340,6 +323,36 @@ namespace Project_1_Food_Recipe
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //
+
+            var recipeDAOTextFile = new RecipeDAOTextFile();
+            _recipeList = recipeDAOTextFile.GetAll();
+            var favoriteRecipeDAOTextFile = new FavoriteRecipeDAOTextFile();
+            _favoriteRecipeList = favoriteRecipeDAOTextFile.GetAll();
+
+            dataListView.ItemsSource = _recipeList;
+            favoriteListView.ItemsSource = _favoriteRecipeList;
+
+            #region test paging
+
+            pageNumber = 1;
+
+            var valuePpP = ConfigurationManager.AppSettings["indexComboBox"];
+            int index = int.Parse(valuePpP);
+            cboPpP.SelectedIndex = index;
+            ComboBoxItem typeItem = (ComboBoxItem)cboPpP.SelectedItem;
+            int numPpP = int.Parse(typeItem.Content.ToString());
+
+            productsPerPage = numPpP;
+
+            _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
+            dataListView.ItemsSource = _recipeList;
+
+            UpdatePageNumber();
+
+            #endregion test paging
+
+            //
             var appName = System.Diagnostics.Process.GetCurrentProcess().ProcessName + ".exe";
 
             using (var Key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", true))
@@ -355,8 +368,8 @@ namespace Project_1_Food_Recipe
             }
 
             this.DataContext = _backgroundColor;
-            var value = ConfigurationManager.AppSettings["colorDefault"];
-            var myRadioButton = (RadioButton)this.FindName(value);
+            var valueColor = ConfigurationManager.AppSettings["colorDefault"];
+            var myRadioButton = (RadioButton)this.FindName(valueColor);
 
             myRadioButton.IsChecked = true;
             homeBtn_Click(sender, e);
@@ -496,9 +509,9 @@ namespace Project_1_Food_Recipe
 
                 //
                 var recipeDAOTextFile = new RecipeDAOTextFile();
-                
 
                 #region recipe builder
+
                 var recipeBuilder = new ConcreteRecipeBuilder();
                 recipeBuilder.setRecipeID(0);
                 recipeBuilder.setTitle(title.Text);
@@ -520,8 +533,8 @@ namespace Project_1_Food_Recipe
                 }
                 recipeBuilder.setStepsList(stepsList);
                 var recipe = recipeBuilder.Build();
-                #endregion
 
+                #endregion recipe builder
 
                 //
 
@@ -732,7 +745,6 @@ namespace Project_1_Food_Recipe
             var recipeIDToCompare = recipe.RecipeID;
             var resultList = new BindingList<Recipe>();
 
-            
             var fullList = new RecipeDAOTextFile().GetAll();
             foreach (var i in fullList)
             {
@@ -746,6 +758,11 @@ namespace Project_1_Food_Recipe
 
             var detailStepsList = UncompressedStep.ToUncrompressStepList(resultList[0].StepsList);
             detailStepsListView.ItemsSource = detailStepsList;
+
+            foreach (var i in detailStepsList[0].ImgSource)
+            {
+                Debug.WriteLine("debug cai anh: " + i);
+            }
 
             foodDetail.Visibility = Visibility.Visible;
             home.Visibility = Visibility.Hidden;
@@ -813,7 +830,6 @@ namespace Project_1_Food_Recipe
 
                 var favDAO = new FavoriteRecipeDAOTextFile();
                 favDAO.Add(recipeToAdd);
-                
 
                 _favoriteRecipeList = favDAO.GetAll();
                 favoriteListView.ItemsSource = _favoriteRecipeList;
@@ -930,7 +946,7 @@ namespace Project_1_Food_Recipe
             {
                 string value = typeItem.Content.ToString();
                 int choose = int.Parse(value);
-
+                SetPpP(cboPpP.SelectedIndex);
                 productsPerPage = choose;
 
                 var recipeDAO = new RecipeDAOTextFile();
@@ -938,7 +954,17 @@ namespace Project_1_Food_Recipe
                 dataListView.ItemsSource = _recipeList;
 
                 Debug.WriteLine(choose);
+
+                UpdatePageNumber();
             }
+        }
+
+        private void SetPpP(int value)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(
+                ConfigurationUserLevel.None);
+            config.AppSettings.Settings["indexComboBox"].Value = value.ToString();
+            config.Save(ConfigurationSaveMode.Minimal);
         }
 
         private void splashScreen_Checked(object sender, RoutedEventArgs e)
@@ -979,31 +1005,168 @@ namespace Project_1_Food_Recipe
 
         private void UpdatePageNumber()
         {
-            if (pageNumber == 1)
+            if (noPages <= 2)
             {
-                prePage.Content = pageNumber.ToString();
-                curPage.Content = (pageNumber + 1).ToString();
-                nextPage.Content = (pageNumber + 2).ToString();
+                if (noPages == 1)
+                {
+                    curPage.Content = "1";
+                    prePage.Visibility = Visibility.Hidden;
+                    nextPage.Visibility = Visibility.Hidden;
+                }
+                else if (noPages == 2)
+                {
+                    prePage.Content = "1";
+                    curPage.Content = "2";
+                    nextPage.Visibility = Visibility.Hidden;
+                }
 
                 firstPage.Visibility = Visibility.Hidden;
-            }
-            else if (pageNumber == noPages)
-            {
-                prePage.Content = (pageNumber - 2).ToString();
-                curPage.Content = (pageNumber - 1).ToString();
-                nextPage.Content = pageNumber.ToString();
-
                 lastPage.Visibility = Visibility.Hidden;
             }
             else
             {
-                curPage.Content = pageNumber.ToString();
-                prePage.Content = (pageNumber - 1).ToString();
-                nextPage.Content = (pageNumber + 1).ToString();
+                if (pageNumber == 1)
+                {
+                    prePage.Content = pageNumber.ToString();
+                    prePage.Visibility = Visibility.Visible;
+                    //curPage.Content = (pageNumber + 1).ToString();
+                    //nextPage.Content = (pageNumber + 2).ToString();
 
+                    if (pageNumber + 1 > noPages)
+                    {
+                        curPage.Visibility = Visibility.Hidden;
+                    }
+                    else
+                    {
+                        curPage.Content = (pageNumber + 1).ToString();
+                        curPage.Visibility = Visibility.Visible;
+                    }
+
+                    if (pageNumber + 2 > noPages)
+                    {
+                        nextPage.Visibility = Visibility.Hidden;
+                    }
+                    else
+                    {
+                        nextPage.Content = (pageNumber + 2).ToString();
+                        nextPage.Visibility = Visibility.Visible;
+                    }
+
+                    if (pageNumber >= 3)
+                    {
+                        firstPage.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        firstPage.Visibility = Visibility.Hidden;
+                    }
+
+                    if (pageNumber <= noPages - 2 && pageNumber + 2 != noPages)
+                    {
+                        lastPage.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        lastPage.Visibility = Visibility.Hidden;
+                    }
+                }
+                else if (pageNumber == noPages)
+                {
+                    nextPage.Content = pageNumber.ToString();
+                    nextPage.Visibility = Visibility.Visible;
+
+                    if (pageNumber - 1 <= 0)
+                    {
+                        curPage.Visibility = Visibility.Collapsed;
+                    }
+                    else
+                    {
+                        curPage.Content = (pageNumber - 1).ToString();
+                        curPage.Visibility = Visibility.Visible;
+                    }
+
+                    if (pageNumber - 2 <= 0)
+                    {
+                        prePage.Visibility = Visibility.Collapsed;
+                    }
+                    else
+                    {
+                        prePage.Content = (pageNumber - 2).ToString();
+                        prePage.Visibility = Visibility.Visible;
+                    }
+
+                    //prePage.Content = (pageNumber - 2).ToString();
+                    //curPage.Content = (pageNumber - 1).ToString();
+                    if (pageNumber >= 3 && pageNumber - 2 > 0)
+                    {
+                        firstPage.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        firstPage.Visibility = Visibility.Hidden;
+                    }
+
+                    if (pageNumber <= noPages - 2)
+                    {
+                        lastPage.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        lastPage.Visibility = Visibility.Hidden;
+                    }
+                }
+                else
+                {
+                    curPage.Content = pageNumber.ToString();
+                    curPage.Visibility = Visibility.Visible;
+                    //prePage.Content = (pageNumber - 1).ToString();
+                    //nextPage.Content = (pageNumber + 1).ToString();
+
+                    if (pageNumber - 1 <= 0)
+                    {
+                        prePage.Visibility = Visibility.Collapsed;
+                    }
+                    else
+                    {
+                        prePage.Content = (pageNumber - 1).ToString();
+                        prePage.Visibility = Visibility.Visible;
+                    }
+
+                    if (pageNumber + 1 > noPages)
+                    {
+                        nextPage.Visibility = Visibility.Collapsed;
+                    }
+                    else
+                    {
+                        nextPage.Content = (pageNumber + 1).ToString();
+                        nextPage.Visibility = Visibility.Visible;
+                    }
+
+                    if (pageNumber >= 3)
+                    {
+                        firstPage.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        firstPage.Visibility = Visibility.Hidden;
+                    }
+
+                    if (pageNumber <= noPages - 2)
+                    {
+                        lastPage.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        lastPage.Visibility = Visibility.Hidden;
+                    }
+
+                    curPage.IsChecked = true;
+                }
                 totalPage.Content = noPages.ToString();
             }
         }
+
+        private bool isChoosePpP = false;
 
         private void prePage_Click(object sender, RoutedEventArgs e)
         {
@@ -1014,7 +1177,16 @@ namespace Project_1_Food_Recipe
             else if (pageNumber == noPages)
             {
                 var recipeDAOTextFile = new RecipeDAOTextFile();
-                pageNumber -= 2;
+
+                if (noPages == 2)
+                {
+                    pageNumber -= 1;
+                }
+                else
+                {
+                    pageNumber -= 2;
+                }
+
                 _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
                 dataListView.ItemsSource = _recipeList;
                 UpdatePageNumber();
@@ -1083,6 +1255,7 @@ namespace Project_1_Food_Recipe
             pageNumber = noPages;
             _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
             dataListView.ItemsSource = _recipeList;
+            nextPage.IsChecked = true;
             UpdatePageNumber();
         }
 
@@ -1092,6 +1265,7 @@ namespace Project_1_Food_Recipe
             pageNumber = 1;
             _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
             dataListView.ItemsSource = _recipeList;
+            prePage.IsChecked = true;
             UpdatePageNumber();
         }
 

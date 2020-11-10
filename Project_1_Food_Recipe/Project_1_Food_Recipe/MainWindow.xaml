@@ -855,20 +855,20 @@
         <Style TargetType="{x:Type Button}" x:Key="pageBtnStyle">
             <Setter Property="Margin" Value="5" />
             <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Background" Value="{StaticResource color}" />
+            <Setter Property="Background" Value="White" />
             <Setter Property="FontSize" Value="22" />
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="Width" Value="30" />
             <Setter Property="Height" Value="30" />
             <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Foreground" Value="Black" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
                             <Border x:Name="border"
                                 CornerRadius="40"
-                                Background="{Binding Color}"
+                                Background="White"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 BorderBrush="{TemplateBinding BorderBrush}">
                             </Border>
@@ -998,7 +998,7 @@
 
                 <Border Background="White" Height="800" Width="1160" CornerRadius="40">
                     <Grid Margin="35,55">
-                        <Grid x:Name="homeScreen" Background="White" Focusable="True" Visibility="Hidden" MouseDown="homeScreen_MouseDown">
+                        <Grid x:Name="homeScreen" Background="White" Focusable="True"  MouseDown="homeScreen_MouseDown">
 
                             <Grid x:Name="home">
                                 <ListView x:Name="dataListView"  VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Margin="0,74,-0.4,36.6">
@@ -1027,7 +1027,7 @@
                                     <TextBox x:Name="search" GotFocus="search_GotFocus" KeyDown="search_KeyDown" LostFocus="search_LostFocus" Style="{StaticResource watermarkSearchTextBoxStyle}" Padding="46,5,0,5" TextChanged="search_TextChanged" />
                                 </Grid>
                                 <Grid x:Name="page" Margin="718,650,-0.4,-24.4">
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="101,0,10,0" Width="261">
+                                    <StackPanel Orientation="Horizontal" Margin="119,0,10,0">
                                         <!--<Button x:Name="backPageBtn" Style="{StaticResource backPageBtnStyle}" Margin="0,0,5,0" Click="backPageBtn_Click" />
 
                                         <Border Height="30" Width="30" BorderThickness="1" BorderBrush="Gray">
@@ -1050,7 +1050,7 @@
                                             <Button Name="page1" Content="1" Style="{StaticResource pageBtnStyle}" Click="page1_Click" />
                                             <TextBlock Text="..." FontSize="22" FontWeight="Bold" VerticalAlignment="Center" />
                                         </StackPanel>
-                                        <RadioButton GroupName="pageRadioBtn" Name="prePage" Style="{StaticResource pageRBtnStyle}" Click="prePage_Click" />
+                                        <RadioButton GroupName="pageRadioBtn" Name="prePage" Style="{StaticResource pageRBtnStyle}" IsChecked="True" Click="prePage_Click" />
                                         <RadioButton GroupName="pageRadioBtn" x:Name="curPage" Style="{StaticResource pageRBtnStyle}" Click="curPage_Click" />
                                         <RadioButton GroupName="pageRadioBtn" x:Name="nextPage" Style="{StaticResource pageRBtnStyle}" Click="nextPage_Click" />
                                         <StackPanel x:Name="lastPage" Orientation="Horizontal">
@@ -1122,7 +1122,7 @@
 
                             <!--#endregion-->
 
-                            <Grid x:Name="foodDetail" Visibility="Hidden">
+                            <Grid x:Name="foodDetail">
                                 <StackPanel Orientation="Horizontal">
 
                                     <Grid VerticalAlignment="Top" Width="400" Margin="0,0,10,0">
@@ -1144,7 +1144,7 @@
                                                             </Border>
                                                             <TextBlock Text="{Binding Title}" FontSize="28" TextWrapping="Wrap" Style="{StaticResource foodNameStyle}" Padding="-2,5" HorizontalAlignment="Center"  Foreground="{StaticResource color}" />
                                                             <WebBrowser x:Name="video" local:WebBrowserUtility.BindableSource="{Binding VideoLink}" Height="250" Margin="5" />
-                                                            <TextBlock Text="{Binding Description}" Style="{StaticResource foodNameStyle}" Padding="-2,5" TextAlignment="Justify" TextWrapping="Wrap" />
+                                                            <TextBlock Text="{Binding Description}" Style="{StaticResource foodNameStyle}" Padding="-2,5"  TextAlignment="Justify" TextWrapping="Wrap" />
                                                         </WrapPanel>
                                                     </DataTemplate>
                                                 </ListView.ItemTemplate>
@@ -1162,19 +1162,29 @@
                                                         <TextBlock Text="{Binding StepNumber}" Foreground="{StaticResource color}" FontSize="23" Margin="8" Style="{StaticResource foodNameStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                                     </Border>
                                                     <TextBlock Text="{Binding Content}" Style="{StaticResource foodNameStyle}" TextWrapping="WrapWithOverflow" TextAlignment="Justify" Margin="0" />
-                                                    <Grid Width="680" Height="250">
-                                                        <Border CornerRadius="40" Width="400" Height="250" HorizontalAlignment="Center">
-                                                            <Border.Background>
-                                                                <ImageBrush ImageSource="{Binding ImgSource}" />
-                                                            </Border.Background>
-                                                        </Border>
-                                                    </Grid>
+                                                    <ItemsControl ItemsSource="{Binding ImgSource}">
+                                                        <ItemsControl.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <WrapPanel />
+                                                            </ItemsPanelTemplate>
+                                                        </ItemsControl.ItemsPanel>
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <!--<Image Source="{Binding}" Width="200" Height="180" Stretch="Fill" Margin="10" HorizontalAlignment="Center" />-->
+                                                                <Border CornerRadius="30" Width="300" Height="260" Margin="5">
+                                                                    <Border.Background>
+                                                                        <ImageBrush ImageSource="{Binding}" />
+                                                                    </Border.Background>
+                                                                </Border>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
                                                 </WrapPanel>
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
                                 </StackPanel>
-                                <Button x:Name="backToHomeBtn" Style="{StaticResource backPageBtnStyle}" Margin="0,-55,1055,673" Click="backToHomeBtn_Click" />
+                                <Button x:Name="backToHomeBtn" Style="{StaticResource backPageBtnStyle}" Margin="-22,-33,1076.6,687.6" Click="backToHomeBtn_Click" />
                             </Grid>
                         </Grid>
 
@@ -1236,19 +1246,51 @@
                                                         <TextBlock Text="{Binding StepNumber}" Foreground="{StaticResource color}" FontSize="23" Margin="8" Style="{StaticResource foodNameStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                                     </Border>
                                                     <TextBlock Text="{Binding Content}" Style="{StaticResource foodNameStyle}" TextWrapping="WrapWithOverflow" TextAlignment="Justify" Margin="0" />
-                                                    <Grid Width="680" Height="250">
+                                                    <!--<Grid Width="680" Height="250">
                                                         <Border CornerRadius="40" Width="400" Height="250" HorizontalAlignment="Center">
                                                             <Border.Background>
                                                                 <ImageBrush ImageSource="{Binding ImgSource}" />
                                                             </Border.Background>
                                                         </Border>
-                                                    </Grid>
+                                                    </Grid>-->
+
+                                                    <!--<ItemsControl x:Name="imageItemsAllStep"
+                                                                      ItemsSource="{Binding StepImgs}">
+                                                        <ItemsControl.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <WrapPanel />
+                                                            </ItemsPanelTemplate>
+                                                        </ItemsControl.ItemsPanel>
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <Image Source="{Binding}" Width="100" Height="100" Stretch="Fill" />
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>-->
+
+                                                    <ItemsControl ItemsSource="{Binding ImgSource}">
+                                                        <ItemsControl.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <WrapPanel />
+                                                            </ItemsPanelTemplate>
+                                                        </ItemsControl.ItemsPanel>
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <!--<Image Source="{Binding}" Width="200" Height="180" Stretch="Fill" Margin="10" HorizontalAlignment="Center" />-->
+                                                                <Border CornerRadius="30" Width="300" Height="260" Margin="5">
+                                                                    <Border.Background>
+                                                                        <ImageBrush ImageSource="{Binding}" />
+                                                                    </Border.Background>
+                                                                </Border>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
                                                 </WrapPanel>
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
                                 </StackPanel>
-                                <Button x:Name="backToFavBtn" Style="{StaticResource backPageBtnStyle}" Margin="0,-55,1055,673" Click="backToFavBtn_Click" />
+                                <Button x:Name="backToFavBtn" Style="{StaticResource backPageBtnStyle}" Margin="-22,-33,1076.6,687.6" Click="backToFavBtn_Click" />
                             </Grid>
                         </Grid>
 
@@ -1440,10 +1482,11 @@
                                     <TextBlock Text="Number of products per page:" Style="{StaticResource fontStyle}" FontSize="20" Padding="20,10,0,10" Margin="0,10,0,10" Foreground="Black" />
                                     <StackPanel  Margin="10" VerticalAlignment="Center">
                                         <ComboBox x:Name="cboPpP" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" SelectionChanged="cboPpP_SelectionChanged" Width="55" Height="34">
-                                            <ComboBoxItem FontSize="20" Content="6" />
-                                            <ComboBoxItem FontSize="20" IsSelected="True" Content="8" />
-                                            <ComboBoxItem FontSize="20" Content="10" />
-                                            <ComboBoxItem FontSize="20" Content="12" />
+                                            <ComboBoxItem Name="n2" FontSize="20" Content="2" />
+                                            <ComboBoxItem Name="n6" FontSize="20" Content="6" />
+                                            <ComboBoxItem Name="n8" FontSize="20"  Content="8" />
+                                            <ComboBoxItem Name="n10" FontSize="20" Content="10" />
+                                            <ComboBoxItem Name="n12" FontSize="20" Content="12" />
                                         </ComboBox>
                                     </StackPanel>
                                 </StackPanel>
