@@ -66,10 +66,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FavoriteRecipe.cs" />
+    <Compile Include="PathString.cs" />
+    <Compile Include="Recipe.cs" />
+    <Compile Include="RecipesQuantity.cs" />
+    <Compile Include="SearchString.cs" />
     <Compile Include="SplashWindow.xaml.cs">
       <DependentUpon>SplashWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Step.cs" />
     <Compile Include="TextInputToVisibilityConverter.cs" />
+    <Compile Include="UncompressedStep.cs" />
     <Compile Include="WebBrowserUtility.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
