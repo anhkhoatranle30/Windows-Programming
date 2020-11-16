@@ -308,3 +308,203 @@
 14*6*image*Images\Recipes\14\6\2.jpg
 14*6*image*Images\Recipes\14\6\3.jpg
 14*6*content*Món sườn heo quen thuộc bỗng trở nên sinh động dưới bàn tay khéo léo của bạn. Không chỉ gia đình mà bạn bè nhà bạn sẽ ăn nhiều và ngon miệng hơn đó nha. Sườn cây đậm đà hòa quyện trong nước sốt Teriyaki Nhật Bản thơm béo sẽ giúp những ai thưởng thức cảm giác ngon miệng và hấp dẫn hơn rất nhiều.
+15*1*image*Images\Recipes\15\1\1.jpeg
+15*1*image*Images\Recipes\15\1\2.jpeg
+15*1*image*Images\Recipes\15\1\3.jpeg
+15*1*image*Images\Recipes\15\1\4.jpeg
+15*1*content*50gr nấm hương khô và 50gr nấm mèo khô ngâm nở, giữ lại phần nước ngâm và băm nhỏ từng loại nấm.
+15*2*image*Images\Recipes\15\2\1.jpeg
+15*2*image*Images\Recipes\15\2\2.jpeg
+15*2*image*Images\Recipes\15\2\3.jpeg
+15*2*image*Images\Recipes\15\2\4.jpeg
+15*2*content*Cho phần nước ngâm nấm vào chén 5gr bột bắp, khuấy tan.
+15*3*image*Images\Recipes\15\3\1.jpeg
+15*3*image*Images\Recipes\15\3\2.jpeg
+15*3*image*Images\Recipes\15\3\3.jpeg
+15*3*image*Images\Recipes\15\3\4.jpeg
+15*3*content*Bắc chảo phi thơm 15gr hành tím băm, cho nấm mèo và nấm hương đã băm nhỏ vào xào cùng 1 muỗng canh nước tương trong 5 phút. Rồi cho tiếp phần nước ngâm nấm và bột bắp đã khuấy tan vào, dùng đũa đảo đều để sốt không bị vón cục.
+15*4*image*Images\Recipes\15\4\1.jpeg
+15*4*image*Images\Recipes\15\4\2.jpeg
+15*4*image*Images\Recipes\15\4\3.jpeg
+15*4*image*Images\Recipes\15\4\4.jpeg
+15*4*content*Cắt 2 cây đậu hũ trứng rồi cho vào chảo, đậy nắp nấu thêm 5 phút cho sốt thấm đều, rắc 20gr hành lá cắt nhỏ rồi tắt bếp.
+15*5*image*Images\Recipes\15\5\1.jpeg
+15*5*image*Images\Recipes\15\5\2.jpeg
+15*5*image*Images\Recipes\15\5\3.jpeg
+15*5*image*Images\Recipes\15\5\4.jpeg
+15*5*content*Trình bày đậu hũ non sốt nấm ra dĩa và sẽ thêm ngon nếu như được thưởng thức khi còn nóng, có thể dùng kèm với cơm trắng cho bữa ăn gia đình thêm vị mới.
+16*1*image*Images\Recipes\16\1\1.jpeg
+16*1*image*Images\Recipes\16\1\2.jpeg
+16*1*image*Images\Recipes\16\1\3.jpeg
+16*1*image*Images\Recipes\16\1\4.jpeg
+16*1*content*Bột bánh: Rây 150 gram bột mì và cho 35 gram bơ lạt vào tô, nhồi cho đều. Hòa tan 2 gram muối, 3 gram đường vào 65 gram nước, sau đó đổ vào tô bột và nhồi thành khối.
+16*2*image*Images\Recipes\16\2\1.jpeg
+16*2*image*Images\Recipes\16\2\2.jpeg
+16*2*image*Images\Recipes\16\2\3.jpeg
+16*2*image*Images\Recipes\16\2\4.jpeg
+16*2*image*Images\Recipes\16\2\5.jpeg
+16*2*image*Images\Recipes\16\2\6.jpeg
+16*2*content*Chia 80 gram bơ lạt thành 3 phần bằng nhau để phết bánh. Tiếp đến, cho bột ra bàn, cán bột dày khoảng 3 mm. Cho 1 phần bơ (của 80 gram bơ) lên mặt bột rồi dùng phới phết đều khắp mặt, tiếp đến gấp bột làm tư như hình, sau đó bọc lại, cho bột ngăn mát tủ lạnh 1 tiếng.
+16*3*image*Images\Recipes\16\3\1.jpeg
+16*3*image*Images\Recipes\16\3\2.jpeg
+16*3*image*Images\Recipes\16\3\3.jpeg
+16*3*image*Images\Recipes\16\3\4.jpeg
+16*3*content*Sau 1 tiếng, lấy phần bột ra bàn, cán bột dày khoảng 3 mm, cho tiếp thêm 1 phần bơ (của 80 gram bơ) lên mặt bột rồi dùng phới phết đều khắp mặt, gấp bột làm tư như hình, sau đó bọc lại, cho bột vào ngăn mát tủ lạnh 30 phút.
+16*4*image*Images\Recipes\16\4\1.jpeg
+16*4*image*Images\Recipes\16\4\2.jpeg
+16*4*image*Images\Recipes\16\4\3.jpeg
+16*4*image*Images\Recipes\16\4\4.jpeg
+16*4*content*Sau 30 phút, lấy phần bột ra bàn, cán bột dày khoảng 3 mm, cho phần bơ cuối cùng lên mặt bột rồi dùng phới phết đều khắp mặt, cuộn tròn bột lại như hình, sau đó bọc lại, cho bột vào ngăn mát tủ lạnh 30 phút. Vậy là đã xong phần bột bánh tart ngàn lớp rồi.
+16*5*image*Images\Recipes\16\5\1.jpeg
+16*5*image*Images\Recipes\16\5\2.jpeg
+16*5*image*Images\Recipes\16\5\3.jpeg
+16*5*image*Images\Recipes\16\5\4.jpeg
+16*5*content*Nhân bánh: Đánh 6 lòng đỏ trứng cho tan rồi cho 135 gram đường tiếp tục đánh đều, cho tiếp 25 gram bột bắp và khuấy cho các hỗn hợp quyện lại với nhau. Sau đó, bắc 1 cái nồi, cho 370 gram kem sữa, 250gr sữa tươi không đường, 1 muỗng cà phê vani, đun lửa vừa đến khi hỗn hợp sôi lăn tăn, tắt bếp, cho vào hỗn hợp trứng, lượt lại rồi để nguội 30 phút.
+16*6*image*Images\Recipes\16\6\1.jpeg
+16*6*image*Images\Recipes\16\6\2.jpeg
+16*6*image*Images\Recipes\16\6\3.jpeg
+16*6*image*Images\Recipes\16\6\4.jpeg
+16*6*content*Nướng bánh: Chia bột thành những phần bằng nhau. Phết bơ vào khuôn, cho bột vào rồi dùng ngón tay ấn bột cho bột đều khắp khuôn. Đổ hỗn hợp nhân vào 2/3 khuôn. Cho vào lò nước 180 độ C nướng 30 phút (có thể để thêm 5-10 phút nếu muốn bánh vàng hơn)
+16*7*image*Images\Recipes\16\7\1.jpeg
+16*7*image*Images\Recipes\16\7\2.jpeg
+16*7*image*Images\Recipes\16\7\3.jpeg
+16*7*image*Images\Recipes\16\7\4.jpeg
+16*7*content*Cho bánh ra đĩa và thưởng thức ngay lớp vỏ bánh giòn tan kết hợp cùng với nhân trứng sữa mềm mịn, thơm nức mũi sẽ khiến cho bạn càng ăn càng mê.
+17*1*image*Images\Recipes\17\1\1.jpeg
+17*1*image*Images\Recipes\17\1\2.jpeg
+17*1*image*Images\Recipes\17\1\3.jpeg
+17*1*image*Images\Recipes\17\1\4.jpeg
+17*1*content*Phần sốt: Bắc chảo cho 50gr đường thốt nốt nấu tan, rồi cho thêm 30ml nước, 2 muỗng canh nước mắm, 2 muỗng canh nước cốt me, nấu trong 10 phút ở lửa nhỏ cho đến sốt sệt lại.
+17*2*image*Images\Recipes\17\2\1.jpeg
+17*2*image*Images\Recipes\17\2\2.jpeg
+17*2*image*Images\Recipes\17\2\3.jpeg
+17*2*image*Images\Recipes\17\2\4.jpeg
+17*2*content*300gr tôm bóc vỏ áp chảo vàng đều, vớt ra để riêng. Cho tiếp 30gr tôm khô xay nhuyễn, 20gr hành tím cắt nhỏ, 20gr tỏi cắt nhỏ, 50gr củ cải muối, 1 muỗng cà phê ớt bột rồi xào trong 5 phút.
+17*3*image*Images\Recipes\17\3\1.jpeg
+17*3*image*Images\Recipes\17\3\2.jpeg
+17*3*image*Images\Recipes\17\3\3.jpeg
+17*3*image*Images\Recipes\17\3\4.jpeg
+17*3*content*Cho tiếp bánh phở đã ngâm, đậu hũ chiên, tôm đã áp chảo vào cùng phần sốt đã chuẩn bị vào xào đều tay. Sau đó, dùng xẻng gạt phần phở xào qua 1 bên, 1/2 chảo còn lại cho 1 muỗng canh dầu ăn rồi thêm 4 quả trứng gà vào đảo đều tay.
+17*4*image*Images\Recipes\17\4\1.jpeg
+17*4*image*Images\Recipes\17\4\2.jpeg
+17*4*content*Cuối cùng cho 50gr đậu phộng rang (giã nhỏ), giá sống, hẹ cắt khúc, tôm áp chảo vào xào thêm 2 phút, rồi tắt bếp.
+17*5*image*Images\Recipes\17\5\1.jpeg
+17*5*image*Images\Recipes\17\5\2.jpeg
+17*5*image*Images\Recipes\17\5\3.jpeg
+17*5*image*Images\Recipes\17\5\4.jpeg
+17*5*content*Món Pad Thái thưởng thức ngon hơn khi vắt thêm chanh trộn đều, bạn có thể rắc thêm ớt bột để tùy chỉnh mức độ ăn cay của mình nhé.
+18*1*image*Images\Recipes\18\1\1.jpeg
+18*1*image*Images\Recipes\18\1\2.jpeg
+18*1*image*Images\Recipes\18\1\3.jpeg
+18*1*image*Images\Recipes\18\1\4.jpeg
+18*1*content*Bắc chảo lên bếp, cho 2 muỗng canh dầu ăn vào, đun nóng dầu rồi phi thơm 10gr tỏi băm, 20gr ớt băm. Khi tỏi, ớt thơm lên thì lần lượt cho 300ml nước coca vào, thêm gia vị gồm 1 muỗng cà phê muối, 1 muỗng cà phê đường, 1 muỗng cà phê hạt nêm, 1 muỗng canh nước mắm, khuấy đều cho đến khi hỗn hợp tan hết và sóng sánh là đạt.
+18*2*image*Images\Recipes\18\2\1.jpeg
+18*2*image*Images\Recipes\18\2\2.jpeg
+18*2*content*Cho cá nục vào chảo. Rưới đều hỗn hợp nước sốt tỏi, ớt, coca lên mình cá. Kho cá trên lửa nhỏ liu riu, thỉnh thoảng lắc nồi cá để cá ngấm đều nước sốt. Kho khoảng 30 phút cho đến khi cá chín thơm, nước cá sóng sánh lại là đạt.
+18*3*image*Images\Recipes\18\3\1.jpeg
+18*3*image*Images\Recipes\18\3\2.jpeg
+18*3*image*Images\Recipes\18\3\3.jpeg
+18*3*image*Images\Recipes\18\3\4.jpeg
+18*3*content*Bày cá nục kho coca ra đĩa, rắc ngò rí và ớt lên trang trí. Cá nục kho coca với thịt cá nục bùi bùi, chắc thịt kho cùng hỗn hợp sốt ớt sa tế và coca thơm phức, đậm đà. Thích hợp làm món ăn tuyệt vời cho bữa cơm gia đình.
+19*1*image*Images\Recipes\19\1\1.jpeg
+19*1*image*Images\Recipes\19\1\2.jpeg
+19*1*image*Images\Recipes\19\1\3.jpeg
+19*1*image*Images\Recipes\19\1\4.jpeg
+19*1*image*Images\Recipes\19\1\5.jpeg
+19*1*image*Images\Recipes\19\1\6.jpeg
+19*1*content*Cho 130 gram bột nếp, 170 gram bột gạo, 30 gram đường, 1 quả trứng gà, 1 muỗng canh dầu ăn, 1 muỗng cà phê vani, nửa muỗng cà phê muối và 200 ml nước nóng vào tô lớn, trộn đều sao cho bột tạo thành khối dẻo mịn. Bọc kín tô bột rồi để bột nghỉ 30 phút. Nếu khô quá thêm chút nước nóng, nếu dẻo quá thì thêm bột gạo.
+19*2*image*Images\Recipes\19\2\1.jpeg
+19*2*image*Images\Recipes\19\2\2.jpeg
+19*2*image*Images\Recipes\19\2\3.jpeg
+19*2*image*Images\Recipes\19\2\4.jpeg
+19*2*content*Ngắt một ít bột, vê bột thành hình que có độ dài tùy thích rồi gập đôi lại rồi xoắn chúng lại với nhau như hình, làm như vậy cho đến khi hết phần bột.
+19*3*image*Images\Recipes\19\3\1.jpeg
+19*3*image*Images\Recipes\19\3\2.jpeg
+19*3*content*Bắc chảo dầu nóng, thả từng bánh quẩy vào chiên ngập dầu cho bánh vàng giòn thì rớt ra, để ráo dầu.
+19*4*image*Images\Recipes\19\4\1.jpeg
+19*4*image*Images\Recipes\19\4\2.jpeg
+19*4*content*Cho 100g đường và 40ml nước lọc, đun đến khi đường tan hết thì cho bánh quẩy vào đảo đều cho đến khi đường khô lại và bám vào bánh quẩy, tắt bếp. Để bánh nguội sẽ càng giòn và ngon hơn.
+19*5*image*Images\Recipes\19\5\1.jpeg
+19*5*image*Images\Recipes\19\5\2.jpeg
+19*5*image*Images\Recipes\19\5\3.jpeg
+19*5*image*Images\Recipes\19\5\4.jpeg
+19*5*content*Dọn bánh ra đĩa và thưởng thức những chiếc bánh quẩy đường vàng thơm. Khi ăn vào bạn sẽ cảm nhận được vị ngọt dịu, béo ngon, giòn tan, được bao bọc bởi 1 lớp đường bên ngoài sẽ khiến bạn càng ăn càng mê. Như vậy, với cách làm trên bạn chỉ cần dành một ít thời gian là đã có ngay những chiếc bánh quẩy đường thơm ngon cho cả gia đình thưởng thức vào những ngày cuối tuần rồi đấy.
+20*1*image*Images\Recipes\20\1\1.jpeg
+20*1*image*Images\Recipes\20\1\2.jpeg
+20*1*image*Images\Recipes\20\1\3.jpeg
+20*1*image*Images\Recipes\20\1\4.jpeg
+20*1*content*Cho vào tô 50gr cơm dừa nhuyễn, 3 lòng đỏ trứng muối nghiền nát, 20gr đường bột, 20gr bơ lạt sau đó trộn đều. Tiếp đó chia thành 10 viên mỗi viên khoảng 11gr cho vào màng bọc thực phẩm cuộn tròn lại, sau đó cho vào ngăn đá để đông.
+20*2*image*Images\Recipes\20\2\1.jpeg
+20*2*image*Images\Recipes\20\2\2.jpeg
+20*2*image*Images\Recipes\20\2\3.jpeg
+20*2*image*Images\Recipes\20\2\4.jpeg
+20*2*content*Cho vào tô 65gr bột mì, 35gr shortening, nhào đều sau đó để bột nghỉ 15 phút. Trong lúc đợi bạn chuẩn bị màu: Cho vào tô 3gr bột củ dền, 55ml nước ấm, khuấy đều.
+20*3*image*Images\Recipes\20\3\1.jpeg
+20*3*image*Images\Recipes\20\3\2.jpeg
+20*3*image*Images\Recipes\20\3\3.jpeg
+20*3*image*Images\Recipes\20\3\4.jpeg
+20*3*content*Trong tô khác cho 100gr bột mì, 10gr đường, 10gr shortening, phần nước củ dền, sau đó nhào đều và chia thành 10 viên bằng nhau. (Phần bột dầu và bột nước chia mỗi phần thành 10 viên bột bằng nhau)
+20*4*image*Images\Recipes\20\4\1.jpeg
+20*4*image*Images\Recipes\20\4\2.jpeg
+20*4*image*Images\Recipes\20\4\3.jpeg
+20*4*image*Images\Recipes\20\4\4.jpeg
+20*4*content*Cán phần bột dầu rồi cho viên bột khô vào trong cuốn tròn lại, làm lần lượt tới hết viên bột sau đó để bột nghỉ 10 phút. Cán dẹp viên bột lần 1 rồi gấp lại để bột nghỉ 15 phút, cán dẹp lần 2 rồi gấp lại để bột nghỉ 15 phút.
+20*5*image*Images\Recipes\20\5\1.jpeg
+20*5*image*Images\Recipes\20\5\2.jpeg
+20*5*image*Images\Recipes\20\5\3.jpeg
+20*5*image*Images\Recipes\20\5\4.jpeg
+20*5*content*Khi đã đủ thời gian bột nghỉ, bạn cán cho đều bột, rồi đặt phần nhân vàng vào giữa rồi cuốn tròn lại. Dùng dao khứa viên bột thành 6 cánh sen.
+20*6*image*Images\Recipes\20\6\1.jpeg
+20*6*image*Images\Recipes\20\6\2.jpeg
+20*6*content*Bắc chảo thả nhẹ viên bột để chiên ngập dầu, có thể dùng cây que gỡ nhẹ cánh sen trong lúc chiên để hoa bung đều hơn.
+20*7*image*Images\Recipes\20\7\1.jpeg
+20*7*image*Images\Recipes\20\7\2.jpeg
+20*7*image*Images\Recipes\20\7\3.jpeg
+20*7*image*Images\Recipes\20\7\4.jpeg
+20*7*content*Khi bánh đã nở đều bạn vớt ra để ráo dầu, bánh trung thu hoa sen thưởng thức ngon hơn khi dùng cùng tách trà nóng. Hãy lưu lại công thức món bánh trung thu độc lạ này để thay đổi màu sắc mà vẫn mang sắc ấm cúng của mùa trung thu nhé!
+21*1*image*Images\Recipes\21\1\1.jpeg
+21*1*image*Images\Recipes\21\1\2.jpeg
+21*1*image*Images\Recipes\21\1\3.jpeg
+21*1*image*Images\Recipes\21\1\4.jpeg
+21*1*content*Chuẩn bị cái tô nhỏ, cho vào 2 muỗng canh nước tương, 1 muỗng canh hắc xì dầu, 1 muỗng canh tương ớt, 1 muỗng canh dầu mè và 150ml nước dừa tươi, dùng muỗng khuấy đều cho tan.
+21*2*image*Images\Recipes\21\2\1.jpeg
+21*2*image*Images\Recipes\21\2\2.jpeg
+21*2*image*Images\Recipes\21\2\3.jpeg
+21*2*image*Images\Recipes\21\2\4.jpeg
+21*2*content*Bắc chảo lên bếp, cho 2 muỗng canh dầu ăn vào đun nóng, phi thơm 50gr tỏi băm, 50gr hành tây thái miếng vuông cho dậy mùi. Sau đó, đổ phần hỗn hợp sốt đã pha trước đó vào đun sôi, rồi đổ từ từ 1 muỗng canh bột bắp pha nước vào khuấy nhẹ đến khi nước sốt hơi sệt lại.
+21*3*image*Images\Recipes\21\3\1.jpeg
+21*3*image*Images\Recipes\21\3\2.jpeg
+21*3*content*Tiếp đó, trút 3 miếng đậu hủ đã cắt khối chiên vàng vào đảo nhẹ tay cho nước sốt áo đều miếng đậu hủ, để thấm đều gia vị. Sau đó tắt bếp, rắc hành lá thái khúc vào.
+21*4*image*Images\Recipes\21\4\1.jpeg
+21*4*image*Images\Recipes\21\4\2.jpeg
+21*4*image*Images\Recipes\21\4\3.jpeg
+21*4*image*Images\Recipes\21\4\4.jpeg
+21*4*content*Trình bày món ăn ra dĩa, rắc thêm ít mè trắng lên dể món ăn đẹp mắt hơn. Đậu hủ sốt tỏi có thể dùng với cơm nóng thì ngon không kể siết.
+22*1*image*Images\Recipes\22\1\1.jpeg
+22*1*image*Images\Recipes\22\1\2.jpeg
+22*1*image*Images\Recipes\22\1\3.jpeg
+22*1*image*Images\Recipes\22\1\4.jpeg
+22*1*content*Lưỡi heo mua về sơ chế sạch, bắc nồi nước sôi, cho 1 muỗng canh giấm, 5gr gừng lát sau đó cho lưỡi heo vào luộc 20 phút cho chín đều. Chuẩn bị âu nước lạnh, rồi vớt lưỡi heo vào để không bị đen. Sau đó đem thái mỏng lưỡi heo.
+22*2*image*Images\Recipes\22\2\1.jpeg
+22*2*image*Images\Recipes\22\2\2.jpeg
+22*2*image*Images\Recipes\22\2\3.jpeg
+22*2*image*Images\Recipes\22\2\4.jpeg
+22*2*content*500gr măng tươi rửa sạch, thái sợi, cho vào nồi nước sôi thêm 1 muỗng canh muối luộc khoảng 30 phút cho măng chín, rồi vớt ra âu nước lạnh. Sau đó vớt ra vắt cho khô nước .
+22*3*image*Images\Recipes\22\3\1.jpeg
+22*3*image*Images\Recipes\22\3\2.jpeg
+22*3*content*Hành tây tím thái mỏng, cho vào 2 muỗng canh giấm. 1 muỗng canh đường trộn đều. Ngâm hành tím trong 10 phút để hành bớt mùi hăng.
+22*4*image*Images\Recipes\22\4\1.jpeg
+22*4*image*Images\Recipes\22\4\2.jpeg
+22*4*image*Images\Recipes\22\4\3.jpeg
+22*4*image*Images\Recipes\22\4\4.jpeg
+22*4*content*Làm nước trộn gỏi: Cho vào nồi, 4 muỗng canh nước mắm, 3 muỗng canh đường, 1 muỗng cà phê bột ngọt để lửa nhỏ, khuấy từ từ cho tan hết gia vị. Khi tan hết, cho thêm 3 muỗng canh nước cốt tắc, 2 muỗng canh tương ớt tiếp tục khuấy cho tan đều. Tắt bếp, cho vào 1 muỗng canh tỏi băm, 1 muỗng canh ớt băm.
+22*5*image*Images\Recipes\22\5\1.jpeg
+22*5*image*Images\Recipes\22\5\2.jpeg
+22*5*image*Images\Recipes\22\5\3.jpeg
+22*5*image*Images\Recipes\22\5\4.jpeg
+22*5*content*Chuẩn bị một cái âu lớn, cho vào lưỡi heo thái mỏng, măng tươi luộc, cà rốt bào sợi, hành tây tím, rồi cho nước trộn gỏi vào trộn đều cho thấm đều gia vị. Tiếp đó, cho rau răm và ngò gai thái nhỏ vào trộn đều thêm lần nữa rồi cho ra dĩa rắc một ít đậu phộng rang lên mặt để tăng thêm hương vị của món ăn. Món gỏi có thể dùng kèm thêm chút nước mắm chua ngọt vào bánh phồng tôm để đem lại cảm giác ngon miệng hơn.
+22*6*image*Images\Recipes\22\6\1.jpeg
+22*6*image*Images\Recipes\22\6\2.jpeg
+22*6*image*Images\Recipes\22\6\3.jpeg
+22*6*image*Images\Recipes\22\6\4.jpeg
+22*6*content*Gỏi măng tươi lưỡi heo là món ăn lạ với nhiều người nhưng bạn sẽ bị hấp dẫn ngay từ lần đầu thưởng thức đấy. Món ăn với màu sắc bắt mắt, lưỡi heo giòn ngon, thấm đẫm gia vị cùng măng tươi ngọt, giòn sần sật ăn cùng các loại rau củ đem lại cho bạn cảm giác ngon miệng khi thưởng thức.
