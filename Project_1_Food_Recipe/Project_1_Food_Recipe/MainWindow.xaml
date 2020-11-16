@@ -1062,8 +1062,8 @@
                             </Grid>
 
                             <!--#region Hiện thị kết quả search khi nhấn enter -->
-                            <Grid Name="searchResultEnterKeydown" Visibility="Hidden" Focusable="True">
-                                <Button x:Name="backToHomeBtnWhenClickEnterKeyDown" HorizontalAlignment="Left" Style="{StaticResource backPageBtnStyle}" Click="backToHomeBtnWhenClickEnterKeyDown_Click" Margin="0,-42,0,696.6" />
+                            <Grid Name="searchResultEnterKeydown"  Focusable="True">
+                                <Button x:Name="backToHomeBtnWhenClickEnterKeyDown" HorizontalAlignment="Left" Style="{StaticResource backPageBtnStyle}" Click="backToHomeBtnWhenClickEnterKeyDown_Click"  Margin="-22,-33,1076.6,687.6" />
 
                                 <StackPanel Margin="0,10,-0.4,-0.4">
                                     <Grid x:Name="searchGridKeyDown" Style="{StaticResource EntryFieldStyle}" Focusable="True" Height="59" Width="851">
@@ -1482,7 +1482,7 @@
                                     <TextBlock Text="Number of products per page:" Style="{StaticResource fontStyle}" FontSize="20" Padding="20,10,0,10" Margin="0,10,0,10" Foreground="Black" />
                                     <StackPanel  Margin="10" VerticalAlignment="Center">
                                         <ComboBox x:Name="cboPpP" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" SelectionChanged="cboPpP_SelectionChanged" Width="55" Height="34">
-                                            <ComboBoxItem Name="n2" FontSize="20" Content="2" />
+
                                             <ComboBoxItem Name="n6" FontSize="20" Content="6" />
                                             <ComboBoxItem Name="n8" FontSize="20"  Content="8" />
                                             <ComboBoxItem Name="n10" FontSize="20" Content="10" />

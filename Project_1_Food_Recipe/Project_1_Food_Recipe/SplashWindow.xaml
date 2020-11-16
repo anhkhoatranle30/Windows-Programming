@@ -99,7 +99,7 @@
                                 <DoubleAnimation
                                     Storyboard.TargetProperty="Opacity"
                                     From="1.0" To="0.0" Duration="0:0:1"
-                                    BeginTime="0:0:5.6" />
+                                    BeginTime="0:0:5.8" />
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>

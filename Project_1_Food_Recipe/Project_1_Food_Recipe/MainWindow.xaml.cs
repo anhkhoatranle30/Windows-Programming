@@ -1097,7 +1097,7 @@ namespace Project_1_Food_Recipe
 
                     //prePage.Content = (pageNumber - 2).ToString();
                     //curPage.Content = (pageNumber - 1).ToString();
-                    if (pageNumber >= 3 && pageNumber - 2 > 0)
+                    if (pageNumber >= 3 && pageNumber - 2 > 1)
                     {
                         firstPage.Visibility = Visibility.Visible;
                     }
