@@ -1139,7 +1139,7 @@
                                                         <WrapPanel Orientation="Vertical">
                                                             <Border Width="380" Height="230" CornerRadius="40" Margin="0,0,0,10">
                                                                 <Border.Background>
-                                                                    <ImageBrush ImageSource="{Binding DesPicture}" />
+                                                                    <ImageBrush ImageSource="{Binding DesPicture}" RenderOptions.BitmapScalingMode="HighQuality" />
                                                                 </Border.Background>
                                                             </Border>
                                                             <TextBlock Text="{Binding Title}" FontSize="28" TextWrapping="Wrap" Style="{StaticResource foodNameStyle}" Padding="-2,5" HorizontalAlignment="Center"  Foreground="{StaticResource color}" />
@@ -1495,10 +1495,10 @@
                             </StackPanel>
                         </Grid>
 
-                        <Grid x:Name="aboutScreen" Visibility="Hidden">
+                        <Grid x:Name="aboutScreen">
                             <StackPanel Margin="10">
                                 <Grid Background="Transparent" Height="352" Margin="0,0,105.6,0">
-                                    <Image Source="Images/img_about_Khoa.jpg" Margin="52,0,698,38" Stretch="Fill" />
+                                    <Image Source="Images/img_about_Khoa.jpg" Margin="52,0,681,58" Stretch="Fill" />
                                     <StackPanel HorizontalAlignment="Left" Margin="384,10,0,-10">
                                         <TextBlock Text="Name: Trần Lê Anh Khoa"
                                                    FontSize="26"
@@ -1520,7 +1520,7 @@
 
                                 <Grid Background="Transparent" Height="339" Margin="0,0,105.6,0">
                                     <Image  Margin="0,0,642,0" />
-                                    <Image Source="Images/img_about_Hoang.jpg" Margin="0,0,642,-10" />
+                                    <Image Source="Images/img_about_Hoang.jpg" Stretch="Fill" Margin="54,0,685,-10" />
                                     <StackPanel HorizontalAlignment="Left" Margin="384,10,0,-10">
                                         <TextBlock Text="Name: Võ Nguyễn Lê Hoàng "
                                                    FontSize="26"

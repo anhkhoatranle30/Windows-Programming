@@ -71,6 +71,7 @@
             </Setter>
         </Style>
     </Window.Resources>
+
     <Border CornerRadius="40" Background="White">
         <Grid>
             <ListView x:Name="splashListVIew" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10,60,10,131">
@@ -79,7 +80,7 @@
                         <StackPanel>
                             <Border CornerRadius="40" Width="450" Height="350" HorizontalAlignment="Center"  VerticalAlignment="Top">
                                 <Border.Background>
-                                    <ImageBrush ImageSource="{Binding DesPicture}" />
+                                    <ImageBrush ImageSource="{Binding DesPicture}" RenderOptions.BitmapScalingMode="HighQuality" />
                                 </Border.Background>
                             </Border>
                             <TextBlock Text="{Binding Title}" Margin="10" FontSize="25" FontWeight="Bold" FontStretch="Expanded" HorizontalAlignment="Center" FontFamily="Font/UtmTimes-xOlr.ttf #UtmTimes" />
@@ -91,7 +92,7 @@
             <CheckBox Checked="CheckBox_Checked" FontSize="13" FontWeight="DemiBold" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="303,0,298,131" VerticalContentAlignment="Center">
                 Do not show this dialog again!
             </CheckBox>
-            <ProgressBar x:Name="progressbar" Width="780" Height="10" Margin="10,759,10,31">
+            <ProgressBar  x:Name="progressbar" Width="780" Height="10" Margin="10,759,10,31">
                 <ProgressBar.Triggers>
                     <EventTrigger RoutedEvent="ProgressBar.Loaded">
                         <BeginStoryboard>
@@ -99,7 +100,7 @@
                                 <DoubleAnimation
                                     Storyboard.TargetProperty="Opacity"
                                     From="1.0" To="0.0" Duration="0:0:1"
-                                    BeginTime="0:0:5.8" />
+                                    BeginTime="0:0:5.6" />
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>

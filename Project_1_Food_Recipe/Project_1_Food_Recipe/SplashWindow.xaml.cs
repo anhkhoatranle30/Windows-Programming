@@ -882,10 +882,14 @@ namespace Project_1_Food_Recipe
         #endregion functional
 
         public Random _rng = new Random();
+        private MainWindow _screen;
 
         public SplashWindow()
         {
             InitializeComponent();
+            _screen = new MainWindow();
+            _screen.Show();
+            _screen.Visibility = Visibility.Hidden;
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -904,8 +908,7 @@ namespace Project_1_Food_Recipe
 
             if (showSplash == false)
             {
-                var screen = new MainWindow();
-                screen.Show();
+                _screen.Visibility = Visibility.Visible;
 
                 this.Close();
             }
@@ -944,8 +947,7 @@ namespace Project_1_Food_Recipe
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var screen = new MainWindow();
-            screen.Show();
+            _screen.Visibility = Visibility.Visible;
 
             this.Close();
         }
