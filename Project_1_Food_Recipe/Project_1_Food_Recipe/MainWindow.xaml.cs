@@ -877,7 +877,7 @@ namespace Project_1_Food_Recipe
             if (buttonItem.DataContext != null)
             {
                 var stringToCompare = buttonItem.DataContext.ToString();
-                var recipe = new Recipe();
+                var recipe = new ConcreteRecipeBuilder().BuildFromString(stringToCompare);
                 var recipeIDToCompare = recipe.RecipeID;
 
                 var favDAO = new FavoriteRecipeDAOTextFile();
