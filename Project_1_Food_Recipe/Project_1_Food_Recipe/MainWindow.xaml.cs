@@ -138,6 +138,8 @@ namespace Project_1_Food_Recipe
             Clear(favoriteBtn);
             Clear(settingBtn);
             Clear(aboutBtn);
+            detailFavListView.ItemsSource = null;
+            detailListView.ItemsSource = null;
         }
 
         private void HideScreen()
@@ -174,6 +176,7 @@ namespace Project_1_Food_Recipe
         {
             ClearAll();
             HideScreen();
+            backToFavBtn_Click(sender, e);
             favoriteScreen.Visibility = Visibility.Visible;
 
             Grid _img = favoriteBtn.Template.FindName("img", favoriteBtn) as Grid;
@@ -902,7 +905,6 @@ namespace Project_1_Food_Recipe
         {
             foodDetail.Visibility = Visibility.Collapsed;
             home.Visibility = Visibility.Visible;
-            detailListView.ItemsSource = null;
         }
 
         private void recipeFavBtn_Click(object sender, RoutedEventArgs e)
@@ -934,6 +936,7 @@ namespace Project_1_Food_Recipe
 
         private void backToFavBtn_Click(object sender, RoutedEventArgs e)
         {
+            detailFavListView.ItemsSource = null;
             foodFavDetail.Visibility = Visibility.Hidden;
             favoriteListView.Visibility = Visibility.Visible;
         }

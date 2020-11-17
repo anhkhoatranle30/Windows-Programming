@@ -96,29 +96,6 @@
                                 <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
                                 <Setter TargetName="text" Property="Foreground" Value="{Binding Color}" />
                             </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-
-                                <Trigger.EnterActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation Duration="0:0:0.2" From="White"
-                                                            To="#202020" Storyboard.TargetName="border"
-                                                            Storyboard.TargetProperty="Background.Color"
-                                                            AutoReverse="True" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.EnterActions>
-                                <Trigger.ExitActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation Duration="0:0:0.2" From="#202020"
-                                                            To="White" Storyboard.TargetName="border"
-                                                            Storyboard.TargetProperty="Background.Color"
-                                                            AutoReverse="True" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.ExitActions>
-                            </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -160,29 +137,6 @@
                                 <Setter TargetName="border" Property="Background" Value="White" />
                                 <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
                                 <Setter TargetName="text" Property="Foreground" Value="{Binding Color}" />
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-
-                                <Trigger.EnterActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation Duration="0:0:0.2" From="White"
-                                                            To="#202020" Storyboard.TargetName="border"
-                                                            Storyboard.TargetProperty="Background.Color"
-                                                            AutoReverse="True" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.EnterActions>
-                                <Trigger.ExitActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation Duration="0:0:0.2" From="#202020"
-                                                            To="White" Storyboard.TargetName="border"
-                                                            Storyboard.TargetProperty="Background.Color"
-                                                            AutoReverse="True" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.ExitActions>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -226,30 +180,6 @@
                                 <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
                                 <Setter TargetName="text" Property="Foreground" Value="{Binding Color}" />
                             </Trigger>
-
-                            <Trigger Property="IsPressed" Value="True">
-
-                                <Trigger.EnterActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation Duration="0:0:0.2" From="White"
-                                                            To="#202020" Storyboard.TargetName="border"
-                                                            Storyboard.TargetProperty="Background.Color"
-                                                            AutoReverse="True" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.EnterActions>
-                                <Trigger.ExitActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation Duration="0:0:0.2" From="#202020"
-                                                            To="White" Storyboard.TargetName="border"
-                                                            Storyboard.TargetProperty="Background.Color"
-                                                            AutoReverse="True" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.ExitActions>
-                            </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -292,30 +222,6 @@
                                 <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
                                 <Setter TargetName="text" Property="Foreground" Value="{Binding Color}" />
                             </Trigger>
-
-                            <Trigger Property="IsPressed" Value="True">
-
-                                <Trigger.EnterActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation Duration="0:0:0.2" From="White"
-                                                            To="#202020" Storyboard.TargetName="border"
-                                                            Storyboard.TargetProperty="Background.Color"
-                                                            AutoReverse="True" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.EnterActions>
-                                <Trigger.ExitActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation Duration="0:0:0.2" From="#202020"
-                                                            To="White" Storyboard.TargetName="border"
-                                                            Storyboard.TargetProperty="Background.Color"
-                                                            AutoReverse="True" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.ExitActions>
-                            </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -355,30 +261,6 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="White" />
                                 <Setter TargetName="img" Property="Background" Value="{Binding Color}" />
-                            </Trigger>
-
-                            <Trigger Property="IsPressed" Value="True">
-
-                                <Trigger.EnterActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation Duration="0:0:1" From="White"
-                                                            To="#202020" Storyboard.TargetName="border"
-                                                            Storyboard.TargetProperty="Background.Color"
-                                                            AutoReverse="True" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.EnterActions>
-                                <Trigger.ExitActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation Duration="0:0:1" From="#202020"
-                                                            To="White" Storyboard.TargetName="border"
-                                                            Storyboard.TargetProperty="Background.Color"
-                                                            AutoReverse="True" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.ExitActions>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -926,39 +808,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
-        <!--<DataTemplate x:Key="listViewDataTemplate">
-            <StackPanel ScrollViewer.VerticalScrollBarVisibility="Visible">
-                <TextBlock x:Name="numberOfStep"
-                           FontFamily="Font/UtmTimes-xOlr.ttf #UtmTimes"
-                           Padding="10"
-                           FontSize="20"
-                           Foreground="Red"
-                           FontWeight="Bold"
-                           Height="46"
-                           Margin="0,0,0.2,0"
-                           Text="{Binding NumberOfStep}" />
-                <TextBlock x:Name="stepDesc"
-                           FontFamily="Font/UtmTimes-xOlr.ttf #UtmTimes"
-                           TextWrapping="Wrap"
-                           Padding="10"
-                           FontSize="20"
-                           Text="{Binding StepDesc}" />
-                <Image Source="{Binding StepPathImage}" Width="150" Height="150" Stretch="Fill" />
-                <ItemsControl x:Name="imageItemsAllStep" Margin="0,69,0,0">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding StepImgs}" Width="100" Height="100" Stretch="Fill" />
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </StackPanel>
-        </DataTemplate>-->
     </Window.Resources>
 
     <Border CornerRadius="40" Background="{Binding Color}">
@@ -1028,23 +877,6 @@
                                 </Grid>
                                 <Grid x:Name="page" Margin="718,650,-0.4,-24.4">
                                     <StackPanel Orientation="Horizontal" Margin="119,0,10,0">
-                                        <!--<Button x:Name="backPageBtn" Style="{StaticResource backPageBtnStyle}" Margin="0,0,5,0" Click="backPageBtn_Click" />
-
-                                        <Border Height="30" Width="30" BorderThickness="1" BorderBrush="Gray">
-                                            <TextBox x:Name="pageTextBox" Text="4"
-                                                     VerticalContentAlignment="Center"
-                                                     HorizontalContentAlignment="Center"
-                                                     FontSize="20"
-                                                 FontWeight="Bold"
-                                                 TextChanged="pageTextBox_TextChanged"
-                                                 KeyDown="pageTextBox_KeyDown"
-                                                 LostFocus="pageTextBox_LostFocus">
-                                            </TextBox>
-                                        </Border>
-                                        <TextBlock Text="/" FontSize="22" Margin="0,15,0,19" FontWeight="Bold" />
-                                        <TextBlock x:Name="pageTextBlock" Text="12" FontSize="20" Margin="0,16,0,18" FontWeight="Bold" Padding="0,3" />
-
-                                        <Button x:Name="nextPageBtn" Style="{StaticResource nextPageBtnStyle}" Margin="5,0,0,0" Click="nextPageBtn_Click" />-->
 
                                         <StackPanel Name="firstPage" Orientation="Horizontal">
                                             <Button Name="page1" Content="1" Style="{StaticResource pageBtnStyle}" Click="page1_Click" />
@@ -1206,7 +1038,7 @@
                                 </ListView.ItemTemplate>
                             </ListView>
 
-                            <Grid x:Name="foodFavDetail" Visibility="Hidden" Margin="0,37,-0.4,-0.4">
+                            <Grid x:Name="foodFavDetail" Visibility="Hidden">
                                 <StackPanel Orientation="Horizontal">
 
                                     <Grid VerticalAlignment="Top" Width="400" Margin="0,0,10,0">
@@ -1246,27 +1078,6 @@
                                                         <TextBlock Text="{Binding StepNumber}" Foreground="{StaticResource color}" FontSize="23" Margin="8" Style="{StaticResource foodNameStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                                     </Border>
                                                     <TextBlock Text="{Binding Content}" Style="{StaticResource foodNameStyle}" TextWrapping="WrapWithOverflow" TextAlignment="Justify" Margin="0" />
-                                                    <!--<Grid Width="680" Height="250">
-                                                        <Border CornerRadius="40" Width="400" Height="250" HorizontalAlignment="Center">
-                                                            <Border.Background>
-                                                                <ImageBrush ImageSource="{Binding ImgSource}" />
-                                                            </Border.Background>
-                                                        </Border>
-                                                    </Grid>-->
-
-                                                    <!--<ItemsControl x:Name="imageItemsAllStep"
-                                                                      ItemsSource="{Binding StepImgs}">
-                                                        <ItemsControl.ItemsPanel>
-                                                            <ItemsPanelTemplate>
-                                                                <WrapPanel />
-                                                            </ItemsPanelTemplate>
-                                                        </ItemsControl.ItemsPanel>
-                                                        <ItemsControl.ItemTemplate>
-                                                            <DataTemplate>
-                                                                <Image Source="{Binding}" Width="100" Height="100" Stretch="Fill" />
-                                                            </DataTemplate>
-                                                        </ItemsControl.ItemTemplate>
-                                                    </ItemsControl>-->
 
                                                     <ItemsControl ItemsSource="{Binding ImgSource}">
                                                         <ItemsControl.ItemsPanel>
