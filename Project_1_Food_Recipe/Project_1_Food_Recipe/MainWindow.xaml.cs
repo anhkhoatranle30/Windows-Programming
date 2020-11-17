@@ -61,6 +61,7 @@ namespace Project_1_Food_Recipe
 
         public int pageNumber;
         public int productsPerPage;
+        public bool isSearching;
 
         #endregion global variables
 
@@ -73,38 +74,6 @@ namespace Project_1_Food_Recipe
         public MainWindow()
         {
             InitializeComponent();
-
-            //var value = ConfigurationManager.AppSettings["productsPerPage"];
-
-            //var recipeDAOTextFile = new RecipeDAOTextFile();
-            //_recipeList = recipeDAOTextFile.GetAll();
-            //var favoriteRecipeDAOTextFile = new FavoriteRecipeDAOTextFile();
-            //_favoriteRecipeList = favoriteRecipeDAOTextFile.GetAll();
-
-            //dataListView.ItemsSource = _recipeList;
-            //favoriteListView.ItemsSource = _favoriteRecipeList;
-
-            //#region test paging
-
-            //pageNumber = 1;
-
-            //int index = 2;
-            //var successParse = int.TryParse(value, out index);
-
-            //if (successParse == false)
-            //{
-            //    productsPerPage = 8;
-            //}
-            //else
-            //{
-            //}
-
-            //_recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
-            //dataListView.ItemsSource = _recipeList;
-
-            //UpdatePageNumber();
-
-            //#endregion test paging
         }
 
         private void Clear(Button btn)
@@ -156,6 +125,7 @@ namespace Project_1_Food_Recipe
             ClearAll();
             HideScreen();
             homeScreen.Visibility = Visibility.Visible;
+            backToHomeBtnWhenClickEnterKeyDown_Click(sender, e);
             backToHomeBtn_Click(sender, e);
             searchResultEnterKeydown.Visibility = Visibility.Hidden;
 
@@ -327,6 +297,7 @@ namespace Project_1_Food_Recipe
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //
+            isSearching = false;
 
             var recipeDAOTextFile = new RecipeDAOTextFile();
             _recipeList = recipeDAOTextFile.GetAll();
@@ -614,104 +585,6 @@ namespace Project_1_Food_Recipe
             //
         }
 
-        //private void pageTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-        //    if (pageTextBlock == null)
-        //    {
-        //        Debug.WriteLine("pageTextBlock null");
-        //        return;
-        //    }
-
-        //    if (pageTextBox.Text == "")
-        //    {
-        //        Debug.WriteLine("text box is null");
-        //    }
-        //    else
-        //    {
-        //        int pageNumber = 0;
-        //        int totalPage = 0;
-
-        //        bool successParsePageNumber = int.TryParse(pageTextBox.Text, out pageNumber);
-        //        bool successParseTotalPage = int.TryParse(pageTextBlock.Text, out totalPage);
-
-        //        if (!successParseTotalPage)
-        //        {
-        //            Debug.WriteLine("cant parse total page");
-        //            return;
-        //        }
-
-        //        if (!successParsePageNumber)
-        //        {
-        //            pageTextBox.Text = pageTextBox.Text.Remove(pageTextBox.Text.Length - 1);
-        //            pageTextBox.CaretIndex = pageTextBox.Text.Length;
-        //        }
-        //        else
-        //        {
-        //            if (pageNumber > totalPage)
-        //            {
-        //                pageTextBox.Text = pageTextBox.Text.Remove(pageTextBox.Text.Length - 1);
-        //                pageTextBox.CaretIndex = pageTextBox.Text.Length;
-        //            }
-        //        }
-        //    }
-        //}
-
-        //private int curentPage = 1;
-
-        //private void pageTextBox_KeyDown(object sender, KeyEventArgs e)
-        //{
-        //    if (e.Key != System.Windows.Input.Key.Enter)
-        //    {
-        //        Debug.WriteLine("chua nhan enter");
-        //        return;
-        //    }
-
-        //    Debug.WriteLine("da nhan enter");
-
-        //    if (pageTextBox.Text == "")
-        //    {
-        //        pageTextBox.Text = curentPage.ToString();
-        //    }
-        //    else
-        //    {
-        //        curentPage = int.Parse(pageTextBox.Text);
-        //        var recipeDAOTextFile = new RecipeDAOTextFile();
-        //        pageNumber = curentPage;
-        //        _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
-        //        dataListView.ItemsSource = _recipeList;
-        //    }
-
-        //    pageTextBox.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
-        //}
-
-        //private void pageTextBox_LostFocus(object sender, RoutedEventArgs e)
-        //{
-        //    if (pageTextBox.Text == "")
-        //    {
-        //        pageTextBox.Text = curentPage.ToString();
-        //    }
-        //}
-
-        //private void nextPageBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var recipeDAOTextFile = new RecipeDAOTextFile();
-        //    pageNumber++;
-        //    curentPage = pageNumber;
-        //    _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
-        //    pageTextBox.Text = pageNumber.ToString();
-        //    dataListView.ItemsSource = _recipeList;
-        //}
-
-        //private void backPageBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var recipeDAOTextFile = new RecipeDAOTextFile();
-        //    pageNumber--;
-        //    curentPage = pageNumber;
-        //    _recipeList = recipeDAOTextFile.GetAll(productsPerPage, ref pageNumber, ref noPages);
-        //    pageTextBox.Text = pageNumber.ToString();
-        //    dataListView.ItemsSource = _recipeList;
-        //}
-
         private void search_TextChanged(object sender, TextChangedEventArgs e)
         {
             string text = search.Text;
@@ -761,8 +634,6 @@ namespace Project_1_Food_Recipe
 
             var detailStepsList = UncompressedStep.ToUncrompressStepList(resultList[0].StepsList);
             detailStepsListView.ItemsSource = detailStepsList;
-
-            
 
             foodDetail.Visibility = Visibility.Visible;
             home.Visibility = Visibility.Hidden;
@@ -902,7 +773,16 @@ namespace Project_1_Food_Recipe
         private void backToHomeBtn_Click(object sender, RoutedEventArgs e)
         {
             foodDetail.Visibility = Visibility.Collapsed;
-            home.Visibility = Visibility.Visible;
+            detailListView.ItemsSource = null;
+
+            if (isSearching != true)
+            {
+                home.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                searchResultEnterKeydown.Visibility = Visibility.Visible;
+            }
         }
 
         private void recipeFavBtn_Click(object sender, RoutedEventArgs e)
@@ -954,8 +834,6 @@ namespace Project_1_Food_Recipe
                 _recipeList = recipeDAO.GetAll(productsPerPage, ref pageNumber, ref noPages);
                 dataListView.ItemsSource = _recipeList;
 
-                
-
                 UpdatePageNumber();
             }
         }
@@ -974,7 +852,6 @@ namespace Project_1_Food_Recipe
                 ConfigurationUserLevel.None);
             config.AppSettings.Settings["ShowSplashScreen"].Value = "false";
             config.Save(ConfigurationSaveMode.Minimal);
-            
         }
 
         private void splashScreen_Unchecked(object sender, RoutedEventArgs e)
@@ -983,18 +860,16 @@ namespace Project_1_Food_Recipe
                 ConfigurationUserLevel.None);
             config.AppSettings.Settings["ShowSplashScreen"].Value = "true";
             config.Save(ConfigurationSaveMode.Minimal);
-            
         }
 
         private void search_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key != System.Windows.Input.Key.Enter)
             {
-                
                 return;
             }
 
-            
+            isSearching = true;
 
             searchResultListView.ItemsSource = searchListView.ItemsSource;
             searchResultEnterKeydown.Visibility = Visibility.Visible;
@@ -1279,7 +1154,6 @@ namespace Project_1_Food_Recipe
         {
             if (e.Key != System.Windows.Input.Key.Enter)
             {
-                
                 return;
             }
 
@@ -1300,8 +1174,10 @@ namespace Project_1_Food_Recipe
 
         private void backToHomeBtnWhenClickEnterKeyDown_Click(object sender, RoutedEventArgs e)
         {
+            detailListView.ItemsSource = null;
             searchResultEnterKeydown.Visibility = Visibility.Hidden;
             home.Visibility = Visibility.Visible;
+            isSearching = false;
         }
     }
 }
