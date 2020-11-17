@@ -904,7 +904,7 @@ namespace Project_1_Food_Recipe
         {
             var value = ConfigurationManager.AppSettings["ShowSplashScreen"];
             var showSplash = bool.Parse(value);
-            Debug.WriteLine(value);
+            
 
             if (showSplash == false)
             {

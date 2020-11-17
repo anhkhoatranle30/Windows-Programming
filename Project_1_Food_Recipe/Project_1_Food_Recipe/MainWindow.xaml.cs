@@ -762,10 +762,7 @@ namespace Project_1_Food_Recipe
             var detailStepsList = UncompressedStep.ToUncrompressStepList(resultList[0].StepsList);
             detailStepsListView.ItemsSource = detailStepsList;
 
-            foreach (var i in detailStepsList[0].ImgSource)
-            {
-                Debug.WriteLine("debug cai anh: " + i);
-            }
+            
 
             foodDetail.Visibility = Visibility.Visible;
             home.Visibility = Visibility.Hidden;
@@ -957,7 +954,7 @@ namespace Project_1_Food_Recipe
                 _recipeList = recipeDAO.GetAll(productsPerPage, ref pageNumber, ref noPages);
                 dataListView.ItemsSource = _recipeList;
 
-                Debug.WriteLine(choose);
+                
 
                 UpdatePageNumber();
             }
@@ -977,7 +974,7 @@ namespace Project_1_Food_Recipe
                 ConfigurationUserLevel.None);
             config.AppSettings.Settings["ShowSplashScreen"].Value = "false";
             config.Save(ConfigurationSaveMode.Minimal);
-            Debug.WriteLine(config.AppSettings.Settings["ShowSplashScreen"].Value);
+            
         }
 
         private void splashScreen_Unchecked(object sender, RoutedEventArgs e)
@@ -986,18 +983,18 @@ namespace Project_1_Food_Recipe
                 ConfigurationUserLevel.None);
             config.AppSettings.Settings["ShowSplashScreen"].Value = "true";
             config.Save(ConfigurationSaveMode.Minimal);
-            Debug.WriteLine(config.AppSettings.Settings["ShowSplashScreen"].Value);
+            
         }
 
         private void search_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key != System.Windows.Input.Key.Enter)
             {
-                Debug.WriteLine("chua nhan enter");
+                
                 return;
             }
 
-            Debug.WriteLine("da nhan enter");
+            
 
             searchResultListView.ItemsSource = searchListView.ItemsSource;
             searchResultEnterKeydown.Visibility = Visibility.Visible;
@@ -1282,7 +1279,7 @@ namespace Project_1_Food_Recipe
         {
             if (e.Key != System.Windows.Input.Key.Enter)
             {
-                Debug.WriteLine("chua nhan enter");
+                
                 return;
             }
 

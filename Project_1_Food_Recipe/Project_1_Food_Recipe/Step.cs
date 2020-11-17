@@ -129,7 +129,7 @@ namespace Test_project1
             //recipes
             foreach (var line in lines)
             {
-                Debug.WriteLine(line);
+               
                 
 
                 var tokens = line.Split(new String[] { "*" }, StringSplitOptions.None);
