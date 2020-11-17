@@ -65,7 +65,7 @@
 3*7*content*Bánh mì bọc cơm chiên cho ra dĩa, ăn cùng với xà lách và rau thơm. Món này ăn nóng cả nhà đều thích.
 4*1*image*Images\Recipes\4\1\1.jpg
 4*1*content*Rửa sạch các miếng cá basa, để ráo, ướp cá với ½ muỗng cà phê muối khoảng 15 phút. Hành lá cắt nhuyễn.
-4*2*image*Images\Recipes\4\2\1.jpg
+4*2*image*Images\Recipes\4\2\1.jpeg
 4*2*image*Images\Recipes\4\2\2.jpg
 4*2*content*Cách kho cá basa: Bắc chảo không dính lên bếp, cho một muỗng dầu ăn và 2 muỗng cà phê đường vào chảo. Đợi cho đến khi đường tan và chuyển màu cánh gián thì cho 1 muỗng tỏi và hành băm nhỏ vào phi thơm, tắt bếp.
 4*3*image*Images\Recipes\4\3\1.jpg
@@ -75,7 +75,7 @@
 4*4*image*Images\Recipes\4\4\2.jpg
 4*4*image*Images\Recipes\4\4\3.jpg
 4*4*content*Tắt bếp, rải hành lá vào cùng chút tiêu sẽ giúp cá khô tộ thơm ngon hơn nhé.
-4*5*image*Images\Recipes\4\5\1.jpg
+4*5*image*Images\Recipes\4\5\1.jpeg
 4*5*image*Images\Recipes\4\5\2.jpg
 4*5*content*Dùng cá basa kho tộ với cơm nóng là nhất luôn. Nước kho cá basa có thể chấm kèm dưa leo và rau sống ăn rất ngon. Cách làm cá basa kho tộ rất đơn giản, thích hợp cho các bạn lần đầu làm món cá kho tại nhà.
 5*1*image*Images\Recipes\5\1\1.jpg
