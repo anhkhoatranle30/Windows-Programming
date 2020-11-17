@@ -850,7 +850,8 @@ namespace Project_1_Food_Recipe
             if (buttonItem.DataContext != null)
             {
                 var stringToCompare = buttonItem.DataContext.ToString();
-                var recipe = new Recipe();
+                var recipeBuilder = new ConcreteRecipeBuilder();
+                var recipe = recipeBuilder.BuildFromString(stringToCompare);
                 var recipeIDToCompare = recipe.RecipeID;
 
                 var favDAO = new FavoriteRecipeDAOTextFile();
@@ -911,7 +912,7 @@ namespace Project_1_Food_Recipe
         {
             var buttonItem = sender as Button;
             var stringToCompare = buttonItem.DataContext.ToString();
-            var recipe = new Recipe();
+            var recipe = new ConcreteRecipeBuilder().BuildFromString(stringToCompare);
             var recipeIDToCompare = recipe.RecipeID;
             var resultList = new BindingList<Recipe>();
 
