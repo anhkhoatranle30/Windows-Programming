@@ -644,7 +644,7 @@ namespace Project_1_Food_Recipe
         {
             var buttonItem = sender as Button;
             var stringToCompare = buttonItem.DataContext.ToString();
-            var recipe = new Recipe();
+            var recipe = new ConcreteRecipeBuilder().BuildFromString(stringToCompare);
             var recipeIDToCompare = recipe.RecipeID;
             var resultList = new BindingList<Recipe>();
 
@@ -666,7 +666,7 @@ namespace Project_1_Food_Recipe
         {
             var buttonItem = sender as Button;
             var stringToCompare = buttonItem.DataContext.ToString();
-            var recipe = new Recipe();
+            var recipe = new ConcreteRecipeBuilder().BuildFromString(stringToCompare);
             var recipeIDToCompare = recipe.RecipeID;
             var resultList = new BindingList<Recipe>();
 

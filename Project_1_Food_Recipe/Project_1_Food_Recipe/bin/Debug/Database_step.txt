@@ -508,3 +508,26 @@
 22*6*image*Images\Recipes\22\6\3.jpeg
 22*6*image*Images\Recipes\22\6\4.jpeg
 22*6*content*Gỏi măng tươi lưỡi heo là món ăn lạ với nhiều người nhưng bạn sẽ bị hấp dẫn ngay từ lần đầu thưởng thức đấy. Món ăn với màu sắc bắt mắt, lưỡi heo giòn ngon, thấm đẫm gia vị cùng măng tươi ngọt, giòn sần sật ăn cùng các loại rau củ đem lại cho bạn cảm giác ngon miệng khi thưởng thức.
+23*1*image*C:\Users\Khoa Tran\Desktop\Cream Brulee Bí Đỏ\Images\1\256d175e-ed37-4175-8c63-845d5e62cdbd.jpeg
+23*1*image*C:\Users\Khoa Tran\Desktop\Cream Brulee Bí Đỏ\Images\1\ad9f073d-8754-474c-9ae4-9fe23a2160a7.jpeg
+23*1*image*C:\Users\Khoa Tran\Desktop\Cream Brulee Bí Đỏ\Images\1\cad97264-8723-492b-8f10-616c14ec4e52.jpeg
+23*1*image*C:\Users\Khoa Tran\Desktop\Cream Brulee Bí Đỏ\Images\1\d8039f82-5fb3-4908-9918-a07368082f96.jpeg
+23*1*content*Gọt vỏ, rửa sạch, cắt miếng nhỏ, luộc mềm, xay nhuyễn 300g bí đỏ. Cắt 20g bí đỏ hạt lựu, nấu tan 100g đường và 200g nước, sau đó cho bí đỏ hạt lựu vào nấu lửa nhỏ cho tới khi bí trong, dùng để trang trí, có thể bảo quản trong tủ mát.
+23*2*image*C:\Users\Khoa Tran\Desktop\Cream Brulee Bí Đỏ\Images\2\4a74be9b-74d5-4529-a63a-e96dc41d5340.jpeg
+23*2*image*C:\Users\Khoa Tran\Desktop\Cream Brulee Bí Đỏ\Images\2\d1bd4ee7-2354-4cfe-b63b-c54e335a7c82.jpeg
+23*2*image*C:\Users\Khoa Tran\Desktop\Cream Brulee Bí Đỏ\Images\2\d95e2a03-2b89-4ccf-8ec6-9fbe206661bd.jpeg
+23*2*image*C:\Users\Khoa Tran\Desktop\Cream Brulee Bí Đỏ\Images\2\f5f48eba-8df5-4bf2-b0c9-e4c877415629.jpeg
+23*2*content*Nấu ấm 200g sữa tươi và 400g cream 80 độ C. Trộn đều 200g trứng, 40g lòng đỏ, 45g đường, 2g muối và 130g bí đỏ nghiền. Sau đó đổ từ từ hỗn hợp sữa, cream nấu ấm vào hỗn hợp trứng và khuấy đều. Sau đó rây lại hỗn hợp cho mịn.
+23*3*image*C:\Users\Khoa Tran\Desktop\Cream Brulee Bí Đỏ\Images\3\2f4c33a3-179b-4ade-810c-295aee3debb8.jpeg
+23*3*image*C:\Users\Khoa Tran\Desktop\Cream Brulee Bí Đỏ\Images\3\5e2f897a-c01b-4d2c-be82-5a0a1ff11d25.jpeg
+23*3*content*Cho hỗn hợp vào ramenkin, dùng đèn khò hơ nhẹ mặt để không còn bong bóng li ti. Nướng cách thủy ở nhiệt độ 165 độ C trong vòng 30p.
+23*4*image*C:\Users\Khoa Tran\Desktop\Cream Brulee Bí Đỏ\Images\4\0c100f7b-c806-4b7c-b258-037cfc290001.jpeg
+23*4*image*C:\Users\Khoa Tran\Desktop\Cream Brulee Bí Đỏ\Images\4\5fc5798a-2f69-4bca-956c-c0c091dbb8d2.jpeg
+23*4*image*C:\Users\Khoa Tran\Desktop\Cream Brulee Bí Đỏ\Images\4\76ea1289-37d0-4ce4-9075-414c624450ee.jpeg
+23*4*image*C:\Users\Khoa Tran\Desktop\Cream Brulee Bí Đỏ\Images\4\460b4e6b-c6b3-42a1-8792-b0fa0ba165e6.jpeg
+23*4*content*Rắc đường cát lên trên, dùng đèn khò để caramen đường cát, dùng bí đỏ ngâm đường để trang trí.
+23*5*image*C:\Users\Khoa Tran\Desktop\Cream Brulee Bí Đỏ\Images\5\2c2be593-25d5-4c70-abcc-6246dccd0f7b.jpeg
+23*5*image*C:\Users\Khoa Tran\Desktop\Cream Brulee Bí Đỏ\Images\5\2da4ba54-4f63-4d2e-9f59-be16aa9c2acf.jpeg
+23*5*image*C:\Users\Khoa Tran\Desktop\Cream Brulee Bí Đỏ\Images\5\56121d32-ca20-47b2-9adf-d85408a0695f.jpeg
+23*5*image*C:\Users\Khoa Tran\Desktop\Cream Brulee Bí Đỏ\Images\5\70303457-635d-4ebd-9292-c312cc98a348.jpeg
+23*5*content*Còn chờ gì mà không thưởng thức món Cream Brulee bí đỏ này cùng với người thân của bạn trong dịp Halloween sắp tới nào.
