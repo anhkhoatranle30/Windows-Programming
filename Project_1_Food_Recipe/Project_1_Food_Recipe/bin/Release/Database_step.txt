@@ -1,0 +1,510 @@
+0*1*image*Images\Recipes\0\1\1.jpg
+0*1*image*Images\Recipes\0\1\2.jpg
+0*1*content*Đầu tiên, chúng ta cắt đôi 50gr thanh cua và xé thành sợi nhỏ. Tán nhuyễn 200gr kem phô mai. Hành lá rửa sạch và cắt nhuyễn.
+0*2*image*Images\Recipes\0\2\1.jpg
+0*2*image*Images\Recipes\0\2\2.jpg
+0*2*image*Images\Recipes\0\2\3.jpg
+0*2*image*Images\Recipes\0\2\4.jpg
+0*2*content*Sau khi sơ chế nguyên liệu thô, chúng ta ướp các nguyên liệu này với 10gr dầu hào MAGGI, 2gr mật ong, 5gr giấm. Trộn thật đều lên đến khi các gia vị tan đều.
+0*3*image*Images\Recipes\0\3\1.jpg
+0*3*image*Images\Recipes\0\3\2.jpg
+0*3*image*Images\Recipes\0\3\3.jpg
+0*3*image*Images\Recipes\0\3\4.jpg
+0*3*content*Tiếp theo dùng khuôn tròn kích thước 7cm, dùng dao hoặc kéo cắt bánh tráng Singapore ra theo hình tròn của khuôn. Trải bánh tráng ra 5 hoặc 10 cái 1 lần trên 1 mặt phẳng sạch. Đặt 10gr nhân phô mai vào giữa phần bánh tráng tròn, dùng trứng gà thoa đều xung quanh phần rìa bánh tráng còn lại, sau đó dùng 1 miếng bánh tráng tròn khác phủ lên trên mặt nhân. Dùng tay giữ xung quanh mép bánh tráng lại thành hình tròn vừa chặt tay, để khi chiên không bị bể nhân ra.
+0*4*image*Images\Recipes\0\4\1.jpg
+0*4*image*Images\Recipes\0\4\2.jpg
+0*4*content*Cho dầu ăn vào chảo, mở lửa đến khi dầu vừa nóng, chúng ta nhẹ nhàng cho từng cuốn chả giò vào. Chiên từ từ đến khi chả giò chín thì tăng lửa lớn để dầu không bị đọng lại trong cuốn chả giò.
+0*5*image*Images\Recipes\0\5\1.jpg
+0*5*image*Images\Recipes\0\5\2.jpg
+0*5*image*Images\Recipes\0\5\3.jpg
+0*5*image*Images\Recipes\0\5\4.jpg
+0*5*content*Sau cùng trình bày chả giò ra dĩa bắt mắt, có thể lót thêm 1 lớp khăn giấy bên dưới để thấm bớt phần dầu còn đọng trong chả giò. Ăn nóng với nước mắm chua ngọt và xà lách rau sống sẽ ngon hơn. Từng miếng chả giò phô mai có lớp vỏ ngoài giòn rụm, nhân thanh cua ngọt thơm thêm chút béo ngậy của phô mai lại càng hấp dẫn. Đã có công thức rồi, bạn còn chờ gì nữa mà không vào bếp ngay để trổ tài nấu nướng của mình nào!
+1*1*image*Images\Recipes\1\1\1.jpg
+1*1*image*Images\Recipes\1\1\2.jpg
+1*1*content*Đùi gà mua về bạn rửa sạch, khía nhẹ vài đường cho dễ thấm gia vị rồi trụng sơ với nước sôi, để ráo. Ướp gà ở với 1 muỗng canh hạt nêm, 1 muỗng cà phê tiêu xay và 4 muỗng canh mật ong. (Thời gian ướp là 4 tiếng trong ngăn mát tủ lạnh).
+1*2*image*Images\Recipes\1\2\1.jpg
+1*2*image*Images\Recipes\1\2\2.jpg
+1*2*content*Trộn đều hỗn hợp gồm 50gr bột chiên giòn với 1 muỗng canh bột năng và 1 muỗng cà phê ớt bột, sau đó cho vào túi zip. Bỏ gà ướp ra xếp vào túi. Lắc mạnh tay để bột dính hết vào gà.
+1*3*image*Images\Recipes\1\3\1.jpg
+1*3*image*Images\Recipes\1\3\2.jpg
+1*3*content*Đánh tan 3 quả trứng và đổ bột chiên xù ra dĩa, lần lượt lăn từng miếng gà qua trứng rồi đến bột chiên xù. Lặp lại đến khi hết nguyên liệu.
+1*4*image*Images\Recipes\1\4\1.jpg
+1*4*content*Bắc chảo lên bếp cho dầu ăn vào đợi nóng, thả từng miếng gà vào chiên với lửa lớn cho đến khi miếng gà chín vàng đều.
+1*5*image*Images\Recipes\1\5\1.jpg
+1*5*image*Images\Recipes\1\5\2.jpg
+1*5*content*Bày gà ra một đĩa có lót giấy thấm dầu sao cho ráo dầu là có thể dùng. Có thể chấm cùng tương ớt hay tương cà đều ngon. Ăn nóng cùng với salad là tuyệt vời luôn.
+2*1*image*Images\Recipes\2\1\1.jpg
+2*1*content*Chân gà làm sạch, cắt bỏ móng. Luộc chín chân gà trong nồi nước có pha 1 muỗng cà phê muối, 1 muỗng canh giấm, và 1 củ gừng cắt lát đập dập (gừng khử mùi, giấm giúp chân gà trắng và muối để sau khi luộc chân gà có vị đậm đà hơn). Luộc khoảng 10 phút, khi chân gà đã chín thì vớt ra thau nước lạnh ngâm 10 phút. Sau đó xả ráo, cho chân gà vào ngăn mát tủ lạnh 30 phút để da gà giòn. Trước lúc trộn các bạn chặt đôi chân gà theo chiều dài và chẻ đôi bàn chân để dễ thấm gia vị.
+2*2*image*Images\Recipes\2\2\1.jpg
+2*2*image*Images\Recipes\2\2\2.jpg
+2*2*content*Cóc Thái xanh (loại trái nhỏ) gọt vỏ, chẻ đôi. Xoài non xanh gọt vỏ, cắt lát chừng 3-4mm, bỏ hạt. Nếu ngại chua, các bạn có thể ướp xoài non với đường 30 phút, xoài sẽ bớt giòn đi một chút nhưng sẽ bớt chua, dễ ăn hơn.
+2*3*image*Images\Recipes\2\3\1.jpg
+2*3*image*Images\Recipes\2\3\2.jpg
+2*3*content*Sả bào mỏng, gừng gọt vỏ cắt sợi, tắc cắt lát mỏng, rau thơm nhặt lá. Trong tô lớn trộn đều 15 muỗng canh nước mắm, 5 muỗng canh đường, 1 muỗng canh ớt bột Han Quốc, nước cốt 2 trái chanh, tỏi ớt băm khuấy đều cho đường tan nêm nước mắm vị chua mặn ngọt hơi đậm xíu là được. Cho chân gà, cóc, xoài non, sả, tắc, gừng, rau thơm vào thau từ từ rót nước mắm vừa pha vào mang găng tay trộn đều. Để khoảng 30 phút cho chân gà cóc xoài ngấm nước mắm là có thể ăn được rồi.
+2*4*image*Images\Recipes\2\4\1.jpg
+2*4*image*Images\Recipes\2\4\2.jpg
+2*4*image*Images\Recipes\2\4\3.jpg
+2*4*image*Images\Recipes\2\4\4.jpg
+2*4*content*Có thể cho chân gà trộn cóc xoài non vào ngăn mát tủ lạnh khoảng 30 phút cho mát lạnh ăn sẽ ngon hơn nhé!
+3*1*image*Images\Recipes\3\1\1.jpg
+3*1*content*Cà rốt gọt vỏ, cắt hạt lựu. Sau đó, đem luộc sơ qua cà rốt, đậu Hà Lan, bắp hột cho mềm. Vớt cả 3 ra, để ráo.
+3*2*image*Images\Recipes\3\2\1.jpg
+3*2*content*Phi thơm tỏi băm với 2 muỗng canh dầu ăn. Cho lần lượt cơm, cà rốt, đậu Hà Lan, bắp hột vào, đảo đều khoảng 2 phút. Nêm gia vị 1/2 muỗng cà phê muối, 1/2 muỗng cà phê đường trắng, 1/3 muỗng cà phê tiêu, 1 muỗng canh sốt cà chua cho vừa ăn.
+3*3*image*Images\Recipes\3\3\1.jpg
+3*3*content*Bánh mì sandwich cắt bỏ viền vàng bên ngoài, dùng chày cán mỏng, cho ra đĩa.
+3*4*image*Images\Recipes\3\4\1.jpg
+3*4*image*Images\Recipes\3\4\2.jpg
+3*4*content*Trải bánh mì sandwich ra, dùng muỗng múc hỗn hợp cơm chiên vào, túm các mép bánh mì cho dính lại vào nhau.
+3*5*image*Images\Recipes\3\5\1.jpg
+3*5*content*Nhúng bánh mì cơm chiên lần lượt vào trứng gà đánh tan, lăn qua bột chiên xù.
+3*6*image*Images\Recipes\3\6\1.jpg
+3*6*image*Images\Recipes\3\6\2.jpg
+3*6*content*Đun sôi dầu ăn. Cho từng miếng bánh mì cơm chiên vào, chiên vàng giòn, nhỏ lửa. Thỉnh thoảng lật đều để bánh mì không bị cháy. Gắp bánh mì bọc cơm chiên ra đĩa có lót sẵn 1 lớp khăn giấy để thấm dầu.
+3*7*image*Images\Recipes\3\7\1.jpg
+3*7*image*Images\Recipes\3\7\2.jpg
+3*7*content*Bánh mì bọc cơm chiên cho ra dĩa, ăn cùng với xà lách và rau thơm. Món này ăn nóng cả nhà đều thích.
+4*1*image*Images\Recipes\4\1\1.jpg
+4*1*content*Rửa sạch các miếng cá basa, để ráo, ướp cá với ½ muỗng cà phê muối khoảng 15 phút. Hành lá cắt nhuyễn.
+4*2*image*Images\Recipes\4\2\1.jpeg
+4*2*image*Images\Recipes\4\2\2.jpg
+4*2*content*Cách kho cá basa: Bắc chảo không dính lên bếp, cho một muỗng dầu ăn và 2 muỗng cà phê đường vào chảo. Đợi cho đến khi đường tan và chuyển màu cánh gián thì cho 1 muỗng tỏi và hành băm nhỏ vào phi thơm, tắt bếp.
+4*3*image*Images\Recipes\4\3\1.jpg
+4*3*image*Images\Recipes\4\3\2.jpg
+4*3*content*Cách làm cá basa kho tộ: Cho cá vào chảo trên, thêm 1 muỗng nước mắm và 3 muỗng cà phê đường, bật bếp để lửa to cho sôi bùng lên thì giảm xuống ở mức lửa nhỏ nhất, thêm 2 muỗng nước lọc, thả ớt trái vào, đun đến khi nước sệt lại là được.
+4*4*image*Images\Recipes\4\4\1.jpg
+4*4*image*Images\Recipes\4\4\2.jpg
+4*4*image*Images\Recipes\4\4\3.jpg
+4*4*content*Tắt bếp, rải hành lá vào cùng chút tiêu sẽ giúp cá khô tộ thơm ngon hơn nhé.
+4*5*image*Images\Recipes\4\5\1.jpeg
+4*5*image*Images\Recipes\4\5\2.jpg
+4*5*content*Dùng cá basa kho tộ với cơm nóng là nhất luôn. Nước kho cá basa có thể chấm kèm dưa leo và rau sống ăn rất ngon. Cách làm cá basa kho tộ rất đơn giản, thích hợp cho các bạn lần đầu làm món cá kho tại nhà.
+5*1*image*Images\Recipes\5\1\1.jpg
+5*1*image*Images\Recipes\5\1\2.jpg
+5*1*image*Images\Recipes\5\1\3.jpg
+5*1*image*Images\Recipes\5\1\4.jpg
+5*1*content*Cá diêu hồng làm sạch, khứa xéo 3 đường lên 2 mặt. Ướp cá diêu hồng với 10gr hành tím băm, 10gr tỏi băm, 10gr gừng băm, 1 muỗng canh nước mắm Maggi, 1 muỗng cà phê hạt nêm Maggi và 1/3 muỗng cà phê tiêu xay. Thoa đều gia vị lên bên ngoài và trong bụng cá, ướp cá 15 phút.
+5*2*image*Images\Recipes\5\2\1.jpg
+5*2*image*Images\Recipes\5\2\2.jpg
+5*2*image*Images\Recipes\5\2\3.jpg
+5*2*image*Images\Recipes\5\2\4.jpg
+5*2*content*Chuẩn bị xửng hấp, đặt lên xửng 1 chiếc dĩa sâu lòng, lót sẵn trên dĩa 1/2 số gừng và đầu hành thái sợi. Đặt cá diêu hồng vào dĩa, rãi 1/2 đầu hành lá và gừng còn lại lên trên. Xếp xen kẽ thêm ớt chuông đỏ vàng và hành lá cho món cá bắt mắt.
+5*3*image*Images\Recipes\5\3\1.jpg
+5*3*image*Images\Recipes\5\3\2.jpg
+5*3*image*Images\Recipes\5\3\3.jpg
+5*3*image*Images\Recipes\5\3\4.jpg
+5*3*content*Chuẩn bị một nồi nước sôi, đặt xửng hấp lên trên rồi đậy nắp lại hấp cá 15 phút. Sau đó mở nắp, rưới lên cá 1/2 muỗng canh nước mắm Maggi nữa cho cá dậy mùi thơm rồi đậy nắp lại hấp thêm 5 phút nữa là hoàn tất.
+5*4*image*Images\Recipes\5\4\1.jpg
+5*4*image*Images\Recipes\5\4\2.jpg
+5*4*image*Images\Recipes\5\4\3.jpg
+5*4*image*Images\Recipes\5\4\4.jpg
+5*4*content*Chỉ nhìn đến màu sắc hấp dẫn từ món ăn này là bạn cũng biết sự chăm chút và tình yêu thương gia đình đã được gửi trọn như thế nào trong từng nguyên liệu. Chấm một miếng nước mắm, thịt cá ngọt ngon như tan ra trên đầu lưỡi cùng hương hành gừng. Còn chần chờ gì nữa mà bạn không vào bếp thực hiện ngay nhỉ?
+6*1*image*Images\Recipes\6\1\1.jpg
+6*1*image*Images\Recipes\6\1\2.jpg
+6*1*content*Ướp thịt bò với 1 muỗng canh nước tương, 1/2 muỗng canh hạt nêm MAGGI và 1 muỗng cà phê bột bắp. Cho dầu ăn vào chảo đun nóng, cho thịt bò vừa ướp lúc nảy vào xào vừa chín, gắp thịt bò sang ra một cái chén, đặt sang một bên.
+6*2*image*Images\Recipes\6\2\1.jpg
+6*2*image*Images\Recipes\6\2\2.jpg
+6*2*content*Ướp cơm nguội với 2,5 muỗng cà phê hạt nêm MAGGI, 1 quả trứng gà, 1 muỗng canh sốt tương ớt Hàn Quốc rồi trộn cơm đều lên. Cho cơm đã ướp gia vị vào chảo rang đến khi gia vị hòa quyện đều vào cơm và hạt cơm tơi ra là được.
+6*3*image*Images\Recipes\6\3\1.jpg
+6*3*image*Images\Recipes\6\3\2.jpg
+6*3*content*Sau đó cho cà rốt, giá lặt, thịt bò vừa xào vào chảo, nêm nếm vào 2 muỗng canh nước tương, trộn đều đến khi vừa chín là được.
+6*4*image*Images\Recipes\6\4\1.jpg
+6*4*image*Images\Recipes\6\4\2.jpg
+6*4*image*Images\Recipes\6\4\3.jpg
+6*4*image*Images\Recipes\6\4\4.jpg
+6*4*content*Múc cơm ra dĩa, trình bày 1 trứng ốp la đặt lên trên mặt cơm chiên. Cơm chiên bò Bulgogi có bề ngoài không những đẹp mắt mà còn rất thơm ngon nóng hổi. Hãy lưu công thức và cùng Maggi trổ tài làm món ngon này nhé!
+7*1*image*Images\Recipes\7\1\1.jpg
+7*1*image*Images\Recipes\7\1\2.jpg
+7*1*image*Images\Recipes\7\1\3.jpg
+7*1*image*Images\Recipes\7\1\4.jpg
+7*1*content*600gr bắp bò (khoảng 2 cái) đem rửa sạch, cắt ra làm đôi. Ướp bắp bò với với 10gr sả băm, 10gr tỏi băm, 10gr gừng băm, 1 muỗng cà phê hạt nêm Maggi và 20ml nước tương đậm đặc Maggi ít nhất 30 phút cho bắp bò thấm gia vị.
+7*2*image*Images\Recipes\7\2\1.jpg
+7*2*image*Images\Recipes\7\2\2.jpg
+7*2*image*Images\Recipes\7\2\3.jpg
+7*2*image*Images\Recipes\7\2\4.jpg
+7*2*content*Cho bắp bò vào nồi hấp 90 phút cho bắp bò thật mềm. Hấp bò thay vị luộc sẽ giúp giữ trọn vị ngọt bên trong. Vì thời gian hấp khá lâu nên trong quá trình hấp nhớ kiểm tra châm nước để tránh bị cháy nồi. Sau khi hấp xong bạn để bắp bò nguội bớt rồi đem cắt ra làm những khúc nhỏ để khi ngâm bắp bò nhanh thấm hơn.
+7*3*image*Images\Recipes\7\3\1.jpg
+7*3*image*Images\Recipes\7\3\2.jpg
+7*3*image*Images\Recipes\7\3\3.jpg
+7*3*image*Images\Recipes\7\3\4.jpg
+7*3*content*Pha nước ngâm: cho vào nồi 400ml nước lọc, 80gr đường, khuấy cho tan đều thì cho 180ml nước tương đậm đặc Maggi vào, đun bóc khói thì tắt bếp, để nguội. Sau đó thêm 20gr ớt băm, 20gr sả băm và 20gr tỏi băm vào nồi nước tương rồi khuấy đều là được.
+7*4*image*Images\Recipes\7\4\1.jpg
+7*4*image*Images\Recipes\7\4\2.jpg
+7*4*image*Images\Recipes\7\4\3.jpg
+7*4*image*Images\Recipes\7\4\4.jpg
+7*4*content*Bắp bò xếp vào lọ, chế nước ngâm vào, thêm 20gr ớt sừng thái lát, 50gr dứa thái lát, 20gr gừng thái lát, ngâm 1-2 ngày là có thể thưởng thức.
+7*5*image*Images\Recipes\7\5\1.jpg
+7*5*image*Images\Recipes\7\5\2.jpg
+7*5*image*Images\Recipes\7\5\3.jpg
+7*5*image*Images\Recipes\7\5\4.jpg
+7*5*content*Nếu mỗi năm tết đến xuân về bạn đều quen thuộc với các món bắp bò, thịt heo, tai heo ngâm nước mắm thì năm nay hãy thử đổi vị sang món Bắp bò ngâm nước tương mới lạ này xem nhé! Bắp bò được hấp mềm, ngâm trong nước tương mặn ngọt đậm đà, xen kẻ các hương vị sả gừng giúp bạn ấm bụng hơn khi ăn. Thực hiện theo công thức này để chiêu đãi gia đình vào dịp tết, đảm bảo món Bắp bò ngâm nước tương sẽ là món ăn hết nhanh chóng trong mâm cổ gia đình bạn đấy.
+8*1*image*Images\Recipes\8\1\1.jpg
+8*1*image*Images\Recipes\8\1\2.jpg
+8*1*image*Images\Recipes\8\1\3.jpg
+8*1*image*Images\Recipes\8\1\4.jpg
+8*1*content*Để làm món Sườn cốt lết ram nước tương đầu tiên bạn rửa sạch sườn, thấm khô, sau đó dùng búa đập thịt dần lên miếng sườn cho mềm. Tỏi và sả băm nhuyễn.
+8*2*image*Images\Recipes\8\2\1.jpg
+8*2*image*Images\Recipes\8\2\2.jpg
+8*2*image*Images\Recipes\8\2\3.jpg
+8*2*image*Images\Recipes\8\2\4.jpg
+8*2*content*Tiếp theo chúng ta sẽ pha chén gia vị gồm 10gr sả băm, 10gr tỏi băm, 40ml (hoặc 4 muỗng canh) nước tương Maggi, 15gr đường trắng, 3gr tiêu sọ đập dập và 50ml nước lọc.
+8*3*image*Images\Recipes\8\3\1.jpg
+8*3*image*Images\Recipes\8\3\2.jpg
+8*3*image*Images\Recipes\8\3\3.jpg
+8*3*image*Images\Recipes\8\3\4.jpg
+8*3*content*Làm nóng 3 muỗng canh dầu ăn trong chảo, cho vào 15gr đường. Đợi đường tan ra và chuyển sang màu caramel thì gắp từng miếng sườn cốt lết vào chiên vàng 2 mặt.
+8*4*image*Images\Recipes\8\4\1.jpg
+8*4*image*Images\Recipes\8\4\2.jpg
+8*4*content*Rưới chén nước gia vị vào chảo thịt rim lửa nhỏ 20-30 phút. Trong lúc rim nhớ trở mặt miếng sườn thường xuyên để gia vị thấm đều vào 2 mặt. Đến khi thấy nước rim keo lại, sườn lên màu nâu đẹp mắt thì tắt bếp.
+8*5*image*Images\Recipes\8\5\1.jpg
+8*5*image*Images\Recipes\8\5\2.jpg
+8*5*image*Images\Recipes\8\5\3.jpg
+8*5*image*Images\Recipes\8\5\4.jpg
+8*5*content*Gắp sườn ra đĩa, rưới sốt nước tương tỏi sả lên trên rồi mang ra ăn cùng cơm nóng thôi. Sườn cốt lết vốn là món ăn quen thuộc, nhưng nay được bến tấu cùng với tỏi và sả thì trở nên lạ miệng hơn bao giờ hết, bảo đảm hao cơm cực kì luôn đó nha!
+9*1*image*Images\Recipes\9\1\1.jpg
+9*1*image*Images\Recipes\9\1\2.jpg
+9*1*image*Images\Recipes\9\1\3.jpg
+9*1*image*Images\Recipes\9\1\4.jpg
+9*1*content*Để làm món Ức gà phi lê sốt trái nho trước tiên bạn cần chuẩn bị 400gr thịt ức gà không xương, 200gr nho các loại tùy thích, tỏi, hành tím, hành lá, nước tương Maggi, hạt nêm Nấm hương Maggi và các loại gia vị thông thường khác. Nho rửa sạch, cắt ra làm đôi theo chiều dọc. Ức gà cắt thành miếng dày khoảng 2cm bản rộng khoảng 3 ngón tay, đem ướp với 1 muỗng cà phê hạt nêm, 1 muỗng cà phê nước tương, 1 muỗng canh mật ong và 1 ít tiêu xay 15 phút cho thấm gia vị
+9*2*image*Images\Recipes\9\2\1.jpg
+9*2*image*Images\Recipes\9\2\2.jpg
+9*2*content*Bắc chảo lên bếp, thêm vào 2 muỗng canh dầu ăn. Dầu nóng thì gắp ức gà vào chiên áp chảo cho xém vàng các mặt rồi gắp ức gà ra dĩa để riêng.
+9*3*image*Images\Recipes\9\3\1.jpg
+9*3*image*Images\Recipes\9\3\2.jpg
+9*3*image*Images\Recipes\9\3\3.jpg
+9*3*image*Images\Recipes\9\3\4.jpg
+9*3*content*Bắc chảo lên bếp, cho vào 2 muỗng canh dầu ăn, dầu nóng thì cho 5gr tỏi băm, 5gr hành tím băm vào phi thơm. Tiếp theo thêm 200ml nước dừa, 1 muỗng canh nước tương, 1 muỗng canh tương cà, 1 muỗng cà phê đường, 1 muỗng cà phê hạt nêm vào rồi khuấy đều cho hòa quyện.
+9*4*image*Images\Recipes\9\4\1.jpg
+9*4*image*Images\Recipes\9\4\2.jpg
+9*4*image*Images\Recipes\9\4\3.jpg
+9*4*image*Images\Recipes\9\4\4.jpg
+9*4*content*Đun cho nước sốt sôi lên thì gắp ức gà đã chiên vào chảo, cho thêm nho rồi chỉnh nhỏ lửa rim ức gà khoảng 15 phút cho nho mềm và hòa quyện hương vị vào nước sốt. Khi nước sốt keo lại, gà áo màu nâu đỏ đẹp của nước sốt thì rắc hành lá cắt nhỏ lên trên rồi tắt bếp.
+9*5*image*Images\Recipes\9\5\1.jpg
+9*5*image*Images\Recipes\9\5\2.jpg
+9*5*image*Images\Recipes\9\5\3.jpg
+9*5*image*Images\Recipes\9\5\4.jpg
+9*5*content*Vậy là bạn đã hoàn thành xong món ăn và trái nho cũng đã hoành thành xuất sắc nhiệm vụ của mình, tạo nên một món ăn độc đáo, lạ mắt lẫn lạ miệng.
+10*1*image*Images\Recipes\10\1\1.jpg
+10*1*image*Images\Recipes\10\1\2.jpg
+10*1*image*Images\Recipes\10\1\3.jpg
+10*1*image*Images\Recipes\10\1\4.jpg
+10*1*content*Đậu hủ chiên cắt khối vuông. Thơm cắt lát. Cà chua cắt ra làm 6. Bạc hà tước xơ, cắt xéo, rửa sạch. Đậu bắp bỏ cuống, cắt xéo. Nấm kim châm và nấm đông cô cắt bỏ chân, nấm đông cô tỉa hoa, ngâm nước muối 15 phút để khử mùi rồi rửa lại với nước sạch, để ráo. Tắc vắt lấy nước cốt.
+10*2*image*Images\Recipes\10\2\1.jpg
+10*2*image*Images\Recipes\10\2\2.jpg
+10*2*image*Images\Recipes\10\2\3.jpg
+10*2*image*Images\Recipes\10\2\4.jpg
+10*2*content*Bắc nồi lên bếp, cho vào 1 muỗng canh dầu ăn. Đợi dậu nóng bạn cho cà chua và dứa vào, nêm vào đây 1 muỗng canh hạt nêm và 1 muỗng canh đường rồi xào lên cho mềm và thơm. Tiếp theo đổ 400ml nước dừa và 400ml nước lọc vào nồi, đun lên cho sôi.
+10*3*image*Images\Recipes\10\3\1.jpg
+10*3*image*Images\Recipes\10\3\2.jpg
+10*3*content*Nêm nước lẩu với 50ml nước ép tắc, 2 muỗng canh hạt nêm, 2 muỗng canh đường trắng và 1/2 muỗng cà phê muối.
+10*4*image*Images\Recipes\10\4\1.jpg
+10*4*image*Images\Recipes\10\4\2.jpg
+10*4*image*Images\Recipes\10\4\3.jpg
+10*4*image*Images\Recipes\10\4\4.jpg
+10*4*content*Nước canh sôi lên thì cho đậu hủ, đậu bắp, bạc hà, nấm kim châm vào, chờ nước sôi lại thì rắc ngò gai, ngò om và ớt sừng vào, tắt bếp.
+10*5*image*Images\Recipes\10\5\1.jpg
+10*5*image*Images\Recipes\10\5\2.jpg
+10*5*image*Images\Recipes\10\5\3.jpg
+10*5*image*Images\Recipes\10\5\4.jpg
+10*5*content*Những món chay luôn mang đến một sự thanh thuần và nhẹ nhàng cho người thưởng thức, cũng giống như món canh chua nấm này. Những nguyên liệu rau củ ngọt mát hòa quyện trong phần nước dùng dừa tươi lẫn nước cốt tắc thơm lừng, không chỉ những người ăn chay, những ai đã chán ngán thịt cá cũng phải trầm trồ khen ngợi.
+11*1*image*Images\Recipes\11\1\1.jpg
+11*1*image*Images\Recipes\11\1\2.jpg
+11*1*image*Images\Recipes\11\1\3.jpg
+11*1*image*Images\Recipes\11\1\4.jpg
+11*1*content*Để làm món Đùi gà sốt cam đầu tiên bạn cần chuẩn bị 3 cái đùi gà, 2 trái cam vàng (hoặc cam sành), 2 quả chanh không hạt hoặc 50ml nước cốt chanh (tùy vào độ chua mà bạn mong muốn), nước tương Maggi, hạt nêm Nấm hương Maggi và các loại gia vị thông thường khác. Với 2 quả cam bạn rửa sạch, cắt đôi rồi vắt lấy nước cốt. 3 cái đùi gà đem ướp với 1 muỗng canh nước tương, 1/2 muỗng canh hạt nêm, 1 muỗng canh rượu gạo, 1 muỗng cà phê dầu mè, 1 ít tiêu 15 phút cho thấm gia vị.
+11*2*image*Images\Recipes\11\2\1.jpg
+11*2*image*Images\Recipes\11\2\2.jpg
+11*2*image*Images\Recipes\11\2\3.jpg
+11*2*image*Images\Recipes\11\2\4.jpg
+11*2*content*Pha nước sốt cam: cho 200ml nước cam, 3 muỗng canh đường trắng, 2 muỗng canh nước tương, 1/2 muỗng canh hạt nêm, 1 ít muối và 50ml nước cốt chanh vào tô, khuấy đều cho đường tan. Nêm nếm lại nước sốt cho vừa khẩu vị.
+11*3*image*Images\Recipes\11\3\1.jpg
+11*3*image*Images\Recipes\11\3\2.jpg
+11*3*image*Images\Recipes\11\3\3.jpg
+11*3*image*Images\Recipes\11\3\4.jpg
+11*3*content*Bắc chảo lên bếp, thêm vào 2 muỗng canh dầu ăn. Đợi dầu nóng thì cho đùi gà vào chiên áp chảo cho các mặt xém vàng rồi gắp đùi gà ra để riêng.
+11*4*image*Images\Recipes\11\4\1.jpg
+11*4*image*Images\Recipes\11\4\2.jpg
+11*4*image*Images\Recipes\11\4\3.jpg
+11*4*image*Images\Recipes\11\4\4.jpg
+11*4*content*Cho vào chảo 2 muỗng canh dầu ăn, dầu nóng thì cho tỏi băm, gừng băm và hành tím băm vào phi thơm. Sau đó chế nước sốt cam vào, đun cho sốt sôi lên thì gắp đùi gà vào rim nhỏ lửa khoảng 20 phút. Khi rim thường xuyên trở mặt đùi gà và rưới sốt lên miếng gà để thịt được chin và ngấm gia vị
+11*5*image*Images\Recipes\11\5\1.jpg
+11*5*image*Images\Recipes\11\5\2.jpg
+11*5*image*Images\Recipes\11\5\3.jpg
+11*5*image*Images\Recipes\11\5\4.jpg
+11*5*content*Khi nước sốt keo và sánh lại, thịt gà đã chin thì bạn thêm vào chảo 5gr bơ lạt cho nước sốt cam óng ánh và mùi thơm hấp dẫn hơn. Cuối cùng rắc mè trắng đã rang vàng lên rồi tắt bếp.
+11*6*image*Images\Recipes\11\6\1.jpg
+11*6*image*Images\Recipes\11\6\2.jpg
+11*6*image*Images\Recipes\11\6\3.jpg
+11*6*image*Images\Recipes\11\6\4.jpg
+11*6*content*Vậy là món cánh gà sốt cam chuẩn nhà hàng 5 sao đã hoàn thành rồi. Bạn cho gà ra đĩa và mời cả nhà thưởng thức nhé. Những chiếc đùi gà vàng ươm, óng ánh, thơm nức hương cam cùng các loại gia vị sẽ khiến cho các bé của gia đình bạn dù biếng ăn đến mấy cũng chẳng thể chối từ.
+12*1*image*Images\Recipes\12\1\1.jpg
+12*1*image*Images\Recipes\12\1\2.jpg
+12*1*image*Images\Recipes\12\1\3.jpg
+12*1*image*Images\Recipes\12\1\4.jpg
+12*1*content*Để làm món Mực xào măng tươi đầu tiên chúng ta sẽ sơ chế các nguyên liệu: mực tươi cắt khoanh, măng tươi rửa sạch cắt đôi sau đó cắt thanh mỏng, hành tây cắt thành lát mỏng, hành lá, cần tàu cắt khúc ngắn khoảng 5cm, rau răm nhặt lấy những lá sạch (rau răm và cần tàu có thể cắt nhuyễn ra nếu thích). Tỏi và hành tím băm nhuyễn.
+12*2*image*Images\Recipes\12\2\1.jpg
+12*2*image*Images\Recipes\12\2\2.jpg
+12*2*content*Mực ống đã cắt đem đi ướp với 5gr hành tím, 5gr tỏi, 1 muỗng cà phê hạt nêm và 1 muỗng cà phê tiêu. Trộn đều và ướp mực 15 phút.
+12*3*image*Images\Recipes\12\3\1.jpg
+12*3*image*Images\Recipes\12\3\2.jpg
+12*3*image*Images\Recipes\12\3\3.jpg
+12*3*image*Images\Recipes\12\3\4.jpg
+12*3*content*Bắc chảo lên bếp, cho vào 2 muỗng canh dầu ăn, chờ dầu nóng bạn cho 5gr hành tím và 5gr tỏi còn lại vào phi thơm. Tiếp theo cho mực ống đã ướp vào xào cho mực săn lại. Lúc này bạn thêm măng vào chảo, dùng sạn đảo đều cho măng và mực hòa trộn vào nhau.
+12*4*image*Images\Recipes\12\4\1.jpg
+12*4*image*Images\Recipes\12\4\2.jpg
+12*4*image*Images\Recipes\12\4\3.jpg
+12*4*image*Images\Recipes\12\4\4.jpg
+12*4*content*Nêm vào chảo mực xào 2 muỗng canh dầu hào để món xào thêm đậm đà và hấp dẫn hơn. Cuối cùng cho hành tây, hành lá, cần tàu, rau răm vào chảo, đảo đều lên cho các nguyên liệu hòa trộn vào nhau. Xào thêm 1 phút trên bếp rồi nhắc xuống.
+12*5*image*Images\Recipes\12\5\1.jpg
+12*5*image*Images\Recipes\12\5\2.jpg
+12*5*image*Images\Recipes\12\5\3.jpg
+12*5*image*Images\Recipes\12\5\4.jpg
+12*5*content*Bày món ăn ra dĩa và thưởng thức cùng gia đình thôi nào. Mực xào vừa chín tới, vẫn giữ nguyên được vị ngọt từ hải sản, cộng thêm măng giòn giòn, tươi mát, gia vị đậm đà, hài hòa tạo nên một món ăn ngon không kể xiết.
+13*1*image*Images\Recipes\13\1\1.jpg
+13*1*image*Images\Recipes\13\1\2.jpg
+13*1*image*Images\Recipes\13\1\3.jpg
+13*1*image*Images\Recipes\13\1\4.jpg
+13*1*content*Để nấu món Canh cải bẹ xanh thịt viên ta cần chuẩn bị các nguyên liệu sau: 250gr cải bẹ xanh, 50gr cà rốt, 50gr nấm rơm, 10gr gừng, 1.5 lít nước hầm xương và những nguyên liệu cho phần thịt viên gồm 100gr thịt băm, 100gr giò sống, 1 cái lòng đỏ trứng gà, 5gr nầm mèo khô, 10gr hành tím, và những gia vị thông thường khác. Đầu tiên chúng ta gọt vỏ cà rốt, tỉa hoa rồi cắt thành lát mỏng. Nấm rơm cắt bỏ chân rồi ngâm nước muối 15 phút để khử mùi, sau đó cắt đôi. Nấm mèo ngâm nước ấm cho nở rồi băm nhỏ, lấy 15gr. 10gr hành tím băm nhuyễn, 10gr gừng thái sợi.
+13*2*image*Images\Recipes\13\2\1.jpg
+13*2*image*Images\Recipes\13\2\2.jpg
+13*2*image*Images\Recipes\13\2\3.jpg
+13*2*image*Images\Recipes\13\2\4.jpg
+13*2*content*Nấu một ít nước sôi, lấy 50gr cải bẹ xanh cho vào trụng sơ rồi vớt ra nhúng ngay vào nước đá lạnh để giữ màu xanh đẹp và giữ cải không bị mềm nhũng. Cắt nhỏ phần cải đã trụng. Với 200gr cải bẹ xanh còn lại đem cắt khúc vừa ăn tùy thuộc vào thói quen của gia đình bạn.
+13*3*image*Images\Recipes\13\3\1.jpg
+13*3*image*Images\Recipes\13\3\2.jpg
+13*3*image*Images\Recipes\13\3\3.jpg
+13*3*image*Images\Recipes\13\3\4.jpg
+13*3*content*Làm thịt viên: cho thịt băm và giò sống vào chung một tô, tiếp theo thêm các nguyên liệu là cải bẹ xanh cắt nhỏ, nấm mèo băm nhỏ, hành tím băm nhỏ, lòng đỏ trứng gà. Cuối cùng nêm vào các gia vị gồm 1/2 muỗng canh nước tương, 1/2 muỗng canh hạt nêm, 1 muỗng cà phê đường, 1 muỗng cà phê dầu mè và 1/3 muỗng cà phê tiêu vào, trộn đều cho tất cả hòa trộn vào nhau. Vo nhân thành những viên nhỏ vừa ăn.
+13*4*image*Images\Recipes\13\4\1.jpg
+13*4*image*Images\Recipes\13\4\2.jpg
+13*4*image*Images\Recipes\13\4\3.jpg
+13*4*image*Images\Recipes\13\4\4.jpg
+13*4*content*Bắc nồi nước hầm xương lên bếp, thêm cà rốt vào rồi nấu lên. Nước sôi bạn thả thịt viên vào nấu chín, hớt bỏ bọt bẩn để nước canh được trong hơn. Khi nước sôi lại thì bạn nêm vào canh 1/2 muỗng canh hạt nêm để món canh có vị vừa ăn. Sau đó bạn cho lần lượt cải bẹ xanh, nấm rơm và gừng vào nồi. Nấu đến khi nước sôi lại lần nữa thì tắt bếp.
+13*5*image*Images\Recipes\13\5\1.jpg
+13*5*image*Images\Recipes\13\5\2.jpg
+13*5*image*Images\Recipes\13\5\3.jpg
+13*5*image*Images\Recipes\13\5\4.jpg
+13*5*content*Vậy là nồi canh cải bẹ xanh thịt viên nóng hổi, ấm bụng đã được hoàn thành, quá nhanh chóng và đơn giản đúng không nào? Món canh tuy đơn giản nhưng không hề kém cạnh các món ăn cầu kì khác về độ dinh dưỡng cũng như hình thức bắt mắt đâu.
+14*1*image*Images\Recipes\14\1\1.jpg
+14*1*image*Images\Recipes\14\1\2.jpg
+14*1*content*Để làm món Sườn cây sốt Teriyaki đầu tiên bạn chặt sườn thành những khúc không quá ngắn cũng không quá dài (khoảng 10cm) để khi thành phẩm món ăn được bắt mắt hơn. Sau đó đem sườn đi rửa sạch và để ráo nước.
+14*2*image*Images\Recipes\14\2\1.jpg
+14*2*image*Images\Recipes\14\2\2.jpg
+14*2*image*Images\Recipes\14\2\3.jpg
+14*2*image*Images\Recipes\14\2\4.jpg
+14*2*content*Bắc một nồi nước sôi, cho vào đó 1/2 muỗng cà phê muối. Cho sườn vào trụng, đến khi nước sôi lại thì vớt ra đem đi rửa sạch với nước lạnh.
+14*3*image*Images\Recipes\14\3\1.jpg
+14*3*image*Images\Recipes\14\3\2.jpg
+14*3*image*Images\Recipes\14\3\3.jpg
+14*3*image*Images\Recipes\14\3\4.jpg
+14*3*content*Bắc chảo lên bếp, cho vào 2 muỗng canh dầu ăn, đợi dầu nóng thì cho tỏi băm và gừng băm vào phi thơm. Tiếp theo nêm 5 muỗng canh nước tương và 2 muỗng canh dầu hào vào chảo.
+14*4*image*Images\Recipes\14\4\1.jpg
+14*4*image*Images\Recipes\14\4\2.jpg
+14*4*image*Images\Recipes\14\4\3.jpg
+14*4*content*Lần lượt cho các gia vị còn lại như 2 muỗng canh rượu Mirin, 2 muỗng canh rượu Sake, 1 muỗng canh mật ong, 1/2 muỗng canh đường nâu và 150ml nước lọc vào chảo. Đợi cho nước sốt sôi lên thì gắp sườn cây vào rim.
+14*5*image*Images\Recipes\14\5\1.jpg
+14*5*image*Images\Recipes\14\5\2.jpg
+14*5*content*Rim lửa liu riu cho nước sốt keo lại. Dùng muỗng rưới sốt lên cây sườn để sườn thấm đều gia vị hơn. Đến khi nước sốt keo lại còn 1/3 thì tắt bếp, rắc lên sườn 1 muỗng canh mè trắng rồi trộn đều.
+14*6*image*Images\Recipes\14\6\1.jpg
+14*6*image*Images\Recipes\14\6\2.jpg
+14*6*image*Images\Recipes\14\6\3.jpg
+14*6*content*Món sườn heo quen thuộc bỗng trở nên sinh động dưới bàn tay khéo léo của bạn. Không chỉ gia đình mà bạn bè nhà bạn sẽ ăn nhiều và ngon miệng hơn đó nha. Sườn cây đậm đà hòa quyện trong nước sốt Teriyaki Nhật Bản thơm béo sẽ giúp những ai thưởng thức cảm giác ngon miệng và hấp dẫn hơn rất nhiều.
+15*1*image*Images\Recipes\15\1\1.jpeg
+15*1*image*Images\Recipes\15\1\2.jpeg
+15*1*image*Images\Recipes\15\1\3.jpeg
+15*1*image*Images\Recipes\15\1\4.jpeg
+15*1*content*50gr nấm hương khô và 50gr nấm mèo khô ngâm nở, giữ lại phần nước ngâm và băm nhỏ từng loại nấm.
+15*2*image*Images\Recipes\15\2\1.jpeg
+15*2*image*Images\Recipes\15\2\2.jpeg
+15*2*image*Images\Recipes\15\2\3.jpeg
+15*2*image*Images\Recipes\15\2\4.jpeg
+15*2*content*Cho phần nước ngâm nấm vào chén 5gr bột bắp, khuấy tan.
+15*3*image*Images\Recipes\15\3\1.jpeg
+15*3*image*Images\Recipes\15\3\2.jpeg
+15*3*image*Images\Recipes\15\3\3.jpeg
+15*3*image*Images\Recipes\15\3\4.jpeg
+15*3*content*Bắc chảo phi thơm 15gr hành tím băm, cho nấm mèo và nấm hương đã băm nhỏ vào xào cùng 1 muỗng canh nước tương trong 5 phút. Rồi cho tiếp phần nước ngâm nấm và bột bắp đã khuấy tan vào, dùng đũa đảo đều để sốt không bị vón cục.
+15*4*image*Images\Recipes\15\4\1.jpeg
+15*4*image*Images\Recipes\15\4\2.jpeg
+15*4*image*Images\Recipes\15\4\3.jpeg
+15*4*image*Images\Recipes\15\4\4.jpeg
+15*4*content*Cắt 2 cây đậu hũ trứng rồi cho vào chảo, đậy nắp nấu thêm 5 phút cho sốt thấm đều, rắc 20gr hành lá cắt nhỏ rồi tắt bếp.
+15*5*image*Images\Recipes\15\5\1.jpeg
+15*5*image*Images\Recipes\15\5\2.jpeg
+15*5*image*Images\Recipes\15\5\3.jpeg
+15*5*image*Images\Recipes\15\5\4.jpeg
+15*5*content*Trình bày đậu hũ non sốt nấm ra dĩa và sẽ thêm ngon nếu như được thưởng thức khi còn nóng, có thể dùng kèm với cơm trắng cho bữa ăn gia đình thêm vị mới.
+16*1*image*Images\Recipes\16\1\1.jpeg
+16*1*image*Images\Recipes\16\1\2.jpeg
+16*1*image*Images\Recipes\16\1\3.jpeg
+16*1*image*Images\Recipes\16\1\4.jpeg
+16*1*content*Bột bánh: Rây 150 gram bột mì và cho 35 gram bơ lạt vào tô, nhồi cho đều. Hòa tan 2 gram muối, 3 gram đường vào 65 gram nước, sau đó đổ vào tô bột và nhồi thành khối.
+16*2*image*Images\Recipes\16\2\1.jpeg
+16*2*image*Images\Recipes\16\2\2.jpeg
+16*2*image*Images\Recipes\16\2\3.jpeg
+16*2*image*Images\Recipes\16\2\4.jpeg
+16*2*image*Images\Recipes\16\2\5.jpeg
+16*2*image*Images\Recipes\16\2\6.jpeg
+16*2*content*Chia 80 gram bơ lạt thành 3 phần bằng nhau để phết bánh. Tiếp đến, cho bột ra bàn, cán bột dày khoảng 3 mm. Cho 1 phần bơ (của 80 gram bơ) lên mặt bột rồi dùng phới phết đều khắp mặt, tiếp đến gấp bột làm tư như hình, sau đó bọc lại, cho bột ngăn mát tủ lạnh 1 tiếng.
+16*3*image*Images\Recipes\16\3\1.jpeg
+16*3*image*Images\Recipes\16\3\2.jpeg
+16*3*image*Images\Recipes\16\3\3.jpeg
+16*3*image*Images\Recipes\16\3\4.jpeg
+16*3*content*Sau 1 tiếng, lấy phần bột ra bàn, cán bột dày khoảng 3 mm, cho tiếp thêm 1 phần bơ (của 80 gram bơ) lên mặt bột rồi dùng phới phết đều khắp mặt, gấp bột làm tư như hình, sau đó bọc lại, cho bột vào ngăn mát tủ lạnh 30 phút.
+16*4*image*Images\Recipes\16\4\1.jpeg
+16*4*image*Images\Recipes\16\4\2.jpeg
+16*4*image*Images\Recipes\16\4\3.jpeg
+16*4*image*Images\Recipes\16\4\4.jpeg
+16*4*content*Sau 30 phút, lấy phần bột ra bàn, cán bột dày khoảng 3 mm, cho phần bơ cuối cùng lên mặt bột rồi dùng phới phết đều khắp mặt, cuộn tròn bột lại như hình, sau đó bọc lại, cho bột vào ngăn mát tủ lạnh 30 phút. Vậy là đã xong phần bột bánh tart ngàn lớp rồi.
+16*5*image*Images\Recipes\16\5\1.jpeg
+16*5*image*Images\Recipes\16\5\2.jpeg
+16*5*image*Images\Recipes\16\5\3.jpeg
+16*5*image*Images\Recipes\16\5\4.jpeg
+16*5*content*Nhân bánh: Đánh 6 lòng đỏ trứng cho tan rồi cho 135 gram đường tiếp tục đánh đều, cho tiếp 25 gram bột bắp và khuấy cho các hỗn hợp quyện lại với nhau. Sau đó, bắc 1 cái nồi, cho 370 gram kem sữa, 250gr sữa tươi không đường, 1 muỗng cà phê vani, đun lửa vừa đến khi hỗn hợp sôi lăn tăn, tắt bếp, cho vào hỗn hợp trứng, lượt lại rồi để nguội 30 phút.
+16*6*image*Images\Recipes\16\6\1.jpeg
+16*6*image*Images\Recipes\16\6\2.jpeg
+16*6*image*Images\Recipes\16\6\3.jpeg
+16*6*image*Images\Recipes\16\6\4.jpeg
+16*6*content*Nướng bánh: Chia bột thành những phần bằng nhau. Phết bơ vào khuôn, cho bột vào rồi dùng ngón tay ấn bột cho bột đều khắp khuôn. Đổ hỗn hợp nhân vào 2/3 khuôn. Cho vào lò nước 180 độ C nướng 30 phút (có thể để thêm 5-10 phút nếu muốn bánh vàng hơn)
+16*7*image*Images\Recipes\16\7\1.jpeg
+16*7*image*Images\Recipes\16\7\2.jpeg
+16*7*image*Images\Recipes\16\7\3.jpeg
+16*7*image*Images\Recipes\16\7\4.jpeg
+16*7*content*Cho bánh ra đĩa và thưởng thức ngay lớp vỏ bánh giòn tan kết hợp cùng với nhân trứng sữa mềm mịn, thơm nức mũi sẽ khiến cho bạn càng ăn càng mê.
+17*1*image*Images\Recipes\17\1\1.jpeg
+17*1*image*Images\Recipes\17\1\2.jpeg
+17*1*image*Images\Recipes\17\1\3.jpeg
+17*1*image*Images\Recipes\17\1\4.jpeg
+17*1*content*Phần sốt: Bắc chảo cho 50gr đường thốt nốt nấu tan, rồi cho thêm 30ml nước, 2 muỗng canh nước mắm, 2 muỗng canh nước cốt me, nấu trong 10 phút ở lửa nhỏ cho đến sốt sệt lại.
+17*2*image*Images\Recipes\17\2\1.jpeg
+17*2*image*Images\Recipes\17\2\2.jpeg
+17*2*image*Images\Recipes\17\2\3.jpeg
+17*2*image*Images\Recipes\17\2\4.jpeg
+17*2*content*300gr tôm bóc vỏ áp chảo vàng đều, vớt ra để riêng. Cho tiếp 30gr tôm khô xay nhuyễn, 20gr hành tím cắt nhỏ, 20gr tỏi cắt nhỏ, 50gr củ cải muối, 1 muỗng cà phê ớt bột rồi xào trong 5 phút.
+17*3*image*Images\Recipes\17\3\1.jpeg
+17*3*image*Images\Recipes\17\3\2.jpeg
+17*3*image*Images\Recipes\17\3\3.jpeg
+17*3*image*Images\Recipes\17\3\4.jpeg
+17*3*content*Cho tiếp bánh phở đã ngâm, đậu hũ chiên, tôm đã áp chảo vào cùng phần sốt đã chuẩn bị vào xào đều tay. Sau đó, dùng xẻng gạt phần phở xào qua 1 bên, 1/2 chảo còn lại cho 1 muỗng canh dầu ăn rồi thêm 4 quả trứng gà vào đảo đều tay.
+17*4*image*Images\Recipes\17\4\1.jpeg
+17*4*image*Images\Recipes\17\4\2.jpeg
+17*4*content*Cuối cùng cho 50gr đậu phộng rang (giã nhỏ), giá sống, hẹ cắt khúc, tôm áp chảo vào xào thêm 2 phút, rồi tắt bếp.
+17*5*image*Images\Recipes\17\5\1.jpeg
+17*5*image*Images\Recipes\17\5\2.jpeg
+17*5*image*Images\Recipes\17\5\3.jpeg
+17*5*image*Images\Recipes\17\5\4.jpeg
+17*5*content*Món Pad Thái thưởng thức ngon hơn khi vắt thêm chanh trộn đều, bạn có thể rắc thêm ớt bột để tùy chỉnh mức độ ăn cay của mình nhé.
+18*1*image*Images\Recipes\18\1\1.jpeg
+18*1*image*Images\Recipes\18\1\2.jpeg
+18*1*image*Images\Recipes\18\1\3.jpeg
+18*1*image*Images\Recipes\18\1\4.jpeg
+18*1*content*Bắc chảo lên bếp, cho 2 muỗng canh dầu ăn vào, đun nóng dầu rồi phi thơm 10gr tỏi băm, 20gr ớt băm. Khi tỏi, ớt thơm lên thì lần lượt cho 300ml nước coca vào, thêm gia vị gồm 1 muỗng cà phê muối, 1 muỗng cà phê đường, 1 muỗng cà phê hạt nêm, 1 muỗng canh nước mắm, khuấy đều cho đến khi hỗn hợp tan hết và sóng sánh là đạt.
+18*2*image*Images\Recipes\18\2\1.jpeg
+18*2*image*Images\Recipes\18\2\2.jpeg
+18*2*content*Cho cá nục vào chảo. Rưới đều hỗn hợp nước sốt tỏi, ớt, coca lên mình cá. Kho cá trên lửa nhỏ liu riu, thỉnh thoảng lắc nồi cá để cá ngấm đều nước sốt. Kho khoảng 30 phút cho đến khi cá chín thơm, nước cá sóng sánh lại là đạt.
+18*3*image*Images\Recipes\18\3\1.jpeg
+18*3*image*Images\Recipes\18\3\2.jpeg
+18*3*image*Images\Recipes\18\3\3.jpeg
+18*3*image*Images\Recipes\18\3\4.jpeg
+18*3*content*Bày cá nục kho coca ra đĩa, rắc ngò rí và ớt lên trang trí. Cá nục kho coca với thịt cá nục bùi bùi, chắc thịt kho cùng hỗn hợp sốt ớt sa tế và coca thơm phức, đậm đà. Thích hợp làm món ăn tuyệt vời cho bữa cơm gia đình.
+19*1*image*Images\Recipes\19\1\1.jpeg
+19*1*image*Images\Recipes\19\1\2.jpeg
+19*1*image*Images\Recipes\19\1\3.jpeg
+19*1*image*Images\Recipes\19\1\4.jpeg
+19*1*image*Images\Recipes\19\1\5.jpeg
+19*1*image*Images\Recipes\19\1\6.jpeg
+19*1*content*Cho 130 gram bột nếp, 170 gram bột gạo, 30 gram đường, 1 quả trứng gà, 1 muỗng canh dầu ăn, 1 muỗng cà phê vani, nửa muỗng cà phê muối và 200 ml nước nóng vào tô lớn, trộn đều sao cho bột tạo thành khối dẻo mịn. Bọc kín tô bột rồi để bột nghỉ 30 phút. Nếu khô quá thêm chút nước nóng, nếu dẻo quá thì thêm bột gạo.
+19*2*image*Images\Recipes\19\2\1.jpeg
+19*2*image*Images\Recipes\19\2\2.jpeg
+19*2*image*Images\Recipes\19\2\3.jpeg
+19*2*image*Images\Recipes\19\2\4.jpeg
+19*2*content*Ngắt một ít bột, vê bột thành hình que có độ dài tùy thích rồi gập đôi lại rồi xoắn chúng lại với nhau như hình, làm như vậy cho đến khi hết phần bột.
+19*3*image*Images\Recipes\19\3\1.jpeg
+19*3*image*Images\Recipes\19\3\2.jpeg
+19*3*content*Bắc chảo dầu nóng, thả từng bánh quẩy vào chiên ngập dầu cho bánh vàng giòn thì rớt ra, để ráo dầu.
+19*4*image*Images\Recipes\19\4\1.jpeg
+19*4*image*Images\Recipes\19\4\2.jpeg
+19*4*content*Cho 100g đường và 40ml nước lọc, đun đến khi đường tan hết thì cho bánh quẩy vào đảo đều cho đến khi đường khô lại và bám vào bánh quẩy, tắt bếp. Để bánh nguội sẽ càng giòn và ngon hơn.
+19*5*image*Images\Recipes\19\5\1.jpeg
+19*5*image*Images\Recipes\19\5\2.jpeg
+19*5*image*Images\Recipes\19\5\3.jpeg
+19*5*image*Images\Recipes\19\5\4.jpeg
+19*5*content*Dọn bánh ra đĩa và thưởng thức những chiếc bánh quẩy đường vàng thơm. Khi ăn vào bạn sẽ cảm nhận được vị ngọt dịu, béo ngon, giòn tan, được bao bọc bởi 1 lớp đường bên ngoài sẽ khiến bạn càng ăn càng mê. Như vậy, với cách làm trên bạn chỉ cần dành một ít thời gian là đã có ngay những chiếc bánh quẩy đường thơm ngon cho cả gia đình thưởng thức vào những ngày cuối tuần rồi đấy.
+20*1*image*Images\Recipes\20\1\1.jpeg
+20*1*image*Images\Recipes\20\1\2.jpeg
+20*1*image*Images\Recipes\20\1\3.jpeg
+20*1*image*Images\Recipes\20\1\4.jpeg
+20*1*content*Cho vào tô 50gr cơm dừa nhuyễn, 3 lòng đỏ trứng muối nghiền nát, 20gr đường bột, 20gr bơ lạt sau đó trộn đều. Tiếp đó chia thành 10 viên mỗi viên khoảng 11gr cho vào màng bọc thực phẩm cuộn tròn lại, sau đó cho vào ngăn đá để đông.
+20*2*image*Images\Recipes\20\2\1.jpeg
+20*2*image*Images\Recipes\20\2\2.jpeg
+20*2*image*Images\Recipes\20\2\3.jpeg
+20*2*image*Images\Recipes\20\2\4.jpeg
+20*2*content*Cho vào tô 65gr bột mì, 35gr shortening, nhào đều sau đó để bột nghỉ 15 phút. Trong lúc đợi bạn chuẩn bị màu: Cho vào tô 3gr bột củ dền, 55ml nước ấm, khuấy đều.
+20*3*image*Images\Recipes\20\3\1.jpeg
+20*3*image*Images\Recipes\20\3\2.jpeg
+20*3*image*Images\Recipes\20\3\3.jpeg
+20*3*image*Images\Recipes\20\3\4.jpeg
+20*3*content*Trong tô khác cho 100gr bột mì, 10gr đường, 10gr shortening, phần nước củ dền, sau đó nhào đều và chia thành 10 viên bằng nhau. (Phần bột dầu và bột nước chia mỗi phần thành 10 viên bột bằng nhau)
+20*4*image*Images\Recipes\20\4\1.jpeg
+20*4*image*Images\Recipes\20\4\2.jpeg
+20*4*image*Images\Recipes\20\4\3.jpeg
+20*4*image*Images\Recipes\20\4\4.jpeg
+20*4*content*Cán phần bột dầu rồi cho viên bột khô vào trong cuốn tròn lại, làm lần lượt tới hết viên bột sau đó để bột nghỉ 10 phút. Cán dẹp viên bột lần 1 rồi gấp lại để bột nghỉ 15 phút, cán dẹp lần 2 rồi gấp lại để bột nghỉ 15 phút.
+20*5*image*Images\Recipes\20\5\1.jpeg
+20*5*image*Images\Recipes\20\5\2.jpeg
+20*5*image*Images\Recipes\20\5\3.jpeg
+20*5*image*Images\Recipes\20\5\4.jpeg
+20*5*content*Khi đã đủ thời gian bột nghỉ, bạn cán cho đều bột, rồi đặt phần nhân vàng vào giữa rồi cuốn tròn lại. Dùng dao khứa viên bột thành 6 cánh sen.
+20*6*image*Images\Recipes\20\6\1.jpeg
+20*6*image*Images\Recipes\20\6\2.jpeg
+20*6*content*Bắc chảo thả nhẹ viên bột để chiên ngập dầu, có thể dùng cây que gỡ nhẹ cánh sen trong lúc chiên để hoa bung đều hơn.
+20*7*image*Images\Recipes\20\7\1.jpeg
+20*7*image*Images\Recipes\20\7\2.jpeg
+20*7*image*Images\Recipes\20\7\3.jpeg
+20*7*image*Images\Recipes\20\7\4.jpeg
+20*7*content*Khi bánh đã nở đều bạn vớt ra để ráo dầu, bánh trung thu hoa sen thưởng thức ngon hơn khi dùng cùng tách trà nóng. Hãy lưu lại công thức món bánh trung thu độc lạ này để thay đổi màu sắc mà vẫn mang sắc ấm cúng của mùa trung thu nhé!
+21*1*image*Images\Recipes\21\1\1.jpeg
+21*1*image*Images\Recipes\21\1\2.jpeg
+21*1*image*Images\Recipes\21\1\3.jpeg
+21*1*image*Images\Recipes\21\1\4.jpeg
+21*1*content*Chuẩn bị cái tô nhỏ, cho vào 2 muỗng canh nước tương, 1 muỗng canh hắc xì dầu, 1 muỗng canh tương ớt, 1 muỗng canh dầu mè và 150ml nước dừa tươi, dùng muỗng khuấy đều cho tan.
+21*2*image*Images\Recipes\21\2\1.jpeg
+21*2*image*Images\Recipes\21\2\2.jpeg
+21*2*image*Images\Recipes\21\2\3.jpeg
+21*2*image*Images\Recipes\21\2\4.jpeg
+21*2*content*Bắc chảo lên bếp, cho 2 muỗng canh dầu ăn vào đun nóng, phi thơm 50gr tỏi băm, 50gr hành tây thái miếng vuông cho dậy mùi. Sau đó, đổ phần hỗn hợp sốt đã pha trước đó vào đun sôi, rồi đổ từ từ 1 muỗng canh bột bắp pha nước vào khuấy nhẹ đến khi nước sốt hơi sệt lại.
+21*3*image*Images\Recipes\21\3\1.jpeg
+21*3*image*Images\Recipes\21\3\2.jpeg
+21*3*content*Tiếp đó, trút 3 miếng đậu hủ đã cắt khối chiên vàng vào đảo nhẹ tay cho nước sốt áo đều miếng đậu hủ, để thấm đều gia vị. Sau đó tắt bếp, rắc hành lá thái khúc vào.
+21*4*image*Images\Recipes\21\4\1.jpeg
+21*4*image*Images\Recipes\21\4\2.jpeg
+21*4*image*Images\Recipes\21\4\3.jpeg
+21*4*image*Images\Recipes\21\4\4.jpeg
+21*4*content*Trình bày món ăn ra dĩa, rắc thêm ít mè trắng lên dể món ăn đẹp mắt hơn. Đậu hủ sốt tỏi có thể dùng với cơm nóng thì ngon không kể siết.
+22*1*image*Images\Recipes\22\1\1.jpeg
+22*1*image*Images\Recipes\22\1\2.jpeg
+22*1*image*Images\Recipes\22\1\3.jpeg
+22*1*image*Images\Recipes\22\1\4.jpeg
+22*1*content*Lưỡi heo mua về sơ chế sạch, bắc nồi nước sôi, cho 1 muỗng canh giấm, 5gr gừng lát sau đó cho lưỡi heo vào luộc 20 phút cho chín đều. Chuẩn bị âu nước lạnh, rồi vớt lưỡi heo vào để không bị đen. Sau đó đem thái mỏng lưỡi heo.
+22*2*image*Images\Recipes\22\2\1.jpeg
+22*2*image*Images\Recipes\22\2\2.jpeg
+22*2*image*Images\Recipes\22\2\3.jpeg
+22*2*image*Images\Recipes\22\2\4.jpeg
+22*2*content*500gr măng tươi rửa sạch, thái sợi, cho vào nồi nước sôi thêm 1 muỗng canh muối luộc khoảng 30 phút cho măng chín, rồi vớt ra âu nước lạnh. Sau đó vớt ra vắt cho khô nước .
+22*3*image*Images\Recipes\22\3\1.jpeg
+22*3*image*Images\Recipes\22\3\2.jpeg
+22*3*content*Hành tây tím thái mỏng, cho vào 2 muỗng canh giấm. 1 muỗng canh đường trộn đều. Ngâm hành tím trong 10 phút để hành bớt mùi hăng.
+22*4*image*Images\Recipes\22\4\1.jpeg
+22*4*image*Images\Recipes\22\4\2.jpeg
+22*4*image*Images\Recipes\22\4\3.jpeg
+22*4*image*Images\Recipes\22\4\4.jpeg
+22*4*content*Làm nước trộn gỏi: Cho vào nồi, 4 muỗng canh nước mắm, 3 muỗng canh đường, 1 muỗng cà phê bột ngọt để lửa nhỏ, khuấy từ từ cho tan hết gia vị. Khi tan hết, cho thêm 3 muỗng canh nước cốt tắc, 2 muỗng canh tương ớt tiếp tục khuấy cho tan đều. Tắt bếp, cho vào 1 muỗng canh tỏi băm, 1 muỗng canh ớt băm.
+22*5*image*Images\Recipes\22\5\1.jpeg
+22*5*image*Images\Recipes\22\5\2.jpeg
+22*5*image*Images\Recipes\22\5\3.jpeg
+22*5*image*Images\Recipes\22\5\4.jpeg
+22*5*content*Chuẩn bị một cái âu lớn, cho vào lưỡi heo thái mỏng, măng tươi luộc, cà rốt bào sợi, hành tây tím, rồi cho nước trộn gỏi vào trộn đều cho thấm đều gia vị. Tiếp đó, cho rau răm và ngò gai thái nhỏ vào trộn đều thêm lần nữa rồi cho ra dĩa rắc một ít đậu phộng rang lên mặt để tăng thêm hương vị của món ăn. Món gỏi có thể dùng kèm thêm chút nước mắm chua ngọt vào bánh phồng tôm để đem lại cảm giác ngon miệng hơn.
+22*6*image*Images\Recipes\22\6\1.jpeg
+22*6*image*Images\Recipes\22\6\2.jpeg
+22*6*image*Images\Recipes\22\6\3.jpeg
+22*6*image*Images\Recipes\22\6\4.jpeg
+22*6*content*Gỏi măng tươi lưỡi heo là món ăn lạ với nhiều người nhưng bạn sẽ bị hấp dẫn ngay từ lần đầu thưởng thức đấy. Món ăn với màu sắc bắt mắt, lưỡi heo giòn ngon, thấm đẫm gia vị cùng măng tươi ngọt, giòn sần sật ăn cùng các loại rau củ đem lại cho bạn cảm giác ngon miệng khi thưởng thức.
