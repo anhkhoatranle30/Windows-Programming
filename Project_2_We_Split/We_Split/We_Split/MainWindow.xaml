@@ -1,0 +1,38 @@
+﻿<Window x:Class="We_Split.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:We_Split"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Width="1000" Height="600"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        ResizeMode="NoResize"
+
+        WindowStyle="None">
+    <Window.Icon>
+        <BitmapImage UriSource="Images/icon.png" RenderOptions.BitmapScalingMode="HighQuality" />
+    </Window.Icon>
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="20*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,-0.2" Width="120">
+                <Image Source="Images/icon.png" HorizontalAlignment="Left" Margin="5,0,0,0" RenderOptions.BitmapScalingMode="HighQuality" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Image x:Name="miniWindow" Cursor="Hand" MouseLeftButtonDown="miniWindow_MouseLeftButtonDown" Source="Images/minimize_window.png" Margin="0,0,3,0" />
+                <Image x:Name="maxWindow" Cursor="Hand" MouseLeftButtonDown="maxWindow_MouseLeftButtonDown" Source="Images/maximize_window.png" Margin="0,0,3,0" />
+                <Image x:Name="restoreWindow" Cursor="Hand" MouseLeftButtonDown="restoreWindow_MouseLeftButtonDown" Source="Images/restore_window.png" Margin="0,0,3,0" Visibility="Collapsed" />
+                <Image x:Name="closeWindow" Cursor="Hand" MouseLeftButtonDown="closeWindow_MouseLeftButtonDown" Source="Images/close_window.png" />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Background="#202020">
+        </Grid>
+    </Grid>
+</Window>
