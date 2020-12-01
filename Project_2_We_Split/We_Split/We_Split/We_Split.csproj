@@ -94,6 +94,7 @@
     <Compile Include="MEMBERSPERTRIP.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TextInputToVisibilityConverter.cs" />
     <Compile Include="TRIP.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
@@ -228,6 +229,11 @@
       <DependentUpon>DataModel.edmx</DependentUpon>
       <LastGenOutput>DataModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\member_img.png" />
+    <Resource Include="Images\location_img.png" />
+    <Resource Include="Images\search_img.png" />
+    <Resource Include="Images\delete_img.png" />
+    <Resource Include="Images\update_img.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
