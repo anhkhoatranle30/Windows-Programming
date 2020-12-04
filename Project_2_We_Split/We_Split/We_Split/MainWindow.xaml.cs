@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,7 @@ namespace We_Split
         public MainWindow()
         {
             InitializeComponent();
+            Debug.WriteLine(MyUtils.calcCostByName(1, "Bè Nổi"));
         }
 
         public Func<ChartPoint, string> PointLabel { set; get; }

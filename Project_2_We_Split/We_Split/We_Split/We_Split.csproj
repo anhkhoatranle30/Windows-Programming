@@ -94,6 +94,7 @@
     <Compile Include="MEMBERSPERTRIP.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="MyUtils.cs" />
     <Compile Include="TextInputToVisibilityConverter.cs" />
     <Compile Include="TRIP.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
