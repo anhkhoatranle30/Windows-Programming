@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -9,13 +11,16 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 using LiveCharts;
 using LiveCharts.Wpf;
+using Microsoft.Win32;
 
 namespace We_Split
 {
@@ -27,7 +32,7 @@ namespace We_Split
         public MainWindow()
         {
             InitializeComponent();
-            Debug.WriteLine(MyUtils.calcCostByName(1, "Bè Nổi"));
+            //debug.writeline(myutils.calccostbyname(1, "bè nổi"));
         }
 
         public Func<ChartPoint, string> PointLabel { set; get; }
@@ -154,6 +159,31 @@ namespace We_Split
             borderRight.CornerRadius = new CornerRadius(0, 0, 0, 18);
         }
 
+        private ListViewItem listViewItemTemp = null;
+        private ListViewItem addFullTemp = null;
+
+        private void AddNewItemCostListView()
+        {
+            var listviewitemXaml = XamlWriter.Save(listViewItemTemp);
+            StringReader stringReader = new StringReader(listviewitemXaml);
+            XmlReader xmlReader = XmlReader.Create(stringReader);
+            ListViewItem newItem = (ListViewItem)XamlReader.Load(xmlReader);
+
+            costAddListView.Items.Add(newItem);
+
+            Console.WriteLine(costAddListView.Items.Count);
+        }
+
+        private void AddNewItemAddtListView()
+        {
+            var addFullXaml = XamlWriter.Save(addFullTemp);
+            StringReader stringReader = new StringReader(addFullXaml);
+            XmlReader xmlReader = XmlReader.Create(stringReader);
+            ListViewItem newItem = (ListViewItem)XamlReader.Load(xmlReader);
+
+            addListView.Items.Add(newItem);
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             allBtn_Click(sender, e);
@@ -195,9 +225,43 @@ namespace We_Split
                 }
             };
 
+            var listviewitemXaml = XamlWriter.Save(costAddListViewItem);
+            StringReader stringReader = new StringReader(listviewitemXaml);
+            XmlReader xmlReader = XmlReader.Create(stringReader);
+            listViewItemTemp = (ListViewItem)XamlReader.Load(xmlReader);
+
+            var addFullXaml = XamlWriter.Save(addFullListViewItem);
+            stringReader = new StringReader(addFullXaml);
+            xmlReader = XmlReader.Create(stringReader);
+            addFullTemp = (ListViewItem)XamlReader.Load(xmlReader);
+
+            addCostBtn.Click += addCostBtnAll_Click;
+
+            //var test = new TextBox();
+            //test.Style = (Style)this.TryFindResource("textboxAddStyle");
+            //var test = new StackPanel();
+            //addListView.Items.Add(test);
+
+            //var test = addListView.FindName("costAddListView");
+            //if (test == null) Console.WriteLine("null");
+            //else Console.WriteLine("ko null");
+
             DataContext = this;
         }
 
+        private class CostSingle
+        {
+            public int Cost { get; set; }
+            public string CostName { get; set; }
+        }
+
+        private class UserCost
+        {
+            public string UserName { get; set; }
+            public List<CostSingle> Cost { get; set; }
+        }
+
+        private List<UserCost> UserCosts = new List<UserCost>();
         public SeriesCollection SeriesCollection { get; set; }
 
         private void searchTextBox_GotFocus(object sender, RoutedEventArgs e)
@@ -242,6 +306,172 @@ namespace We_Split
         private void superGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             HideSearchCondition();
+        }
+
+        private BindingList<string> tripImgSource = new BindingList<string>();
+
+        private void addImgBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fd = new OpenFileDialog();
+            fd.Multiselect = true;
+
+            if (fd.ShowDialog() == true)
+            {
+                var files = fd.FileNames;
+
+                foreach (var file in files)
+                {
+                    var info = new FileInfo(file);
+
+                    tripImgSource.Add(file);
+                }
+
+                imgAddListView.ItemsSource = tripImgSource;
+            }
+        }
+
+        private void cancelAddImgBtn_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        //private void addCostBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //costAddListView
+
+        //    var newCostNameTextBox = new TextBox();
+        //    var newCostValueTextBox = new TextBox();
+
+        //    ListViewItem item = (ListViewItem)costAddListView.Items[costAddListView.Items.Count - 1];
+        //    newCostNameTextBox = (TextBox)item.FindName("costNameTextBox");
+        //    newCostValueTextBox = (TextBox)item.FindName("costValueTextBox");
+
+        //    if (newCostNameTextBox == null || newCostValueTextBox == null)
+        //    {
+        //        Console.WriteLine("co loi");
+        //    }
+        //    else
+        //    {
+        //        bool isEmpty = false;
+
+        //        if (newCostNameTextBox.Text.Length == 0)
+        //        {
+        //            isEmpty = true;
+        //            newCostNameTextBox.BorderBrush = Brushes.Red;
+        //        }
+        //        else
+        //        {
+        //            newCostNameTextBox.BorderBrush = Brushes.White;
+        //        }
+
+        //        if (newCostValueTextBox.Text.Length == 0)
+        //        {
+        //            isEmpty = true;
+        //            newCostValueTextBox.BorderBrush = Brushes.Red;
+        //        }
+        //        else
+        //        {
+        //            newCostValueTextBox.BorderBrush = Brushes.White;
+        //        }
+
+        //        if (!isEmpty)
+        //        {
+        //            AddNewItemCostListView();
+        //        }
+        //        else
+        //        {
+        //        }
+        //    }
+        //}
+
+        private void addCostBtnAll_Click(object sender, RoutedEventArgs e)
+        {
+            //costAddListView
+
+            StackPanel parent = (StackPanel)(VisualTreeHelper.GetParent((DependencyObject)sender));
+            ListView child = (ListView)parent.FindName("costAddListView");
+            //ListView child = (ListView)(VisualTreeHelper.GetChild((DependencyObject)parent, 0));
+
+            var newCostNameTextBox = new TextBox();
+            var newCostValueTextBox = new TextBox();
+
+            ListViewItem item = (ListViewItem)child.Items[child.Items.Count - 1];
+            newCostNameTextBox = (TextBox)item.FindName("costNameTextBox");
+            newCostValueTextBox = (TextBox)item.FindName("costValueTextBox");
+
+            if (newCostNameTextBox == null || newCostValueTextBox == null)
+            {
+                Console.WriteLine("co loi");
+            }
+            else
+            {
+                bool isEmpty = false;
+
+                if (newCostNameTextBox.Text.Length == 0)
+                {
+                    isEmpty = true;
+                    newCostNameTextBox.BorderBrush = Brushes.Red;
+                }
+                else
+                {
+                    newCostNameTextBox.BorderBrush = Brushes.White;
+                }
+
+                if (newCostValueTextBox.Text.Length == 0)
+                {
+                    isEmpty = true;
+                    newCostValueTextBox.BorderBrush = Brushes.Red;
+                }
+                else
+                {
+                    newCostValueTextBox.BorderBrush = Brushes.White;
+                }
+
+                if (!isEmpty)
+                {
+                    //AddNewItemCostListView();
+                    var listviewitemXaml = XamlWriter.Save(listViewItemTemp);
+                    StringReader stringReader = new StringReader(listviewitemXaml);
+                    XmlReader xmlReader = XmlReader.Create(stringReader);
+                    ListViewItem newItem = (ListViewItem)XamlReader.Load(xmlReader);
+
+                    child.Items.Add(newItem);
+                }
+                else
+                {
+                }
+            }
+        }
+
+        private void addMemberBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var newMemberNameTextBox = new TextBox();
+            var button = new Button();
+
+            ListViewItem item = (ListViewItem)addListView.Items[addListView.Items.Count - 1];
+            newMemberNameTextBox = (TextBox)item.FindName("memberNameTextBox");
+            button = (Button)item.FindName("addCostBtn");
+
+            if (newMemberNameTextBox == null)
+            {
+                Console.WriteLine("co loi");
+            }
+            else
+            {
+                if (newMemberNameTextBox.Text.Length == 0)
+                {
+                    newMemberNameTextBox.BorderBrush = Brushes.Red;
+                }
+                else
+                {
+                    newMemberNameTextBox.BorderBrush = Brushes.White;
+                    AddNewItemAddtListView();
+                }
+            }
+
+            item = (ListViewItem)addListView.Items[addListView.Items.Count - 1];
+
+            button = (Button)item.FindName("addCostBtn");
+            button.Click += addCostBtnAll_Click;
         }
     }
 }

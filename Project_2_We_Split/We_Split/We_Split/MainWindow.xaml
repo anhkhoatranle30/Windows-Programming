@@ -1,21 +1,19 @@
-﻿<Window x:Class="We_Split.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:We_Split"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="We_Split.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow"
-        Width="1300" Height="800"
+        Width="1450" Height="800"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
         ResizeMode="NoResize"
         WindowStyle="None"
         Loaded="Window_Loaded">
-    <Window.Icon>
-        <BitmapImage UriSource="Images/icon.png" RenderOptions.BitmapScalingMode="HighQuality" />
-    </Window.Icon>
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
@@ -25,7 +23,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="0">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                     </ControlTemplate>
@@ -62,8 +60,7 @@
                             <Border x:Name="border"
                                     Background="#333333">
                                 <ContentPresenter HorizontalAlignment="Center"
-                                          VerticalAlignment="Center">
-                                </ContentPresenter>
+                                          VerticalAlignment="Center" />
                             </Border>
                         </Grid>
                     </ControlTemplate>
@@ -90,8 +87,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
-                            <Grid Background="#333333">
-                            </Grid>
+                            <Grid Background="#333333" />
                             <Border x:Name="desTrip"
                                     Background="#202020"
                                     CornerRadius="18"
@@ -107,9 +103,8 @@
                                            Padding="10"
                                            Text="asdasddfsdfasdfasdfasdf sdafas fs fsaf asfasd f"
                                            TextWrapping="Wrap"
-                                           FontSize="22">
-                                    </TextBlock>
-                                    <TextBlock Text="Chi tiết>>" VerticalAlignment="Bottom"
+                                           FontSize="22" />
+                                    <TextBlock Text="Chi tiết&gt;&gt;" VerticalAlignment="Bottom"
                                                HorizontalAlignment="Right"
                                                FontSize="18"
                                                Foreground="White"
@@ -153,6 +148,8 @@
             </Setter>
         </Style>
         <Style TargetType="{x:Type ListViewItem}">
+            <Setter Property="BorderThickness"
+                    Value="0" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListViewItem}">
@@ -173,6 +170,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
         <Style x:Key="borderDetailStyle" TargetType="{x:Type Border}">
             <Setter Property="Background"
                     Value="#202020" />
@@ -186,7 +184,323 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="textboxAddStyle" TargetType="{x:Type TextBox}">
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="18" />
+                </Style>
+            </Style.Resources>
+            <Setter Property="Background"
+                    Value="DimGray" />
+            <Setter Property="FontSize"
+                    Value="23" />
+            <Setter Property="TextWrapping"
+                    Value="NoWrap" />
+            <Setter Property="Foreground"
+                    Value="WhiteSmoke" />
+            <Setter Property="FontWeight"
+                    Value="Bold" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+            <Setter Property="Padding"
+                    Value="10" />
+            <Setter Property="Margin"
+                    Value="9" />
+            <Setter Property="BorderThickness"
+                    Value="1" />
+            <Setter Property="BorderBrush"
+                    Value="White" />
+            <Setter Property="CaretBrush"
+                    Value="White" />
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsFocused" Value="True" />
+                    </MultiTrigger.Conditions>
+                    <MultiTrigger.Setters>
+                        <Setter Property="Background" Value="#202020" />
+                        <Setter Property="BorderBrush" Value="White" />
+                    </MultiTrigger.Setters>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="textblockAddStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground"
+                    Value="LightGray" />
+            <Setter Property="FontSize"
+                    Value="23" />
+            <Setter Property="Margin"
+                    Value="5,0" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+        </Style>
+
+        <ControlTemplate x:Key="ComboBoxControlTemplate1" TargetType="{x:Type ComboBox}">
+            <Grid x:Name="templateRoot" SnapsToDevicePixels="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0" />
+                </Grid.ColumnDefinitions>
+                <Popup x:Name="PART_Popup" AllowsTransparency="True" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                    <Themes:SystemDropShadowChrome x:Name="shadow" Color="Transparent" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=templateRoot}">
+                        <Border x:Name="DropDownBorder" CornerRadius="18" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+                            <ScrollViewer x:Name="DropDownScrollViewer">
+                                <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
+                                    <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
+                                        <Rectangle x:Name="OpaqueRect" Fill="{Binding Background, ElementName=DropDownBorder}" Height="{Binding ActualHeight, ElementName=DropDownBorder}" Width="{Binding ActualWidth, ElementName=DropDownBorder}" />
+                                    </Canvas>
+                                    <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                </Grid>
+                            </ScrollViewer>
+                        </Border>
+                    </Themes:SystemDropShadowChrome>
+                </Popup>
+                <ToggleButton x:Name="toggleButton" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+                    <ToggleButton.Style>
+                        <Style TargetType="{x:Type ToggleButton}">
+                            <Setter Property="OverridesDefaultStyle" Value="True" />
+                            <Setter Property="IsTabStop" Value="False" />
+                            <Setter Property="Focusable" Value="False" />
+                            <Setter Property="ClickMode" Value="Press" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                        <Border x:Name="templateRoot" Background="DimGray" CornerRadius="18" BorderBrush="#FFACACAC" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+
+                                            <Border x:Name="splitBorder" BorderBrush="Transparent" BorderThickness="1" HorizontalAlignment="Right" Margin="0" SnapsToDevicePixels="True" Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}">
+                                                <Path x:Name="Arrow" Data="F1M0,0L2.667,2.66665 5.3334,0 5.3334,-1.78168 2.6667,0.88501 0,-1.78168 0,0z" Fill="#FF606060" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" />
+                                            </Border>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ComboBox}}}" Value="true" />
+                                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="false" />
+                                                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="false" />
+                                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="true" />
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Background" TargetName="templateRoot" Value="#202020" />
+                                                <Setter Property="BorderBrush" TargetName="templateRoot" Value="#FFABADB3" />
+                                                <Setter Property="Background" TargetName="splitBorder" Value="Transparent" />
+                                                <Setter Property="BorderBrush" TargetName="splitBorder" Value="Transparent" />
+                                            </MultiDataTrigger>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Fill" TargetName="Arrow" Value="Black" />
+                                            </Trigger>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
+                                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ComboBox}}}" Value="false" />
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Background" TargetName="templateRoot" Value="#202020">
+                                                </Setter>
+                                                <Setter Property="BorderBrush" TargetName="templateRoot" Value="#FF7EB4EA" />
+                                            </MultiDataTrigger>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true" />
+                                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ComboBox}}}" Value="true" />
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Background" TargetName="templateRoot" Value="#202020" />
+                                                <Setter Property="BorderBrush" TargetName="templateRoot" Value="#202020" />
+                                                <Setter Property="Background" TargetName="splitBorder">
+                                                    <Setter.Value>
+                                                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                            <GradientStop Color="#FFEBF4FC" Offset="0" />
+                                                            <GradientStop Color="#FFDCECFC" Offset="1" />
+                                                        </LinearGradientBrush>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Setter Property="BorderBrush" TargetName="splitBorder" Value="#FF7EB4EA" />
+                                            </MultiDataTrigger>
+                                            <Trigger Property="IsPressed" Value="True">
+                                                <Setter Property="Fill" TargetName="Arrow" Value="Black" />
+                                            </Trigger>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="true" />
+                                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ComboBox}}}" Value="false" />
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Background" TargetName="templateRoot">
+                                                    <Setter.Value>
+                                                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                            <GradientStop Color="#FFDAECFC" Offset="0" />
+                                                            <GradientStop Color="#FFC4E0FC" Offset="1" />
+                                                        </LinearGradientBrush>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Setter Property="BorderBrush" TargetName="templateRoot" Value="#FF569DE5" />
+                                            </MultiDataTrigger>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="true" />
+                                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ComboBox}}}" Value="true" />
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Background" TargetName="templateRoot" Value="White" />
+                                                <Setter Property="BorderBrush" TargetName="templateRoot" Value="#FF569DE5" />
+                                                <Setter Property="Background" TargetName="splitBorder">
+                                                    <Setter.Value>
+                                                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                            <GradientStop Color="#FFDAEBFC" Offset="0" />
+                                                            <GradientStop Color="#FFC4E0FC" Offset="1" />
+                                                        </LinearGradientBrush>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Setter Property="BorderBrush" TargetName="splitBorder" Value="#FF569DE5" />
+                                            </MultiDataTrigger>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter Property="Fill" TargetName="Arrow" Value="#FFBFBFBF" />
+                                            </Trigger>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false" />
+                                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ComboBox}}}" Value="false" />
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Background" TargetName="templateRoot" Value="#FFF0F0F0" />
+                                                <Setter Property="BorderBrush" TargetName="templateRoot" Value="#FFD9D9D9" />
+                                            </MultiDataTrigger>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false" />
+                                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ComboBox}}}" Value="true" />
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Background" TargetName="templateRoot" Value="White" />
+                                                <Setter Property="BorderBrush" TargetName="templateRoot" Value="#FFBFBFBF" />
+                                                <Setter Property="Background" TargetName="splitBorder" Value="Transparent" />
+                                                <Setter Property="BorderBrush" TargetName="splitBorder" Value="Transparent" />
+                                            </MultiDataTrigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ToggleButton.Style>
+                </ToggleButton>
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="False" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="True">
+                    <Setter Property="Margin" TargetName="shadow" Value="0,0,5,5" />
+                    <Setter Property="Color" TargetName="shadow" Value="#71000000" />
+                </Trigger>
+                <Trigger Property="HasItems" Value="False">
+                    <Setter Property="Height" TargetName="DropDownBorder" Value="95" />
+                </Trigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsGrouping" Value="True" />
+                        <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="False" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+                </MultiTrigger>
+                <Trigger Property="CanContentScroll" SourceName="DropDownScrollViewer" Value="False">
+                    <Setter Property="Canvas.Top" TargetName="OpaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
+                    <Setter Property="Canvas.Left" TargetName="OpaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHover.Background" Color="DimGray" />
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHover.Border" Color="#A823A0DA" />
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelected.Background" Color="#202020" />
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelected.Border" Color="#FF23A0DA" />
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedHover.Background" Color="#202020" />
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedHover.Border" Color="#99006CD9" />
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedNoFocus.Background" Color="#202020" />
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedNoFocus.Border" Color="#FFDADADA" />
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewFocus.Border" Color="#FF23A0DA" />
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHoverFocus.Background" Color="#202020" />
+        <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHoverFocus.Border" Color="#FF23A0DA" />
+        <Style x:Key="ComboBoxItemStyle1" TargetType="{x:Type ComboBoxItem}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Padding" Value="4,1" />
+            <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+            <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="TextElement.Foreground" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="False" />
+                                    <Condition Property="IsMouseOver" Value="True" />
+                                    <Condition Property="IsKeyboardFocused" Value="False" />
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewHover.Background}" />
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewHover.Border}" />
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="True" />
+                                    <Condition Property="IsMouseOver" Value="False" />
+                                    <Condition Property="IsKeyboardFocused" Value="True" />
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelected.Background}" />
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelected.Border}" />
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="True" />
+                                    <Condition Property="IsMouseOver" Value="True" />
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelectedHover.Background}" />
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelectedHover.Border}" />
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="True" />
+                                    <Condition Property="IsMouseOver" Value="False" />
+                                    <Condition Property="IsKeyboardFocused" Value="False" />
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelectedNoFocus.Background}" />
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelectedNoFocus.Border}" />
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="False" />
+                                    <Condition Property="IsMouseOver" Value="False" />
+                                    <Condition Property="IsKeyboardFocused" Value="True" />
+                                </MultiTrigger.Conditions>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewFocus.Border}" />
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="False" />
+                                    <Condition Property="IsMouseOver" Value="True" />
+                                    <Condition Property="IsKeyboardFocused" Value="True" />
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewHoverFocus.Background}" />
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewHoverFocus.Border}" />
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
+    <Window.Icon>
+        <BitmapImage UriSource="Images/icon.png" RenderOptions.BitmapScalingMode="HighQuality" />
+    </Window.Icon>
     <Grid x:Name="superGrid" Background="#333333" MouseDown="superGrid_MouseDown">
 
         <Grid.RowDefinitions>
@@ -205,7 +519,7 @@
                 <Image x:Name="closeWindow" Cursor="Hand" MouseLeftButtonDown="closeWindow_MouseLeftButtonDown" Source="Images/close_window.png" />
             </StackPanel>
         </Grid>
-        <Grid Grid.Row="1" Name="allTripsGrid" Visibility="Hidden" Background="#333333">
+        <Grid Grid.Row="1" x:Name="allTripsGrid" Visibility="Collapsed" Background="#333333">
             <Grid Margin="20,10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*" />
@@ -215,16 +529,15 @@
                     <TextBlock Text="DANH SÁCH CHUYẾN ĐI" Foreground="orange" FontStyle="Italic" FontSize="33" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" />
 
                     <StackPanel Background="#333333" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <StackPanel Name="searchCondition" Width="0">
-                            <RadioButton x:Name="searchByTrip"  FontSize="13" Foreground="White" VerticalAlignment="Center" Margin="0,5" IsChecked="True" >Tìm kiếm theo chuyến đi</RadioButton>
-                            <RadioButton x:Name="searchByUser"  FontSize="13" Foreground="White" VerticalAlignment="Center">Tìm kiếm theo tên thành viên</RadioButton>
+                        <StackPanel x:Name="searchCondition" Width="0">
+                            <RadioButton x:Name="searchByTrip"  FontSize="13" Foreground="White" VerticalAlignment="Center" Margin="0,5" IsChecked="True" Content="Tìm kiếm theo chuyến đi" />
+                            <RadioButton x:Name="searchByUser"  FontSize="13" Foreground="White" VerticalAlignment="Center" Content="Tìm kiếm theo tên thành viên" />
                         </StackPanel>
                         <Image Width="50" Source="Images/search_img.png" RenderOptions.BitmapScalingMode="HighQuality" />
                         <Grid Width="281">
                             <TextBlock Height="50" Text="Tìm kiếm chuyến đi" Background="Transparent" Foreground="Wheat" FontSize="30" VerticalAlignment="Center" Padding="5"
-                                   Visibility="{Binding ElementName=searchTextBox, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                            <TextBox x:Name="searchTextBox" GotFocus="searchTextBox_GotFocus" CaretBrush="White" Width="280" TextWrapping="Wrap" Height="50" Margin="0,0,0.2,0" Foreground="Wheat" FontSize="30" Padding="5" VerticalAlignment="Center" Background="Transparent">
-                            </TextBox>
+                                   Visibility="{Binding Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=searchTextBox}" />
+                            <TextBox x:Name="searchTextBox" GotFocus="searchTextBox_GotFocus" CaretBrush="White" Width="280" TextWrapping="Wrap" Height="50" Margin="0,0,0.2,0" Foreground="Wheat" FontSize="30" Padding="5" VerticalAlignment="Center" Background="Transparent" />
                         </Grid>
                     </StackPanel>
                 </Grid>
@@ -246,14 +559,11 @@
                                     <ColumnDefinition Width="1*" />
                                     <ColumnDefinition Width="1*" />
                                 </Grid.ColumnDefinitions>
-                                <Button Style="{StaticResource tabBtnStyle}" Name="allBtn" Click="allBtn_Click" Content="Tất cả chuyến đi">
-                                </Button>
-                                <Button Style="{StaticResource tabBtnStyle}" Name="onGoingBtn" Click="onGoingBtn_Click" Grid.Column="1" Content="Đang đi">
-                                </Button>
-                                <Button  Style="{StaticResource tabBtnStyle}" Name="doneBtn" Click="doneBtn_Click" Grid.Column="2" Content="Đã đi xong">
-                                </Button>
+                                <Button Style="{StaticResource tabBtnStyle}" x:Name="allBtn" Click="allBtn_Click" Content="Tất cả chuyến đi" />
+                                <Button Style="{StaticResource tabBtnStyle}" x:Name="onGoingBtn" Click="onGoingBtn_Click" Grid.Column="1" Content="Đang đi" />
+                                <Button  Style="{StaticResource tabBtnStyle}" x:Name="doneBtn" Click="doneBtn_Click" Grid.Column="2" Content="Đã đi xong" />
                             </Grid>
-                            <Border x:Name="borderLeft" Background="#333333" Margin="-19,-2,1260,2.4" Grid.RowSpan="2" />
+                            <Border x:Name="borderLeft" Background="#333333" Margin="-19,-2,1230,2.4" Grid.RowSpan="2" />
                             <Border x:Name="borderRight" Background="#333333" Margin="1259,0,-22,0.4" Grid.RowSpan="2" />
                             <Grid Background="Black" Height="4" VerticalAlignment="Bottom" Margin="-23,0,-22,0.4" Grid.Row="1" />
                         </Grid>
@@ -274,7 +584,7 @@
                 </Grid>
             </Grid>
         </Grid>
-        <Grid Grid.Row="1" Name="tripDetailGrid" Background="#333333">
+        <Grid Grid.Row="1" x:Name="tripDetailGrid" Visibility="Collapsed" Background="#333333">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="3*" />
@@ -308,8 +618,7 @@
                                 <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"
                                            Text="GIAI ĐOẠN" Foreground="White" FontSize="28" />
                             </Grid>
-                            <Grid Grid.Row="1">
-                            </Grid>
+                            <Grid Grid.Row="1" />
                         </Grid>
                     </Border>
                 </Grid>
@@ -398,8 +707,7 @@
                                    Foreground="White" FontSize="28"
                                    FontWeight="DemiBold" />
                             </Grid>
-                            <Grid Grid.Row="1">
-                            </Grid>
+                            <Grid Grid.Row="1" />
                         </Grid>
                     </Border>
                 </Grid>
@@ -424,7 +732,7 @@
                                    FontWeight="DemiBold" />
                             </Grid>
                             <Grid Grid.Row="1">
-                                <lvc:PieChart Foreground="White" HoverPushOut="10" BorderThickness="0" LegendLocation="Bottom" Height="269">
+                                <lvc:PieChart Foreground="White" HoverPushOut="10" BorderThickness="0" LegendLocation="Bottom" Height="239">
                                     <lvc:PieChart.Series>
                                         <lvc:PieSeries Title="Hoang" Values="4" DataLabels="False"
                                LabelPoint="{Binding PointLabel}" />
@@ -459,10 +767,10 @@
                             <Grid Grid.Row="1">
                                 <lvc:CartesianChart Foreground="White" Series="{Binding SeriesCollection}" LegendLocation="Bottom">
                                     <lvc:CartesianChart.AxisY>
-                                        <lvc:Axis Title="Chi phí"></lvc:Axis>
+                                        <lvc:Axis Title="Chi phí" />
                                     </lvc:CartesianChart.AxisY>
                                     <lvc:CartesianChart.AxisX>
-                                        <lvc:Axis Title="Khoản chi" Labels=""></lvc:Axis>
+                                        <lvc:Axis Title="Khoản chi" Labels="" />
                                     </lvc:CartesianChart.AxisX>
                                     <lvc:CartesianChart.DataTooltip>
                                         <lvc:DefaultTooltip Background="Black" />
@@ -529,47 +837,232 @@
                                 </Grid>
                             </Grid>
                         </Grid>
-                        <!--<StackPanel>
-                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                                   Text="TỔNG KẾT CHUYẾN ĐI"
-                                   Foreground="White" FontSize="28"
-                                   FontWeight="DemiBold" />
-                            <Border Style="{StaticResource borderDetailStyle}"
-                                    Background="#101010"
-                                    Height="80">
-                                <Grid>
-                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left">
-                                        <TextBlock Text="Tổng: "
-                                               Foreground="White"
-                                               FontSize="23" />
-                                        <TextBlock Text="Trung bình: "
-                                               Foreground="White"
-                                               FontSize="23" />
-                                    </StackPanel>
-                                    <Grid HorizontalAlignment="Right" Margin="10">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="1*" />
-                                            <RowDefinition Height="1*" />
-                                        </Grid.RowDefinitions>
-                                        <Grid>
-                                            <StackPanel Orientation="Horizontal" Margin="0,0,5,-5">
-                                                <Grid Background="Green" Width="5" Margin="5" />
-                                                <TextBlock Text="Nhận lại" FontSize="13" Foreground="White"
-                                                           VerticalAlignment="Center" />
-                                            </StackPanel>
-                                        </Grid>
-                                        <Grid Grid.Row="1">
-                                            <StackPanel Orientation="Horizontal" Margin="0,-5,5,0">
-                                                <Grid Background="Red" Width="5" Margin="5" />
-                                                <TextBlock Text="Trả thêm" FontSize="13" Foreground="White"
-                                                           VerticalAlignment="Center" />
-                                            </StackPanel>
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
-                            </Border>
-                        </StackPanel>-->
                     </Border>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" x:Name="addTripGrid" Background="#333333">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <TextBlock Text="THÊM CHUYẾN ĐI" Padding="10" Margin="15" Foreground="orange" FontStyle="Italic" FontSize="33" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*" />
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="0.1*" />
+                    <ColumnDefinition Width="23*" />
+                    <ColumnDefinition Width="0.3*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="2" Background="WhiteSmoke" />
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="5*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid Margin="0,0,0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid>
+                                <TextBlock Text="Tên chuyến đi:" Style="{StaticResource textblockAddStyle}" />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox x:Name="tripNameTextBox" Style="{StaticResource textboxAddStyle}" />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="0,0,0,5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid>
+                                <TextBlock Text="Địa điểm:" Style="{StaticResource textblockAddStyle}" />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox  Style="{StaticResource textboxAddStyle}" />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid>
+                                <TextBlock Text="Giai đoạn:" Style="{StaticResource textblockAddStyle}" />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <ComboBox FontSize="23" Margin="9" Foreground="WhiteSmoke" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Template="{DynamicResource ComboBoxControlTemplate1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}">
+                                    <ComboBoxItem Background="DimGray" Content="Đang đi" />
+                                    <ComboBoxItem Background="DimGray" Content="Chưa đi" />
+                                    <ComboBoxItem Background="DimGray" Content="Đã về" />
+                                </ComboBox>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="3" Margin="0,0,9,0">
+                        <Border Style="{StaticResource borderDetailStyle}">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="0" ShadowDepth="0" />
+                            </Border.Effect>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="0.05*" />
+                                    <RowDefinition Height="5*" />
+                                </Grid.RowDefinitions>
+                                <Grid>
+                                    <TextBlock Text="Hình ảnh" Style="{StaticResource textblockAddStyle}" />
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0">
+                                        <Button x:Name="addImgBtn" Width="50" Height="50" Margin="5"
+                                                Click="addImgBtn_Click"
+                                                BorderThickness="0">
+                                            <Button.Background>
+                                                <ImageBrush  ImageSource="Images/addImg_img.png" />
+                                            </Button.Background>
+                                        </Button>
+                                        <Button x:Name="cancelAddImgBtn" Width="50" Height="50" Margin="5"
+                                                Click="cancelAddImgBtn_Click"
+                                                BorderThickness="0">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="Images/x_img.png" Stretch="Fill" />
+                                            </Button.Background>
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Row="1" Background="White" Margin="9,0" />
+                                <Grid Grid.Row="2">
+                                    <ListView x:Name="imgAddListView" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                        <ListView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel />
+                                            </ItemsPanelTemplate>
+                                        </ListView.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Image Source="{Binding}" Margin="5" Width="120" Height="100" Stretch="Fill" />
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid Background="#333333">
+                            <ScrollViewer VerticalScrollBarVisibility="Disabled" Grid.Row="0">
+                                <ListView Name="addListView" Focusable="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  ScrollViewer.CanContentScroll="False" Background="Transparent">
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                    <ListViewItem Name="addFullListViewItem">
+                                        <ListView x:Name="addListViewItem" ScrollViewer.VerticalScrollBarVisibility="Disabled" BorderThickness="0" Background="Transparent">
+                                            <Grid Height="auto" x:Name="addListViewItemGrid">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="3*" />
+                                                    <ColumnDefinition Width="5*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid x:Name="addNameMemberGrid">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid>
+                                                        <TextBlock Text="Tên thành viên: " Margin="0,21,-5,0" Style="{StaticResource textblockAddStyle}" VerticalAlignment="Top" />
+                                                    </Grid>
+                                                    <Grid Grid.Column="1">
+                                                        <TextBox x:Name="memberNameTextBox" Style="{StaticResource textboxAddStyle}" VerticalAlignment="Top" />
+                                                    </Grid>
+                                                </Grid>
+                                                <Grid Grid.Column="1">
+                                                    <ListView Background="Transparent" BorderThickness="0" Name="addCostListView">
+                                                        <StackPanel>
+                                                            <ListView Name="costAddListView" BorderThickness="0" Background="Transparent">
+                                                                <ListView.ItemsPanel>
+                                                                    <ItemsPanelTemplate>
+                                                                        <StackPanel />
+                                                                    </ItemsPanelTemplate>
+                                                                </ListView.ItemsPanel>
+                                                                <ListViewItem Name="costAddListViewItem">
+                                                                    <Grid Name="costAddGrid">
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="2.5*" />
+                                                                            <ColumnDefinition Width="2*" />
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Grid>
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="auto" />
+                                                                                <ColumnDefinition Width="*" />
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <Grid>
+                                                                                <TextBlock Text="Khoản chi: " Margin="0,0,-5,0" Style="{StaticResource textblockAddStyle}" VerticalAlignment="Center" />
+                                                                            </Grid>
+                                                                            <Grid Grid.Column="1">
+                                                                                <TextBox x:Name="costNameTextBox" Style="{StaticResource textboxAddStyle}" />
+                                                                            </Grid>
+                                                                        </Grid>
+                                                                        <Grid Grid.Column="1">
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="auto" />
+                                                                                <ColumnDefinition Width="*" />
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <Grid>
+                                                                                <TextBlock Text="Chi phí: " Margin="0,0,-5,0" Style="{StaticResource textblockAddStyle}" VerticalAlignment="Center" />
+                                                                            </Grid>
+                                                                            <Grid Grid.Column="1">
+                                                                                <TextBox x:Name="costValueTextBox" Style="{StaticResource textboxAddStyle}" />
+                                                                            </Grid>
+                                                                        </Grid>
+                                                                    </Grid>
+                                                                </ListViewItem>
+                                                            </ListView>
+                                                            <Button x:Name="addCostBtn" HorizontalAlignment="Right" Foreground="Orange" FontSize="26" Background="#333333" BorderThickness="0" Margin="0,0,0.2,0" Width="271">
+                                                                <Button.Content>
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <Image Source="Images/plus_img.png" Width="26" />
+                                                                        <TextBlock Text="THÊM KHOẢN CHI" Margin="5" Padding="5" />
+                                                                    </StackPanel>
+                                                                </Button.Content>
+                                                            </Button>
+                                                        </StackPanel>
+                                                    </ListView>
+                                                </Grid>
+                                            </Grid>
+                                        </ListView>
+                                    </ListViewItem>
+                                </ListView>
+                            </ScrollViewer>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Button Name="addMemberBtn" Click="addMemberBtn_Click" Foreground="Orange" FontSize="30" Background="#333333" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="Images/plus_img.png" Width="30" />
+                                        <TextBlock Text="THÊM THÀNH VIÊN" Margin="5" Padding="5" />
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>
