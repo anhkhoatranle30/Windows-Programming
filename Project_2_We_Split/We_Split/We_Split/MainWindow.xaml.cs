@@ -32,7 +32,16 @@ namespace We_Split
         public MainWindow()
         {
             InitializeComponent();
-            //debug.writeline(myutils.calccostbyname(1, "bè nổi"));
+
+            var db = new WP_Project2_WeSplitEntities();
+
+            int memberid = 1;
+            int tripid = 1;
+            var query = from membercost in db.MEMBERCOSTs
+                        where membercost.MemberID == memberid && membercost.TripID == tripid
+                        select membercost;
+            var result = new BindingList<MEMBERCOST>(query.ToList());
+            Debug.WriteLine(query.GetType());
         }
 
         public Func<ChartPoint, string> PointLabel { set; get; }
