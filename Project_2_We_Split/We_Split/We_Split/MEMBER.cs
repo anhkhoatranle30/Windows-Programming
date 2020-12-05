@@ -22,7 +22,6 @@ namespace We_Split
     
         public int MemberID { get; set; }
         public string MemberName { get; set; }
-        public string Avatar { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MEMBERSPERTRIP> MEMBERSPERTRIPs { get; set; }

@@ -7,8 +7,7 @@ go
 create table MEMBER
 (
 	MemberID int identity(1,1) primary key,
-	MemberName nvarchar(50),
-	Avatar varchar(50)
+	MemberName nvarchar(50)
 )
 
 create table TRIP
@@ -59,11 +58,11 @@ insert into TRIP(TripName, Status) values(N'Côn Đảo', '0')
 insert into TRIP(TripName, Status) values(N'Mùa thu ở Trung Quốc', '2')
 insert into TRIP(TripName, Status) values(N'Mẫu Sơn - Lạng Sơn', '0')
 
-insert into MEMBER(MemberName, Avatar) values(N'Nguyễn Tuấn Khải', 'Images/MemberAvatars/1.jpg')
-insert into MEMBER(MemberName, Avatar) values(N'Tô Phương Thanh', 'Images/MemberAvatars/2.jpg')
-insert into MEMBER(MemberName, Avatar) values(N'Tô Việt Thắng', 'Images/MemberAvatars/3.jpg')
-insert into MEMBER(MemberName, Avatar) values(N'Vũ Hoàng Lâm', 'Images/MemberAvatars/4.jpg')
-insert into MEMBER(MemberName, Avatar) values(N'Bùi Tuyết Hân', 'Images/MemberAvatars/5.jpg')
+insert into MEMBER(MemberName) values(N'Nguyễn Tuấn Khải')
+insert into MEMBER(MemberName) values(N'Tô Phương Thanh')
+insert into MEMBER(MemberName) values(N'Tô Việt Thắng')
+insert into MEMBER(MemberName) values(N'Vũ Hoàng Lâm')
+insert into MEMBER(MemberName) values(N'Bùi Tuyết Hân')
 
 insert into TRIPIMAGES(TripID, Path) values('1', '1.jpg')
 insert into TRIPIMAGES(TripID, Path) values('1', '2.jpg')

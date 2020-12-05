@@ -9,43 +9,60 @@ namespace We_Split
 {
     class Members
     {
+        public int MemberID { get; set; }
+        public string MemberName { get; set; }
+        public string Avatar { get; set; }
     }
 
     abstract class MembersDAO
     {
-        public abstract BindingList<MEMBER> GetAll();
-        public abstract void Add(MEMBER member);
-        public abstract void Update(MEMBER member);
-        public abstract void Delete(MEMBER member);
+        public abstract BindingList<Members> GetAll();
+        public abstract void Add(Members member);
+        public abstract void Update(Members member);
+        public abstract void Delete(Members member);
     }
 
     class MembersDAOsqlserver : MembersDAO
     {
-        public override BindingList<MEMBER> GetAll()
+        public override BindingList<Members> GetAll()
         {
             var db = new WP_Project2_WeSplitEntities();
-            var result = new BindingList<MEMBER>(db.MEMBERs.ToList());
-
+            var db_list = new BindingList<MEMBER>(db.MEMBERs.ToList());
+            var result = new BindingList<Members>();
+            foreach(var db_element in db_list)
+            {
+                result.Add(new Members()
+                {
+                    MemberID = db_element.MemberID
+                                            ,
+                    MemberName = db_element.MemberName
+                                            ,
+                    Avatar = AppDomain.CurrentDomain.BaseDirectory + "MemberAvatars\\" + db_element.MemberID + ".jpg"
+                });
+            }
             return result;
         }
-        public override void Add(MEMBER member)
+        public override void Add(Members member)
         {
             var db = new WP_Project2_WeSplitEntities();
-            db.MEMBERs.Add(member);
+            var info = new MEMBER() { MemberID = member.MemberID, MemberName = member.MemberName };
+            db.MEMBERs.Add(info);
             db.SaveChanges();
         }
-        public override void Delete(MEMBER member)
+        public override void Delete(Members member)
         {
             var db = new WP_Project2_WeSplitEntities();
-            db.MEMBERs.Remove(member);
+            var info = new MEMBER() { MemberID = member.MemberID, MemberName = member.MemberName };
+            db.MEMBERs.Remove(info);
             db.SaveChanges();
         }
-        public override void Update(MEMBER member)
+        public override void Update(Members member)
         {
             var db = new WP_Project2_WeSplitEntities();
 
             var old_member = db.MEMBERs.Find(member.MemberID);
-            old_member = member;
+            var info = new MEMBER() { MemberID = member.MemberID, MemberName = member.MemberName };
+            old_member = info;
             db.SaveChanges();
         }
     }

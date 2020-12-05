@@ -19,7 +19,6 @@
           </Key>
           <Property Name="MemberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MemberName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Avatar" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="MEMBERCOST">
           <Key>
@@ -166,7 +165,6 @@
           </Key>
           <Property Name="MemberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MemberName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Avatar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MEMBERSPERTRIPs" Relationship="Self.FK__MEMBERSPE__Membe__2F10007B" FromRole="MEMBER" ToRole="MEMBERSPERTRIP" />
         </EntityType>
         <EntityType Name="MEMBERCOST">
@@ -321,7 +319,6 @@
               <MappingFragment StoreEntitySet="MEMBER">
                 <ScalarProperty Name="MemberID" ColumnName="MemberID" />
                 <ScalarProperty Name="MemberName" ColumnName="MemberName" />
-                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
