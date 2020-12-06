@@ -161,18 +161,6 @@ namespace We_Split
         private ListViewItem listViewItemTemp = null;
         private ListViewItem addFullTemp = null;
 
-        private void AddNewItemCostListView()
-        {
-            var listviewitemXaml = XamlWriter.Save(listViewItemTemp);
-            StringReader stringReader = new StringReader(listviewitemXaml);
-            XmlReader xmlReader = XmlReader.Create(stringReader);
-            ListViewItem newItem = (ListViewItem)XamlReader.Load(xmlReader);
-
-            costAddListView.Items.Add(newItem);
-
-            Console.WriteLine(costAddListView.Items.Count);
-        }
-
         private void AddNewItemAddtListView()
         {
             var addFullXaml = XamlWriter.Save(addFullTemp);
@@ -235,6 +223,8 @@ namespace We_Split
             addFullTemp = (ListViewItem)XamlReader.Load(xmlReader);
 
             addCostBtn.Click += addCostBtnAll_Click;
+            costNameTextBox.TextChanged += AllTextBox_TextChanged;
+            costValueTextBox.TextChanged += AllTextBox_TextChanged;
 
             //var test = new TextBox();
             //test.Style = (Style)this.TryFindResource("textboxAddStyle");
@@ -248,19 +238,6 @@ namespace We_Split
             DataContext = this;
         }
 
-        private class CostSingle
-        {
-            public int Cost { get; set; }
-            public string CostName { get; set; }
-        }
-
-        private class UserCost
-        {
-            public string UserName { get; set; }
-            public List<CostSingle> Cost { get; set; }
-        }
-
-        private List<UserCost> UserCosts = new List<UserCost>();
         public SeriesCollection SeriesCollection { get; set; }
 
         private void searchTextBox_GotFocus(object sender, RoutedEventArgs e)
@@ -385,17 +362,12 @@ namespace We_Split
         private void addCostBtnAll_Click(object sender, RoutedEventArgs e)
         {
             //costAddListView
-
             StackPanel parent = (StackPanel)(VisualTreeHelper.GetParent((DependencyObject)sender));
             ListView child = (ListView)parent.FindName("costAddListView");
-            //ListView child = (ListView)(VisualTreeHelper.GetChild((DependencyObject)parent, 0));
-
-            var newCostNameTextBox = new TextBox();
-            var newCostValueTextBox = new TextBox();
-
             ListViewItem item = (ListViewItem)child.Items[child.Items.Count - 1];
-            newCostNameTextBox = (TextBox)item.FindName("costNameTextBox");
-            newCostValueTextBox = (TextBox)item.FindName("costValueTextBox");
+            Console.WriteLine(child.Items.Count - 1);
+            var newCostNameTextBox = (TextBox)item.FindName("costNameTextBox");
+            var newCostValueTextBox = (TextBox)item.FindName("costValueTextBox");
 
             if (newCostNameTextBox == null || newCostValueTextBox == null)
             {
@@ -403,40 +375,45 @@ namespace We_Split
             }
             else
             {
-                bool isEmpty = false;
-
-                if (newCostNameTextBox.Text.Length == 0)
+                if (!(string.IsNullOrEmpty(newCostNameTextBox.Text)) && !(string.IsNullOrEmpty(newCostValueTextBox.Text)))
                 {
-                    isEmpty = true;
-                    newCostNameTextBox.BorderBrush = Brushes.Red;
-                }
-                else
-                {
-                    newCostNameTextBox.BorderBrush = Brushes.White;
-                }
-
-                if (newCostValueTextBox.Text.Length == 0)
-                {
-                    isEmpty = true;
-                    newCostValueTextBox.BorderBrush = Brushes.Red;
-                }
-                else
-                {
-                    newCostValueTextBox.BorderBrush = Brushes.White;
-                }
-
-                if (!isEmpty)
-                {
-                    //AddNewItemCostListView();
                     var listviewitemXaml = XamlWriter.Save(listViewItemTemp);
                     StringReader stringReader = new StringReader(listviewitemXaml);
                     XmlReader xmlReader = XmlReader.Create(stringReader);
                     ListViewItem newItem = (ListViewItem)XamlReader.Load(xmlReader);
 
                     child.Items.Add(newItem);
+                    var itemTemp = (ListViewItem)child.Items[child.Items.Count - 1];
+                    var newCostNameTextBoxTemp = (TextBox)itemTemp.FindName("costNameTextBox");
+                    var newCostValueTextBoxTemp = (TextBox)itemTemp.FindName("costValueTextBox");
+
+                    newCostNameTextBoxTemp.TextChanged += AllTextBox_TextChanged;
+                    newCostValueTextBoxTemp.TextChanged += AllTextBox_TextChanged;
                 }
                 else
                 {
+                    var toolTip = new ToolTip();
+                    toolTip.Content = "Vui lòng nhập thông tin trước khi thêm mới";
+
+                    if (newCostNameTextBox.Text.Length == 0)
+                    {
+                        newCostNameTextBox.BorderBrush = Brushes.Red;
+                        newCostNameTextBox.ToolTip = toolTip;
+                    }
+                    else
+                    {
+                        //do nothing
+                    }
+
+                    if (newCostValueTextBox.Text.Length == 0)
+                    {
+                        newCostValueTextBox.BorderBrush = Brushes.Red;
+                        newCostValueTextBox.ToolTip = toolTip;
+                    }
+                    else
+                    {
+                        //do nothing
+                    }
                 }
             }
         }
@@ -456,21 +433,49 @@ namespace We_Split
             }
             else
             {
+                var toolTip = new ToolTip();
+                toolTip.Content = "Vui lòng nhập thông tin trước khi thêm mới";
+
                 if (newMemberNameTextBox.Text.Length == 0)
                 {
                     newMemberNameTextBox.BorderBrush = Brushes.Red;
+                    newMemberNameTextBox.ToolTip = toolTip;
                 }
                 else
                 {
                     newMemberNameTextBox.BorderBrush = Brushes.White;
+                    newMemberNameTextBox.ToolTip = null;
                     AddNewItemAddtListView();
+                    item = (ListViewItem)addListView.Items[addListView.Items.Count - 1];
+                    button = (Button)item.FindName("addCostBtn");
+                    button.Click += addCostBtnAll_Click;
                 }
             }
+        }
 
-            item = (ListViewItem)addListView.Items[addListView.Items.Count - 1];
+        private bool IsNumber(string value)
+        {
+            bool result = false;
 
-            button = (Button)item.FindName("addCostBtn");
-            button.Click += addCostBtnAll_Click;
+            return result;
+        }
+
+        private void AllTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textBox = sender as TextBox;
+            var toolTip = new ToolTip();
+            textBox.ToolTip = toolTip;
+
+            if (string.IsNullOrEmpty(textBox.Text))
+            {
+                textBox.BorderBrush = Brushes.Red;
+                toolTip.Content = "Vui lòng nhập thông tin trước khi thêm mới";
+            }
+            else
+            {
+                textBox.BorderBrush = Brushes.White;
+                textBox.ToolTip = null;
+            }
         }
     }
 }
