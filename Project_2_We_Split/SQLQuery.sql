@@ -19,17 +19,17 @@ create table TRIP
 
 create table TRIPIMAGES
 (
+	TripImageID int identity(1,1) primary key,
 	TripID int,
 	Path varchar(50),
-	primary key (TripID, Path),
 	foreign key (TripID) references TRIP(TripID)
 )
 
 create table LOCATION 
 (
+	LocationID int identity(1,1) primary key,
 	TripID int,
 	LocationName nvarchar(50),
-	primary key (TripID, LocationName),
 	foreign key (TripID) references TRIP(TripID)
 )
 
@@ -44,11 +44,11 @@ create table MEMBERSPERTRIP
 
 create table MEMBERCOST 
 (
+	CostID int identity(1,1) primary key,
 	MemberID int,
 	TripID int,
 	CostName nvarchar(50),
 	Cost int,
-	primary key (MemberID, TripID, CostName),
 	foreign key (TripID, MemberID) references MEMBERSPERTRIP(TripID, MemberID)
 )
 
