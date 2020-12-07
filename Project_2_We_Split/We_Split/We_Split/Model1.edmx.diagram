@@ -4,18 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9fee37bff8754e6fa8ed294e1b712290" Name="Diagram1">
-        <EntityTypeShape EntityType="WP_Project2_WeSplitModel.LOCATION" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="WP_Project2_WeSplitModel.MEMBER" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WP_Project2_WeSplitModel.MEMBERCOST" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WP_Project2_WeSplitModel.MEMBERSPERTRIP" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WP_Project2_WeSplitModel.TRIP" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WP_Project2_WeSplitModel.TRIPIMAGE" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
-        <AssociationConnector Association="WP_Project2_WeSplitModel.FK__LOCATION__TripID__2B3F6F97" ManuallyRouted="false" />
-        <AssociationConnector Association="WP_Project2_WeSplitModel.FK__MEMBERSPE__Membe__2F10007B" ManuallyRouted="false" />
-        <AssociationConnector Association="WP_Project2_WeSplitModel.FK__MEMBERCOST__31EC6D26" ManuallyRouted="false" />
-        <AssociationConnector Association="WP_Project2_WeSplitModel.FK__MEMBERSPE__TripI__2E1BDC42" ManuallyRouted="false" />
-        <AssociationConnector Association="WP_Project2_WeSplitModel.FK__TRIPIMAGE__TripI__286302EC" ManuallyRouted="false" />
+      <Diagram DiagramId="257f4a7d5a65470ea421d5d194611f29" Name="Diagram1">
+        <EntityTypeShape EntityType="WP_Project2_WeSplitModel.LOCATION" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WP_Project2_WeSplitModel.MEMBER" Width="1.5" PointX="6" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WP_Project2_WeSplitModel.MEMBERCOST" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WP_Project2_WeSplitModel.MEMBERSPERTRIP" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WP_Project2_WeSplitModel.STATUS" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WP_Project2_WeSplitModel.TRIP" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WP_Project2_WeSplitModel.TRIPIMAGE" Width="1.5" PointX="5.25" PointY="12.625" IsExpanded="true" />
+        <AssociationConnector Association="WP_Project2_WeSplitModel.FK__LOCATION__TripID__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="WP_Project2_WeSplitModel.FK__MEMBERCOS__Membe__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="WP_Project2_WeSplitModel.FK__MEMBERSPE__Membe__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="WP_Project2_WeSplitModel.FK__MEMBERCOS__TripI__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="WP_Project2_WeSplitModel.FK__MEMBERSPE__TripI__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="WP_Project2_WeSplitModel.FK__TRIP__Status__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="WP_Project2_WeSplitModel.FK__TRIPIMAGE__TripI__2B3F6F97" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

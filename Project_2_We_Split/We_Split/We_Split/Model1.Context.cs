@@ -29,6 +29,7 @@ namespace We_Split
         public virtual DbSet<MEMBER> MEMBERs { get; set; }
         public virtual DbSet<MEMBERCOST> MEMBERCOSTs { get; set; }
         public virtual DbSet<MEMBERSPERTRIP> MEMBERSPERTRIPs { get; set; }
+        public virtual DbSet<STATUS> STATUS { get; set; }
         public virtual DbSet<TRIP> TRIPs { get; set; }
         public virtual DbSet<TRIPIMAGE> TRIPIMAGES { get; set; }
     }

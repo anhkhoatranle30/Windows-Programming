@@ -14,18 +14,11 @@ namespace We_Split
     
     public partial class MEMBERSPERTRIP
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MEMBERSPERTRIP()
-        {
-            this.MEMBERCOSTs = new HashSet<MEMBERCOST>();
-        }
-    
-        public int TripID { get; set; }
-        public int MemberID { get; set; }
+        public int RecordID { get; set; }
+        public Nullable<int> TripID { get; set; }
+        public Nullable<int> MemberID { get; set; }
     
         public virtual MEMBER MEMBER { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MEMBERCOST> MEMBERCOSTs { get; set; }
         public virtual TRIP TRIP { get; set; }
     }
 }

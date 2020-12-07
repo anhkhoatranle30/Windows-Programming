@@ -7,21 +7,10 @@ using System.Threading.Tasks;
 
 namespace We_Split
 {
-    class MemberCosts
-    {
-        public int MemberID { get; set;}
-        public string CostName { get; set; }
-        public int Cost { get; set; }
-    }
+    
     class Trips
     {
-        public int TripID { get; set; }
-        public string TripName { get; set; }
-        public int Status { get; set; }
-        public BindingList<string> Locations { get; set; }
-        public BindingList<int> MembersPerTrip { get; set; }
-        public BindingList<MemberCosts> MemberCosts { get; set; }
-        public BindingList<string> TripImages { get; set; }
+       
     }
     abstract class TripsDAO
     {

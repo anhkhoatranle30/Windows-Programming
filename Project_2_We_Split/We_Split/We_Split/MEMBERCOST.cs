@@ -14,11 +14,13 @@ namespace We_Split
     
     public partial class MEMBERCOST
     {
-        public int MemberID { get; set; }
-        public int TripID { get; set; }
+        public int CostID { get; set; }
+        public Nullable<int> MemberID { get; set; }
+        public Nullable<int> TripID { get; set; }
         public string CostName { get; set; }
         public Nullable<int> Cost { get; set; }
     
-        public virtual MEMBERSPERTRIP MEMBERSPERTRIP { get; set; }
+        public virtual MEMBER MEMBER { get; set; }
+        public virtual TRIP TRIP { get; set; }
     }
 }

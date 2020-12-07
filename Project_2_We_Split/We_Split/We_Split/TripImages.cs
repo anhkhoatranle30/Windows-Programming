@@ -42,7 +42,7 @@ namespace We_Split
         public override void Update(TRIPIMAGE tripimage)
         {
             var db = new WP_Project2_WeSplitEntities();
-            var old_info = db.TRIPIMAGES.Find(tripimage.TripID);
+            var old_info = db.TRIPIMAGES.Find(tripimage.TripImageID);
             old_info = tripimage;
             db.SaveChanges();
         }

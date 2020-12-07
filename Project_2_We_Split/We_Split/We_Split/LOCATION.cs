@@ -14,7 +14,8 @@ namespace We_Split
     
     public partial class LOCATION
     {
-        public int TripID { get; set; }
+        public int LocationID { get; set; }
+        public Nullable<int> TripID { get; set; }
         public string LocationName { get; set; }
     
         public virtual TRIP TRIP { get; set; }

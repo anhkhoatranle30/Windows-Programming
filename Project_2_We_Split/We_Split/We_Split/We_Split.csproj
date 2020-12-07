@@ -87,10 +87,12 @@
     <Compile Include="MEMBERCOST.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="MemberCosts.cs" />
     <Compile Include="Members.cs" />
     <Compile Include="MEMBERSPERTRIP.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="MembersPerTrips.cs" />
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -107,6 +109,10 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="MyUtils.cs" />
+    <Compile Include="STATUS.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Statuss.cs" />
     <Compile Include="TextInputToVisibilityConverter.cs" />
     <Compile Include="TRIP.cs">
       <DependentUpon>Model1.tt</DependentUpon>

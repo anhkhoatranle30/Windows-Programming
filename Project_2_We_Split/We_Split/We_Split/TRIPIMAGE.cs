@@ -14,7 +14,8 @@ namespace We_Split
     
     public partial class TRIPIMAGE
     {
-        public int TripID { get; set; }
+        public int TripImageID { get; set; }
+        public Nullable<int> TripID { get; set; }
         public string Path { get; set; }
     
         public virtual TRIP TRIP { get; set; }

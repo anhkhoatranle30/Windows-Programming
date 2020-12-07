@@ -10,11 +10,16 @@ create table MEMBER
 	MemberName nvarchar(50)
 )
 
+create table STATUS(
+	StatusID int primary key,
+	StatusDisplayText nvarchar(50)
+)
+
 create table TRIP
 (
 	TripID int identity(1, 1) primary key,
 	TripName nvarchar(50),
-	Status int
+	Status int foreign key references STATUS(StatusID)
 )
 
 create table TRIPIMAGES
@@ -35,9 +40,9 @@ create table LOCATION
 
 create table MEMBERSPERTRIP 
 (
+	RecordID int identity(1,1) primary key,
 	TripID int,
 	MemberID int,
-	primary key (TripID, MemberID),
 	foreign key(TripID) references TRIP(TripID),
 	foreign key (MemberID) references MEMBER(MemberID)
 )
@@ -49,8 +54,20 @@ create table MEMBERCOST
 	TripID int,
 	CostName nvarchar(50),
 	Cost int,
-	foreign key (TripID, MemberID) references MEMBERSPERTRIP(TripID, MemberID)
+	foreign key (TripID) references TRIP(TripID),
+	foreign key (MemberID) references MEMBER(MemberID)
 )
+
+insert into MEMBER(MemberName) values(N'Nguyễn Tuấn Khải')
+insert into MEMBER(MemberName) values(N'Tô Phương Thanh')
+insert into MEMBER(MemberName) values(N'Tô Việt Thắng')
+insert into MEMBER(MemberName) values(N'Vũ Hoàng Lâm')
+insert into MEMBER(MemberName) values(N'Bùi Tuyết Hân')
+
+insert into STATUS(StatusID, StatusDisplayText) values ('0', N'Lên kế hoạch')
+insert into STATUS(StatusID, StatusDisplayText) values ('1', N'Đang đi')
+insert into STATUS(StatusID, StatusDisplayText) values ('2', N'Đã đi')
+
 
 insert into TRIP(TripName, Status) values(N'Du lịch Phú Yên', '2')
 insert into TRIP(TripName, Status) values(N'Mộc Châu - Tà Xùa', '0')
@@ -58,11 +75,6 @@ insert into TRIP(TripName, Status) values(N'Côn Đảo', '0')
 insert into TRIP(TripName, Status) values(N'Mùa thu ở Trung Quốc', '2')
 insert into TRIP(TripName, Status) values(N'Mẫu Sơn - Lạng Sơn', '0')
 
-insert into MEMBER(MemberName) values(N'Nguyễn Tuấn Khải')
-insert into MEMBER(MemberName) values(N'Tô Phương Thanh')
-insert into MEMBER(MemberName) values(N'Tô Việt Thắng')
-insert into MEMBER(MemberName) values(N'Vũ Hoàng Lâm')
-insert into MEMBER(MemberName) values(N'Bùi Tuyết Hân')
 
 insert into TRIPIMAGES(TripID, Path) values('1', '1.jpg')
 insert into TRIPIMAGES(TripID, Path) values('1', '2.jpg')
@@ -185,3 +197,4 @@ insert into MEMBERCOST(TripID, MemberID, CostName, Cost) values('5', '5', N'Đ�
 insert into MEMBERCOST(TripID, MemberID, CostName, Cost) values('5', '5', N'Ăn sáng', '100000')
 insert into MEMBERCOST(TripID, MemberID, CostName, Cost) values('5', '5', N'Ăn trưa', '100000')
 insert into MEMBERCOST(TripID, MemberID, CostName, Cost) values('5', '5', N'Ăn tối', '123000')
+

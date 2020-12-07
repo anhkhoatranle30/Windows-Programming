@@ -12,21 +12,18 @@ namespace We_Split
     using System;
     using System.Collections.Generic;
     
-    public partial class MEMBER
+    public partial class STATUS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MEMBER()
+        public STATUS()
         {
-            this.MEMBERCOSTs = new HashSet<MEMBERCOST>();
-            this.MEMBERSPERTRIPs = new HashSet<MEMBERSPERTRIP>();
+            this.TRIPs = new HashSet<TRIP>();
         }
     
-        public int MemberID { get; set; }
-        public string MemberName { get; set; }
+        public int StatusID { get; set; }
+        public string StatusDisplayText { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MEMBERCOST> MEMBERCOSTs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MEMBERSPERTRIP> MEMBERSPERTRIPs { get; set; }
+        public virtual ICollection<TRIP> TRIPs { get; set; }
     }
 }
