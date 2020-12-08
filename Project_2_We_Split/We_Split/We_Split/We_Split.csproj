@@ -77,6 +77,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AvatarConverter.cs" />
     <Compile Include="LOCATION.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -120,6 +121,7 @@
     <Compile Include="TRIPIMAGE.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="TripImageConverter.cs" />
     <Compile Include="TripImages.cs" />
     <Compile Include="Trips.cs" />
     <Page Include="MainWindow.xaml">
