@@ -82,6 +82,7 @@ namespace We_Split
 
         private void allBtn_Click(object sender, RoutedEventArgs e)
         {
+            HideSearchCondition();
             ClearBtnBg(doneBtn);
             ClearBtnBg(onGoingBtn);
             SetNoCorner(doneBtn);
@@ -105,6 +106,7 @@ namespace We_Split
 
         private void onGoingBtn_Click(object sender, RoutedEventArgs e)
         {
+            HideSearchCondition();
             ClearBtnBg(doneBtn);
             ClearBtnBg(allBtn);
             borderRight.CornerRadius = new CornerRadius(0);
@@ -135,6 +137,7 @@ namespace We_Split
 
         private void doneBtn_Click(object sender, RoutedEventArgs e)
         {
+            HideSearchCondition();
             ClearBtnBg(allBtn);
             ClearBtnBg(onGoingBtn);
             SetNoCorner(allBtn);
@@ -173,8 +176,6 @@ namespace We_Split
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            allBtn_Click(sender, e);
-
             PointLabel = chartPoint =>
               string.Format("{0}đ", chartPoint.Y);
 
@@ -226,14 +227,8 @@ namespace We_Split
             costNameTextBox.TextChanged += AllTextBox_TextChanged;
             costValueTextBox.TextChanged += AllTextBox_TextChanged;
 
-            //var test = new TextBox();
-            //test.Style = (Style)this.TryFindResource("textboxAddStyle");
-            //var test = new StackPanel();
-            //addListView.Items.Add(test);
-
-            //var test = addListView.FindName("costAddListView");
-            //if (test == null) Console.WriteLine("null");
-            //else Console.WriteLine("ko null");
+            homeBtn_Click(sender, e);
+            allBtn_Click(sender, e);
 
             DataContext = this;
         }
@@ -309,55 +304,6 @@ namespace We_Split
         private void cancelAddImgBtn_Click(object sender, RoutedEventArgs e)
         {
         }
-
-        //private void addCostBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    //costAddListView
-
-        //    var newCostNameTextBox = new TextBox();
-        //    var newCostValueTextBox = new TextBox();
-
-        //    ListViewItem item = (ListViewItem)costAddListView.Items[costAddListView.Items.Count - 1];
-        //    newCostNameTextBox = (TextBox)item.FindName("costNameTextBox");
-        //    newCostValueTextBox = (TextBox)item.FindName("costValueTextBox");
-
-        //    if (newCostNameTextBox == null || newCostValueTextBox == null)
-        //    {
-        //        Console.WriteLine("co loi");
-        //    }
-        //    else
-        //    {
-        //        bool isEmpty = false;
-
-        //        if (newCostNameTextBox.Text.Length == 0)
-        //        {
-        //            isEmpty = true;
-        //            newCostNameTextBox.BorderBrush = Brushes.Red;
-        //        }
-        //        else
-        //        {
-        //            newCostNameTextBox.BorderBrush = Brushes.White;
-        //        }
-
-        //        if (newCostValueTextBox.Text.Length == 0)
-        //        {
-        //            isEmpty = true;
-        //            newCostValueTextBox.BorderBrush = Brushes.Red;
-        //        }
-        //        else
-        //        {
-        //            newCostValueTextBox.BorderBrush = Brushes.White;
-        //        }
-
-        //        if (!isEmpty)
-        //        {
-        //            AddNewItemCostListView();
-        //        }
-        //        else
-        //        {
-        //        }
-        //    }
-        //}
 
         private void addCostBtnAll_Click(object sender, RoutedEventArgs e)
         {
@@ -476,6 +422,80 @@ namespace We_Split
                 textBox.BorderBrush = Brushes.White;
                 textBox.ToolTip = null;
             }
+        }
+
+        private void TripBtn_Click(object sender, RoutedEventArgs e)
+        {
+            HideSearchCondition();
+        }
+
+        private void ClearBg(Button btn)
+        {
+            Border _border = btn.Template.FindName("border", btn) as Border;
+
+            if (_border != null)
+            {
+                _border.ClearValue(BackgroundProperty);
+            }
+        }
+
+        private void ChangeColorBg(Button btn)
+        {
+            Border _border = btn.Template.FindName("border", btn) as Border;
+
+            if (_border != null)
+            {
+                _border.Background = Brushes.Black;
+            }
+        }
+
+        private void ClearAllBg()
+        {
+            ClearBg(homeBtn);
+            ClearBg(addBtn);
+            ClearBg(settingBtn);
+            ClearBg(aboutBtn);
+        }
+
+        private void HideAllGrid()
+        {
+            allTripsGrid.Visibility = Visibility.Collapsed;
+            tripDetailGrid.Visibility = Visibility.Collapsed;
+            addTripGrid.Visibility = Visibility.Collapsed;
+        }
+
+        private void homeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            HideSearchCondition();
+            ClearAllBg();
+            ChangeColorBg(homeBtn);
+            HideAllGrid();
+            allTripsGrid.Visibility = Visibility.Visible;
+        }
+
+        private void addBtn_Click(object sender, RoutedEventArgs e)
+        {
+            HideSearchCondition();
+            ClearAllBg();
+            ChangeColorBg(addBtn);
+            HideAllGrid();
+            addTripGrid.Visibility = Visibility.Visible;
+        }
+
+        private void settingBtn_Click(object sender, RoutedEventArgs e)
+        {
+            HideSearchCondition();
+            ClearAllBg();
+            ChangeColorBg(settingBtn);
+            HideAllGrid();
+        }
+
+        private void aboutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            HideSearchCondition();
+            ClearAllBg();
+            ChangeColorBg(aboutBtn);
+            HideAllGrid();
         }
     }
 }

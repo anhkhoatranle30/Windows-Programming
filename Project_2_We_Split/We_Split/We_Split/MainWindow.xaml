@@ -17,6 +17,175 @@
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
+        <Style x:Key="textBtnStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize"
+                    Value="26" />
+            <Setter Property="Foreground"
+                    Value="Orange" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="VerticalAlignment"
+                    Value="Bottom" />
+            <Setter Property="FontWeight"
+                    Value="DemiBold" />
+            <Setter Property="Padding"
+                    Value="0,0,0,5" />
+        </Style>
+
+        <Style x:Key="homeBtnStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Width"
+                    Value="103" />
+            <Setter Property="Height"
+                    Value="110" />
+            <Setter Property="Margin"
+                    Value="0,10" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border x:Name="border"
+                                CornerRadius="15,0,0,15"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                            </Border>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                            <Grid x:Name="img" Width="60" Height="60" VerticalAlignment="Center" Margin="0,0,0,15">
+                                <Image Source="Images/home_img.png" />
+                            </Grid>
+                            <TextBlock x:Name="text" Text="Home" Style="{StaticResource textBtnStyle}" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Cursor"
+                                        Value="Hand" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="addBtnStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Width"
+                    Value="103" />
+            <Setter Property="Height"
+                    Value="110" />
+            <Setter Property="Margin"
+                    Value="0,10" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border x:Name="border"
+                                CornerRadius="15,0,0,15"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                            </Border>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                            <Grid x:Name="img" Width="60" Height="60" VerticalAlignment="Center" Margin="0,0,0,15">
+                                <Image Source="Images/add_img.png" />
+                            </Grid>
+                            <TextBlock x:Name="text" Text="Add" Style="{StaticResource textBtnStyle}" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Cursor"
+                                        Value="Hand" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="settingBtnStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Width"
+                    Value="103" />
+            <Setter Property="Height"
+                    Value="110" />
+            <Setter Property="Margin"
+                    Value="0,10" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border x:Name="border"
+                                CornerRadius="15,0,0,15"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                            </Border>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                            <Grid x:Name="img" Width="60" Height="60" VerticalAlignment="Center" Margin="0,0,0,15">
+                                <Image Source="Images/setting_img.png" />
+                            </Grid>
+                            <TextBlock x:Name="text" Text="Setting" Style="{StaticResource textBtnStyle}" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Cursor"
+                                        Value="Hand" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="aboutBtnStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Width"
+                    Value="103" />
+            <Setter Property="Height"
+                    Value="110" />
+            <Setter Property="Margin"
+                    Value="0,10" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border x:Name="border"
+                                CornerRadius="15,0,0,15"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                            </Border>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                            <Grid x:Name="img" Width="60" Height="60" VerticalAlignment="Center" Margin="0,0,0,15">
+                                <Image Source="Images/about_img.png" />
+                            </Grid>
+                            <TextBlock x:Name="text" Text="About" Style="{StaticResource textBtnStyle}" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Cursor"
+                                        Value="Hand" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style TargetType="{x:Type Button}">
             <Setter Property="BorderThickness"
                     Value="0" />
@@ -99,7 +268,7 @@
                                     <DropShadowEffect Direction="230" ShadowDepth="9" BlurRadius="4" />
                                 </Border.Effect>
                                 <Grid>
-                                    <TextBlock Margin="100,0,0,0"
+                                    <TextBlock Margin="103,0,0,0"
                                            Padding="10"
                                            Text="asdasddfsdfasdfasdfasdf sdafas fs fsaf asfasd f"
                                            TextWrapping="Wrap"
@@ -390,7 +559,7 @@
             <ControlTemplate.Triggers>
                 <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="True">
                     <Setter Property="Margin" TargetName="shadow" Value="0,0,5,5" />
-                    <Setter Property="Color" TargetName="shadow" Value="#71000000" />
+                    <Setter Property="Color" TargetName="shadow" Value="#71030000" />
                 </Trigger>
                 <Trigger Property="HasItems" Value="False">
                     <Setter Property="Height" TargetName="DropDownBorder" Value="95" />
@@ -526,549 +695,580 @@
                 <Image x:Name="closeWindow" Cursor="Hand" MouseLeftButtonDown="closeWindow_MouseLeftButtonDown" Source="Images/close_window.png" />
             </StackPanel>
         </Grid>
-        <Grid Grid.Row="1" x:Name="allTripsGrid" Visibility="Collapsed" Background="#333333">
-            <Grid Margin="20,10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*" />
-                    <RowDefinition Height="15*" />
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <TextBlock Text="DANH SÁCH CHUYẾN ĐI" Foreground="orange" FontStyle="Italic" FontSize="33" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" />
-
-                    <StackPanel Background="#333333" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <StackPanel x:Name="searchCondition" Width="0">
-                            <RadioButton x:Name="searchByTrip"  FontSize="13" Foreground="White" VerticalAlignment="Center" Margin="0,5" IsChecked="True" Content="Tìm kiếm theo chuyến đi" />
-                            <RadioButton x:Name="searchByUser"  FontSize="13" Foreground="White" VerticalAlignment="Center" Content="Tìm kiếm theo tên thành viên" />
-                        </StackPanel>
-                        <Image Width="50" Source="Images/search_img.png" RenderOptions.BitmapScalingMode="HighQuality" />
-                        <Grid Width="281">
-                            <TextBlock Height="50" Text="Tìm kiếm chuyến đi" Background="Transparent" Foreground="Wheat" FontSize="30" VerticalAlignment="Center" Padding="5"
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="0.03*" />
+                <ColumnDefinition Width="13*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1" Background="Black">
+            </Grid>
+            <Grid Grid.Column="0">
+                <StackPanel VerticalAlignment="Center">
+                    <Button x:Name="homeBtn" Click="homeBtn_Click" Style="{StaticResource homeBtnStyle}" />
+                    <Button x:Name="addBtn" Click="addBtn_Click" Style="{StaticResource addBtnStyle}" />
+                    <Button x:Name="settingBtn" Click="settingBtn_Click" Style="{StaticResource settingBtnStyle}" />
+                    <Button x:Name="aboutBtn" Click="aboutBtn_Click" Style="{StaticResource aboutBtnStyle}" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid x:Name="allTripsGrid" Visibility="Visible" Background="#333333">
+                    <Grid Margin="10,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="15*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <TextBlock Text="DANH SÁCH CHUYẾN ĐI" Foreground="orange" FontStyle="Italic" FontSize="33" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                            <StackPanel Background="#333333" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <StackPanel x:Name="searchCondition" Width="0">
+                                    <RadioButton x:Name="searchByTrip"  FontSize="13" Foreground="White" VerticalAlignment="Center" Margin="0,5" IsChecked="True" Content="Tìm kiếm theo chuyến đi" />
+                                    <RadioButton x:Name="searchByUser"  FontSize="13" Foreground="White" VerticalAlignment="Center" Content="Tìm kiếm theo tên thành viên" />
+                                </StackPanel>
+                                <Image Width="50" Source="Images/search_img.png" RenderOptions.BitmapScalingMode="HighQuality" />
+                                <Grid Width="281">
+                                    <TextBlock Height="50" Text="Tìm kiếm chuyến đi" Background="Transparent" Foreground="Wheat" FontSize="30" VerticalAlignment="Center" Padding="5"
                                    Visibility="{Binding Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=searchTextBox}" />
-                            <TextBox x:Name="searchTextBox" GotFocus="searchTextBox_GotFocus" CaretBrush="White" Width="280" TextWrapping="Wrap" Height="50" Margin="0,0,0.2,0" Foreground="Wheat" FontSize="30" Padding="5" VerticalAlignment="Center" Background="Transparent" />
+                                    <TextBox x:Name="searchTextBox" GotFocus="searchTextBox_GotFocus" CaretBrush="White" Width="280" TextWrapping="Wrap" Height="50" Margin="0,0,0.2,0" Foreground="Wheat" FontSize="30" Padding="5" VerticalAlignment="Center" Background="Transparent" />
+                                </Grid>
+                            </StackPanel>
                         </Grid>
-                    </StackPanel>
-                </Grid>
-                <Grid Grid.Row="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="16*" />
-                    </Grid.RowDefinitions>
-                    <Border Grid.Row="0" Background="#333333">
-                        <Grid>
+                        <Grid Grid.Row="1">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="9*" />
-                                <RowDefinition Height="29*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="16*" />
                             </Grid.RowDefinitions>
-                            <Grid Background="Black" Height="20" VerticalAlignment="Bottom" Margin="-19,0,-18,0.4" Grid.Row="1" />
-                            <Grid Margin="0,0,0,0.4" Grid.RowSpan="2">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*" />
-                                    <ColumnDefinition Width="1*" />
-                                    <ColumnDefinition Width="1*" />
-                                </Grid.ColumnDefinitions>
-                                <Button Style="{StaticResource tabBtnStyle}" x:Name="allBtn" Click="allBtn_Click" Content="Tất cả chuyến đi" />
-                                <Button Style="{StaticResource tabBtnStyle}" x:Name="onGoingBtn" Click="onGoingBtn_Click" Grid.Column="1" Content="Đang đi" />
-                                <Button  Style="{StaticResource tabBtnStyle}" x:Name="doneBtn" Click="doneBtn_Click" Grid.Column="2" Content="Đã đi xong" />
+                            <Border Grid.Row="0" Background="#333333">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="9*" />
+                                        <RowDefinition Height="29*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid Background="Black" Height="20" VerticalAlignment="Bottom" Margin="-10,0,-10.8,0.4" Grid.Row="1" />
+                                    <Grid Margin="0,0,0,0.4" Grid.RowSpan="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="1*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Button Style="{StaticResource tabBtnStyle}" x:Name="allBtn" Click="allBtn_Click" Content="Tất cả chuyến đi" />
+                                        <Button Style="{StaticResource tabBtnStyle}" x:Name="onGoingBtn" Click="onGoingBtn_Click" Grid.Column="1" Content="Đang đi" />
+                                        <Button  Style="{StaticResource tabBtnStyle}" x:Name="doneBtn" Click="doneBtn_Click" Grid.Column="2" Content="Đã đi xong" />
+                                    </Grid>
+                                    <Border x:Name="borderLeft" Background="#333333" Margin="-10,-2,1323.2,2.4" Grid.RowSpan="2" />
+                                    <Border x:Name="borderRight" Background="#333333" Margin="1303,0,-10.8,0.4" Grid.RowSpan="2" />
+                                    <Grid Background="Black" Height="2" VerticalAlignment="Bottom" Margin="-10,0,-10.8,0.4" Grid.Row="1" />
+                                </Grid>
+                            </Border>
+                            <Grid Background="#333333" Grid.Row="1">
+                                <ListView x:Name="allTripListView" Background="#333333" BorderThickness="0" Grid.ColumnSpan="6" Margin="0,0,0,0.2">
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel />
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                    <Button x:Name="TripBtn" Click="TripBtn_Click" Style="{StaticResource tripBtnStyle}" Width="360" Height="230" Margin="20" />
+                                </ListView>
                             </Grid>
-                            <Border x:Name="borderLeft" Background="#333333" Margin="-19,-2,1230,2.4" Grid.RowSpan="2" />
-                            <Border x:Name="borderRight" Background="#333333" Margin="1259,0,-22,0.4" Grid.RowSpan="2" />
-                            <Grid Background="Black" Height="4" VerticalAlignment="Bottom" Margin="-23,0,-22,0.4" Grid.Row="1" />
                         </Grid>
-                    </Border>
-                    <Grid Background="#333333" Grid.Row="1">
-                        <ListView x:Name="allTripListView" Background="#333333" BorderThickness="0" Grid.ColumnSpan="6" Margin="0,0,0,0.2">
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel />
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-
-                            <Button Style="{StaticResource tripBtnStyle}" Width="360" Height="230" Margin="20" />
-                            <Button Style="{StaticResource tripBtnStyle}" Width="360" Height="230" Margin="20" />
-                            <Button Style="{StaticResource tripBtnStyle}" Width="360" Height="230" Margin="20" />
-                        </ListView>
                     </Grid>
                 </Grid>
-            </Grid>
-        </Grid>
-        <Grid Grid.Row="1" x:Name="tripDetailGrid" Visibility="Collapsed" Background="#333333">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="3*" />
-                <RowDefinition Height="3*" />
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="4*" />
-                    <ColumnDefinition Width="1*" />
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <Border Style="{StaticResource borderDetailStyle}">
-                        <TextBlock Text="CHI TIẾT CHUYẾN ĐI"
+                <Grid x:Name="tripDetailGrid" Visibility="Collapsed" Background="#333333">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="3*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Border Style="{StaticResource borderDetailStyle}">
+                                <TextBlock Text="CHI TIẾT CHUYẾN ĐI"
                                    FontSize="33"
                                    Foreground="Orange"
                                    FontStyle="Italic"
                                    FontWeight="Bold"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center" />
-                    </Border>
-                </Grid>
-                <Grid Grid.Column="1">
-                    <Border Style="{StaticResource borderDetailStyle}">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="2*" />
-                                <RowDefinition Height="3*" />
-                            </Grid.RowDefinitions>
-                            <Grid>
-                                <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"
-                                           Text="GIAI ĐOẠN" Foreground="White" FontSize="28" />
-                            </Grid>
-                            <Grid Grid.Row="1" />
+                            </Border>
                         </Grid>
-                    </Border>
-                </Grid>
-                <Grid Grid.Column="2">
-                    <Border Style="{StaticResource borderDetailStyle}">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button x:Name="updateBtn" Width="50" Height="50" Margin="10" ToolTip="Cập nhật chuyến đi">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="Images/update_img.png" />
-                                </Button.Background>
-                            </Button>
-                            <Button x:Name="deleteBtn" Width="50" Height="50" Margin="10" ToolTip="Xóa chuyến đi">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="Images/delete_img.png" />
-                                </Button.Background>
-                            </Button>
-                        </StackPanel>
-                    </Border>
-                </Grid>
-            </Grid>
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="4*" />
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <Border Style="{StaticResource borderDetailStyle}">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="6*" />
-                            </Grid.RowDefinitions>
-                            <Grid>
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                        <Grid Grid.Column="1">
+                            <Border Style="{StaticResource borderDetailStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2*" />
+                                        <RowDefinition Height="3*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid>
+                                        <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                           Text="GIAI ĐOẠN" Foreground="White" FontSize="28" />
+                                    </Grid>
+                                    <Grid Grid.Row="1" />
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Border Style="{StaticResource borderDetailStyle}">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Button x:Name="updateBtn" Width="50" Height="50" Margin="10" ToolTip="Cập nhật chuyến đi">
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="Images/update_img.png" />
+                                        </Button.Background>
+                                    </Button>
+                                    <Button x:Name="deleteBtn" Width="50" Height="50" Margin="10" ToolTip="Xóa chuyến đi">
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="Images/delete_img.png" />
+                                        </Button.Background>
+                                    </Button>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="4*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Border Style="{StaticResource borderDetailStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*" />
+                                        <RowDefinition Height="6*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid>
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
                                    Text="THÔNG TIN CƠ BẢN"
                                    Foreground="White" FontSize="28"
                                    FontWeight="DemiBold" />
-                            </Grid>
-                            <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="3*" />
-                                    <ColumnDefinition Width="2*" />
-                                </Grid.ColumnDefinitions>
-                                <Grid>
-                                    <Border Grid.Column="0" Margin="8" CornerRadius="18">
-                                        <Border.Background>
-                                            <ImageBrush ImageSource="Images/Trips/1/1.jpg" />
-                                        </Border.Background>
-                                    </Border>
-                                </Grid>
-                                <Grid Grid.Column="1">
-                                    <StackPanel>
-                                        <TextBlock Text="Du lịch sông đẹp vcl" Foreground="Orange"
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="2*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid>
+                                            <Border Grid.Column="0" Margin="8" CornerRadius="18">
+                                                <Border.Background>
+                                                    <ImageBrush ImageSource="Images/Trips/1/1.jpg" />
+                                                </Border.Background>
+                                            </Border>
+                                        </Grid>
+                                        <Grid Grid.Column="1">
+                                            <StackPanel>
+                                                <TextBlock Text="Du lịch sông đẹp vcl" Foreground="Orange"
                                            FontSize="21"
                                            FontWeight="DemiBold"
                                            Padding="6"
                                            TextWrapping="Wrap" Width="auto" />
-                                        <StackPanel Orientation="Horizontal" Height="60">
-                                            <Image Width="50" Height="50" Source="Images/location_img.png" HorizontalAlignment="Left" />
-                                            <TextBlock Text="Sông quê em" Margin="3,0" HorizontalAlignment="Right" FontSize="21"
+                                                <StackPanel Orientation="Horizontal" Height="60">
+                                                    <Image Width="50" Height="50" Source="Images/location_img.png" HorizontalAlignment="Left" />
+                                                    <TextBlock Text="Sông quê em" Margin="3,0" HorizontalAlignment="Right" FontSize="21"
                                                    Foreground="White"
                                                    VerticalAlignment="Center" />
-                                        </StackPanel>
-                                        <TextBlock Text="Khắc Tây, Khúc Đạo, Giác Viễn" FontSize="21" Foreground="Gray"
+                                                </StackPanel>
+                                                <TextBlock Text="Khắc Tây, Khúc Đạo, Giác Viễn" FontSize="21" Foreground="Gray"
                                                TextWrapping="WrapWithOverflow" />
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,5" VerticalAlignment="Bottom">
-                                        <Image Source="Images/member_img.png" Width="30" Height="30" />
-                                        <TextBlock Text="3" FontSize="21" FontWeight="DemiBold" Foreground="White" VerticalAlignment="Center" />
-                                    </StackPanel>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,5" VerticalAlignment="Bottom">
+                                                <Image Source="Images/member_img.png" Width="30" Height="30" />
+                                                <TextBlock Text="3" FontSize="21" FontWeight="DemiBold" Foreground="White" VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
+                            </Border>
                         </Grid>
-                    </Border>
-                </Grid>
-                <Grid Grid.Column="1">
-                    <Border Style="{StaticResource borderDetailStyle}">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="6*" />
-                            </Grid.RowDefinitions>
-                            <Grid>
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                        <Grid Grid.Column="1">
+                            <Border Style="{StaticResource borderDetailStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*" />
+                                        <RowDefinition Height="6*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid>
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
                                    Text="HÌNH ẢNH CHUYẾN ĐI"
                                    Foreground="White" FontSize="28"
                                    FontWeight="DemiBold" />
-                            </Grid>
-                            <Grid Grid.Row="1" />
-                        </Grid>
-                    </Border>
-                </Grid>
-            </Grid>
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="2*" />
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <Border Style="{StaticResource borderDetailStyle}">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="6*" />
-                            </Grid.RowDefinitions>
-                            <Grid>
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                                   Text="BIỂU ĐỒ CHI TRẢ"
-                                   Foreground="White" FontSize="28"
-                                   FontWeight="DemiBold" />
-                            </Grid>
-                            <Grid Grid.Row="1">
-                                <lvc:PieChart Foreground="White" HoverPushOut="10" BorderThickness="0" LegendLocation="Bottom" Height="239">
-                                    <lvc:PieChart.Series>
-                                        <lvc:PieSeries Title="Hoang" Values="4" DataLabels="False"
-                               LabelPoint="{Binding PointLabel}" />
-                                        <lvc:PieSeries Title="Khoa" Values="8" DataLabels="False"
-                               LabelPoint="{Binding PointLabel}" />
-                                        <lvc:PieSeries Title="Nhi" Values="14" DataLabels="False"
-                               LabelPoint="{Binding PointLabel}" />
-                                        <lvc:PieSeries Title="Trang" Values="6" DataLabels="False"
-                               LabelPoint="{Binding PointLabel}" />
-                                    </lvc:PieChart.Series>
-                                    <lvc:PieChart.DataTooltip>
-                                        <lvc:DefaultTooltip Background="Black" />
-                                    </lvc:PieChart.DataTooltip>
-                                </lvc:PieChart>
-                            </Grid>
-                        </Grid>
-                    </Border>
-                </Grid>
-                <Grid Grid.Column="1">
-                    <Border Style="{StaticResource borderDetailStyle}">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="6*" />
-                            </Grid.RowDefinitions>
-                            <Grid>
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                                   Text="BIỂU ĐỒ KHOẢN CHI"
-                                   Foreground="White" FontSize="28"
-                                   FontWeight="DemiBold" />
-                            </Grid>
-                            <Grid Grid.Row="1">
-                                <lvc:CartesianChart Foreground="White" Series="{Binding SeriesCollection}" LegendLocation="Bottom">
-                                    <lvc:CartesianChart.AxisY>
-                                        <lvc:Axis Title="Chi phí" />
-                                    </lvc:CartesianChart.AxisY>
-                                    <lvc:CartesianChart.AxisX>
-                                        <lvc:Axis Title="Khoản chi" Labels="" />
-                                    </lvc:CartesianChart.AxisX>
-                                    <lvc:CartesianChart.DataTooltip>
-                                        <lvc:DefaultTooltip Background="Black" />
-                                    </lvc:CartesianChart.DataTooltip>
-                                </lvc:CartesianChart>
-                            </Grid>
-                        </Grid>
-                    </Border>
-                </Grid>
-                <Grid Grid.Column="2">
-                    <Border Style="{StaticResource borderDetailStyle}">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="6*" />
-                            </Grid.RowDefinitions>
-                            <Grid>
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                                   Text="TỔNG KẾT CHUYẾN ĐI"
-                                   Foreground="White" FontSize="28"
-                                   FontWeight="DemiBold" />
-                            </Grid>
-                            <Grid Grid.Row="1">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="2*" />
-                                        <RowDefinition Height="4*" />
-                                    </Grid.RowDefinitions>
-                                    <Grid>
-                                        <Border Style="{StaticResource borderDetailStyle}"
-                                                Background="#101010">
-                                            <Grid>
-                                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0">
-                                                    <TextBlock Text="Tổng: "
-                                               Foreground="White"
-                                               FontSize="23" />
-                                                    <TextBlock Text="Trung bình: "
-                                               Foreground="White"
-                                               FontSize="23" />
-                                                </StackPanel>
-                                                <Grid HorizontalAlignment="Right" Margin="10">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="1*" />
-                                                        <RowDefinition Height="1*" />
-                                                    </Grid.RowDefinitions>
-                                                    <Grid>
-                                                        <StackPanel Orientation="Horizontal" Margin="0,0,5,-5">
-                                                            <Grid Background="Green" Width="5" Margin="5" />
-                                                            <TextBlock Text="Nhận lại" FontSize="13" Foreground="White"
-                                                           VerticalAlignment="Center" />
-                                                        </StackPanel>
-                                                    </Grid>
-                                                    <Grid Grid.Row="1">
-                                                        <StackPanel Orientation="Horizontal" Margin="0,-5,5,0">
-                                                            <Grid Background="Red" Width="5" Margin="5" />
-                                                            <TextBlock Text="Trả thêm" FontSize="13" Foreground="White"
-                                                           VerticalAlignment="Center" />
-                                                        </StackPanel>
-                                                    </Grid>
-                                                </Grid>
-                                            </Grid>
-                                        </Border>
                                     </Grid>
+                                    <Grid Grid.Row="1" />
                                 </Grid>
-                            </Grid>
-                        </Grid>
-                    </Border>
-                </Grid>
-            </Grid>
-        </Grid>
-        <Grid Grid.Row="1" x:Name="addTripGrid" Background="#333333">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="10*" />
-            </Grid.RowDefinitions>
-            <Grid>
-                <TextBlock Text="THÊM CHUYẾN ĐI" Padding="10" Margin="15" Foreground="orange" FontStyle="Italic" FontSize="33" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" />
-            </Grid>
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.3*" />
-                    <ColumnDefinition Width="10*" />
-                    <ColumnDefinition Width="0.1*" />
-                    <ColumnDefinition Width="23*" />
-                    <ColumnDefinition Width="0.3*" />
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="2" Background="WhiteSmoke" Margin="0,9" />
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="5*" />
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
-                        <Grid Margin="0,0,0,5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid>
-                                <TextBlock Text="Tên chuyến đi:" Style="{StaticResource textblockAddStyle}" />
-                            </Grid>
-                            <Grid Grid.Column="1">
-                                <TextBox x:Name="tripNameTextBox" Style="{StaticResource textboxAddStyle}" />
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                    <Grid Grid.Row="1" Margin="0,0,0,5">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid>
-                                <TextBlock Text="Địa điểm:" Style="{StaticResource textblockAddStyle}" />
-                            </Grid>
-                            <Grid Grid.Column="1">
-                                <TextBox  Style="{StaticResource textboxAddStyle}" />
-                            </Grid>
+                            </Border>
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="2">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid>
-                                <TextBlock Text="Giai đoạn:" Style="{StaticResource textblockAddStyle}" />
-                            </Grid>
-                            <Grid Grid.Column="1">
-                                <ComboBox FontSize="23" Margin="9" BorderThickness="1" BorderBrush="White" Foreground="WhiteSmoke" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                                          Template="{DynamicResource ComboBoxControlTemplate1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}">
-                                    <ComboBoxItem Background="DimGray" Content="Đang đi" />
-                                    <ComboBoxItem Background="DimGray" Content="Chưa đi" />
-                                    <ComboBoxItem Background="DimGray" Content="Đã về" />
-                                </ComboBox>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                    <Grid Grid.Row="3" Margin="0,0,9,0">
-                        <Border Style="{StaticResource borderDetailStyle}">
-                            <Border.Effect>
-                                <DropShadowEffect BlurRadius="0" ShadowDepth="0" />
-                            </Border.Effect>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="1*" />
-                                    <RowDefinition Height="0.05*" />
-                                    <RowDefinition Height="5*" />
-                                </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Border Style="{StaticResource borderDetailStyle}">
                                 <Grid>
-                                    <TextBlock Text="Hình ảnh" Style="{StaticResource textblockAddStyle}" />
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0">
-                                        <Button x:Name="addImgBtn" Width="50" Height="50" Margin="5"
-                                                Click="addImgBtn_Click"
-                                                BorderThickness="0">
-                                            <Button.Background>
-                                                <ImageBrush  ImageSource="Images/addImg_img.png" />
-                                            </Button.Background>
-                                        </Button>
-                                        <Button x:Name="cancelAddImgBtn" Width="50" Height="50" Margin="5"
-                                                Click="cancelAddImgBtn_Click"
-                                                BorderThickness="0">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="Images/x_img.png" Stretch="Fill" />
-                                            </Button.Background>
-                                        </Button>
-                                    </StackPanel>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*" />
+                                        <RowDefinition Height="6*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid>
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   Text="BIỂU ĐỒ CHI TRẢ"
+                                   Foreground="White" FontSize="28"
+                                   FontWeight="DemiBold" />
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <lvc:PieChart Foreground="White" HoverPushOut="10" BorderThickness="0" LegendLocation="Bottom" Height="239">
+                                            <lvc:PieChart.Series>
+                                                <lvc:PieSeries Title="Hoang" Values="4" DataLabels="False"
+                               LabelPoint="{Binding PointLabel}" />
+                                                <lvc:PieSeries Title="Khoa" Values="8" DataLabels="False"
+                               LabelPoint="{Binding PointLabel}" />
+                                                <lvc:PieSeries Title="Nhi" Values="14" DataLabels="False"
+                               LabelPoint="{Binding PointLabel}" />
+                                                <lvc:PieSeries Title="Trang" Values="6" DataLabels="False"
+                               LabelPoint="{Binding PointLabel}" />
+                                            </lvc:PieChart.Series>
+                                            <lvc:PieChart.DataTooltip>
+                                                <lvc:DefaultTooltip Background="Black" />
+                                            </lvc:PieChart.DataTooltip>
+                                        </lvc:PieChart>
+                                    </Grid>
                                 </Grid>
-                                <Grid Grid.Row="1" Background="White" Margin="9,0" />
-                                <Grid Grid.Row="2">
-                                    <ListView x:Name="imgAddListView" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                        <ListView.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <WrapPanel />
-                                            </ItemsPanelTemplate>
-                                        </ListView.ItemsPanel>
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <Image Source="{Binding}" Margin="5" Width="120" Height="100" Stretch="Fill" />
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                    </ListView>
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Border Style="{StaticResource borderDetailStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*" />
+                                        <RowDefinition Height="6*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid>
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   Text="BIỂU ĐỒ KHOẢN CHI"
+                                   Foreground="White" FontSize="28"
+                                   FontWeight="DemiBold" />
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <lvc:CartesianChart Foreground="White" Series="{Binding SeriesCollection}" LegendLocation="Bottom">
+                                            <lvc:CartesianChart.AxisY>
+                                                <lvc:Axis Title="Chi phí" />
+                                            </lvc:CartesianChart.AxisY>
+                                            <lvc:CartesianChart.AxisX>
+                                                <lvc:Axis Title="Khoản chi" Labels="" />
+                                            </lvc:CartesianChart.AxisX>
+                                            <lvc:CartesianChart.DataTooltip>
+                                                <lvc:DefaultTooltip Background="Black" />
+                                            </lvc:CartesianChart.DataTooltip>
+                                        </lvc:CartesianChart>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </Border>
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Border Style="{StaticResource borderDetailStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*" />
+                                        <RowDefinition Height="6*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid>
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                                   Text="TỔNG KẾT CHUYẾN ĐI"
+                                   Foreground="White" FontSize="28"
+                                   FontWeight="DemiBold" />
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="2*" />
+                                                <RowDefinition Height="4*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid>
+                                                <Border Style="{StaticResource borderDetailStyle}"
+                                                Background="#101010">
+                                                    <Grid>
+                                                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0">
+                                                            <TextBlock Text="Tổng: "
+                                               Foreground="White"
+                                               FontSize="23" />
+                                                            <TextBlock Text="Trung bình: "
+                                               Foreground="White"
+                                               FontSize="23" />
+                                                        </StackPanel>
+                                                        <Grid HorizontalAlignment="Right" Margin="10">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="1*" />
+                                                                <RowDefinition Height="1*" />
+                                                            </Grid.RowDefinitions>
+                                                            <Grid>
+                                                                <StackPanel Orientation="Horizontal" Margin="0,0,5,-5">
+                                                                    <Grid Background="Green" Width="5" Margin="5" />
+                                                                    <TextBlock Text="Nhận lại" FontSize="13" Foreground="White"
+                                                           VerticalAlignment="Center" />
+                                                                </StackPanel>
+                                                            </Grid>
+                                                            <Grid Grid.Row="1">
+                                                                <StackPanel Orientation="Horizontal" Margin="0,-5,5,0">
+                                                                    <Grid Background="Red" Width="5" Margin="5" />
+                                                                    <TextBlock Text="Trả thêm" FontSize="13" Foreground="White"
+                                                           VerticalAlignment="Center" />
+                                                                </StackPanel>
+                                                            </Grid>
+                                                        </Grid>
+                                                    </Grid>
+                                                </Border>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
                     </Grid>
                 </Grid>
-                <Grid Grid.Column="3">
+                <Grid x:Name="addTripGrid" Visibility="Collapsed" Background="#333333">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="10*" />
+                    </Grid.RowDefinitions>
                     <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="10*" />
-                            <RowDefinition Height="1*" />
-                        </Grid.RowDefinitions>
-                        <Grid Background="#333333">
-                            <ScrollViewer VerticalScrollBarVisibility="Disabled" Grid.Row="0">
-                                <ListView Name="addListView" Focusable="True" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  ScrollViewer.CanContentScroll="False" Background="Transparent">
-                                    <ListView.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel />
-                                        </ItemsPanelTemplate>
-                                    </ListView.ItemsPanel>
-                                    <ListViewItem Name="addFullListViewItem">
-                                        <ListView x:Name="addListViewItem" ScrollViewer.VerticalScrollBarVisibility="Disabled" BorderThickness="0" Background="Transparent">
-                                            <Grid Height="auto" x:Name="addListViewItemGrid">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="3*" />
-                                                    <ColumnDefinition Width="5*" />
-                                                </Grid.ColumnDefinitions>
-                                                <Grid x:Name="addNameMemberGrid">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="auto" />
-                                                        <ColumnDefinition Width="*" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Grid>
-                                                        <TextBlock Text="Tên thành viên: " Margin="0,21,-5,0" Style="{StaticResource textblockAddStyle}" VerticalAlignment="Top" />
-                                                    </Grid>
-                                                    <Grid Grid.Column="1">
-                                                        <TextBox x:Name="memberNameTextBox" Style="{StaticResource textboxAddStyle}" VerticalAlignment="Top" />
-                                                    </Grid>
-                                                </Grid>
-                                                <Grid Grid.Column="1">
-                                                    <ListView Background="Transparent" BorderThickness="0" Name="addCostListView">
-                                                        <StackPanel>
-                                                            <ListView Name="costAddListView" BorderThickness="0" Background="Transparent">
-                                                                <ListView.ItemsPanel>
-                                                                    <ItemsPanelTemplate>
-                                                                        <StackPanel />
-                                                                    </ItemsPanelTemplate>
-                                                                </ListView.ItemsPanel>
-                                                                <ListViewItem Name="costAddListViewItem">
-                                                                    <Grid Name="costAddGrid">
-                                                                        <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="2.5*" />
-                                                                            <ColumnDefinition Width="2*" />
-                                                                        </Grid.ColumnDefinitions>
-                                                                        <Grid>
-                                                                            <Grid.ColumnDefinitions>
-                                                                                <ColumnDefinition Width="auto" />
-                                                                                <ColumnDefinition Width="*" />
-                                                                            </Grid.ColumnDefinitions>
-                                                                            <Grid>
-                                                                                <TextBlock Text="Khoản chi: " Margin="0,0,-5,0" Style="{StaticResource textblockAddStyle}" VerticalAlignment="Center" />
-                                                                            </Grid>
-                                                                            <Grid Grid.Column="1">
-                                                                                <TextBox x:Name="costNameTextBox" Style="{StaticResource textboxAddStyle}" />
-                                                                            </Grid>
-                                                                        </Grid>
-                                                                        <Grid Grid.Column="1">
-                                                                            <Grid.ColumnDefinitions>
-                                                                                <ColumnDefinition Width="auto" />
-                                                                                <ColumnDefinition Width="*" />
-                                                                            </Grid.ColumnDefinitions>
-                                                                            <Grid>
-                                                                                <TextBlock Text="Chi phí: " Margin="0,0,-5,0" Style="{StaticResource textblockAddStyle}" VerticalAlignment="Center" />
-                                                                            </Grid>
-                                                                            <Grid Grid.Column="1">
-                                                                                <TextBox x:Name="costValueTextBox" Style="{StaticResource textboxAddStyle}" />
-                                                                            </Grid>
-                                                                        </Grid>
-                                                                    </Grid>
-                                                                </ListViewItem>
-                                                            </ListView>
-                                                            <Button x:Name="addCostBtn" HorizontalAlignment="Right" Foreground="Orange" FontSize="26" Background="#333333" BorderThickness="0" Margin="0,0,0.2,0" Width="271">
-                                                                <Button.Content>
-                                                                    <StackPanel Orientation="Horizontal">
-                                                                        <Image Source="Images/plus_img.png" Width="26" />
-                                                                        <TextBlock Text="THÊM KHOẢN CHI" Margin="5" Padding="5" />
-                                                                    </StackPanel>
-                                                                </Button.Content>
-                                                            </Button>
-                                                        </StackPanel>
-                                                    </ListView>
-                                                </Grid>
-                                            </Grid>
-                                        </ListView>
-                                    </ListViewItem>
-                                </ListView>
-                            </ScrollViewer>
-                        </Grid>
-                        <Grid Grid.Row="1">
-                            <Button Name="addMemberBtn" Click="addMemberBtn_Click" Foreground="Orange" FontSize="30" Background="#333333" VerticalAlignment="Center" HorizontalAlignment="Right">
-                                <Button.Content>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Image Source="Images/plus_img.png" Width="30" />
-                                        <TextBlock Text="THÊM THÀNH VIÊN" Margin="5" Padding="5" />
-                                    </StackPanel>
-                                </Button.Content>
+                        <TextBlock Text="THÊM CHUYẾN ĐI" Padding="10" Margin="15" Foreground="orange" FontStyle="Italic" FontSize="33" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0">
+                            <Button x:Name="cancelAddBtn" FontSize="18" FontWeight="Bold" Foreground="White" Background="DarkGray" Width="80" Height="35" Content="Hủy" Margin="10,0">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="10" />
+                                    </Style>
+                                </Button.Resources>
                             </Button>
+                            <Button x:Name="accepAddBtn" FontSize="18" FontWeight="Bold" Foreground="White" Background="Green" Width="80" Height="35" Content="Thêm" Margin="10,0">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="10" />
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.3*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="0.1*" />
+                            <ColumnDefinition Width="23*" />
+                            <ColumnDefinition Width="0.3*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="2" Background="WhiteSmoke" Margin="0,9" />
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="5*" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid Margin="0,0,0,5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid>
+                                        <TextBlock Text="Tên chuyến đi:" Style="{StaticResource textblockAddStyle}" />
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <TextBox x:Name="tripNameTextBox" Style="{StaticResource textboxAddStyle}" />
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1" Margin="0,0,0,5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid>
+                                        <TextBlock Text="Địa điểm:" Style="{StaticResource textblockAddStyle}" />
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <TextBox  Style="{StaticResource textboxAddStyle}" />
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid>
+                                        <TextBlock Text="Giai đoạn:" Style="{StaticResource textblockAddStyle}" />
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <ComboBox FontSize="23" Margin="9" BorderThickness="1" BorderBrush="White" Foreground="WhiteSmoke" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                          Template="{DynamicResource ComboBoxControlTemplate1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}">
+                                            <ComboBoxItem Background="DimGray" Content="Đang đi" />
+                                            <ComboBoxItem Background="DimGray" Content="Chưa đi" />
+                                            <ComboBoxItem Background="DimGray" Content="Đã về" />
+                                        </ComboBox>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="3" Margin="0,0,9,0">
+                                <Border Style="{StaticResource borderDetailStyle}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="0" ShadowDepth="0" />
+                                    </Border.Effect>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*" />
+                                            <RowDefinition Height="0.05*" />
+                                            <RowDefinition Height="5*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid>
+                                            <TextBlock Text="Hình ảnh" Style="{StaticResource textblockAddStyle}" />
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0">
+                                                <Button x:Name="addImgBtn" Width="50" Height="50" Margin="5"
+                                                Click="addImgBtn_Click"
+                                                BorderThickness="0">
+                                                    <Button.Background>
+                                                        <ImageBrush  ImageSource="Images/addImg_img.png" />
+                                                    </Button.Background>
+                                                </Button>
+                                                <Button x:Name="cancelAddImgBtn" Width="50" Height="50" Margin="5"
+                                                Click="cancelAddImgBtn_Click"
+                                                BorderThickness="0">
+                                                    <Button.Background>
+                                                        <ImageBrush ImageSource="Images/x_img.png" Stretch="Fill" />
+                                                    </Button.Background>
+                                                </Button>
+                                            </StackPanel>
+                                        </Grid>
+                                        <Grid Grid.Row="1" Background="White" Margin="9,0" />
+                                        <Grid Grid.Row="2">
+                                            <ListView x:Name="imgAddListView" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                                <ListView.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <WrapPanel />
+                                                    </ItemsPanelTemplate>
+                                                </ListView.ItemsPanel>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Image Source="{Binding}" Margin="5" Width="120" Height="103" Stretch="Fill" />
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ListView>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Column="3">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10*" />
+                                    <RowDefinition Height="1*" />
+                                </Grid.RowDefinitions>
+                                <Grid Background="#333333">
+                                    <ScrollViewer VerticalScrollBarVisibility="Disabled" Grid.Row="0">
+                                        <ListView Name="addListView" Focusable="True" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  ScrollViewer.CanContentScroll="False" Background="Transparent">
+                                            <ListView.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel />
+                                                </ItemsPanelTemplate>
+                                            </ListView.ItemsPanel>
+                                            <ListViewItem Name="addFullListViewItem">
+                                                <ListView x:Name="addListViewItem" ScrollViewer.VerticalScrollBarVisibility="Disabled" BorderThickness="0" Background="Transparent">
+                                                    <Grid Height="auto" x:Name="addListViewItemGrid">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="3*" />
+                                                            <ColumnDefinition Width="5*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid x:Name="addNameMemberGrid">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="auto" />
+                                                                <ColumnDefinition Width="*" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <Grid>
+                                                                <TextBlock Text="Tên thành viên: " Margin="0,21,-5,0" Style="{StaticResource textblockAddStyle}" VerticalAlignment="Top" />
+                                                            </Grid>
+                                                            <Grid Grid.Column="1">
+                                                                <TextBox x:Name="memberNameTextBox" Style="{StaticResource textboxAddStyle}" VerticalAlignment="Top" />
+                                                            </Grid>
+                                                        </Grid>
+                                                        <Grid Grid.Column="1">
+                                                            <ListView Background="Transparent" BorderThickness="0" Name="addCostListView">
+                                                                <StackPanel>
+                                                                    <ListView Name="costAddListView" BorderThickness="0" Background="Transparent">
+                                                                        <ListView.ItemsPanel>
+                                                                            <ItemsPanelTemplate>
+                                                                                <StackPanel />
+                                                                            </ItemsPanelTemplate>
+                                                                        </ListView.ItemsPanel>
+                                                                        <ListViewItem Name="costAddListViewItem">
+                                                                            <Grid Name="costAddGrid">
+                                                                                <Grid.ColumnDefinitions>
+                                                                                    <ColumnDefinition Width="2.5*" />
+                                                                                    <ColumnDefinition Width="2*" />
+                                                                                </Grid.ColumnDefinitions>
+                                                                                <Grid>
+                                                                                    <Grid.ColumnDefinitions>
+                                                                                        <ColumnDefinition Width="auto" />
+                                                                                        <ColumnDefinition Width="*" />
+                                                                                    </Grid.ColumnDefinitions>
+                                                                                    <Grid>
+                                                                                        <TextBlock Text="Khoản chi: " Margin="0,0,-5,0" Style="{StaticResource textblockAddStyle}" VerticalAlignment="Center" />
+                                                                                    </Grid>
+                                                                                    <Grid Grid.Column="1">
+                                                                                        <TextBox x:Name="costNameTextBox" Style="{StaticResource textboxAddStyle}" />
+                                                                                    </Grid>
+                                                                                </Grid>
+                                                                                <Grid Grid.Column="1">
+                                                                                    <Grid.ColumnDefinitions>
+                                                                                        <ColumnDefinition Width="auto" />
+                                                                                        <ColumnDefinition Width="*" />
+                                                                                    </Grid.ColumnDefinitions>
+                                                                                    <Grid>
+                                                                                        <TextBlock Text="Chi phí: " Margin="0,0,-5,0" Style="{StaticResource textblockAddStyle}" VerticalAlignment="Center" />
+                                                                                    </Grid>
+                                                                                    <Grid Grid.Column="1">
+                                                                                        <TextBox x:Name="costValueTextBox" Style="{StaticResource textboxAddStyle}" />
+                                                                                    </Grid>
+                                                                                </Grid>
+                                                                            </Grid>
+                                                                        </ListViewItem>
+                                                                    </ListView>
+                                                                    <Button x:Name="addCostBtn" HorizontalAlignment="Right" Foreground="Orange" FontSize="26" Background="#333333" BorderThickness="0" Margin="0,0,0.2,0" Width="271">
+                                                                        <Button.Content>
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <Image Source="Images/plus_img.png" Width="26" />
+                                                                                <TextBlock Text="THÊM KHOẢN CHI" Margin="5" Padding="5" />
+                                                                            </StackPanel>
+                                                                        </Button.Content>
+                                                                    </Button>
+                                                                </StackPanel>
+                                                            </ListView>
+                                                        </Grid>
+                                                    </Grid>
+                                                </ListView>
+                                            </ListViewItem>
+                                        </ListView>
+                                    </ScrollViewer>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <Button Name="addMemberBtn" Click="addMemberBtn_Click" Foreground="Orange" FontSize="30" Background="#333333" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                        <Button.Content>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Source="Images/plus_img.png" Width="30" />
+                                                <TextBlock Text="THÊM THÀNH VIÊN" Margin="5" Padding="5" />
+                                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
