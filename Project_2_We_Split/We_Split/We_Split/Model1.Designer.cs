@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Khoa Tran\Desktop\Programming\Windows-Programming\Project_2_We_Split\We_Split\We_Split\Model1.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\anhkh\Desktop\Programming\Windows-Programming\Project_2_We_Split\We_Split\We_Split\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

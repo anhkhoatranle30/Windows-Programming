@@ -176,7 +176,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Trips\1\1.jpg" />
@@ -256,6 +258,8 @@
     <Resource Include="Images\about_img.png" />
     <Resource Include="Images\setting_img.png" />
     <Resource Include="Images\backgroundSplashScreen.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
