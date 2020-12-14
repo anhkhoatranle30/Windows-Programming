@@ -21,6 +21,7 @@ using System.Xml;
 using LiveCharts;
 using LiveCharts.Wpf;
 using Microsoft.Win32;
+using ViewModel.Pagination;
 
 namespace We_Split
 {
@@ -29,9 +30,15 @@ namespace We_Split
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly PagingCollectionView _tripsView;
         public MainWindow()
         {
             InitializeComponent();
+            //_tripsView = new PagingCollectionView()
+            //{
+            //    _list,
+            //    _itemPerPage
+            //};
         }
 
         public Func<ChartPoint, string> PointLabel { set; get; }

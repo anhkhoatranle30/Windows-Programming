@@ -127,6 +127,7 @@
     <Compile Include="TripImageConverter.cs" />
     <Compile Include="TripImages.cs" />
     <Compile Include="Trips.cs" />
+    <Compile Include="ViewModel\PagingCollectionView.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
