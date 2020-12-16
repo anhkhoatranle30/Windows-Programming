@@ -31,6 +31,7 @@ namespace We_Split
     public partial class MainWindow : Window
     {
         private readonly PagingCollectionView _tripsView;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -109,6 +110,9 @@ namespace We_Split
             }
 
             borderLeft.CornerRadius = new CornerRadius(0, 0, 16, 0);
+
+            //var allTripListViewSource = new TripsDAOsqlserver().GetAll();
+            //allTripListView.ItemsSource = allTripListViewSource;
         }
 
         private void onGoingBtn_Click(object sender, RoutedEventArgs e)
@@ -140,6 +144,9 @@ namespace We_Split
             {
                 _border.CornerRadius = new CornerRadius(0, 0, 0, 18);
             }
+
+            //var allTripListViewSource = new TripsDAOsqlserver().GetAll();
+            //allTripListView.ItemsSource = allTripListViewSource;
         }
 
         private void doneBtn_Click(object sender, RoutedEventArgs e)
@@ -236,6 +243,9 @@ namespace We_Split
 
             homeBtn_Click(sender, e);
             allBtn_Click(sender, e);
+
+            var appTripListViewSource = new TripsDAOsqlserver().GetAll();
+            allTripListView.ItemsSource = appTripListViewSource;
 
             DataContext = this;
         }
@@ -434,6 +444,8 @@ namespace We_Split
         private void TripBtn_Click(object sender, RoutedEventArgs e)
         {
             HideSearchCondition();
+
+            tripDetailGrid.Visibility = Visibility.Visible;
         }
 
         private void ClearBg(Button btn)

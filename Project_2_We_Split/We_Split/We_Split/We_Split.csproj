@@ -261,6 +261,7 @@
     <Resource Include="Images\backgroundSplashScreen.jpeg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\update_trip_img.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

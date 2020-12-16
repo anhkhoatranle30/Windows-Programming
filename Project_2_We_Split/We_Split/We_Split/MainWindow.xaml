@@ -17,6 +17,8 @@
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
+        <local:TripImageConverter x:Key="TripImageConverter" />
+        <local:AvatarConverter x:Key="avatarConverter" />
         <Style x:Key="textBtnStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize"
                     Value="26" />
@@ -270,7 +272,7 @@
                                 <Grid>
                                     <TextBlock Margin="103,0,0,0"
                                            Padding="10"
-                                           Text="asdasddfsdfasdfasdfasdf sdafas fs fsaf asfasd f"
+                                           Text="{Binding TripName}"
                                            TextWrapping="Wrap"
                                            FontSize="22" />
                                     <TextBlock Text="Chi tiết&gt;&gt;" VerticalAlignment="Bottom"
@@ -284,7 +286,7 @@
                             <Border x:Name="borderImg"
                                     CornerRadius="18"
                                     BorderThickness="0"
-                                    Width="160"
+                                    Width="1000"
                                     Height="200"
                                     VerticalAlignment="Top"
                                     HorizontalAlignment="Left">
@@ -292,19 +294,8 @@
                                     <DropShadowEffect Direction="190" ShadowDepth="9" BlurRadius="4" />
                                 </Border.Effect>
                                 <Border.Background>
-                                    <ImageBrush ImageSource="Images/Trips/1/1.jpg" />
+                                    <ImageBrush Stretch="Fill" ImageSource="{Binding TripID, Converter={StaticResource avatarConverter}}" />
                                 </Border.Background>
-                                <Border Height="30"
-                                        Background="Black"
-                                        CornerRadius="0,0,18,18"
-                                        VerticalAlignment="Bottom"
-                                        Margin="-1">
-                                    <TextBlock Text="Sông"
-                                               HorizontalAlignment="Center"
-                                               VerticalAlignment="Center"
-                                               Padding="5"
-                                               FontSize="20" />
-                                </Border>
                             </Border>
                         </Grid>
                         <ControlTemplate.Triggers>
@@ -761,19 +752,23 @@
                                 </Grid>
                             </Border>
                             <Grid Background="#333333" Grid.Row="1">
-                                <ListView x:Name="allTripListView" Background="#333333" BorderThickness="0" Grid.ColumnSpan="6" Margin="0,0,0,0.2">
+                                <ListView x:Name="allTripListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#333333" BorderThickness="0" Grid.ColumnSpan="6" Margin="0,0,0,0.2">
                                     <ListView.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <WrapPanel />
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
-                                    <Button x:Name="TripBtn" Click="TripBtn_Click" Style="{StaticResource tripBtnStyle}" Width="360" Height="230" Margin="20" />
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="TripBtn" Click="TripBtn_Click" Style="{StaticResource tripBtnStyle}" Width="360" Height="230" Margin="20" />
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
                                 </ListView>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid x:Name="tripDetailGrid" Visibility="Collapsed" Background="#333333">
+                <Grid x:Name="tripDetailGrid" Visibility="Visible" Background="#333333">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="3*" />
@@ -816,7 +811,7 @@
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                     <Button x:Name="updateBtn" Width="50" Height="50" Margin="10" ToolTip="Cập nhật chuyến đi">
                                         <Button.Background>
-                                            <ImageBrush ImageSource="Images/update_img.png" />
+                                            <ImageBrush ImageSource="Images/update_trip_img.png" />
                                         </Button.Background>
                                     </Button>
                                     <Button x:Name="deleteBtn" Width="50" Height="50" Margin="10" ToolTip="Xóa chuyến đi">
@@ -1022,6 +1017,8 @@
                                                         </Grid>
                                                     </Grid>
                                                 </Border>
+                                            </Grid>
+                                            <Grid Grid.Row="1">
                                             </Grid>
                                         </Grid>
                                     </Grid>
