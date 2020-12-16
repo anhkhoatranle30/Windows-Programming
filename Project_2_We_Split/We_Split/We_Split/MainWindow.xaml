@@ -1269,6 +1269,34 @@
                         </Grid>
                     </Grid>
                 </Grid>
+                <Grid x:Name="settingGrid" Visibility="Visible" Background="#333333">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="10*" />
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <TextBlock Text="CÀI ĐẶT" Padding="10" Margin="15" Foreground="orange" FontStyle="Italic" FontSize="33" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <CheckBox x:Name="splashScreen"
+                              Foreground="LightGray"
+                              Checked="splashScreen_Checked"
+                              Unchecked="splashScreen_Unchecked"
+                              VerticalAlignment="Top"
+                              FontSize="23"
+                              FontWeight="DemiBold"
+                              Margin="10"
+                              HorizontalAlignment="Left"
+                              VerticalContentAlignment="Center"
+                              Content="Hiện màn hình Splash khi khởi động">
+                            <CheckBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10" />
+                                </Style>
+                            </CheckBox.Resources>
+                        </CheckBox>
+                    </Grid>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>

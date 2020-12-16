@@ -14,6 +14,7 @@ using LiveCharts.Wpf;
 using Microsoft.Win32;
 using ViewModel.Pagination;
 using System.Windows.Controls.Primitives;
+using System.Configuration;
 
 namespace We_Split
 {
@@ -246,6 +247,11 @@ namespace We_Split
             var appTripListViewSource = new TripsDAOsqlserver().GetAll();
             allTripListView.ItemsSource = appTripListViewSource;
 
+            var value = ConfigurationManager.AppSettings["showSplashScreen"];
+            var showSplash = bool.Parse(value);
+
+            splashScreen.IsChecked = showSplash;
+
             DataContext = this;
         }
 
@@ -475,6 +481,7 @@ namespace We_Split
             allTripsGrid.Visibility = Visibility.Collapsed;
             tripDetailGrid.Visibility = Visibility.Collapsed;
             addTripGrid.Visibility = Visibility.Collapsed;
+            settingGrid.Visibility = Visibility.Collapsed;
         }
 
         private void homeBtn_Click(object sender, RoutedEventArgs e)
@@ -501,6 +508,7 @@ namespace We_Split
             ClearAllBg();
             ChangeColorBg(settingBtn);
             HideAllGrid();
+            settingGrid.Visibility = Visibility.Visible;
         }
 
         private void aboutBtn_Click(object sender, RoutedEventArgs e)
@@ -601,6 +609,22 @@ namespace We_Split
                 }
                 AddNewItemAddtListView();
             }
+        }
+
+        private void splashScreen_Checked(object sender, RoutedEventArgs e)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(
+                ConfigurationUserLevel.None);
+            config.AppSettings.Settings["ShowSplashScreen"].Value = "true";
+            config.Save(ConfigurationSaveMode.Minimal);
+        }
+
+        private void splashScreen_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(
+                ConfigurationUserLevel.None);
+            config.AppSettings.Settings["ShowSplashScreen"].Value = "false";
+            config.Save(ConfigurationSaveMode.Minimal);
         }
     }
 }
