@@ -6,17 +6,18 @@
         xmlns:local="clr-namespace:We_Split"
         mc:Ignorable="d"
         Title="SplashScreen" Height="450" Width="800"
-         WindowStartupLocation="CenterScreen"
-        Background="Black"
+        AllowsTransparency="True"
+        Background="Transparent"
         ResizeMode="NoResize"
-        WindowStyle="None">
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None" Loaded="Window_Loaded">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Images/backgroundSplashScreen.jpeg" Stretch="Fill" Opacity="0.7" />
         </Grid.Background>
         <Border Margin="10" Background="Transparent" BorderThickness="2" BorderBrush="White">
             <Grid>
-                <CheckBox VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="5" Background="Transparent" BorderThickness="1" BorderBrush="White" Content="Không hiện màn hình này mỗi khi khởi động" Foreground="White">
+                <CheckBox x:Name="showSplashScreen" Checked="showSplashScreen_Checked" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="5" Background="Transparent" BorderThickness="1" BorderBrush="White" Content="Không hiện màn hình này mỗi khi khởi động" Foreground="White">
                     <CheckBox.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10" />
@@ -24,7 +25,8 @@
                     </CheckBox.Resources>
                 </CheckBox>
 
-                <Button Background="Transparent"
+                <Button x:Name="shutdownScreen" Click="shutdownScreen_Click"
+                        Background="Transparent"
                         VerticalAlignment="Bottom" HorizontalAlignment="Right"
                         Content="Bỏ qua >"
                         Foreground="White">

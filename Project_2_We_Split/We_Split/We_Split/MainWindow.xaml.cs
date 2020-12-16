@@ -1,27 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Xml;
 using LiveCharts;
 using LiveCharts.Wpf;
 using Microsoft.Win32;
 using ViewModel.Pagination;
+using System.Windows.Controls.Primitives;
 
 namespace We_Split
 {
@@ -186,10 +178,16 @@ namespace We_Split
             ListViewItem newItem = (ListViewItem)XamlReader.Load(xmlReader);
 
             addListView.Items.Add(newItem);
+            var item = (ListViewItem)addListView.Items[addListView.Items.Count - 1];
+
+            Button button = (Button)item.FindName("addCostBtn");
+            button.Click += addCostBtnAll_Click;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Debug.WriteLine(statusComboBox.SelectedItem);
+
             PointLabel = chartPoint =>
               string.Format("{0}đ", chartPoint.Y);
 
@@ -240,6 +238,7 @@ namespace We_Split
             addCostBtn.Click += addCostBtnAll_Click;
             costNameTextBox.TextChanged += AllTextBox_TextChanged;
             costValueTextBox.TextChanged += AllTextBox_TextChanged;
+            memberNameTextBox.TextChanged += AllTextBox_TextChanged;
 
             homeBtn_Click(sender, e);
             allBtn_Click(sender, e);
@@ -410,17 +409,12 @@ namespace We_Split
                     newMemberNameTextBox.ToolTip = null;
                     AddNewItemAddtListView();
                     item = (ListViewItem)addListView.Items[addListView.Items.Count - 1];
+                    var tempMemberName = (TextBox)item.FindName("memberNameTextBox");
+                    tempMemberName.TextChanged += AllTextBox_TextChanged;
                     button = (Button)item.FindName("addCostBtn");
                     button.Click += addCostBtnAll_Click;
                 }
             }
-        }
-
-        private bool IsNumber(string value)
-        {
-            bool result = false;
-
-            return result;
         }
 
         private void AllTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -515,6 +509,98 @@ namespace We_Split
             ClearAllBg();
             ChangeColorBg(aboutBtn);
             HideAllGrid();
+        }
+
+        private void accepAddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var isValid = true;
+
+            if (string.IsNullOrEmpty(tripNameTextBox.Text))
+            {
+                tripNameTextBox.BorderBrush = Brushes.Red;
+                isValid = false;
+            }
+
+            if (string.IsNullOrEmpty(locationsTextBox.Text))
+            {
+                locationsTextBox.BorderBrush = Brushes.Red;
+                isValid = false;
+            }
+
+            if (statusComboBox.SelectedItem == null)
+            {
+                ToggleButton toggleButton = statusComboBox.Template.FindName("toggleButton", statusComboBox) as ToggleButton;
+                Border _border = toggleButton.Template.FindName("templateRoot", toggleButton) as Border;
+
+                _border.BorderBrush = Brushes.Red;
+                isValid = false;
+            }
+
+            if (isValid)
+            {
+            }
+        }
+
+        private void tripNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(tripNameTextBox.Text))
+            {
+                tripNameTextBox.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                tripNameTextBox.BorderBrush = Brushes.White;
+            }
+        }
+
+        private void locationsTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(locationsTextBox.Text))
+            {
+                locationsTextBox.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                locationsTextBox.BorderBrush = Brushes.White;
+            }
+        }
+
+        private void statusComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ToggleButton toggleButton = statusComboBox.Template.FindName("toggleButton", statusComboBox) as ToggleButton;
+            Border _border = toggleButton.Template.FindName("templateRoot", toggleButton) as Border;
+
+            _border.BorderBrush = Brushes.Red;
+
+            if (statusComboBox.SelectedItem == null)
+            {
+                _border.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                _border.BorderBrush = Brushes.White;
+            }
+        }
+
+        private void cancelAddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var choice = MessageBox.Show("Bạn chắc muốn hủy bỏ?",
+                                "Thông báo",
+                                MessageBoxButton.YesNo,
+                                MessageBoxImage.Question);
+
+            if (choice == MessageBoxResult.Yes)
+            {
+                //tripNameTextBox.Text = null;
+                //locationsTextBox.Text = null;
+                //statusComboBox.SelectedItem = null;
+                //addListView.Items.Refresh();
+                while (addListView.Items.Count != 0)
+                {
+                    addListView.Items.RemoveAt(0);
+                }
+                AddNewItemAddtListView();
+            }
         }
     }
 }

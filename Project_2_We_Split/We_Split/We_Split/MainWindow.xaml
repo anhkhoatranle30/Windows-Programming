@@ -1027,7 +1027,7 @@
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid x:Name="addTripGrid" Visibility="Collapsed" Background="#333333">
+                <Grid x:Name="addTripGrid" Visibility="Visible" Background="#333333">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="10*" />
@@ -1035,14 +1035,14 @@
                     <Grid>
                         <TextBlock Text="THÊM CHUYẾN ĐI" Padding="10" Margin="15" Foreground="orange" FontStyle="Italic" FontSize="33" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" />
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0">
-                            <Button x:Name="cancelAddBtn" FontSize="18" FontWeight="Bold" Foreground="White" Background="DarkGray" Width="80" Height="35" Content="Hủy" Margin="10,0">
+                            <Button x:Name="cancelAddBtn" Click="cancelAddBtn_Click" FontSize="18" FontWeight="Bold" Foreground="White" Background="DarkGray" Width="80" Height="35" Content="Hủy" Margin="10,0">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="10" />
                                     </Style>
                                 </Button.Resources>
                             </Button>
-                            <Button x:Name="accepAddBtn" FontSize="18" FontWeight="Bold" Foreground="White" Background="Green" Width="80" Height="35" Content="Thêm" Margin="10,0">
+                            <Button x:Name="accepAddBtn" Click="accepAddBtn_Click" FontSize="18" FontWeight="Bold" Foreground="White" Background="Green" Width="80" Height="35" Content="Thêm" Margin="10,0">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="10" />
@@ -1077,7 +1077,7 @@
                                         <TextBlock Text="Tên chuyến đi:" Style="{StaticResource textblockAddStyle}" />
                                     </Grid>
                                     <Grid Grid.Column="1">
-                                        <TextBox x:Name="tripNameTextBox" Style="{StaticResource textboxAddStyle}" />
+                                        <TextBox x:Name="tripNameTextBox" TextChanged="tripNameTextBox_TextChanged" Style="{StaticResource textboxAddStyle}" />
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -1091,7 +1091,7 @@
                                         <TextBlock Text="Địa điểm:" Style="{StaticResource textblockAddStyle}" />
                                     </Grid>
                                     <Grid Grid.Column="1">
-                                        <TextBox  Style="{StaticResource textboxAddStyle}" />
+                                        <TextBox Name="locationsTextBox" TextChanged="locationsTextBox_TextChanged" Style="{StaticResource textboxAddStyle}" />
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -1105,7 +1105,7 @@
                                         <TextBlock Text="Giai đoạn:" Style="{StaticResource textblockAddStyle}" />
                                     </Grid>
                                     <Grid Grid.Column="1">
-                                        <ComboBox FontSize="23" Margin="9" BorderThickness="1" BorderBrush="White" Foreground="WhiteSmoke" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                        <ComboBox Name="statusComboBox" SelectionChanged="statusComboBox_SelectionChanged" FontSize="23" Margin="9" BorderThickness="1" Foreground="WhiteSmoke" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                                           Template="{DynamicResource ComboBoxControlTemplate1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}">
                                             <ComboBoxItem Background="DimGray" Content="Đang đi" />
                                             <ComboBoxItem Background="DimGray" Content="Chưa đi" />
