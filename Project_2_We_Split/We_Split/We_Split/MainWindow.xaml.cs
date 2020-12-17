@@ -482,6 +482,7 @@ namespace We_Split
             tripDetailGrid.Visibility = Visibility.Collapsed;
             addTripGrid.Visibility = Visibility.Collapsed;
             settingGrid.Visibility = Visibility.Collapsed;
+            aboutGrid.Visibility = Visibility.Collapsed;
         }
 
         private void homeBtn_Click(object sender, RoutedEventArgs e)
@@ -517,6 +518,7 @@ namespace We_Split
             ClearAllBg();
             ChangeColorBg(aboutBtn);
             HideAllGrid();
+            aboutGrid.Visibility = Visibility.Visible;
         }
 
         private void accepAddBtn_Click(object sender, RoutedEventArgs e)

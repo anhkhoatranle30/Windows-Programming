@@ -19,6 +19,7 @@
         <local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
         <local:TripImageConverter x:Key="TripImageConverter" />
         <local:AvatarConverter x:Key="avatarConverter" />
+
         <Style x:Key="textBtnStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize"
                     Value="26" />
@@ -33,7 +34,10 @@
             <Setter Property="Padding"
                     Value="0,0,0,5" />
         </Style>
-
+        <Style x:Key="textAboutStyle" TargetType="TextBlock" BasedOn="{StaticResource textBtnStyle}">
+            <Setter Property="Foreground"
+                    Value="LightGray" />
+        </Style>
         <Style x:Key="homeBtnStyle" TargetType="{x:Type Button}">
             <Setter Property="Background"
                     Value="Transparent" />
@@ -274,21 +278,22 @@
                                            Padding="10"
                                            Text="{Binding TripName}"
                                            TextWrapping="Wrap"
-                                           FontSize="22" />
+                                           FontSize="22"
+                                               Foreground="LightGray" />
                                     <TextBlock Text="Chi tiết&gt;&gt;" VerticalAlignment="Bottom"
                                                HorizontalAlignment="Right"
                                                FontSize="18"
-                                               Foreground="White"
+                                               Foreground="Gray"
                                                Margin="5,0"
                                                FontStyle="Italic" />
                                     <!--<TextBlock Width="1000"
-                                        Text="{Binding TripID, Converter={StaticResource TripImageConverter}}"/>-->
+                                        Text="{Binding TripID, Converter={StaticResource TripImageConverter}}" />-->
                                 </Grid>
                             </Border>
                             <Border x:Name="borderImg"
                                     CornerRadius="18"
                                     BorderThickness="0"
-                                    Width="1000"
+                                    Width="150"
                                     Height="200"
                                     VerticalAlignment="Top"
                                     HorizontalAlignment="Left">
@@ -302,7 +307,7 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" TargetName="desTrip" Value="lightgray" />
+                                <Setter Property="Background" TargetName="desTrip" Value="#404040" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -770,7 +775,7 @@
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid x:Name="tripDetailGrid" Visibility="Visible" Background="#333333">
+                <Grid x:Name="tripDetailGrid" Visibility="Collapsed" Background="#333333">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="3*" />
@@ -850,9 +855,11 @@
                                         </Grid.ColumnDefinitions>
                                         <!--<Grid>
                                             <Border Grid.Column="0" Margin="8" CornerRadius="18">
-                                                --><!--<Border.Background>
+                                                -->
+                                        <!--<Border.Background>
                                                     <ImageBrush ImageSource="Images/Trips/1/1.jpg" />
-                                                </Border.Background>--><!--
+                                                </Border.Background>-->
+                                        <!--
                                             </Border>
                                         </Grid>-->
                                         <Grid Grid.Column="1">
@@ -1029,7 +1036,7 @@
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid x:Name="addTripGrid" Visibility="Visible" Background="#333333">
+                <Grid x:Name="addTripGrid" Visibility="Collapsed" Background="#333333">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="10*" />
@@ -1271,7 +1278,7 @@
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid x:Name="settingGrid" Visibility="Visible" Background="#333333">
+                <Grid x:Name="settingGrid" Visibility="Collapsed" Background="#333333">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="10*" />
@@ -1280,7 +1287,8 @@
                         <TextBlock Text="CÀI ĐẶT" Padding="10" Margin="15" Foreground="orange" FontStyle="Italic" FontSize="33" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" />
                     </Grid>
                     <Grid Grid.Row="1">
-                        <CheckBox x:Name="splashScreen"
+                        <StackPanel>
+                            <CheckBox x:Name="splashScreen"
                               Foreground="LightGray"
                               Checked="splashScreen_Checked"
                               Unchecked="splashScreen_Unchecked"
@@ -1291,13 +1299,77 @@
                               HorizontalAlignment="Left"
                               VerticalContentAlignment="Center"
                               Content="Hiện màn hình Splash khi khởi động">
-                            <CheckBox.Resources>
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="10" />
-                                </Style>
-                            </CheckBox.Resources>
-                        </CheckBox>
+                                <CheckBox.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="10" />
+                                    </Style>
+                                </CheckBox.Resources>
+                            </CheckBox>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Number of products per page:" Foreground="LightGray" FontSize="23" Padding="20,10,0,10" Margin="0,10,0,10" />
+                                <StackPanel  Margin="10" VerticalAlignment="Center">
+                                    <ComboBox x:Name="cboTpP" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" Width="55" Height="34">
+
+                                        <ComboBoxItem Name="n6" FontSize="20" Content="6" />
+                                        <ComboBoxItem Name="n8" FontSize="20"  Content="8" />
+                                        <ComboBoxItem Name="n10" FontSize="20" Content="10" />
+                                        <ComboBoxItem Name="n12" FontSize="20" Content="12" />
+                                    </ComboBox>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
                     </Grid>
+                </Grid>
+                <Grid x:Name="aboutGrid" Visibility="Collapsed" Background="#333333">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="30">
+                        <Image Source="Images/img_about_Khoa.jpg" />
+                        <StackPanel Margin="30">
+                            <TextBlock Text="Name: Trần Lê Anh Khoa"
+                                                   FontSize="26"
+                                                   Padding="10"
+                                                   HorizontalAlignment="Left"
+                                       Style="{StaticResource textAboutStyle}" />
+
+                            <TextBlock Text="MSSV: 18120421"
+                                                   FontSize="26"
+                                                   Padding="10"
+                                                   HorizontalAlignment="Left"
+                                       Style="{StaticResource textAboutStyle}" />
+
+                            <TextBlock Text="Email: 18120421@student.hcmus.edu.vn"
+                                                   FontSize="26"
+                                                   Padding="10"
+                                                   HorizontalAlignment="Left"
+                                       Style="{StaticResource textAboutStyle}" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="30">
+                        <Image Source="Images/img_about_Hoang.jpg" />
+                        <StackPanel Margin="30">
+                            <TextBlock Text="Name: Võ Nguyễn Lê Hoàng"
+                                                   FontSize="26"
+                                                   Padding="10"
+                                                   HorizontalAlignment="Left"
+                                       Style="{StaticResource textAboutStyle}" />
+
+                            <TextBlock Text="MSSV: 18120388"
+                                                   FontSize="26"
+                                                   Padding="10"
+                                                   HorizontalAlignment="Left"
+                                       Style="{StaticResource textAboutStyle}" />
+
+                            <TextBlock Text="Email: 18120388@student.hcmus.edu.vn"
+                                                   FontSize="26"
+                                                   Padding="10"
+                                                   HorizontalAlignment="Left"
+                                       Style="{StaticResource textAboutStyle}" />
+                        </StackPanel>
+                    </StackPanel>
                 </Grid>
             </Grid>
         </Grid>

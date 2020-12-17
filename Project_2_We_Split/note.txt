@@ -1,0 +1,5 @@
+allBtn nút "tất cả chuyến đi"
+onGoingBtn nút "đang đi"
+doneBtn nút "đã đi xong"
+
+bấm vào chuyến đi: nút TripBtn. Có sẵn event TripBtn_Click
