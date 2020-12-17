@@ -965,7 +965,7 @@
                                     </Grid>
                                     <Grid Grid.Row="1">
                                         <lvc:PieChart Name="pieChart" Foreground="White" HoverPushOut="10" BorderThickness="0" LegendLocation="Bottom" Height="239">
-                                            <lvc:PieChart.Series>
+                                            <!--<lvc:PieChart.Series>
                                                 <lvc:PieSeries Title="Hoang" Values="4" DataLabels="False"
                                LabelPoint="{Binding PointLabel}" />
                                                 <lvc:PieSeries Title="Khoa" Values="8" DataLabels="False"
@@ -974,7 +974,7 @@
                                LabelPoint="{Binding PointLabel}" />
                                                 <lvc:PieSeries Title="Trang" Values="6" DataLabels="False"
                                LabelPoint="{Binding PointLabel}" />
-                                            </lvc:PieChart.Series>
+                                            </lvc:PieChart.Series>-->
                                             <lvc:PieChart.DataTooltip>
                                                 <lvc:DefaultTooltip Background="Black" />
                                             </lvc:PieChart.DataTooltip>
@@ -997,7 +997,7 @@
                                    FontWeight="DemiBold" />
                                     </Grid>
                                     <Grid Grid.Row="1">
-                                        <lvc:CartesianChart Foreground="White" Series="{Binding SeriesCollection}" LegendLocation="Bottom">
+                                        <lvc:CartesianChart Name="cartesianChart" Foreground="White" Series="{Binding SeriesCollection}" LegendLocation="Bottom">
                                             <lvc:CartesianChart.AxisY>
                                                 <lvc:Axis Title="Chi phí" />
                                             </lvc:CartesianChart.AxisY>
