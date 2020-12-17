@@ -456,8 +456,12 @@ namespace We_Split
             tripDetailGrid.Visibility = Visibility.Visible;
 
             //pieChart
-            pieChart.Series.Add(new PieSeries { Title = "BAD", Values = new ChartValues<double> { 1000 } });
-            pieChart.Series.Add(new PieSeries { Title = "GOOD", Values = new ChartValues<double> { 2000 } });
+            SeriesCollection = new SeriesCollection
+            {
+                new PieSeries { Title = "BAD", Values = new ChartValues<double> { 1000 } },
+                new PieSeries { Title = "good", Values = new ChartValues<double> { 2000 } }
+            };
+            pieChart.Series = SeriesCollection;
 
             //cartesianChart
             SeriesCollection = new SeriesCollection
