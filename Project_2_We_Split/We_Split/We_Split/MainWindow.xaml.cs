@@ -193,40 +193,6 @@ namespace We_Split
             PointLabel = chartPoint =>
               string.Format("{0}đ", chartPoint.Y);
 
-            SeriesCollection = new SeriesCollection
-            {
-                new ColumnSeries
-                {
-                    Title = "kem đánh răng",
-                    Values = new ChartValues<double> {100,2000}
-                },
-                new ColumnSeries
-                {
-                    Title = "đá phò",
-                    Values = new ChartValues<double> { 9000 }
-                },
-                new ColumnSeries
-                {
-                    Title = "vé máy bay",
-                    Values = new ChartValues<double> { 2000 }
-                },
-                new ColumnSeries
-                {
-                    Title = "BCS",
-                    Values = new ChartValues<double> { 600 }
-                },
-                new ColumnSeries
-                {
-                    Title = "Ăn uống",
-                    Values = new ChartValues<double> { 5000 }
-                },
-                new ColumnSeries
-                {
-                    Title = "tiền nhà",
-                    Values = new ChartValues<double> { 3000 }
-                }
-            };
-
             var listviewitemXaml = XamlWriter.Save(costAddListViewItem);
             StringReader stringReader = new StringReader(listviewitemXaml);
             XmlReader xmlReader = XmlReader.Create(stringReader);
@@ -448,6 +414,54 @@ namespace We_Split
         {
             isViewing = true;
             HideSearchCondition();
+            tripDetailGrid.Visibility = Visibility.Visible;
+
+            //pieChart
+            pieChart.Series.Add(new PieSeries { Title = "BAD", Values = new ChartValues<double> { 1000 } });
+            pieChart.Series.Add(new PieSeries { Title = "GOOD", Values = new ChartValues<double> { 2000 } });
+
+            //cartesianChart
+            SeriesCollection = new SeriesCollection
+            {
+                new ColumnSeries
+                {
+                    Title = "kem đánh răng",
+                    Values = new ChartValues<double> {100,2000}
+                },
+                new ColumnSeries
+                {
+                    Title = "đá phò",
+                    Values = new ChartValues<double> { 9000 }
+                },
+                new ColumnSeries
+                {
+                    Title = "vé máy bay",
+                    Values = new ChartValues<double> { 2000 }
+                },
+                new ColumnSeries
+                {
+                    Title = "BCS",
+                    Values = new ChartValues<double> { 600 }
+                },
+                new ColumnSeries
+                {
+                    Title = "Ăn uống",
+                    Values = new ChartValues<double> { 5000 }
+                },
+                new ColumnSeries
+                {
+                    Title = "tiền nhà",
+                    Values = new ChartValues<double> { 3000 }
+                }
+            };
+
+            cartesianChart.Series = SeriesCollection;
+
+            if (isViewing)
+            {
+                backBtn.Visibility = Visibility.Visible;
+            }
+
             var button = sender as Button;
             var data = button.DataContext as TRIP;
             int tripIDSelected = data.TripID;
@@ -458,13 +472,6 @@ namespace We_Split
             dTripImageImgBrush.ImageSource = new BitmapImage(
                                                         new Uri("Images\\Trips\\" + tripIDSelected.ToString() + "\\" + tripImages[0],
                                                                 UriKind.Relative));
-
-            tripDetailGrid.Visibility = Visibility.Visible;
-
-            if (isViewing)
-            {
-                backBtn.Visibility = Visibility.Visible;
-            }
         }
 
         private void ClearBg(Button btn)
