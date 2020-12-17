@@ -29,7 +29,6 @@ namespace We_Split
         public MainWindow()
         {
             InitializeComponent();
-            
         }
 
         public Func<ChartPoint, string> PointLabel { set; get; }
@@ -103,7 +102,6 @@ namespace We_Split
 
             var allTripListViewSource = new TripsDAOsqlserver().GetAll();
             allTripListView.ItemsSource = allTripListViewSource;
-
         }
 
         private void onGoingBtn_Click(object sender, RoutedEventArgs e)
@@ -444,8 +442,11 @@ namespace We_Split
             }
         }
 
+        private bool isViewing = false;
+
         private void TripBtn_Click(object sender, RoutedEventArgs e)
         {
+            isViewing = true;
             HideSearchCondition();
             var button = sender as Button;
             var data = button.DataContext as TRIP;
@@ -457,7 +458,13 @@ namespace We_Split
             dTripImageImgBrush.ImageSource = new BitmapImage(
                                                         new Uri("Images\\Trips\\" + tripIDSelected.ToString() + "\\" + tripImages[0],
                                                                 UriKind.Relative));
+
             tripDetailGrid.Visibility = Visibility.Visible;
+
+            if (isViewing)
+            {
+                backBtn.Visibility = Visibility.Visible;
+            }
         }
 
         private void ClearBg(Button btn)
@@ -495,6 +502,7 @@ namespace We_Split
             addTripGrid.Visibility = Visibility.Collapsed;
             settingGrid.Visibility = Visibility.Collapsed;
             aboutGrid.Visibility = Visibility.Collapsed;
+            backBtn.Visibility = Visibility.Hidden;
         }
 
         private void homeBtn_Click(object sender, RoutedEventArgs e)
@@ -639,6 +647,12 @@ namespace We_Split
                 ConfigurationUserLevel.None);
             config.AppSettings.Settings["ShowSplashScreen"].Value = "false";
             config.Save(ConfigurationSaveMode.Minimal);
+        }
+
+        private void backBtn_Click(object sender, RoutedEventArgs e)
+        {
+            backBtn.Visibility = Visibility.Hidden;
+            tripDetailGrid.Visibility = Visibility.Collapsed;
         }
     }
 }

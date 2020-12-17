@@ -383,6 +383,7 @@
     <Resource Include="Images\img_about_Khoa.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\back_img.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

@@ -38,6 +38,45 @@
             <Setter Property="Foreground"
                     Value="LightGray" />
         </Style>
+
+        <Style x:Key="backBtnStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Width"
+                    Value="40" />
+            <Setter Property="Height"
+                    Value="40" />
+            <Setter Property="Margin"
+                    Value="0,10" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border x:Name="border"
+                                CornerRadius="15,0,0,15"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                            </Border>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                            <Grid x:Name="img" Width="40" Height="40" VerticalAlignment="Center" Margin="0,0,0,15">
+                                <Image Source="Images/back_img.png" />
+                            </Grid>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Cursor"
+                                        Value="Hand" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Key="homeBtnStyle" TargetType="{x:Type Button}">
             <Setter Property="Background"
                     Value="Transparent" />
@@ -274,12 +313,14 @@
                                     <DropShadowEffect Direction="230" ShadowDepth="9" BlurRadius="4" />
                                 </Border.Effect>
                                 <Grid>
-                                    <TextBlock Margin="103,0,0,0"
+                                    <StackPanel>
+                                        <TextBlock Margin="103,0,0,0"
                                            Padding="10"
                                            Text="{Binding TripName}"
                                            TextWrapping="Wrap"
                                            FontSize="22"
-                                               Foreground="LightGray" />
+                                               Foreground="Orange" />
+                                    </StackPanel>
                                     <TextBlock Text="Chi tiết&gt;&gt;" VerticalAlignment="Bottom"
                                                HorizontalAlignment="Right"
                                                FontSize="18"
@@ -700,6 +741,7 @@
             <Grid Grid.Column="1" Background="Black">
             </Grid>
             <Grid Grid.Column="0">
+                <Button x:Name="backBtn" Visibility="Hidden" Click="backBtn_Click" Style="{StaticResource backBtnStyle}" VerticalAlignment="Top" Margin="32,56,31.2,0" />
                 <StackPanel VerticalAlignment="Center">
                     <Button x:Name="homeBtn" Click="homeBtn_Click" Style="{StaticResource homeBtnStyle}" />
                     <Button x:Name="addBtn" Click="addBtn_Click" Style="{StaticResource addBtnStyle}" />
@@ -853,11 +895,10 @@
                                         </Grid.ColumnDefinitions>
                                         <Grid>
                                             <Border Grid.Column="0" Margin="8" CornerRadius="18">
-                                                
-                                        <Border.Background>
+
+                                                <Border.Background>
                                                     <ImageBrush x:Name="dTripImageImgBrush" />
                                                 </Border.Background>
-                                        
                                             </Border>
                                         </Grid>
                                         <Grid Grid.Column="1">
@@ -923,7 +964,7 @@
                                    FontWeight="DemiBold" />
                                     </Grid>
                                     <Grid Grid.Row="1">
-                                        <lvc:PieChart Foreground="White" HoverPushOut="10" BorderThickness="0" LegendLocation="Bottom" Height="239">
+                                        <lvc:PieChart Name="pieChart" Foreground="White" HoverPushOut="10" BorderThickness="0" LegendLocation="Bottom" Height="239">
                                             <lvc:PieChart.Series>
                                                 <lvc:PieSeries Title="Hoang" Values="4" DataLabels="False"
                                LabelPoint="{Binding PointLabel}" />
