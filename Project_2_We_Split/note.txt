@@ -3,3 +3,9 @@ onGoingBtn nút "đang đi"
 doneBtn nút "đã đi xong"
 
 bấm vào chuyến đi: nút TripBtn. Có sẵn event TripBtn_Click
+
+allTripsGrid màn hình tất cả chuyến đi
+tripDetailGrid màn hình chi tiết chuyến đi
+addTripGrid màn hình thêm chuyến đi
+settingGrid màn hình cài đặt, có số chuyến đi mỗi trang
+aboutGrid màn hình about
