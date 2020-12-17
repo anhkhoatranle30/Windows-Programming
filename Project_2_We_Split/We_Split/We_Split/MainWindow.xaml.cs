@@ -416,44 +416,50 @@ namespace We_Split
             HideSearchCondition();
             tripDetailGrid.Visibility = Visibility.Visible;
 
-            //pieChart
-            pieChart.Series.Add(new PieSeries { Title = "BAD", Values = new ChartValues<double> { 1000 } });
-            pieChart.Series.Add(new PieSeries { Title = "GOOD", Values = new ChartValues<double> { 2000 } });
+            var button = sender as Button;
+            var data = button.DataContext as TRIP;
+            int tripIDSelected = data.TripID;
+            var tripSelected = new TripsDAOsqlserver().GetTripByTripID(tripIDSelected);
+            var tripImages = new TripImagesDAOsqlserver().GetTripImagesByTripID(tripIDSelected);
+            var memberList = new MembersDAOsqlserver().GetAllByTripID(tripIDSelected);
+            //bind data
+            dTripNameTxtBlock.Text = tripSelected.TripName;
+            dTripImageImgBrush.ImageSource = new BitmapImage(
+                                                        new Uri("Images\\Trips\\" + tripIDSelected.ToString() + "\\" + tripImages[0],
+                                                                UriKind.Relative));
 
-            //cartesianChart
-            SeriesCollection = new SeriesCollection
+            //pieChart
+            pieChart.Series.Clear();
+            foreach(var member in memberList)
             {
-                new ColumnSeries
+                pieChart.Series.Add(new PieSeries()
                 {
-                    Title = "kem đánh răng",
-                    Values = new ChartValues<double> {100,2000}
-                },
-                new ColumnSeries
+                    Title = member.MemberName,
+                    Values = new ChartValues<double> { MyUtils.calcTotalCostMember(tripIDSelected, member.MemberID) }
+                });
+            }
+
+            
+            //cartesianChart
+            SeriesCollection = new SeriesCollection();
+            var costList = MyUtils.findCostNameAndCostByTripID(tripIDSelected);
+            foreach (var cost in costList)
+            {
+                SeriesCollection.Add(new ColumnSeries()
                 {
-                    Title = "đá phò",
-                    Values = new ChartValues<double> { 9000 }
-                },
-                new ColumnSeries
-                {
-                    Title = "vé máy bay",
-                    Values = new ChartValues<double> { 2000 }
-                },
-                new ColumnSeries
-                {
-                    Title = "BCS",
-                    Values = new ChartValues<double> { 600 }
-                },
-                new ColumnSeries
-                {
-                    Title = "Ăn uống",
-                    Values = new ChartValues<double> { 5000 }
-                },
-                new ColumnSeries
-                {
-                    Title = "tiền nhà",
-                    Values = new ChartValues<double> { 3000 }
-                }
-            };
+                    Title = cost.CostName,
+                    Values = new ChartValues<double>() { (int)cost.Cost }
+                });
+            }
+            //SeriesCollection = new SeriesCollection
+            //{
+                
+            //    //new ColumnSeries
+            //    //{
+            //    //    Title = "tiền nhà",
+            //    //    Values = new ChartValues<double> { 3000 }
+            //    //}
+            //};
 
             cartesianChart.Series = SeriesCollection;
 
@@ -462,16 +468,7 @@ namespace We_Split
                 backBtn.Visibility = Visibility.Visible;
             }
 
-            var button = sender as Button;
-            var data = button.DataContext as TRIP;
-            int tripIDSelected = data.TripID;
-            var tripSelected = new TripsDAOsqlserver().GetTripByTripID(tripIDSelected);
-            var tripImages = new TripImagesDAOsqlserver().GetTripImagesByTripID(tripIDSelected);
-            //bind data
-            dTripNameTxtBlock.Text = tripSelected.TripName;
-            dTripImageImgBrush.ImageSource = new BitmapImage(
-                                                        new Uri("Images\\Trips\\" + tripIDSelected.ToString() + "\\" + tripImages[0],
-                                                                UriKind.Relative));
+           
         }
 
         private void ClearBg(Button btn)

@@ -90,7 +90,7 @@ namespace We_Split
             var result = query.ToList();
             return result;
         }
-        public static object findCostNameAndCostByTripID(int tripID)
+        public static BindingList<MEMBERCOST> findCostNameAndCostByTripID(int tripID)
         {
             var db = new WP_Project2_WeSplitEntities();
             var membercosts = db.MEMBERCOSTs.ToList();
@@ -100,9 +100,15 @@ namespace We_Split
                 .GroupBy(mc => mc.CostName)
                 .Select(gr => new { CostName = gr.Key, Cost = calcCostByName(tripID, gr.Key) });
 
-            var result = query.ToList();
+            var queryList = query.ToList();
+            var result = new BindingList<MEMBERCOST>();
+            foreach (var cost in queryList)
+            {
+                result.Add(new MEMBERCOST() { Cost = cost.Cost, CostName = cost.CostName });
+            }
             return result;
         }
+       
         //public static object findTest(int tripID)
         //{
             
