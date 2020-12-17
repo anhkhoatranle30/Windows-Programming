@@ -27,6 +27,33 @@ namespace We_Split
             var result = new BindingList<TRIP>(db.TRIPs.ToList());
             return result;
         }
+        public BindingList<TRIP> GetAllByStatusDisplayText(string statusDisplayText)
+        {
+            var db = new WP_Project2_WeSplitEntities();
+            var fullTripsList = db.TRIPs.ToList();
+            var fullStatusList = db.STATUS.ToList();
+
+            var query = fullTripsList.Join(
+                    fullStatusList,
+                    t => t.Status,
+                    s => s.StatusID,
+                    (t, s) => new { Trips = t, StatusText = s.StatusDisplayText })
+                    .Where(r => r.StatusText == statusDisplayText)
+                    .Select(r => r.Trips);
+
+            var result = new BindingList<TRIP>(query.ToList());
+            return result;
+        }
+        public TRIP GetTripByTripID(int tripID)
+        {
+            var db = new WP_Project2_WeSplitEntities();
+            var trips = db.TRIPs.ToList();
+            var query = trips
+                .Where(t => t.TripID == tripID);
+            var result = query.ToList()[0];
+
+            return result;
+        }
         public override void Add(TRIP trip)
         {
             var db = new WP_Project2_WeSplitEntities();

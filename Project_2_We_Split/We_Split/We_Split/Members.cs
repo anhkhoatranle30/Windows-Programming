@@ -30,6 +30,21 @@ namespace We_Split
             var result = new BindingList<MEMBER>(db.MEMBERs.ToList());
             return result;
         }
+        public BindingList<MEMBER> GetAllByTripID(int tripID)
+        {
+            var db = new WP_Project2_WeSplitEntities();
+            var members = db.MEMBERs.ToList();
+            var memberspertrips = db.MEMBERSPERTRIPs.ToList();
+            var query = members
+                .Join(memberspertrips,
+                    m => m.MemberID,
+                    mpt => mpt.MemberID,
+                    (m, mpt) => new { Member = m, TripID = mpt.TripID })
+                .Where(r => r.TripID == tripID)
+                .Select(r => r.Member);
+            var result = new BindingList<MEMBER>(query.ToList());
+            return result;
+        }
         public override void Add(MEMBER member)
         {
             var db = new WP_Project2_WeSplitEntities();

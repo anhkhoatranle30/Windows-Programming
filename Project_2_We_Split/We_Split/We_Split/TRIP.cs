@@ -25,6 +25,7 @@ namespace We_Split
     
         public int TripID { get; set; }
         public string TripName { get; set; }
+        public string TripDes { get; set; }
         public Nullable<int> Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

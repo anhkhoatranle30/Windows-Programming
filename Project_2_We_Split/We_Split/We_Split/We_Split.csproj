@@ -381,6 +381,8 @@
     </None>
     <Resource Include="Images\img_about_Hoang.jpg" />
     <Resource Include="Images\img_about_Khoa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

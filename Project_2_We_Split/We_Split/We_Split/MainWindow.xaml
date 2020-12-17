@@ -286,8 +286,6 @@
                                                Foreground="Gray"
                                                Margin="5,0"
                                                FontStyle="Italic" />
-                                    <!--<TextBlock Width="1000"
-                                        Text="{Binding TripID, Converter={StaticResource TripImageConverter}}" />-->
                                 </Grid>
                             </Border>
                             <Border x:Name="borderImg"
@@ -853,18 +851,18 @@
                                             <ColumnDefinition Width="3*" />
                                             <ColumnDefinition Width="2*" />
                                         </Grid.ColumnDefinitions>
-                                        <!--<Grid>
+                                        <Grid>
                                             <Border Grid.Column="0" Margin="8" CornerRadius="18">
-                                                -->
-                                        <!--<Border.Background>
-                                                    <ImageBrush ImageSource="Images/Trips/1/1.jpg" />
-                                                </Border.Background>-->
-                                        <!--
+                                                
+                                        <Border.Background>
+                                                    <ImageBrush x:Name="dTripImageImgBrush" />
+                                                </Border.Background>
+                                        
                                             </Border>
-                                        </Grid>-->
+                                        </Grid>
                                         <Grid Grid.Column="1">
                                             <StackPanel>
-                                                <TextBlock Text="Du lịch sông đẹp vcl" Foreground="Orange"
+                                                <TextBlock x:Name="dTripNameTxtBlock" Text="Du lịch sông đẹp vcl" Foreground="Orange"
                                            FontSize="21"
                                            FontWeight="DemiBold"
                                            Padding="6"

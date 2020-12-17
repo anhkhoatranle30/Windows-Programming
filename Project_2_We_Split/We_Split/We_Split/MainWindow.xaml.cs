@@ -15,6 +15,7 @@ using Microsoft.Win32;
 using ViewModel.Pagination;
 using System.Windows.Controls.Primitives;
 using System.Configuration;
+using System.Windows.Media.Imaging;
 
 namespace We_Split
 {
@@ -28,11 +29,7 @@ namespace We_Split
         public MainWindow()
         {
             InitializeComponent();
-            //_tripsView = new PagingCollectionView()
-            //{
-            //    _list,
-            //    _itemPerPage
-            //};
+            
         }
 
         public Func<ChartPoint, string> PointLabel { set; get; }
@@ -104,8 +101,9 @@ namespace We_Split
 
             borderLeft.CornerRadius = new CornerRadius(0, 0, 16, 0);
 
-            //var allTripListViewSource = new TripsDAOsqlserver().GetAll();
-            //allTripListView.ItemsSource = allTripListViewSource;
+            var allTripListViewSource = new TripsDAOsqlserver().GetAll();
+            allTripListView.ItemsSource = allTripListViewSource;
+
         }
 
         private void onGoingBtn_Click(object sender, RoutedEventArgs e)
@@ -138,8 +136,9 @@ namespace We_Split
                 _border.CornerRadius = new CornerRadius(0, 0, 0, 18);
             }
 
-            //var allTripListViewSource = new TripsDAOsqlserver().GetAll();
-            //allTripListView.ItemsSource = allTripListViewSource;
+            const string sttStr = "Đang đi";
+            var allTripListViewSource = new TripsDAOsqlserver().GetAllByStatusDisplayText(sttStr);
+            allTripListView.ItemsSource = allTripListViewSource;
         }
 
         private void doneBtn_Click(object sender, RoutedEventArgs e)
@@ -166,6 +165,10 @@ namespace We_Split
             }
 
             borderRight.CornerRadius = new CornerRadius(0, 0, 0, 18);
+
+            const string sttStr = "Đã đi xong";
+            var allTripListViewSource = new TripsDAOsqlserver().GetAllByStatusDisplayText(sttStr);
+            allTripListView.ItemsSource = allTripListViewSource;
         }
 
         private ListViewItem listViewItemTemp = null;
@@ -444,7 +447,16 @@ namespace We_Split
         private void TripBtn_Click(object sender, RoutedEventArgs e)
         {
             HideSearchCondition();
-
+            var button = sender as Button;
+            var data = button.DataContext as TRIP;
+            int tripIDSelected = data.TripID;
+            var tripSelected = new TripsDAOsqlserver().GetTripByTripID(tripIDSelected);
+            var tripImages = new TripImagesDAOsqlserver().GetTripImagesByTripID(tripIDSelected);
+            //bind data
+            dTripNameTxtBlock.Text = tripSelected.TripName;
+            dTripImageImgBrush.ImageSource = new BitmapImage(
+                                                        new Uri("Images\\Trips\\" + tripIDSelected.ToString() + "\\" + tripImages[0],
+                                                                UriKind.Relative));
             tripDetailGrid.Visibility = Visibility.Visible;
         }
 

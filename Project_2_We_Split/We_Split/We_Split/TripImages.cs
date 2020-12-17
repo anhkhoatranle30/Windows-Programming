@@ -26,6 +26,21 @@ namespace We_Split
             var result = new BindingList<TRIPIMAGE>(db.TRIPIMAGES.ToList());
             return result;
         }
+        public BindingList<string> GetTripImagesByTripID(int tripID)
+        {
+            var db = new WP_Project2_WeSplitEntities();
+            var trips = db.TRIPs.ToList();
+            var tripimages = db.TRIPIMAGES.ToList();
+            var query = trips
+                .Join(tripimages,
+                    t => t.TripID,
+                    i => i.TripID,
+                    (t, i) => new { Path = i.Path, TripID = t.TripID })
+                .Where(r => r.TripID == tripID)
+                .Select(r => r.Path);
+            var result = new BindingList<string>(query.ToList());
+            return result;
+        }
         public override void Add(TRIPIMAGE tripimage)
         {
             var db = new WP_Project2_WeSplitEntities();

@@ -25,6 +25,22 @@ namespace We_Split
             var result = new BindingList<STATUS>(db.STATUS.ToList());
             return result;
         }
+        public string GetStatusByTripID(int tripID)
+        {
+            var db = new WP_Project2_WeSplitEntities();
+            var trips = db.TRIPs.ToList();
+            var statuses = db.STATUS.ToList();
+            var query = trips
+                .Join(statuses,
+                    t => t.Status,
+                    s => s.StatusID,
+                    (t, s) => new { Status = s.StatusDisplayText, TripID = t.TripID })
+                .Where(r => r.TripID == tripID)
+                .Select(r => r.Status);
+            var result = query.ToList()[0];
+
+            return result;
+        }
         public override void Add(STATUS info)
         {
             var db = new WP_Project2_WeSplitEntities();

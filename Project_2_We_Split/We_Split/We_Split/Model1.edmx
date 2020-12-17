@@ -51,6 +51,7 @@
           </Key>
           <Property Name="TripID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TripName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TripDes" Type="nvarchar" MaxLength="1000" />
           <Property Name="Status" Type="int" />
         </EntityType>
         <EntityType Name="TRIPIMAGES">
@@ -241,6 +242,7 @@
           </Key>
           <Property Name="TripID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TripName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TripDes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Int32" />
           <NavigationProperty Name="LOCATIONs" Relationship="Self.FK__LOCATION__TripID__1273C1CD" FromRole="TRIP" ToRole="LOCATION" />
           <NavigationProperty Name="MEMBERCOSTs" Relationship="Self.FK__MEMBERCOS__TripI__1CF15040" FromRole="TRIP" ToRole="MEMBERCOST" />
@@ -434,6 +436,7 @@
               <MappingFragment StoreEntitySet="TRIP">
                 <ScalarProperty Name="TripID" ColumnName="TripID" />
                 <ScalarProperty Name="TripName" ColumnName="TripName" />
+                <ScalarProperty Name="TripDes" ColumnName="TripDes" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>

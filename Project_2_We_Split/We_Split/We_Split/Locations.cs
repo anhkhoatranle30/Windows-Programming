@@ -26,6 +26,21 @@ namespace We_Split
             var result = new BindingList<LOCATION>(db.LOCATIONs.ToList());
             return result;
         }
+        public BindingList<string> GetLocationNameByTripID(int tripID)
+        {
+            var db = new WP_Project2_WeSplitEntities();
+            var trips = db.TRIPs.ToList();
+            var locations = db.LOCATIONs.ToList();
+            var query = trips.Join(
+                    locations,
+                    t => t.TripID,
+                    l => l.TripID,
+                    (t, l) => new { TripID = t.TripID, Locations = l })
+                .Where(x => x.TripID == tripID)
+                .Select(r => r.Locations.LocationName);
+            var result = new BindingList<string>(query.ToList());
+            return result;
+        }
         public override void Add(LOCATION location)
         {
             var db = new WP_Project2_WeSplitEntities();

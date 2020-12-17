@@ -8,8 +8,9 @@ namespace We_Split
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var memberidstring = value.ToString();
-            return AppDomain.CurrentDomain.BaseDirectory + "Images\\" + "Trips" + "\\" + memberidstring + "\\thumbnail.jpg";
+            var tripidstring = value.ToString();
+            var tripImages = new TripImagesDAOsqlserver().GetTripImagesByTripID(int.Parse(tripidstring));
+            return AppDomain.CurrentDomain.BaseDirectory + "Images\\Trips\\" + tripidstring + "\\" + tripImages[0];
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
