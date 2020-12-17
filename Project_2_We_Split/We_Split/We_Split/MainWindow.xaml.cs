@@ -81,8 +81,10 @@ namespace We_Split
         {
             HideSearchCondition();
             ClearBtnBg(doneBtn);
+            ClearBtnBg(planningBtn);
             ClearBtnBg(onGoingBtn);
             SetNoCorner(doneBtn);
+            SetNoCorner(onGoingBtn);
             Border _border = allBtn.Template.FindName("border", allBtn) as Border;
 
             if (_border != null)
@@ -91,7 +93,7 @@ namespace We_Split
                 _border.Background = Brushes.Black;
             }
 
-            _border = onGoingBtn.Template.FindName("border", onGoingBtn) as Border;
+            _border = onGoingBtn.Template.FindName("border", planningBtn) as Border;
 
             if (_border != null)
             {
@@ -104,11 +106,46 @@ namespace We_Split
             allTripListView.ItemsSource = allTripListViewSource;
         }
 
+        private void planningBtn_Click(object sender, RoutedEventArgs e)
+        {
+            HideSearchCondition();
+            ClearBtnBg(doneBtn);
+            ClearBtnBg(allBtn);
+            ClearBtnBg(onGoingBtn);
+            SetNoCorner(doneBtn);
+            borderRight.CornerRadius = new CornerRadius(0);
+            borderLeft.CornerRadius = new CornerRadius(0);
+
+            Border _border = planningBtn.Template.FindName("border", planningBtn) as Border;
+
+            if (_border != null)
+            {
+                _border.CornerRadius = new CornerRadius(18, 18, 0, 0);
+                _border.Background = Brushes.Black;
+            }
+
+            _border = allBtn.Template.FindName("border", allBtn) as Border;
+
+            if (_border != null)
+            {
+                _border.CornerRadius = new CornerRadius(0, 0, 18, 0);
+            }
+
+            _border = doneBtn.Template.FindName("border", onGoingBtn) as Border;
+
+            if (_border != null)
+            {
+                _border.CornerRadius = new CornerRadius(0, 0, 0, 18);
+            }
+        }
+
         private void onGoingBtn_Click(object sender, RoutedEventArgs e)
         {
             HideSearchCondition();
             ClearBtnBg(doneBtn);
             ClearBtnBg(allBtn);
+            ClearBtnBg(planningBtn);
+            SetNoCorner(allBtn);
             borderRight.CornerRadius = new CornerRadius(0);
             borderLeft.CornerRadius = new CornerRadius(0);
 
@@ -120,7 +157,7 @@ namespace We_Split
                 _border.Background = Brushes.Black;
             }
 
-            _border = allBtn.Template.FindName("border", allBtn) as Border;
+            _border = allBtn.Template.FindName("border", planningBtn) as Border;
 
             if (_border != null)
             {
@@ -144,7 +181,9 @@ namespace We_Split
             HideSearchCondition();
             ClearBtnBg(allBtn);
             ClearBtnBg(onGoingBtn);
+            ClearBtnBg(planningBtn);
             SetNoCorner(allBtn);
+            SetNoCorner(planningBtn);
             borderLeft.CornerRadius = new CornerRadius(0);
 
             Border _border = doneBtn.Template.FindName("border", doneBtn) as Border;
