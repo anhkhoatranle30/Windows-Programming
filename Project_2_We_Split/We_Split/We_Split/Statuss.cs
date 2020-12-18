@@ -41,6 +41,26 @@ namespace We_Split
 
             return result;
         }
+        public int GetStatusIDByText(string statusDisplayText)
+        {
+            int result;
+
+            var db = new WP_Project2_WeSplitEntities();
+            var statusList = db.STATUS.ToList();
+            var query = statusList
+                        .Where(s => s.StatusDisplayText == statusDisplayText)
+                        .Select(s => s)
+                        .ToList()[0];
+            if(query == null)
+            {
+                result = -1;
+            }
+            else
+            {
+                result = query.StatusID;
+            }
+            return result;
+        }
         public override void Add(STATUS info)
         {
             var db = new WP_Project2_WeSplitEntities();

@@ -935,33 +935,23 @@
                                             <Grid>
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="2*" />
-                                                    <RowDefinition Height="8*" />
+                                                    <RowDefinition Height="5*" />
+                                                    <RowDefinition Height="6*" />
                                                     <RowDefinition Height="1.7*" />
                                                 </Grid.RowDefinitions>
-                                                <StackPanel Orientation="Horizontal" Grid.Row="0">
-                                                    <Image Width="50" Height="50" Source="Images/location_img.png" HorizontalAlignment="Left" />
                                                     <TextBlock x:Name="dTripNameTxtBlock" Text="Du lịch sông đẹp vcl" Foreground="Orange"
                                                             FontSize="21"
                                                             FontWeight="DemiBold"
                                                             Padding="6"
                                                             TextWrapping="Wrap" />
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                                                    <Image Width="40" Height="40" Source="Images/location_img.png" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                                                    <TextBlock Foreground="White" x:Name="locationTextBlock" FontSize="20" TextWrapping="Wrap"/>
                                                 </StackPanel>
-                                                <ListView x:Name="locationListView" Background="Transparent" BorderThickness="0" Margin="10" Grid.Row="1">
-                                                    <ListView.ItemsPanel>
-                                                        <ItemsPanelTemplate>
-                                                            <WrapPanel />
-                                                        </ItemsPanelTemplate>
-                                                    </ListView.ItemsPanel>
-                                                    <ItemsControl.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <TextBlock>
-                                                            </TextBlock>
-                                                        </DataTemplate>
-                                                    </ItemsControl.ItemTemplate>
-                                                </ListView>
-                                                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,5" VerticalAlignment="Bottom">
+                                                <TextBlock Foreground="Gray" Grid.Row="2" x:Name="memberTextBlock" FontSize="20" TextWrapping="Wrap"/>
+                                                <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,5" VerticalAlignment="Bottom">
                                                     <Image Source="Images/member_img.png" Width="30" Height="30" />
-                                                    <TextBlock Text="3" FontSize="21" FontWeight="DemiBold" Foreground="White" VerticalAlignment="Center" />
+                                                    <TextBlock Name="MemberCountTextBlock" Text="3" FontSize="21" FontWeight="DemiBold" Foreground="White" VerticalAlignment="Center" />
                                                 </StackPanel>
                                             </Grid>
                                         </Grid>
@@ -984,6 +974,13 @@
                                     </Grid>
                                     <Grid Grid.Row="1">
                                         <ListView x:Name="tripImgListView" Background="Transparent" BorderThickness="0">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel>
+                                                        <Image Source="{Binding Path}"/>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
                                         </ListView>
                                     </Grid>
                                 </Grid>
@@ -1147,7 +1144,7 @@
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid x:Name="addTripGrid" Visibility="Collapsed" Background="#333333">
+                <Grid x:Name="addTripGrid" Visibility="Visible" Background="#333333">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="10*" />
@@ -1162,7 +1159,7 @@
                                     </Style>
                                 </Button.Resources>
                             </Button>
-                            <Button x:Name="accepAddBtn" Click="accepAddBtn_Click" FontSize="18" FontWeight="Bold" Foreground="White" Background="Green" Width="80" Height="35" Content="Thêm" Margin="10,0">
+                            <Button x:Name="acceptAddBtn" Click="accepAddBtn_Click" FontSize="18" FontWeight="Bold" Foreground="White" Background="Green" Width="80" Height="35" Content="Thêm" Margin="10,0">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="10" />
@@ -1228,8 +1225,8 @@
                                         <ComboBox Name="statusComboBox" SelectionChanged="statusComboBox_SelectionChanged" FontSize="23" Margin="9" BorderThickness="1" Foreground="WhiteSmoke" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                                           Template="{DynamicResource ComboBoxControlTemplate1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}">
                                             <ComboBoxItem Background="DimGray" Content="Đang đi" />
-                                            <ComboBoxItem Background="DimGray" Content="Chưa đi" />
-                                            <ComboBoxItem Background="DimGray" Content="Đã về" />
+                                            <ComboBoxItem Background="DimGray" Content="Lên kế hoạch" />
+                                            <ComboBoxItem Background="DimGray" Content="Đã đi xong" />
                                         </ComboBox>
                                     </Grid>
                                 </Grid>

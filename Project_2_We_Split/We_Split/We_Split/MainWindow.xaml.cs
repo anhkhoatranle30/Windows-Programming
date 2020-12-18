@@ -18,6 +18,7 @@ using System.Configuration;
 using System.Windows.Media.Imaging;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace We_Split
 {
@@ -468,13 +469,13 @@ namespace We_Split
             var tripImages = new TripImagesDAOsqlserver().GetTripImagesByTripID(tripIDSelected);
             var memberList = new MembersDAOsqlserver().GetAllByTripID(tripIDSelected);
             var avgPay = MyUtils.calcAverageCostTrip((int)tripIDSelected);
+            var locationList = new LocationDAOsqlserver().GetLocationNameByTripID(tripIDSelected);
             //bind data
             dTripNameTxtBlock.Text = tripSelected.TripName;
             dTripImageImgBrush.ImageSource = new BitmapImage(
-                                                        new Uri("Images\\Trips\\" + tripIDSelected.ToString() + "\\" + tripImages[0],
-                                                                UriKind.Relative));
+                                                        new Uri(tripImages[0].Path,
+                                                                UriKind.Absolute));
             //pay list view
-
             var payList = new List<MEMBER>(memberList)
                                 .Select(m => new
                                 {
@@ -484,7 +485,25 @@ namespace We_Split
             payListView.ItemsSource = payList;
             sumCost.DataContext = MyUtils.calcTotalCostTrip(tripIDSelected).ToString();
             avgCost.DataContext = MyUtils.calcAverageCostTrip(tripIDSelected).ToString();
-
+            //location 
+            var locationStringB = new StringBuilder();
+            foreach(var location in locationList)
+            {
+                locationStringB.Append(location.LocationName + ", ");
+            }
+            locationStringB.Remove(locationStringB.Length - 2, 2);
+            locationTextBlock.Text = locationStringB.ToString();
+            //tripimage list
+            tripImgListView.ItemsSource = tripImages;
+            //member
+            MemberCountTextBlock.Text = memberList.Count.ToString();
+            var memberStringB = new StringBuilder();
+            foreach(var member in memberList)
+            {
+                memberStringB.Append(member.MemberName + ", ");
+            }
+            memberStringB.Remove(memberStringB.Length - 2, 2);
+            memberTextBlock.Text = memberStringB.ToString();
             //pieChart
             pieChart.Series.Clear();
             foreach (var member in memberList)
@@ -626,6 +645,15 @@ namespace We_Split
             if (isValid)
             {
             }
+
+            //add functional
+            var sttString = statusComboBox.SelectedItem.ToString();
+
+            var tripToAdd = new TRIP()
+            {
+                TripName = tripNameTextBox.Text,
+                Status = new StatusDAOsqlserver().GetStatusIDByText(sttString)
+            };
         }
 
         private void tripNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
