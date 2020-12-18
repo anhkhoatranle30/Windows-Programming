@@ -96,6 +96,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AvatarConverter.cs" />
+    <Compile Include="CostFormatConverter.cs" />
     <Compile Include="LOCATION.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

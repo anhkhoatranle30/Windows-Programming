@@ -476,16 +476,18 @@ namespace We_Split
             //pay list view
 
             var payList = new List<MEMBER>(memberList)
-                                .Select(m => new { 
-                                    MemberName = m.MemberName, 
-                                    Pay = MyUtils.calcTotalCostMember(tripIDSelected, m.MemberID) - avgPay });
+                                .Select(m => new
+                                {
+                                    MemberName = m.MemberName,
+                                    Pay = MyUtils.calcTotalCostMember(tripIDSelected, m.MemberID) - avgPay
+                                });
             payListView.ItemsSource = payList;
-            sumCost.Text = MyUtils.calcTotalCostTrip(tripIDSelected).ToString();
-            avgCost.Text = MyUtils.calcAverageCostTrip(tripIDSelected).ToString();
-            
+            sumCost.DataContext = MyUtils.calcTotalCostTrip(tripIDSelected).ToString();
+            avgCost.DataContext = MyUtils.calcAverageCostTrip(tripIDSelected).ToString();
+
             //pieChart
             pieChart.Series.Clear();
-            foreach(var member in memberList)
+            foreach (var member in memberList)
             {
                 pieChart.Series.Add(new PieSeries()
                 {
@@ -494,7 +496,6 @@ namespace We_Split
                 });
             }
 
-            
             //cartesianChart
             SeriesCollection = new SeriesCollection();
             var costList = MyUtils.findCostNameAndCostByTripID(tripIDSelected);
@@ -508,7 +509,6 @@ namespace We_Split
             }
             //SeriesCollection = new SeriesCollection
             //{
-                
             //    //new ColumnSeries
             //    //{
             //    //    Title = "tiền nhà",
@@ -522,8 +522,6 @@ namespace We_Split
             {
                 backBtn.Visibility = Visibility.Visible;
             }
-
-           
         }
 
         private void ClearBg(Button btn)

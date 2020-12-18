@@ -19,6 +19,7 @@
         <local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
         <local:TripImageConverter x:Key="TripImageConverter" />
         <local:AvatarConverter x:Key="avatarConverter" />
+        <local:CostFormatConverter x:Key="costConverver" />
 
         <Style x:Key="textBtnStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize"
@@ -1085,14 +1086,16 @@
                                                FontSize="23" />
                                                         </StackPanel>
                                                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">
-                                                            <TextBlock x:Name="sumCost" Text="50000" HorizontalAlignment="Center"
+                                                            <TextBlock x:Name="sumCost" HorizontalAlignment="Center"
                                                                        Foreground="Orange"
                                                                        FontWeight="Bold"
-                                                                       FontSize="23" />
-                                                            <TextBlock x:Name="avgCost" Text="20" HorizontalAlignment="Center"
+                                                                       FontSize="23"
+                                                                       Text="{Binding Converter={StaticResource costConverver}}" />
+                                                            <TextBlock x:Name="avgCost" HorizontalAlignment="Center"
                                                                        Foreground="Yellow"
                                                                        FontSize="23"
-                                                                       FontWeight="Bold" />
+                                                                       FontWeight="Bold"
+                                                                       Text="{Binding Converter={StaticResource costConverver}}" />
                                                         </StackPanel>
                                                         <Grid Margin="0,10" Grid.Column="2">
                                                             <Grid.RowDefinitions>
@@ -1103,14 +1106,14 @@
                                                                 <StackPanel Orientation="Horizontal" Margin="0,0,5,-5">
                                                                     <Grid Background="Green" Width="5" Margin="5" />
                                                                     <TextBlock Text="Nhận lại" FontSize="13" Foreground="White"
-                                                           VerticalAlignment="Center" />
+                                                                               VerticalAlignment="Center" />
                                                                 </StackPanel>
                                                             </Grid>
                                                             <Grid Grid.Row="1">
                                                                 <StackPanel Orientation="Horizontal" Margin="0,-5,5,0">
                                                                     <Grid Background="Red" Width="5" Margin="5" />
                                                                     <TextBlock Text="Trả thêm" FontSize="13" Foreground="White"
-                                                           VerticalAlignment="Center" />
+                                                                               VerticalAlignment="Center" />
                                                                 </StackPanel>
                                                             </Grid>
                                                         </Grid>
@@ -1128,9 +1131,9 @@
                                                                         <ColumnDefinition Width="1*" />
                                                                     </Grid.ColumnDefinitions>
 
-                                                                    <TextBlock x:Name="payNameTextBlock" Margin="10,0" Grid.Column="0" FontSize="20" Foreground="White" Text="{Binding MemberName}"/>
+                                                                    <TextBlock x:Name="payNameTextBlock" Margin="10,0" Grid.Column="0" FontSize="20" Foreground="White" Text="{Binding MemberName}" />
 
-                                                                    <TextBlock x:Name="payCostTextBlock" Margin="20,0" HorizontalAlignment="Right" Grid.Column="1" FontSize="20" Foreground="White" Text="{Binding Pay}"/>
+                                                                    <TextBlock x:Name="payCostTextBlock" Margin="20,0" HorizontalAlignment="Right" Grid.Column="1" FontSize="20" Foreground="White" Text="{Binding Pay, Converter={StaticResource costConverver}}" />
                                                                 </Grid>
                                                             </DataTemplate>
                                                         </ListView.ItemTemplate>
