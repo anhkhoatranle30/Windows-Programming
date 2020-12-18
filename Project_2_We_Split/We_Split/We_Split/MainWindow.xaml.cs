@@ -647,13 +647,19 @@ namespace We_Split
             }
 
             //add functional
-            var sttString = statusComboBox.SelectedItem.ToString();
+            var sttComboBox = statusComboBox.SelectedItem as ComboBoxItem;
+            var sttString = sttComboBox.Content.ToString();
 
+            //trip
             var tripToAdd = new TRIP()
             {
                 TripName = tripNameTextBox.Text,
-                Status = new StatusDAOsqlserver().GetStatusIDByText(sttString)
+                Status = new StatusDAOsqlserver().GetStatusIDByText(sttString),
+                TripDes = ""
             };
+            new TripsDAOsqlserver().Add(tripToAdd);
+            int addedTripID = new TripsDAOsqlserver().GetAll().Last().TripID;
+            //
         }
 
         private void tripNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
