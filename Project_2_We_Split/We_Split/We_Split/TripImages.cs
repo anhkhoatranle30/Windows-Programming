@@ -17,7 +17,14 @@ namespace We_Split
         public abstract void Delete(TRIPIMAGE tripimage);
         public abstract void Update(TRIPIMAGE tripimage);
     }
-
+    public class TripImagePath
+    {
+        public static string toAbsolutePath(string relativePath, int tripID)
+        {
+            string result = AppDomain.CurrentDomain.BaseDirectory + "\\Images\\Trips\\" + tripID.ToString() + "\\" + relativePath;
+            return result;
+        }
+    }
     class TripImagesDAOsqlserver : TripImagesDAO
     {
         public override BindingList<TRIPIMAGE> GetAll()
@@ -26,7 +33,7 @@ namespace We_Split
             var result = new BindingList<TRIPIMAGE>(db.TRIPIMAGES.ToList());
             return result;
         }
-        public BindingList<string> GetTripImagesByTripID(int tripID)
+        public BindingList<TRIPIMAGE> GetTripImagesByTripID(int tripID)
         {
             var db = new WP_Project2_WeSplitEntities();
             var trips = db.TRIPs.ToList();
@@ -35,10 +42,24 @@ namespace We_Split
                 .Join(tripimages,
                     t => t.TripID,
                     i => i.TripID,
-                    (t, i) => new { Path = i.Path, TripID = t.TripID })
+                    (t, i) => new { Image = i, TripID = t.TripID })
                 .Where(r => r.TripID == tripID)
-                .Select(r => r.Path);
-            var result = new BindingList<string>(query.ToList());
+                .Select(r => r.Image).ToList();
+            var result = new BindingList<TRIPIMAGE>();
+            foreach(var image in query )
+            {
+                result.Add(new TRIPIMAGE() { TripID = tripID, 
+                                            Path = TripImagePath.toAbsolutePath(image.Path, tripID), 
+                                            TRIP = image.TRIP, 
+                                            TripImageID = (int)image.TripID });
+            }
+            return result;
+        }
+        public string GetTripAvatar(int tripID)
+        {
+            var db = new WP_Project2_WeSplitEntities();
+            var imageList = db.TRIPIMAGES.ToList();
+            var result = imageList[0].Path;
             return result;
         }
         public override void Add(TRIPIMAGE tripimage)

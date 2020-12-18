@@ -9,8 +9,8 @@ namespace We_Split
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var tripidstring = value.ToString();
-            var tripImages = new TripImagesDAOsqlserver().GetTripImagesByTripID(int.Parse(tripidstring));
-            return AppDomain.CurrentDomain.BaseDirectory + "Images\\Trips\\" + tripidstring + "\\" + tripImages[0];
+            var tripImages = new TripImagesDAOsqlserver().GetTripAvatar(int.Parse(tripidstring));
+            return AppDomain.CurrentDomain.BaseDirectory + "Images\\Trips\\" + tripidstring + "\\" + tripImages;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -18,4 +18,5 @@ namespace We_Split
             throw new NotImplementedException();
         }
     }
+
 }
