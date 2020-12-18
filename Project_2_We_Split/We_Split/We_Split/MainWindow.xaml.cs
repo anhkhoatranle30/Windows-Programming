@@ -16,6 +16,8 @@ using ViewModel.Pagination;
 using System.Windows.Controls.Primitives;
 using System.Configuration;
 using System.Windows.Media.Imaging;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace We_Split
 {
@@ -465,12 +467,20 @@ namespace We_Split
             var tripSelected = new TripsDAOsqlserver().GetTripByTripID(tripIDSelected);
             var tripImages = new TripImagesDAOsqlserver().GetTripImagesByTripID(tripIDSelected);
             var memberList = new MembersDAOsqlserver().GetAllByTripID(tripIDSelected);
+            var avgPay = MyUtils.calcAverageCostTrip((int)tripIDSelected);
             //bind data
             dTripNameTxtBlock.Text = tripSelected.TripName;
             dTripImageImgBrush.ImageSource = new BitmapImage(
                                                         new Uri("Images\\Trips\\" + tripIDSelected.ToString() + "\\" + tripImages[0],
                                                                 UriKind.Relative));
+            //pay list view
 
+            var payList = new List<MEMBER>(memberList)
+                                .Select(m => new { 
+                                    MemberName = m.MemberName, 
+                                    Pay = MyUtils.calcTotalCostMember(tripIDSelected, m.MemberID) });
+            payListView.ItemsSource = payList;
+            
             //pieChart
             pieChart.Series.Clear();
             foreach(var member in memberList)

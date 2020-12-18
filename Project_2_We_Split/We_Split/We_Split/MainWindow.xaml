@@ -1120,18 +1120,22 @@
                                             <Grid Grid.Row="1">
                                                 <Border Style="{StaticResource borderDetailStyle}" Background="#101010">
                                                     <ListView Background="Transparent" BorderThickness="0" Name="payListView">
-                                                        <Grid>
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="1*" />
-                                                                <ColumnDefinition Width="1*" />
-                                                            </Grid.ColumnDefinitions>
-                                                            <Grid>
-                                                                <TextBlock x:Name="payNameTextBlock">
-                                                                </TextBlock>
-                                                            </Grid>
-                                                            <TextBlock x:Name="payCostTextBlock">
-                                                            </TextBlock>
-                                                        </Grid>
+                                                        <ListView.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="1*" />
+                                                                        <ColumnDefinition Width="1*" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    
+                                                                        <TextBlock x:Name="payNameTextBlock" Grid.Column="0" FontSize="23" Foreground="White" Text="{Binding MemberName}">
+                                                                        </TextBlock>
+
+                                                                    <TextBlock x:Name="payCostTextBlock"  Grid.Column="1" FontSize="23" Foreground="White" Text="{Binding Pay}">
+                                                                        </TextBlock>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </ListView.ItemTemplate>
                                                     </ListView>
                                                 </Border>
                                             </Grid>
