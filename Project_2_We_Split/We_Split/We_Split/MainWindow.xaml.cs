@@ -137,6 +137,10 @@ namespace We_Split
             {
                 _border.CornerRadius = new CornerRadius(0, 0, 0, 18);
             }
+
+            const string sttStr = "Lên kế hoạch";
+            var allTripListViewSource = new TripsDAOsqlserver().GetAllByStatusDisplayText(sttStr);
+            allTripListView.ItemsSource = allTripListViewSource;
         }
 
         private void onGoingBtn_Click(object sender, RoutedEventArgs e)
