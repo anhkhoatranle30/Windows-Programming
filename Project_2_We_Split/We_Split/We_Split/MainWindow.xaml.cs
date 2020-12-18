@@ -478,8 +478,10 @@ namespace We_Split
             var payList = new List<MEMBER>(memberList)
                                 .Select(m => new { 
                                     MemberName = m.MemberName, 
-                                    Pay = MyUtils.calcTotalCostMember(tripIDSelected, m.MemberID) });
+                                    Pay = MyUtils.calcTotalCostMember(tripIDSelected, m.MemberID) - avgPay });
             payListView.ItemsSource = payList;
+            sumCost.Text = MyUtils.calcTotalCostTrip(tripIDSelected).ToString();
+            avgCost.Text = MyUtils.calcAverageCostTrip(tripIDSelected).ToString();
             
             //pieChart
             pieChart.Series.Clear();

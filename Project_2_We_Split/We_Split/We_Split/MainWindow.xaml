@@ -1089,7 +1089,7 @@
                                                                        Foreground="Orange"
                                                                        FontWeight="Bold"
                                                                        FontSize="23" />
-                                                            <TextBlock Text="20" HorizontalAlignment="Center"
+                                                            <TextBlock x:Name="avgCost" Text="20" HorizontalAlignment="Center"
                                                                        Foreground="Yellow"
                                                                        FontSize="23"
                                                                        FontWeight="Bold" />
@@ -1127,12 +1127,10 @@
                                                                         <ColumnDefinition Width="1*" />
                                                                         <ColumnDefinition Width="1*" />
                                                                     </Grid.ColumnDefinitions>
-                                                                    
-                                                                        <TextBlock x:Name="payNameTextBlock" Grid.Column="0" FontSize="23" Foreground="White" Text="{Binding MemberName}">
-                                                                        </TextBlock>
 
-                                                                    <TextBlock x:Name="payCostTextBlock"  Grid.Column="1" FontSize="23" Foreground="White" Text="{Binding Pay}">
-                                                                        </TextBlock>
+                                                                    <TextBlock x:Name="payNameTextBlock" Margin="10,0" Grid.Column="0" FontSize="20" Foreground="White" Text="{Binding MemberName}"/>
+
+                                                                    <TextBlock x:Name="payCostTextBlock" Margin="20,0" HorizontalAlignment="Right" Grid.Column="1" FontSize="20" Foreground="White" Text="{Binding Pay}"/>
                                                                 </Grid>
                                                             </DataTemplate>
                                                         </ListView.ItemTemplate>
