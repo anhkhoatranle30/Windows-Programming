@@ -485,9 +485,9 @@ namespace We_Split
             payListView.ItemsSource = payList;
             sumCost.DataContext = MyUtils.calcTotalCostTrip(tripIDSelected).ToString();
             avgCost.DataContext = MyUtils.calcAverageCostTrip(tripIDSelected).ToString();
-            //location 
+            //location
             var locationStringB = new StringBuilder();
-            foreach(var location in locationList)
+            foreach (var location in locationList)
             {
                 locationStringB.Append(location.LocationName + ", ");
             }
@@ -498,7 +498,7 @@ namespace We_Split
             //member
             MemberCountTextBlock.Text = memberList.Count.ToString();
             var memberStringB = new StringBuilder();
-            foreach(var member in memberList)
+            foreach (var member in memberList)
             {
                 memberStringB.Append(member.MemberName + ", ");
             }
@@ -534,6 +534,25 @@ namespace We_Split
             //    //    Values = new ChartValues<double> { 3000 }
             //    //}
             //};
+
+            var bc = new BrushConverter();
+
+            planningBorder.Background = (Brush)bc.ConvertFrom("#202020");
+            onGoingBorder.Background = (Brush)bc.ConvertFrom("#202020");
+            doneBorder.Background = (Brush)bc.ConvertFrom("#202020");
+
+            if (tripSelected.Status == 0)
+            {
+                planningBorder.Background = new SolidColorBrush(Colors.Orange);
+            }
+            else if (tripSelected.Status == 1)
+            {
+                onGoingBorder.Background = new SolidColorBrush(Colors.Orange);
+            }
+            else if (tripSelected.Status == 2)
+            {
+                doneBorder.Background = new SolidColorBrush(Colors.Orange);
+            }
 
             cartesianChart.Series = SeriesCollection;
 
@@ -617,6 +636,39 @@ namespace We_Split
             aboutGrid.Visibility = Visibility.Visible;
         }
 
+        private void cancelAddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var choice = MessageBox.Show("Bạn chắc muốn hủy bỏ?",
+                                "Thông báo",
+                                MessageBoxButton.YesNo,
+                                MessageBoxImage.Question);
+
+            if (choice == MessageBoxResult.Yes)
+            {
+                //tripNameTextBox.Text = null;
+                //locationsTextBox.Text = null;
+                //statusComboBox.SelectedItem = null;
+                //addListView.Items.Refresh();
+                while (addListView.Items.Count != 0)
+                {
+                    addListView.Items.RemoveAt(0);
+                }
+                AddNewItemAddtListView();
+            }
+        }
+
+        private struct memberCostSingle
+        {
+            public string costNameMemberCost;
+            public string costValueMemberCost;
+        };
+
+        private struct memberCost
+        {
+            public string memberName;
+            public List<memberCostSingle> cost;
+        }
+
         private void accepAddBtn_Click(object sender, RoutedEventArgs e)
         {
             var isValid = true;
@@ -644,16 +696,41 @@ namespace We_Split
 
             if (isValid)
             {
+                List<memberCost> myList = new List<memberCost>();
+
+                foreach (ListViewItem item in addListView.Items)
+                {
+                    TextBox textBox = (TextBox)item.FindName("memberNameTextBox");
+                    ListView listView = (ListView)item.FindName("costAddListView");
+
+                    List<memberCostSingle> memCost = new List<memberCostSingle>();
+
+                    foreach (ListViewItem subItem in listView.Items)
+                    {
+                        TextBox costName = (TextBox)subItem.FindName("costNameTextBox");
+                        TextBox costValue = (TextBox)subItem.FindName("costValueTextBox");
+                        memCost.Add(new memberCostSingle() { costNameMemberCost = costName.Text, costValueMemberCost = costValue.Text });
+                    }
+
+                    myList.Add(new memberCost { memberName = textBox.Text, cost = memCost });
+
+                    Console.WriteLine(myList);
+                }
+
+                var choice = MessageBox.Show("Đã thêm chuyến đi",
+                                "Thông báo",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
             }
 
             //add functional
-            var sttString = statusComboBox.SelectedItem.ToString();
+            //var sttString = statusComboBox.SelectedItem.ToString();
 
-            var tripToAdd = new TRIP()
-            {
-                TripName = tripNameTextBox.Text,
-                Status = new StatusDAOsqlserver().GetStatusIDByText(sttString)
-            };
+            //var tripToAdd = new TRIP()
+            //{
+            //    TripName = tripNameTextBox.Text,
+            //    Status = new StatusDAOsqlserver().GetStatusIDByText(sttString)
+            //};
         }
 
         private void tripNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -694,27 +771,6 @@ namespace We_Split
             else
             {
                 _border.BorderBrush = Brushes.White;
-            }
-        }
-
-        private void cancelAddBtn_Click(object sender, RoutedEventArgs e)
-        {
-            var choice = MessageBox.Show("Bạn chắc muốn hủy bỏ?",
-                                "Thông báo",
-                                MessageBoxButton.YesNo,
-                                MessageBoxImage.Question);
-
-            if (choice == MessageBoxResult.Yes)
-            {
-                //tripNameTextBox.Text = null;
-                //locationsTextBox.Text = null;
-                //statusComboBox.SelectedItem = null;
-                //addListView.Items.Refresh();
-                while (addListView.Items.Count != 0)
-                {
-                    addListView.Items.RemoveAt(0);
-                }
-                AddNewItemAddtListView();
             }
         }
 

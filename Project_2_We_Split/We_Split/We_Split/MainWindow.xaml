@@ -20,6 +20,7 @@
         <local:TripImageConverter x:Key="TripImageConverter" />
         <local:AvatarConverter x:Key="avatarConverter" />
         <local:CostFormatConverter x:Key="costConverver" />
+        <local:CostColorConverter x:Key="costColorConverter" />
 
         <Style x:Key="textBtnStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize"
@@ -860,11 +861,11 @@
                                                 <ColumnDefinition Width="1*" />
                                             </Grid.ColumnDefinitions>
                                             <Grid Background="Orange" Height="1" Grid.ColumnSpan="3" Margin="126,13,126.2,11.6" />
-                                            <Border Grid.Column="0" BorderThickness="1" BorderBrush="Orange" CornerRadius="10" Width="14" Height="14" Background="Orange">
+                                            <Border x:Name="planningBorder" Grid.Column="0" BorderThickness="1" BorderBrush="Orange" CornerRadius="10" Width="14" Height="14" Background="Orange">
                                             </Border>
-                                            <Border Grid.Column="1" BorderThickness="1" BorderBrush="Orange" CornerRadius="10" Width="14" Height="14" Background="#202020">
+                                            <Border x:Name="onGoingBorder" Grid.Column="1" BorderThickness="1" BorderBrush="Orange" CornerRadius="10" Width="14" Height="14" Background="#202020">
                                             </Border>
-                                            <Border Grid.Column="2" BorderThickness="1" BorderBrush="Orange" CornerRadius="10" Width="14" Height="14" Background="#202020">
+                                            <Border x:Name="doneBorder" Grid.Column="2" BorderThickness="1" BorderBrush="Orange" CornerRadius="10" Width="14" Height="14" Background="#202020">
                                             </Border>
                                         </Grid>
                                         <Grid Grid.Row="1">
@@ -934,22 +935,22 @@
                                         <Grid Grid.Column="1">
                                             <Grid>
                                                 <Grid.RowDefinitions>
-                                                    <RowDefinition Height="2*" />
-                                                    <RowDefinition Height="5*" />
-                                                    <RowDefinition Height="6*" />
-                                                    <RowDefinition Height="1.7*" />
+                                                    <RowDefinition Height="7*" />
+                                                    <RowDefinition Height="1*" />
                                                 </Grid.RowDefinitions>
-                                                    <TextBlock x:Name="dTripNameTxtBlock" Text="Du lịch sông đẹp vcl" Foreground="Orange"
+                                                <StackPanel>
+                                                    <TextBlock x:Name="dTripNameTxtBlock" Foreground="Orange"
                                                             FontSize="21"
                                                             FontWeight="DemiBold"
                                                             Padding="6"
                                                             TextWrapping="Wrap" />
-                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
-                                                    <Image Width="40" Height="40" Source="Images/location_img.png" VerticalAlignment="Top" HorizontalAlignment="Left" />
-                                                    <TextBlock Foreground="White" x:Name="locationTextBlock" FontSize="20" TextWrapping="Wrap"/>
+                                                    <StackPanel Orientation="Horizontal" Grid.Row="1">
+                                                        <Image Width="40" Height="40" Source="Images/location_img.png" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                                                        <TextBlock Foreground="White" x:Name="locationTextBlock" Margin="5,0,0,0" FontSize="20" TextWrapping="Wrap" Width="210" />
+                                                    </StackPanel>
+                                                    <TextBlock Foreground="Gray" FontWeight="DemiBold" x:Name="memberTextBlock" FontSize="20" Margin="5,10,0,0" VerticalAlignment="Top" TextWrapping="Wrap" />
                                                 </StackPanel>
-                                                <TextBlock Foreground="Gray" Grid.Row="2" x:Name="memberTextBlock" FontSize="20" TextWrapping="Wrap"/>
-                                                <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,5" VerticalAlignment="Bottom">
+                                                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,5" VerticalAlignment="Bottom">
                                                     <Image Source="Images/member_img.png" Width="30" Height="30" />
                                                     <TextBlock Name="MemberCountTextBlock" Text="3" FontSize="21" FontWeight="DemiBold" Foreground="White" VerticalAlignment="Center" />
                                                 </StackPanel>
@@ -973,11 +974,16 @@
                                    FontWeight="DemiBold" />
                                     </Grid>
                                     <Grid Grid.Row="1">
-                                        <ListView x:Name="tripImgListView" Background="Transparent" BorderThickness="0">
+                                        <ListView x:Name="tripImgListView" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                            <ListView.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <WrapPanel />
+                                                </ItemsPanelTemplate>
+                                            </ListView.ItemsPanel>
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackPanel>
-                                                        <Image Source="{Binding Path}"/>
+                                                        <Image Width="170" Height="150" Stretch="Fill" Margin="5" Source="{Binding Path}" />
                                                     </StackPanel>
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
@@ -1130,7 +1136,7 @@
 
                                                                     <TextBlock x:Name="payNameTextBlock" Margin="10,0" Grid.Column="0" FontSize="20" Foreground="White" Text="{Binding MemberName}" />
 
-                                                                    <TextBlock x:Name="payCostTextBlock" Margin="20,0" HorizontalAlignment="Right" Grid.Column="1" FontSize="20" Foreground="White" Text="{Binding Pay, Converter={StaticResource costConverver}}" />
+                                                                    <TextBlock x:Name="payCostTextBlock" Margin="20,0" HorizontalAlignment="Right" Grid.Column="1" FontSize="20" Foreground="{Binding Pay, Converter={StaticResource costColorConverter}}" Text="{Binding Pay, Converter={StaticResource costConverver}}" />
                                                                 </Grid>
                                                             </DataTemplate>
                                                         </ListView.ItemTemplate>

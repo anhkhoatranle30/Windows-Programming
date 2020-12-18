@@ -1,29 +1,28 @@
 ﻿using System;
-using System.Drawing;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Media;
 
 namespace We_Split
 {
-    public class CostFormatConverter : IValueConverter
+    public class CostColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             string str = value.ToString();
 
-            if (value == null)
+            if (str[0] == '-')
             {
-                Console.WriteLine("null");
+                return new SolidColorBrush(Colors.Red);
             }
-
-            double success = 0;
-            double.TryParse(str, out success);
-
-            if (success < 0) success *= -1;
-
-            return String.Format(CultureInfo.InvariantCulture,
-                                            "{0:0,0}", success);
+            else
+            {
+                return new SolidColorBrush(Colors.Green);
+            }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
