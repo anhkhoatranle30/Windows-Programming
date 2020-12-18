@@ -59,7 +59,7 @@ namespace We_Split
             }
             return result;
         }
-        public static float calcAverageCostTrip(int TripID)
+        public static int calcAverageCostTrip(int TripID)
         {
             int totalCost = calcTotalCostTrip(TripID);
             var db = new WP_Project2_WeSplitEntities();
@@ -68,7 +68,7 @@ namespace We_Split
                         where member.TripID == TripID
                         select member;
             int numberOfMembers = query.Count();
-            float result = (float)(totalCost / numberOfMembers);
+            int result = (int)(totalCost / numberOfMembers);
             return result;
         }
         public static object findMemberNameAndCostByTripID(int tripID)

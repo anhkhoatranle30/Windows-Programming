@@ -1141,7 +1141,7 @@
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid x:Name="addTripGrid" Visibility="Collapsed" Background="#333333">
+                <Grid x:Name="addTripGrid" Visibility="Visible" Background="#333333">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="10*" />
@@ -1156,7 +1156,7 @@
                                     </Style>
                                 </Button.Resources>
                             </Button>
-                            <Button x:Name="accepAddBtn" Click="accepAddBtn_Click" FontSize="18" FontWeight="Bold" Foreground="White" Background="Green" Width="80" Height="35" Content="Thêm" Margin="10,0">
+                            <Button x:Name="acceptAddBtn" Click="accepAddBtn_Click" FontSize="18" FontWeight="Bold" Foreground="White" Background="Green" Width="80" Height="35" Content="Thêm" Margin="10,0">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="10" />
@@ -1222,8 +1222,8 @@
                                         <ComboBox Name="statusComboBox" SelectionChanged="statusComboBox_SelectionChanged" FontSize="23" Margin="9" BorderThickness="1" Foreground="WhiteSmoke" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                                           Template="{DynamicResource ComboBoxControlTemplate1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}">
                                             <ComboBoxItem Background="DimGray" Content="Đang đi" />
-                                            <ComboBoxItem Background="DimGray" Content="Chưa đi" />
-                                            <ComboBoxItem Background="DimGray" Content="Đã về" />
+                                            <ComboBoxItem Background="DimGray" Content="Lên kế hoạch" />
+                                            <ComboBoxItem Background="DimGray" Content="Đã đi xong" />
                                         </ComboBox>
                                     </Grid>
                                 </Grid>

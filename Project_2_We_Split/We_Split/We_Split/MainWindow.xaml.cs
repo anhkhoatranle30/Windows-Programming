@@ -647,6 +647,15 @@ namespace We_Split
             if (isValid)
             {
             }
+
+            //add functional
+            var sttString = statusComboBox.SelectedItem.ToString();
+
+            var tripToAdd = new TRIP()
+            {
+                TripName = tripNameTextBox.Text,
+                Status = new StatusDAOsqlserver().GetStatusIDByText(sttString)
+            };
         }
 
         private void tripNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
