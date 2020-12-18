@@ -481,8 +481,8 @@ namespace We_Split
                                     MemberName = m.MemberName, 
                                     Pay = MyUtils.calcTotalCostMember(tripIDSelected, m.MemberID) - avgPay });
             payListView.ItemsSource = payList;
-            sumCost.Text = MyUtils.calcTotalCostTrip(tripIDSelected).ToString();
-            avgCost.Text = MyUtils.calcAverageCostTrip(tripIDSelected).ToString();
+            sumCost.DataContext = MyUtils.calcTotalCostTrip(tripIDSelected).ToString();
+            avgCost.DataContext = MyUtils.calcAverageCostTrip(tripIDSelected).ToString();
             //location 
             var locationStringB = new StringBuilder();
             foreach(var location in locationList)
