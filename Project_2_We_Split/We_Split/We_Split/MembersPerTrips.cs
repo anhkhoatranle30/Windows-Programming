@@ -37,6 +37,17 @@ namespace We_Split
             db.MEMBERSPERTRIPs.Remove(info);
             db.SaveChanges();
         }
+        public void DeleteByTripID(int tripID)
+        {
+            var db = new WP_Project2_WeSplitEntities();
+            var mptList = db.MEMBERSPERTRIPs.Where(mpt => mpt.TripID == tripID);
+            foreach(var mpt in mptList)
+            {
+                db.MEMBERSPERTRIPs.Remove(mpt);
+                
+            }
+            db.SaveChanges();
+        }
         public override void Update(MEMBERSPERTRIP info)
         {
             var db = new WP_Project2_WeSplitEntities();

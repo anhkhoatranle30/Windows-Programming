@@ -474,7 +474,9 @@ namespace We_Split
             dTripNameTxtBlock.Text = tripSelected.TripName;
             dTripImageImgBrush.ImageSource = new BitmapImage(
                                                         new Uri(tripImages[0].Path,
-                                                                UriKind.Absolute));
+                                                              UriKind.Absolute));
+            //keep tracking tripID
+            tripIDTextBlock.Text = tripIDSelected.ToString();
             //pay list view
             var payList = new List<MEMBER>(memberList)
                                 .Select(m => new
@@ -607,6 +609,7 @@ namespace We_Split
             ChangeColorBg(homeBtn);
             HideAllGrid();
             allTripsGrid.Visibility = Visibility.Visible;
+            allTripListView.ItemsSource = new TripsDAOsqlserver().GetAll();
         }
 
         private void addBtn_Click(object sender, RoutedEventArgs e)
@@ -694,9 +697,10 @@ namespace We_Split
                 isValid = false;
             }
 
+            List<memberCost> myList = new List<memberCost>();
             if (isValid)
             {
-                List<memberCost> myList = new List<memberCost>();
+                
 
                 foreach (ListViewItem item in addListView.Items)
                 {
@@ -723,6 +727,10 @@ namespace We_Split
                                 MessageBoxImage.Information);
             }
 
+
+
+
+
             //add functional
             var sttComboBox = statusComboBox.SelectedItem as ComboBoxItem;
             var sttString = sttComboBox.Content.ToString();
@@ -736,7 +744,76 @@ namespace We_Split
             };
             new TripsDAOsqlserver().Add(tripToAdd);
             int addedTripID = new TripsDAOsqlserver().GetAll().Last().TripID;
-            //
+            //add location
+            var locationToAdd = new LOCATION()
+            {
+                TripID = addedTripID,
+                LocationName = locationsTextBox.Text
+            };
+            new LocationDAOsqlserver().Add(locationToAdd);
+            //add member + memberspertrip + membercost
+            foreach (var mc in myList)
+            {
+                var memberToAdd = new MEMBER()
+                {
+                    MemberName = mc.memberName
+                };
+                //add member
+                new MembersDAOsqlserver().Add(memberToAdd);
+
+                int addedMemberID = new MembersDAOsqlserver().GetAll().Last().MemberID;
+                var mptToAdd = new MEMBERSPERTRIP()
+                {
+                    MemberID = addedMemberID,
+                    TripID = addedTripID
+                };
+                //add memberpertrip
+                new MembersPerTripDAOsqlserver().Add(mptToAdd);
+                foreach (var cost in mc.cost)
+                {
+                    var membercostToAdd = new MEMBERCOST()
+                    {
+                        TripID = addedTripID,
+                        MemberID = addedMemberID,
+                        CostName = cost.costNameMemberCost,
+                        Cost = int.Parse(cost.costValueMemberCost)
+                    };
+                    //add membercost
+                    new MemberCostsDAOsqlserver().Add(membercostToAdd);
+                }
+            }
+
+
+
+
+
+
+            //trip image
+            var tripImageList = imgAddListView.ItemsSource as BindingList<string>;
+            //create folder 
+            var tripImageFolderPath = AppDomain.CurrentDomain.BaseDirectory + "Images\\Trips\\" + addedTripID.ToString();
+            //if folderexisted
+            if (!Directory.Exists(tripImageFolderPath))
+            {
+                Directory.CreateDirectory(tripImageFolderPath);
+            }
+            foreach (var tripImagePath in tripImageList)
+            {
+                var newImagePath = Guid.NewGuid().ToString() + ".jpg";
+                var newImageFileName = tripImageFolderPath + "\\" + newImagePath;
+                File.Copy(tripImagePath, newImageFileName);
+                new TripImagesDAOsqlserver().Add(new TRIPIMAGE()
+                {
+                    TripID = addedTripID,
+                    Path = newImagePath
+                });
+            }
+
+
+
+            homeBtn_Click(sender, e);
+            addTripGrid.Visibility = Visibility.Collapsed;
+            allTripsGrid.Visibility = Visibility.Visible;
         }
 
         private void tripNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -800,6 +877,19 @@ namespace We_Split
         {
             backBtn.Visibility = Visibility.Hidden;
             tripDetailGrid.Visibility = Visibility.Collapsed;
+        }
+
+        private void deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var tripIDSelected = int.Parse(tripIDTextBlock.Text);
+
+            new TripsDAOsqlserver().DeleteWholeTripByTripID(tripIDSelected);
+
+            MessageBox.Show("Trip is deleted!");
+
+            homeBtn_Click(sender, e);
+            tripDetailGrid.Visibility = Visibility.Collapsed;
+            allTripsGrid.Visibility = Visibility.Visible;
         }
     }
 }

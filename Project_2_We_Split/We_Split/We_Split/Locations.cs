@@ -53,6 +53,18 @@ namespace We_Split
             db.LOCATIONs.Remove(location);
             db.SaveChanges();
         }
+        public void DeleteByTripID(int tripID)
+        {
+            var db = new WP_Project2_WeSplitEntities();
+            var locationList = db.LOCATIONs
+                                    .Where(l => l.TripID == tripID);
+            foreach(var l in locationList)
+            {
+                db.LOCATIONs.Remove(l);
+                
+            }
+            db.SaveChanges();
+        }
         public override void Update(LOCATION location)
         {
             var db = new WP_Project2_WeSplitEntities();

@@ -58,7 +58,10 @@ namespace We_Split
         public string GetTripAvatar(int tripID)
         {
             var db = new WP_Project2_WeSplitEntities();
-            var imageList = db.TRIPIMAGES.ToList();
+            var imageList = db.TRIPIMAGES
+                                    .Where(ti => ti.TripID == tripID)
+                                    .Select(ti => ti)
+                                    .ToList();
             var result = imageList[0].Path;
             return result;
         }
@@ -73,6 +76,20 @@ namespace We_Split
             var db = new WP_Project2_WeSplitEntities();
 
             db.TRIPIMAGES.Remove(tripimage);
+            db.SaveChanges();
+        }
+        public void DeleteByTripID(int tripID)
+        {
+            var db = new WP_Project2_WeSplitEntities();
+            var deletingTripImagesList = db.TRIPIMAGES
+                                                .Where(ti => ti.TripID == tripID);
+            int count = 0;
+            foreach(var tripimage in deletingTripImagesList)
+            {
+                count++;
+                db.TRIPIMAGES.Remove(tripimage);
+                
+            }
             db.SaveChanges();
         }
         public override void Update(TRIPIMAGE tripimage)

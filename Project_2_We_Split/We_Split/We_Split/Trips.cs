@@ -54,6 +54,12 @@ namespace We_Split
 
             return result;
         }
+        public TRIP Find(int tripID)
+        {
+            var db = new WP_Project2_WeSplitEntities();
+            var result = db.TRIPs.Find(tripID);
+            return result;
+        }
         public override void Add(TRIP trip)
         {
             var db = new WP_Project2_WeSplitEntities();
@@ -65,6 +71,27 @@ namespace We_Split
             var db = new WP_Project2_WeSplitEntities();
             db.TRIPs.Remove(trip);
             db.SaveChanges();
+        }
+        public void DeleteByTripID(int tripID)
+        {
+            //deletetrip
+            var db = new WP_Project2_WeSplitEntities();
+            var deletingTrip = db.TRIPs.Find(tripID);
+            db.TRIPs.Remove(deletingTrip);
+            db.SaveChanges();
+        }
+        public void DeleteWholeTripByTripID(int tripID)
+        {
+            //trip images
+            new TripImagesDAOsqlserver().DeleteByTripID(tripID);
+            //location
+            new LocationDAOsqlserver().DeleteByTripID(tripID);
+            //membercost
+            new MemberCostsDAOsqlserver().DeleteByTripID(tripID);
+            //memberspertrip
+            new MembersPerTripDAOsqlserver().DeleteByTripID(tripID);
+            //delete trip
+            new TripsDAOsqlserver().DeleteByTripID(tripID);
         }
         public override void Update(TRIP trip)
         {

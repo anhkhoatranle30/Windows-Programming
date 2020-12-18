@@ -46,6 +46,17 @@ namespace We_Split
             db.MEMBERCOSTs.Remove(membercost);
             db.SaveChanges();
         }
+        public void DeleteByTripID(int tripID)
+        {
+            var db = new WP_Project2_WeSplitEntities();
+            var membercostsList = db.MEMBERCOSTs.Where(mc => mc.TripID == tripID);
+            foreach(var mc in membercostsList)
+            {
+                db.MEMBERCOSTs.Remove(mc);
+                
+            }
+            db.SaveChanges();
+        }
         public override void Update(MEMBERCOST membercost)
         {
             var db = new WP_Project2_WeSplitEntities();

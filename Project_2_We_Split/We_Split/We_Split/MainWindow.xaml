@@ -815,7 +815,7 @@
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid x:Name="tripDetailGrid" Visibility="Visible" Background="#333333">
+                <Grid x:Name="tripDetailGrid" Visibility="Collapsed" Background="#333333">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="3*" />
@@ -836,6 +836,7 @@
                                    FontWeight="Bold"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center" />
+                                
                             </Border>
                         </Grid>
                         <Grid Grid.Column="1">
@@ -848,6 +849,7 @@
                                     <Grid>
                                         <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"
                                            Text="GIAI ĐOẠN" Foreground="White" FontSize="28" />
+                                        <TextBlock x:Name="tripIDTextBlock" Visibility="Collapsed"/>
                                     </Grid>
                                     <Grid Grid.Row="1">
                                         <Grid.RowDefinitions>
@@ -893,7 +895,7 @@
                                             <ImageBrush ImageSource="Images/update_trip_img.png" />
                                         </Button.Background>
                                     </Button>
-                                    <Button x:Name="deleteBtn" Width="50" Height="50" Margin="10" ToolTip="Xóa chuyến đi">
+                                    <Button x:Name="deleteBtn" Click="deleteBtn_Click" Width="50" Height="50" Margin="10" ToolTip="Xóa chuyến đi">
                                         <Button.Background>
                                             <ImageBrush ImageSource="Images/delete_img.png" />
                                         </Button.Background>
@@ -1150,7 +1152,7 @@
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid x:Name="addTripGrid" Visibility="Visible" Background="#333333">
+                <Grid x:Name="addTripGrid" Visibility="Collapsed" Background="#333333">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="10*" />
