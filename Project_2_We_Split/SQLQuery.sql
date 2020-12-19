@@ -59,6 +59,20 @@ create table MEMBERCOST
 	foreign key (MemberID) references MEMBER(MemberID)
 )
 
+create table INTERESTING_INFO 
+(
+	InfoID int identity(1,1) primary key,
+	PlaceName nvarchar(50),
+	PlaceInfo nvarchar(1000)
+)
+
+insert into INTERESTING_INFO(PlaceName, PlaceInfo) values(N'Phú Yên', N'Phú Yên đẹp tựa một cô thôn nữ, có nét chân chất, mộc mạc của làng quê Việt Nam lại ẩn chứa những nét nhẹ nhàng, thuần khiết, trong trẻo. Vẻ đẹp của Phú Yên đi cùng với những câu hát tuổi thơ “Bóng trăng trắng ngà, có cây đa to, có thằng Cuội già, ôm một mối mơ” trong bộ phim “Tôi thấy hoa vàng trên cỏ xanh” do đạo diễn Victor Vũ chắp tay thực hiện, đã làm lay động trái tim của biết bao nhiêu khán giả. Cũng chính bởi lẽ đó, du lịch Phú Yên đã trở thành một điểm đến lí tưởng trong lòng rất nhiều du khách!')
+,(N'Mộc Châu', N'Những đồi chè xanh bạt ngàn phủ kín thung lũng, những mùa hoa ban, hoa mận nở trắng rừng, những cô gái Thái e ấp, dịu dàng với đôi má hây hây đỏ trong buổi chợ phiên, hay vẻ đẹp khó quên của Thác Dải Yếm mùa nước… Mộc Châu cứ nhẹ nhàng làm ngất ngây biết bao nhiêu người như thế khi đặt chân đến đây.')
+,(N'Côn Đảo', N'Hồi bé, 2 chữ “Côn Đảo” trong mỗi chúng ta có lẽ gắn liền với 2 chữ “nhà tù” đứng trước nó - nơi “địa ngục trần gian” giam giữ và tra tấn các chiến sĩ cộng sản của ta. Ngày nay, dù ấn tượng này vẫn còn âm vang trong nhiều người, tuy nhiên hòn đảo này đã được bình chọn là di tích lịch sử quốc gia, đồng thời là thiên đường nghỉ dưỡng lý tưởng dành cho du khách thập phương. Ngoài những địa điểm thu hút khách du lịch, hãy cùng VTBay điểm qua 5 câu chuyện thú vị về Côn Đảo mà có thể bạn chưa biết, biết đâu bạn sẽ “đổ” liền và muốn ngay lập tức book vé đi Côn Đảo ấy chứ!')
+,(N'Trung Quốc', N'Bạn đã đi du lịch Trung Quốc đất nước của nhiều danh lam thắng cảnh tươi đẹp cùng các kỳ quan thiên nhiên thế giới đã được công nhận bao giờ chưa? Hay có bất kỳ ý định nào cho chuyến chu du châu Á. Hãy cùng đến với những kinh nghiệm du lịch Trung Quốc để có một chuyến đi trọn vẹn nhất nhé!')
+,(N'Lạng Sơn', N'Khi đến Lạng Sơn, ngoài cửa khẩu Tân Thanh, chợ Đông Kinh, là những thiên đường mua sắm, khách du lịch có thể lựa chọn nơi ngắm cảnh, thư giãn như Động Nhị Thanh; Bến Đá Kì Cùng; Hang động Chùa Tiên và Giếng Tiên; Khu Du lịch Mẫu Sơn; Khu danh thắng Hang Gió; Thành Nhà Mạc; Di tích Đoàn Thành Lạng Sơn, Ải Chi Lăng để tham quan.Trong số này, Mẫu Sơn là một địa chỉ hấp dẫn, không thể bỏ qua. Mùa hè thì nơi đây không khí mát mẻ, dễ chịu. Khi đông về thì có lúc Mẫu Sơn phủ lên mình màu trắng xóa của tuyết. Với một nước thuộc vùng nhiệt đới như Việt Nam, không phải ở bất kì nơi đâu cũng có hiện tượng thiên nhiên kì thú này.')
+
+
 insert into MEMBER(MemberName) values(N'Nguyễn Tuấn Khải')
 insert into MEMBER(MemberName) values(N'Tô Phương Thanh')
 insert into MEMBER(MemberName) values(N'Tô Việt Thắng')

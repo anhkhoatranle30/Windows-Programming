@@ -98,6 +98,10 @@
     <Compile Include="AvatarConverter.cs" />
     <Compile Include="CostColorConverter.cs" />
     <Compile Include="CostFormatConverter.cs" />
+    <Compile Include="InterestingInfo.cs" />
+    <Compile Include="INTERESTING_INFO.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="LOCATION.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -386,6 +390,8 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\back_img.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

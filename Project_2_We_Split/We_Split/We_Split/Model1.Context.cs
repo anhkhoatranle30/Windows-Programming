@@ -25,6 +25,7 @@ namespace We_Split
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<INTERESTING_INFO> INTERESTING_INFO { get; set; }
         public virtual DbSet<LOCATION> LOCATIONs { get; set; }
         public virtual DbSet<MEMBER> MEMBERs { get; set; }
         public virtual DbSet<MEMBERCOST> MEMBERCOSTs { get; set; }

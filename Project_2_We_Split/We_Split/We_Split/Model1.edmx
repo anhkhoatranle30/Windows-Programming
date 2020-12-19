@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="WP_Project2_WeSplitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="INTERESTING_INFO">
+          <Key>
+            <PropertyRef Name="InfoID" />
+          </Key>
+          <Property Name="InfoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlaceName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlaceInfo" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
         <EntityType Name="LOCATION">
           <Key>
             <PropertyRef Name="LocationID" />
@@ -147,6 +155,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="WP_Project2_WeSplitModelStoreContainer">
+          <EntitySet Name="INTERESTING_INFO" EntityType="Self.INTERESTING_INFO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOCATION" EntityType="Self.LOCATION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MEMBER" EntityType="Self.MEMBER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MEMBERCOST" EntityType="Self.MEMBERCOST" Schema="dbo" store:Type="Tables" />
@@ -188,6 +197,14 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WP_Project2_WeSplitModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="INTERESTING_INFO">
+          <Key>
+            <PropertyRef Name="InfoID" />
+          </Key>
+          <Property Name="InfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlaceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlaceInfo" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="LOCATION">
           <Key>
             <PropertyRef Name="LocationID" />
@@ -344,6 +361,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="WP_Project2_WeSplitEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="INTERESTING_INFO" EntityType="Self.INTERESTING_INFO" />
           <EntitySet Name="LOCATIONs" EntityType="Self.LOCATION" />
           <EntitySet Name="MEMBERs" EntityType="Self.MEMBER" />
           <EntitySet Name="MEMBERCOSTs" EntityType="Self.MEMBERCOST" />
@@ -386,6 +404,15 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="WP_Project2_WeSplitModelStoreContainer" CdmEntityContainer="WP_Project2_WeSplitEntities">
+          <EntitySetMapping Name="INTERESTING_INFO">
+            <EntityTypeMapping TypeName="WP_Project2_WeSplitModel.INTERESTING_INFO">
+              <MappingFragment StoreEntitySet="INTERESTING_INFO">
+                <ScalarProperty Name="InfoID" ColumnName="InfoID" />
+                <ScalarProperty Name="PlaceName" ColumnName="PlaceName" />
+                <ScalarProperty Name="PlaceInfo" ColumnName="PlaceInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="LOCATIONs">
             <EntityTypeMapping TypeName="WP_Project2_WeSplitModel.LOCATION">
               <MappingFragment StoreEntitySet="LOCATION">
