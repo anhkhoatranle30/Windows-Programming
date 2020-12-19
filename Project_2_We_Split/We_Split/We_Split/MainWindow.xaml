@@ -1334,8 +1334,8 @@
                                     <Grid Grid.Column="1">
                                         <ComboBox Name="statusComboBox" SelectionChanged="statusComboBox_SelectionChanged" FontSize="23" Margin="9" BorderThickness="1" Foreground="WhiteSmoke" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                                           Template="{DynamicResource ComboBoxControlTemplate1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}">
-                                            <ComboBoxItem Background="DimGray" Content="Đang đi" />
                                             <ComboBoxItem Background="DimGray" Content="Lên kế hoạch" />
+                                            <ComboBoxItem Background="DimGray" Content="Đang đi" />
                                             <ComboBoxItem Background="DimGray" Content="Đã đi xong" />
                                         </ComboBox>
                                     </Grid>

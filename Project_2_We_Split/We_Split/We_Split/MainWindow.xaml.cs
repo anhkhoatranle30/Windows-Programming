@@ -923,8 +923,7 @@ namespace We_Split
 
             var membercostList = testListView.ItemsSource as BindingList<memberCost>;
 
-            //if (isValid)
-            //{
+            //show membercosts
             while (addListView.Items.Count != 0)
             {
                 addListView.Items.RemoveAt(0);
@@ -966,6 +965,26 @@ namespace We_Split
 
                 listView.Items.RemoveAt(listView.Items.Count - 1);
             }
+
+            //bind text to textblock
+            var updatingTripName = new TripsDAOsqlserver().GetTripByTripID(updatingTripID).TripName;
+            tripNameTextBox.Text = updatingTripName;
+            //bind location to textblock
+            var updatingLocation = new LocationDAOsqlserver().GetLocationNameByTripID(updatingTripID)[0].LocationName;
+            locationsTextBox.Text = updatingLocation;
+            //status combobox
+            int statusID = (int)new TripsDAOsqlserver().GetTripByTripID(updatingTripID).Status;
+            statusComboBox.SelectedIndex = statusID;
+            //image listview
+            var imagesList = new TripImagesDAOsqlserver().GetTripImagesByTripID(updatingTripID);
+            var imagesPathList = new BindingList<string>();
+            foreach(var image in imagesList)
+            {
+                imagesPathList.Add(image.Path);
+            }
+            imgAddListView.ItemsSource = imagesPathList;
+
+            new TripsDAOsqlserver().DeleteWholeTripByTripID(updatingTripID);
         }
 
         private void backToDetailBtn_Click(object sender, RoutedEventArgs e)
