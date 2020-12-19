@@ -854,18 +854,20 @@ namespace We_Split
                 else
                 {
                     nameSearchTextBlock.Text = "Kết quả tìm kiếm cho " + "\"" + "searchTextBox.Text" + "\":";
-
+                    var searchedList = new BindingList<TRIP>();
                     if ((bool)searchByTrip.IsChecked)//Tìm theo chuyến đi
                     {
                         nameSearchGrid.Visibility = Visibility.Visible;
                         searchResultGrid.Visibility = Visibility.Visible;
+                        searchedList = new TripsDAOsqlserver().SearchTripByTripName(searchTextBox.Text);
                     }
                     else // tìm theo tên thành viên
                     {
                         nameSearchGrid.Visibility = Visibility.Visible;
                         searchResultGrid.Visibility = Visibility.Visible;
+                        searchedList = new TripsDAOsqlserver().SearchTripByMemberName(searchTextBox.Text);
                     }
-
+                    searchResultListView.ItemsSource = searchedList;
                     backToHomeBtn.Visibility = Visibility.Visible;
                 }
             }

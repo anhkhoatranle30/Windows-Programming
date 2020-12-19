@@ -158,5 +158,33 @@ namespace We_Split
             old_info = trip;
             db.SaveChanges();
         }
+        public BindingList<TRIP> SearchTripByTripName(string tripName)
+        {
+            var db = new WP_Project2_WeSplitEntities();
+            var result = new BindingList<TRIP>(db.TRIPs.Where(t => t.TripName.Contains(tripName)).ToList());
+            return result;
+        }
+        public BindingList<TRIP> SearchTripByMemberName(string membername)
+        {
+            var db = new WP_Project2_WeSplitEntities();
+            var membersList = db.MEMBERs.ToList();
+            var mptList = db.MEMBERSPERTRIPs.ToList();
+
+            var tripIDList = membersList.Where(m => m.MemberName.Contains(membername))
+                    .Select(m => m.MemberID)
+                    .Join(mptList,
+                            memberid => memberid,
+                            mpt => mpt.MemberID,
+                            (memberid, mpt) => mpt.TripID)
+                    .Distinct()
+                    .ToList();
+
+            var result = new BindingList<TRIP>();
+            foreach(var tripid in tripIDList)
+            {
+                result.Add(GetTripByTripID((int)tripid));
+            }
+            return result;
+        }
     }
 }
