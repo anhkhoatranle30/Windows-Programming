@@ -888,7 +888,7 @@ namespace We_Split
 
             new TripsDAOsqlserver().DeleteWholeTripByTripID(tripIDSelected);
 
-            MessageBox.Show("Trip is deleted!");
+            MessageBox.Show("Đã xóa chuyến đi!");
 
             homeBtn_Click(sender, e);
             tripDetailGrid.Visibility = Visibility.Collapsed;
@@ -918,6 +918,18 @@ namespace We_Split
 
         private void TripSearchBtn_Click(object sender, RoutedEventArgs e)//Nhấn vào chuyến đi trong search result grid
         {
+        }
+
+        private void updateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            tripDetailGrid.Visibility = Visibility.Visible;
+            backToDetailBtn.Visibility = Visibility.Visible;
+        }
+
+        private void backToDetailBtn_Click(object sender, RoutedEventArgs e)
+        {
+            backToDetailBtn.Visibility = Visibility.Hidden;
+            tripDetailGrid.Visibility = Visibility.Collapsed;
         }
     }
 }

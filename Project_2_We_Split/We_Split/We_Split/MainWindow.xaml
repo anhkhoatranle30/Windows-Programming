@@ -740,6 +740,7 @@
             </Grid>
             <Grid Grid.Column="0">
                 <Button x:Name="backBtn" Visibility="Hidden" Click="backBtn_Click" Style="{StaticResource backBtnStyle}" VerticalAlignment="Top" Margin="32,56,31.2,0" />
+                <Button x:Name="backToDetailBtn" Visibility="Hidden" Click="backToDetailBtn_Click" Style="{StaticResource backBtnStyle}" VerticalAlignment="Top" Margin="32,56,31.2,0" />
                 <StackPanel VerticalAlignment="Center">
                     <Button x:Name="homeBtn" Click="homeBtn_Click" Style="{StaticResource homeBtnStyle}" />
                     <Button x:Name="addBtn" Click="addBtn_Click" Style="{StaticResource addBtnStyle}" />
@@ -813,11 +814,22 @@
                                 </ListView>
                             </Grid>
 
-                            <Grid x:Name="searchResultGrid">
-                                <Grid Grid.Row="0">
-                                </Grid>
-                                <Grid Grid.Row="1">
-                                </Grid>
+                            <Grid x:Name="nameSearchGrid" Grid.Row="0">
+                                <TextBlock Foreground="Gray" FontSize="23" FontWeight="DemiBold" VerticalAlignment="Center" />
+                            </Grid>
+                            <Grid x:Name="searchResultGrid" Background="#333333" Grid.Row="1">
+                                <ListView x:Name="searchResultListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#333333" BorderThickness="0" Grid.ColumnSpan="6" Margin="0,0,0,0.2">
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel />
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="TripSearchBtn" Click="TripBtn_Click" Style="{StaticResource tripBtnStyle}" Width="360" Height="230" Margin="20" />
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -896,7 +908,7 @@
                         <Grid Grid.Column="2">
                             <Border Style="{StaticResource borderDetailStyle}">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Button x:Name="updateBtn" Width="50" Height="50" Margin="10" ToolTip="Cập nhật chuyến đi">
+                                    <Button x:Name="updateBtn" Click="updateBtn_Click" Width="50" Height="50" Margin="10" ToolTip="Cập nhật chuyến đi">
                                         <Button.Background>
                                             <ImageBrush ImageSource="Images/update_trip_img.png" />
                                         </Button.Background>
