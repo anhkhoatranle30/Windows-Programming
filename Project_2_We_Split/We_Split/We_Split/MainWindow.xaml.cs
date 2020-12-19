@@ -103,7 +103,7 @@ namespace We_Split
 
             borderLeft.CornerRadius = new CornerRadius(0, 0, 16, 0);
 
-            var allTripListViewSource = new TripsDAOsqlserver().GetAll();
+            var allTripListViewSource = Business.ShowTripsList();
             allTripListView.ItemsSource = allTripListViewSource;
         }
 
@@ -140,7 +140,7 @@ namespace We_Split
             }
 
             const string sttStr = "Lên kế hoạch";
-            var allTripListViewSource = new TripsDAOsqlserver().GetAllByStatusDisplayText(sttStr);
+            var allTripListViewSource = Business.ShowTripsList(sttStr);
             allTripListView.ItemsSource = allTripListViewSource;
         }
 
@@ -177,7 +177,7 @@ namespace We_Split
             }
 
             const string sttStr = "Đang đi";
-            var allTripListViewSource = new TripsDAOsqlserver().GetAllByStatusDisplayText(sttStr);
+            var allTripListViewSource = Business.ShowTripsList(sttStr);
             allTripListView.ItemsSource = allTripListViewSource;
         }
 
@@ -209,7 +209,7 @@ namespace We_Split
             borderRight.CornerRadius = new CornerRadius(0, 0, 0, 18);
 
             const string sttStr = "Đã đi xong";
-            var allTripListViewSource = new TripsDAOsqlserver().GetAllByStatusDisplayText(sttStr);
+            var allTripListViewSource = Business.ShowTripsList(sttStr);
             allTripListView.ItemsSource = allTripListViewSource;
         }
 
@@ -255,7 +255,7 @@ namespace We_Split
             homeBtn_Click(sender, e);
             allBtn_Click(sender, e);
 
-            var appTripListViewSource = new TripsDAOsqlserver().GetAll();
+            var appTripListViewSource = Business.ShowTripsList();
             allTripListView.ItemsSource = appTripListViewSource;
 
             var value = ConfigurationManager.AppSettings["showSplashScreen"];
@@ -612,7 +612,7 @@ namespace We_Split
             ChangeColorBg(homeBtn);
             HideAllGrid();
             allTripsGrid.Visibility = Visibility.Visible;
-            allTripListView.ItemsSource = new TripsDAOsqlserver().GetAll();
+            allTripListView.ItemsSource = Business.ShowTripsList();
         }
 
         private void addBtn_Click(object sender, RoutedEventArgs e)

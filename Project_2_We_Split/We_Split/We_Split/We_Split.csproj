@@ -96,6 +96,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AvatarConverter.cs" />
+    <Compile Include="Business.cs" />
     <Compile Include="CostColorConverter.cs" />
     <Compile Include="CostFormatConverter.cs" />
     <Compile Include="InterestingInfo.cs" />

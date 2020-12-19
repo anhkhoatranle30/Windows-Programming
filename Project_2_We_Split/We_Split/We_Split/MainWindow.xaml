@@ -317,7 +317,8 @@
                                            TextWrapping="Wrap"
                                            FontSize="22"
                                            Foreground="Orange" />
-                                        <TextBlock x:Name="memberTextBlockAllTrip" Foreground="Gray" FontSize="20" TextWrapping="Wrap" FontWeight="DemiBold" />
+                                        <TextBlock x:Name="memberTextBlockAllTrip" Text="{Binding MembersName}"
+                                                   Foreground="White" FontSize="20" TextWrapping="Wrap" FontWeight="DemiBold" />
                                     </StackPanel>
                                     <TextBlock Text="Chi tiết&gt;&gt;" VerticalAlignment="Bottom"
                                                HorizontalAlignment="Right"
