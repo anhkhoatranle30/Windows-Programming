@@ -1260,7 +1260,7 @@
                         <RowDefinition Height="10*" />
                     </Grid.RowDefinitions>
                     <Grid>
-                        <TextBlock Text="THÊM CHUYẾN ĐI" Padding="10" Margin="15" Foreground="orange" FontStyle="Italic" FontSize="33" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                        <TextBlock Text="THÔNG TIN CHUYẾN ĐI" Padding="10" Margin="15" Foreground="orange" FontStyle="Italic" FontSize="33" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" />
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0">
                             <Button x:Name="cancelAddBtn" Click="cancelAddBtn_Click" FontSize="18" FontWeight="Bold" Foreground="White" Background="DarkGray" Width="80" Height="35" Content="Hủy" Margin="10,0">
                                 <Button.Resources>
@@ -1269,7 +1269,7 @@
                                     </Style>
                                 </Button.Resources>
                             </Button>
-                            <Button x:Name="acceptAddBtn" Click="accepAddBtn_Click" FontSize="18" FontWeight="Bold" Foreground="White" Background="Green" Width="80" Height="35" Content="Thêm" Margin="10,0">
+                            <Button x:Name="acceptAddBtn" Click="accepAddBtn_Click" FontSize="18" FontWeight="Bold" Foreground="White" Background="Green" Width="80" Height="35" Content="Lưu" Margin="10,0">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="10" />

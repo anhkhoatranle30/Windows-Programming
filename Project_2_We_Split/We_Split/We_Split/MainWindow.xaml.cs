@@ -784,7 +784,7 @@ namespace We_Split
                     new TripImagesDAOsqlserver().AddTripImgToDBAndLocalStorage(addedTripID, tripImagePath);
                 }
 
-                var choice = MessageBox.Show("Đã thêm chuyến đi",
+                var choice = MessageBox.Show("Thao tác thành công",
                                 "Thông báo",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Information);
