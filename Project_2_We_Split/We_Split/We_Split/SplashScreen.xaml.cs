@@ -34,6 +34,9 @@ namespace We_Split
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            var interestingInfo = new InterestingInfoDAOsqlserver().GetRandom();
+            infor1.Text = interestingInfo.PlaceInfo;
+
             var value = ConfigurationManager.AppSettings["showSplashScreen"];
             var showSplash = bool.Parse(value);
 
