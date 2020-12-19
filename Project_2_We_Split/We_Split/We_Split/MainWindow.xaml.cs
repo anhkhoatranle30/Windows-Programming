@@ -727,43 +727,33 @@ namespace We_Split
                 //add functional
                 var sttComboBox = statusComboBox.SelectedItem as ComboBoxItem;
                 var sttString = sttComboBox.Content.ToString();
-
-
-
-
-
-            //add functional
-            var sttComboBox = statusComboBox.SelectedItem as ComboBoxItem;
-            var sttString = sttComboBox.Content.ToString();
-            //trip
-            int addedTripID = new TripsDAOsqlserver().AddTripToDB(tripNameTextBox.Text, sttString);
-            //add location
-            var locationToAdd = new LOCATION()
-            {
-                TripID = addedTripID,
-                LocationName = locationsTextBox.Text
-            };
-            new LocationDAOsqlserver().Add(locationToAdd);
-            //add member + memberspertrip + membercost
-            foreach (var mc in myList)
-            {
-
-                int addedMemberID = new MembersDAOsqlserver().AddMemberToDB(mc.memberName);
-                //add memberpertrip
-                new MembersPerTripDAOsqlserver().AddMembersPerTripToDB(addedTripID, addedMemberID);
-                foreach (var cost in mc.cost)
+                //trip
+                int addedTripID = new TripsDAOsqlserver().AddTripToDB(tripNameTextBox.Text, sttString);
+                //add location
+                var locationToAdd = new LOCATION()
                 {
-                    //add membercost
-                    new MemberCostsDAOsqlserver().AddMemberCostToDB(addedTripID, addedMemberID, cost.costNameMemberCost, int.Parse(cost.costValueMemberCost));
+                    TripID = addedTripID,
+                    LocationName = locationsTextBox.Text
+                };
+                new LocationDAOsqlserver().Add(locationToAdd);
+                //add member + memberspertrip + membercost
+                foreach (var mc in myList)
+                {
+                    int addedMemberID = new MembersDAOsqlserver().AddMemberToDB(mc.memberName);
+                    //add memberpertrip
+                    new MembersPerTripDAOsqlserver().AddMembersPerTripToDB(addedTripID, addedMemberID);
+                    foreach (var cost in mc.cost)
+                    {
+                        //add membercost
+                        new MemberCostsDAOsqlserver().AddMemberCostToDB(addedTripID, addedMemberID, cost.costNameMemberCost, int.Parse(cost.costValueMemberCost));
+                    }
                 }
-            }
-            //trip image
-            var tripImageList = imgAddListView.ItemsSource as BindingList<string>;
-            foreach (var tripImagePath in tripImageList)
-            {
-                new TripImagesDAOsqlserver().AddTripImgToDBAndLocalStorage(addedTripID, tripImagePath);
-            }
-
+                //trip image
+                var tripImageList = imgAddListView.ItemsSource as BindingList<string>;
+                foreach (var tripImagePath in tripImageList)
+                {
+                    new TripImagesDAOsqlserver().AddTripImgToDBAndLocalStorage(addedTripID, tripImagePath);
+                }
 
                 var choice = MessageBox.Show("Đã thêm chuyến đi",
                                 "Thông báo",
@@ -889,6 +879,10 @@ namespace We_Split
             backToDetailBtn.Visibility = Visibility.Hidden;
             tripDetailGrid.Visibility = Visibility.Collapsed;
             backBtn.Visibility = Visibility.Visible;
+        }
+
+        private void backToHomeBtn_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

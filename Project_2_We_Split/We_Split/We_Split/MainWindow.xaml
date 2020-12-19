@@ -740,6 +740,7 @@
             </Grid>
             <Grid Grid.Column="0">
                 <Button x:Name="backBtn" Visibility="Hidden" Click="backBtn_Click" Style="{StaticResource backBtnStyle}" VerticalAlignment="Top" Margin="32,56,31.2,0" />
+                <Button x:Name="backToHomeBtn" Visibility="Hidden" Click="backToHomeBtn_Click" Style="{StaticResource backBtnStyle}" VerticalAlignment="Top" Margin="32,56,31.2,0" />
                 <Button x:Name="backToDetailBtn" Visibility="Hidden" Click="backToDetailBtn_Click" Style="{StaticResource backBtnStyle}" VerticalAlignment="Top" Margin="32,56,31.2,0" />
                 <StackPanel VerticalAlignment="Center">
                     <Button x:Name="homeBtn" Click="homeBtn_Click" Style="{StaticResource homeBtnStyle}" />
@@ -817,7 +818,7 @@
                             <Grid x:Name="nameSearchGrid" Visibility="Collapsed" Grid.Row="0">
                                 <TextBlock Foreground="Gray" FontSize="23" FontWeight="DemiBold" VerticalAlignment="Center" />
                             </Grid>
-                            <Grid x:Name="searchResultGrid" Background="#333333" Grid.Row="1">
+                            <Grid x:Name="searchResultGrid" Visibility="Collapsed"  Background="#333333" Grid.Row="1">
                                 <ListView x:Name="searchResultListView" Visibility="Collapsed" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#333333" BorderThickness="0" Grid.ColumnSpan="6" Margin="0,0,0,0.2">
                                     <ListView.ItemsPanel>
                                         <ItemsPanelTemplate>
