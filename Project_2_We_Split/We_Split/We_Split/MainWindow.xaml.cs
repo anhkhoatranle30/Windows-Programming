@@ -458,15 +458,23 @@ namespace We_Split
         private bool isViewing = false;
         private bool isSearching = false;
 
+        struct BusinessTrip
+        {
+            int TripID;
+            string TripName;
+            string MembersName;
+        };
         private void TripBtn_Click(object sender, RoutedEventArgs e)
         {
             isViewing = true;
             HideSearchCondition();
             tripDetailGrid.Visibility = Visibility.Visible;
-
+            
             var button = sender as Button;
-            var data = button.DataContext as TRIP;
-            int tripIDSelected = data.TripID;
+            //var tempList = new BindingList<dynamic>();
+            //tempList.Add(button.DataContext);
+            var data = button.DataContext as dynamic;
+            int tripIDSelected = (int)data.TripID;
             var tripSelected = new TripsDAOsqlserver().GetTripByTripID(tripIDSelected);
             var tripImages = new TripImagesDAOsqlserver().GetTripImagesByTripID(tripIDSelected);
             var memberList = new MembersDAOsqlserver().GetAllByTripID(tripIDSelected);
@@ -892,6 +900,7 @@ namespace We_Split
             int updatingTripID = int.Parse(tripIDTextBlock.Text);
             int membersCount = new MembersDAOsqlserver().GetAllByTripID(updatingTripID).Count;
 
+            
         }
 
         private void backToDetailBtn_Click(object sender, RoutedEventArgs e)
