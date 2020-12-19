@@ -888,6 +888,10 @@ namespace We_Split
             addTripGrid.Visibility = Visibility.Visible;
             backToDetailBtn.Visibility = Visibility.Visible;
             backBtn.Visibility = Visibility.Collapsed;
+
+            int updatingTripID = int.Parse(tripIDTextBlock.Text);
+            int membersCount = new MembersDAOsqlserver().GetAllByTripID(updatingTripID).Count;
+
         }
 
         private void backToDetailBtn_Click(object sender, RoutedEventArgs e)
