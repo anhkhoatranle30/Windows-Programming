@@ -734,16 +734,8 @@ namespace We_Split
             //add functional
             var sttComboBox = statusComboBox.SelectedItem as ComboBoxItem;
             var sttString = sttComboBox.Content.ToString();
-
             //trip
-            var tripToAdd = new TRIP()
-            {
-                TripName = tripNameTextBox.Text,
-                Status = new StatusDAOsqlserver().GetStatusIDByText(sttString),
-                TripDes = ""
-            };
-            new TripsDAOsqlserver().Add(tripToAdd);
-            int addedTripID = new TripsDAOsqlserver().GetAll().Last().TripID;
+            int addedTripID = new TripsDAOsqlserver().AddTripToDB(tripNameTextBox.Text, sttString);
             //add location
             var locationToAdd = new LOCATION()
             {
@@ -754,59 +746,21 @@ namespace We_Split
             //add member + memberspertrip + membercost
             foreach (var mc in myList)
             {
-                var memberToAdd = new MEMBER()
-                {
-                    MemberName = mc.memberName
-                };
-                //add member
-                new MembersDAOsqlserver().Add(memberToAdd);
 
-                int addedMemberID = new MembersDAOsqlserver().GetAll().Last().MemberID;
-                var mptToAdd = new MEMBERSPERTRIP()
-                {
-                    MemberID = addedMemberID,
-                    TripID = addedTripID
-                };
+                int addedMemberID = new MembersDAOsqlserver().AddMemberToDB(mc.memberName);
                 //add memberpertrip
-                new MembersPerTripDAOsqlserver().Add(mptToAdd);
+                new MembersPerTripDAOsqlserver().AddMembersPerTripToDB(addedTripID, addedMemberID);
                 foreach (var cost in mc.cost)
                 {
-                    var membercostToAdd = new MEMBERCOST()
-                    {
-                        TripID = addedTripID,
-                        MemberID = addedMemberID,
-                        CostName = cost.costNameMemberCost,
-                        Cost = int.Parse(cost.costValueMemberCost)
-                    };
                     //add membercost
-                    new MemberCostsDAOsqlserver().Add(membercostToAdd);
+                    new MemberCostsDAOsqlserver().AddMemberCostToDB(addedTripID, addedMemberID, cost.costNameMemberCost, int.Parse(cost.costValueMemberCost));
                 }
             }
-
-
-
-
-
-
             //trip image
             var tripImageList = imgAddListView.ItemsSource as BindingList<string>;
-            //create folder 
-            var tripImageFolderPath = AppDomain.CurrentDomain.BaseDirectory + "Images\\Trips\\" + addedTripID.ToString();
-            //if folderexisted
-            if (!Directory.Exists(tripImageFolderPath))
-            {
-                Directory.CreateDirectory(tripImageFolderPath);
-            }
             foreach (var tripImagePath in tripImageList)
             {
-                var newImagePath = Guid.NewGuid().ToString() + ".jpg";
-                var newImageFileName = tripImageFolderPath + "\\" + newImagePath;
-                File.Copy(tripImagePath, newImageFileName);
-                new TripImagesDAOsqlserver().Add(new TRIPIMAGE()
-                {
-                    TripID = addedTripID,
-                    Path = newImagePath
-                });
+                new TripImagesDAOsqlserver().AddTripImgToDBAndLocalStorage(addedTripID, tripImagePath);
             }
 
 

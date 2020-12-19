@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,6 +71,25 @@ namespace We_Split
             var db = new WP_Project2_WeSplitEntities();
             db.TRIPIMAGES.Add(tripimage);
             db.SaveChanges();
+        }
+        public void AddTripImgToDBAndLocalStorage(int tripID, string imgPath)
+        {
+            //create folder 
+            var tripImageFolderPath = AppDomain.CurrentDomain.BaseDirectory + "Images\\Trips\\" + tripID.ToString();
+            //if folderexisted
+            if (!Directory.Exists(tripImageFolderPath))
+            {
+                Directory.CreateDirectory(tripImageFolderPath);
+            }
+            //new image path
+            var newImagePath = Guid.NewGuid().ToString() + ".jpg";
+            var newImageFileName = tripImageFolderPath + "\\" + newImagePath;
+            File.Copy(imgPath, newImageFileName);
+            new TripImagesDAOsqlserver().Add(new TRIPIMAGE()
+            {
+                TripID = tripID,
+                Path = newImagePath
+            });
         }
         public override void Delete(TRIPIMAGE tripimage)
         {

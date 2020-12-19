@@ -7,6 +7,44 @@ using System.Threading.Tasks;
 
 namespace We_Split
 {
+    class MemberCostsBuilder
+    {
+        private int TripID { get; set; }
+        private int MemberID { get; set; }
+        private string CostName { get; set; }
+        private int Cost { get; set; }
+        public MemberCostsBuilder SetTripID(int tripID)
+        {
+            this.TripID = tripID;
+            return this;
+        }
+        public MemberCostsBuilder SetMemberID(int memberID)
+        {
+            this.MemberID = memberID;
+            return this;
+        }
+        public MemberCostsBuilder SetCostName(string costName)
+        {
+            this.CostName = costName;
+            return this;
+        }
+        public MemberCostsBuilder SetCost(int cost)
+        {
+            this.Cost = cost;
+            return this;
+        }
+        public MEMBERCOST Build()
+        {
+            var newMC = new MEMBERCOST()
+            {
+                TripID = this.TripID,
+                MemberID = this.MemberID,
+                CostName = this.CostName,
+                Cost = this.Cost
+            };
+            return newMC;
+        }
+    }
     class MemberCosts
     {
     }
@@ -39,6 +77,11 @@ namespace We_Split
             var db = new WP_Project2_WeSplitEntities();
             db.MEMBERCOSTs.Add(membercost);
             db.SaveChanges();
+        }
+        public void AddMemberCostToDB(int tripID, int memberID, string costName, int cost)
+        {
+            var addingMemberCost = new MemberCostsBuilder().SetTripID(tripID).SetMemberID(memberID).SetCostName(costName).SetCost(cost).Build();
+            Add(addingMemberCost);
         }
         public override void Delete(MEMBERCOST membercost)
         {
