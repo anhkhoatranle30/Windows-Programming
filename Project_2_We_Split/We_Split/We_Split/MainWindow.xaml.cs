@@ -920,16 +920,18 @@ namespace We_Split
         {
         }
 
-        private void updateBtn_Click(object sender, RoutedEventArgs e)
+        private void updateBtn_Click(object sender, RoutedEventArgs e)//Nhấn vào nút update
         {
             tripDetailGrid.Visibility = Visibility.Visible;
             backToDetailBtn.Visibility = Visibility.Visible;
+            backBtn.Visibility = Visibility.Collapsed;
         }
 
         private void backToDetailBtn_Click(object sender, RoutedEventArgs e)
         {
             backToDetailBtn.Visibility = Visibility.Hidden;
             tripDetailGrid.Visibility = Visibility.Collapsed;
+            backBtn.Visibility = Visibility.Visible;
         }
     }
 }
