@@ -903,5 +903,14 @@ namespace We_Split
             searchResultGrid.Visibility = Visibility.Collapsed;
             backToHomeBtn.Visibility = Visibility.Hidden;
         }
+
+        private void searchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (searchTextBox.Text == "")
+            {
+                nameSearchGrid.Visibility = Visibility.Collapsed;
+                searchResultGrid.Visibility = Visibility.Collapsed;
+            }
+        }
     }
 }
