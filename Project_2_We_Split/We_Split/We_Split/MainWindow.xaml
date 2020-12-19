@@ -1254,7 +1254,7 @@
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid x:Name="addTripGrid" Visibility="Collapsed" Background="#333333">
+                <Grid x:Name="addTripGrid" Visibility="Visible" Background="#333333">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="10*" />
@@ -1397,6 +1397,8 @@
                                     <RowDefinition Height="1*" />
                                 </Grid.RowDefinitions>
                                 <Grid Background="#333333">
+                                    <ListView x:Name="testListView" Margin="0,126,-0.4,-0.2">
+                                    </ListView>
                                     <ScrollViewer VerticalScrollBarVisibility="Disabled" Grid.Row="0">
                                         <ListView Name="addListView" Focusable="True" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  ScrollViewer.CanContentScroll="False" Background="Transparent">
                                             <ListView.ItemsPanel>
