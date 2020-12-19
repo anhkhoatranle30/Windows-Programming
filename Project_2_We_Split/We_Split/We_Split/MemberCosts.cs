@@ -72,6 +72,12 @@ namespace We_Split
             var result = new BindingList<MEMBERCOST>(query.ToList());
             return result;
         }
+        public BindingList<MEMBERCOST> GetAllByTripIDAndMemberID(int tripID, int memberID)
+        {
+            var byTripIDList = GetAllByTripID(tripID);
+            var result = new BindingList<MEMBERCOST>(byTripIDList.Where(mc => mc.MemberID == memberID).ToList());
+            return result;
+        }
         public override void Add(MEMBERCOST membercost)
         {
             var db = new WP_Project2_WeSplitEntities();

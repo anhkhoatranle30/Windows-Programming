@@ -480,6 +480,27 @@ namespace We_Split
             var memberList = new MembersDAOsqlserver().GetAllByTripID(tripIDSelected);
             var avgPay = MyUtils.calcAverageCostTrip((int)tripIDSelected);
             var locationList = new LocationDAOsqlserver().GetLocationNameByTripID(tripIDSelected);
+            //save data for update use
+            var updateData = new BindingList<memberCost>();
+            foreach(var member in memberList)
+            {
+                var updateCostList = new List<memberCostSingle>();
+                var costListFromDB = new MemberCostsDAOsqlserver().GetAllByTripIDAndMemberID(tripIDSelected, member.MemberID);
+                foreach(var cost in costListFromDB)
+                {
+                    updateCostList.Add(new memberCostSingle()
+                    {
+                        costNameMemberCost = cost.CostName,
+                        costValueMemberCost = cost.Cost.ToString()
+                    }); 
+                }
+                updateData.Add(new memberCost()
+                {
+                    memberName = member.MemberName,
+                    cost = updateCostList
+                });
+            }
+            testListView.ItemsSource = updateData;
             //bind data
             dTripNameTxtBlock.Text = tripSelected.TripName;
             dTripImageImgBrush.ImageSource = new BitmapImage(
@@ -900,7 +921,7 @@ namespace We_Split
             int updatingTripID = int.Parse(tripIDTextBlock.Text);
             int membersCount = new MembersDAOsqlserver().GetAllByTripID(updatingTripID).Count;
 
-            
+            var membercostList = testListView.ItemsSource as BindingList<memberCost>;
         }
 
         private void backToDetailBtn_Click(object sender, RoutedEventArgs e)
