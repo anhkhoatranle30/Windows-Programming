@@ -761,11 +761,11 @@
                                     <RadioButton x:Name="searchByTrip"  FontSize="13" Foreground="White" VerticalAlignment="Center" Margin="0,5" IsChecked="True" Content="Tìm kiếm theo chuyến đi" />
                                     <RadioButton x:Name="searchByUser"  FontSize="13" Foreground="White" VerticalAlignment="Center" Content="Tìm kiếm theo tên thành viên" />
                                 </StackPanel>
-                                <Image Width="50" Source="Images/search_img.png" RenderOptions.BitmapScalingMode="HighQuality" />
+                                <Image Width="50" Source="Images/search_img.png"  RenderOptions.BitmapScalingMode="HighQuality" />
                                 <Grid Width="281">
                                     <TextBlock Height="50" Text="Tìm kiếm chuyến đi" Background="Transparent" Foreground="Wheat" FontSize="30" VerticalAlignment="Center" Padding="5"
                                    Visibility="{Binding Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=searchTextBox}" />
-                                    <TextBox x:Name="searchTextBox" GotFocus="searchTextBox_GotFocus" CaretBrush="White" Width="280" TextWrapping="Wrap" Height="50" Margin="0,0,0.2,0" Foreground="Wheat" FontSize="30" Padding="5" VerticalAlignment="Center" Background="Transparent" />
+                                    <TextBox x:Name="searchTextBox" KeyDown="searchTextBox_KeyDown" GotFocus="searchTextBox_GotFocus" CaretBrush="White" Width="280" TextWrapping="Wrap" Height="50" Margin="0,0,0.2,0" Foreground="Wheat" FontSize="30" Padding="5" VerticalAlignment="Center" Background="Transparent" />
                                 </Grid>
                             </StackPanel>
                         </Grid>
@@ -812,6 +812,13 @@
                                     </ListView.ItemTemplate>
                                 </ListView>
                             </Grid>
+
+                            <Grid x:Name="searchResultGrid">
+                                <Grid Grid.Row="0">
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                </Grid>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -836,7 +843,6 @@
                                    FontWeight="Bold"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center" />
-                                
                             </Border>
                         </Grid>
                         <Grid Grid.Column="1">
@@ -849,7 +855,7 @@
                                     <Grid>
                                         <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"
                                            Text="GIAI ĐOẠN" Foreground="White" FontSize="28" />
-                                        <TextBlock x:Name="tripIDTextBlock" Visibility="Collapsed"/>
+                                        <TextBlock x:Name="tripIDTextBlock" Visibility="Collapsed" />
                                     </Grid>
                                     <Grid Grid.Row="1">
                                         <Grid.RowDefinitions>

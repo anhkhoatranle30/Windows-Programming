@@ -318,6 +318,8 @@ namespace We_Split
 
         private void addImgBtn_Click(object sender, RoutedEventArgs e)
         {
+            tripImgSource = new BindingList<string>();
+
             OpenFileDialog fd = new OpenFileDialog();
             fd.Multiselect = true;
 
@@ -338,6 +340,7 @@ namespace We_Split
 
         private void cancelAddImgBtn_Click(object sender, RoutedEventArgs e)
         {
+            imgAddListView.ItemsSource = null;
         }
 
         private void addCostBtnAll_Click(object sender, RoutedEventArgs e)
@@ -648,10 +651,11 @@ namespace We_Split
 
             if (choice == MessageBoxResult.Yes)
             {
-                //tripNameTextBox.Text = null;
-                //locationsTextBox.Text = null;
-                //statusComboBox.SelectedItem = null;
-                //addListView.Items.Refresh();
+                tripNameTextBox.Text = null;
+                locationsTextBox.Text = null;
+                statusComboBox.SelectedItem = null;
+                imgAddListView.ItemsSource = null;
+
                 while (addListView.Items.Count != 0)
                 {
                     addListView.Items.RemoveAt(0);
@@ -698,10 +702,9 @@ namespace We_Split
             }
 
             List<memberCost> myList = new List<memberCost>();
+
             if (isValid)
             {
-                
-
                 foreach (ListViewItem item in addListView.Items)
                 {
                     TextBox textBox = (TextBox)item.FindName("memberNameTextBox");
@@ -721,11 +724,9 @@ namespace We_Split
                     Console.WriteLine(myList);
                 }
 
-                var choice = MessageBox.Show("Đã thêm chuyến đi",
-                                "Thông báo",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Information);
-            }
+                //add functional
+                var sttComboBox = statusComboBox.SelectedItem as ComboBoxItem;
+                var sttString = sttComboBox.Content.ToString();
 
 
 
@@ -764,6 +765,11 @@ namespace We_Split
             }
 
 
+                var choice = MessageBox.Show("Đã thêm chuyến đi",
+                                "Thông báo",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+            }
 
             homeBtn_Click(sender, e);
             addTripGrid.Visibility = Visibility.Collapsed;
@@ -844,6 +850,31 @@ namespace We_Split
             homeBtn_Click(sender, e);
             tripDetailGrid.Visibility = Visibility.Collapsed;
             allTripsGrid.Visibility = Visibility.Visible;
+        }
+
+        private void searchTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                if (searchTextBox.Text == "")
+                {
+                    nameSearchGrid.Visibility = Visibility.Collapsed;
+                    searchResultGrid.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    if ((bool)searchByTrip.IsChecked)//Tìm theo chuyến đi
+                    {
+                    }
+                    else // tìm theo tên thành viên
+                    {
+                    }
+                }
+            }
+        }
+
+        private void TripSearchBtn_Click(object sender, RoutedEventArgs e)//Nhấn vào chuyến đi trong search result grid
+        {
         }
     }
 }
