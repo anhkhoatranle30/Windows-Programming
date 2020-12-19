@@ -151,7 +151,28 @@
                         </Style>
                     </CheckBox.Resources>
                 </CheckBox>
-
+                <Grid>
+                    <TextBlock Text="Bạn có biết?"
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                               Foreground="White"
+                               FontStyle="Italic"
+                               FontSize="40"
+                               FontWeight="DemiBold"
+                               HorizontalAlignment="Center" />
+                        <Border BorderThickness="0,3"  BorderBrush="White" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock x:Name="infor1"
+                                       Text=" asd asd fas fd adf asdf asfd asf d dgsd gdf gdsfg ds gsdfg sdfgsdfg sd gsd"
+                                       Foreground="LightGray"
+                                       FontStyle="Italic"
+                                       FontSize="23"
+                                       FontWeight="DemiBold"
+                                       Margin="10"
+                                       TextWrapping="Wrap"
+                                       TextAlignment="Justify"
+                                       MaxWidth="300" />
+                        </Border>
+                    </StackPanel>
+                </Grid>
                 <Button x:Name="shutdownScreen" Click="shutdownScreen_Click"
                         Background="Transparent"
                         VerticalAlignment="Bottom" HorizontalAlignment="Right"
