@@ -1397,7 +1397,7 @@
                                     <RowDefinition Height="1*" />
                                 </Grid.RowDefinitions>
                                 <Grid Background="#333333">
-                                    <ListView x:Name="testListView" Margin="0,126,-0.4,-0.2">
+                                    <ListView x:Name="testListView" Visibility="Collapsed" Margin="0,126,-0.4,-0.2">
                                     </ListView>
                                     <ScrollViewer VerticalScrollBarVisibility="Disabled" Grid.Row="0">
                                         <ListView Name="addListView" Focusable="True" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  ScrollViewer.CanContentScroll="False" Background="Transparent">
@@ -1407,7 +1407,7 @@
                                                 </ItemsPanelTemplate>
                                             </ListView.ItemsPanel>
                                             <ListViewItem Name="addFullListViewItem">
-                                                <ListView x:Name="addListViewItem" ScrollViewer.VerticalScrollBarVisibility="Disabled" BorderThickness="0" Background="Transparent">
+                                                <ListView x:Name="addListViewItem" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Background="Transparent">
                                                     <Grid Height="auto" x:Name="addListViewItemGrid">
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="3*" />
@@ -1426,7 +1426,7 @@
                                                             </Grid>
                                                         </Grid>
                                                         <Grid Grid.Column="1">
-                                                            <ListView Background="Transparent" BorderThickness="0" Name="addCostListView">
+                                                            <ListView Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Name="addCostListView">
                                                                 <StackPanel>
                                                                     <ListView Name="costAddListView" BorderThickness="0" Background="Transparent">
                                                                         <ListView.ItemsPanel>
@@ -1449,7 +1449,7 @@
                                                                                         <TextBlock Text="Khoản chi: " Margin="0,0,-5,0" Style="{StaticResource textblockAddStyle}" VerticalAlignment="Center" />
                                                                                     </Grid>
                                                                                     <Grid Grid.Column="1">
-                                                                                        <TextBox x:Name="costNameTextBox" Style="{StaticResource textboxAddStyle}" />
+                                                                                        <TextBox x:Name="costNameTextBox" Style="{StaticResource textboxAddStyle}" Text="{Binding costNameMemberCost}" />
                                                                                     </Grid>
                                                                                 </Grid>
                                                                                 <Grid Grid.Column="1">
@@ -1461,7 +1461,7 @@
                                                                                         <TextBlock Text="Chi phí: " Margin="0,0,-5,0" Style="{StaticResource textblockAddStyle}" VerticalAlignment="Center" />
                                                                                     </Grid>
                                                                                     <Grid Grid.Column="1">
-                                                                                        <TextBox x:Name="costValueTextBox" Style="{StaticResource textboxAddStyle}" />
+                                                                                        <TextBox x:Name="costValueTextBox" Style="{StaticResource textboxAddStyle}" Text="{Binding costValueMemberCost}" />
                                                                                     </Grid>
                                                                                 </Grid>
                                                                             </Grid>

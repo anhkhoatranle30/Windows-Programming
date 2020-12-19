@@ -347,7 +347,6 @@ namespace We_Split
             StackPanel parent = (StackPanel)(VisualTreeHelper.GetParent((DependencyObject)sender));
             ListView child = (ListView)parent.FindName("costAddListView");
             ListViewItem item = (ListViewItem)child.Items[child.Items.Count - 1];
-            Console.WriteLine(child.Items.Count - 1);
             var newCostNameTextBox = (TextBox)item.FindName("costNameTextBox");
             var newCostValueTextBox = (TextBox)item.FindName("costValueTextBox");
 
@@ -458,18 +457,19 @@ namespace We_Split
         private bool isViewing = false;
         private bool isSearching = false;
 
-        struct BusinessTrip
+        private struct BusinessTrip
         {
-            int TripID;
-            string TripName;
-            string MembersName;
+            private int TripID;
+            private string TripName;
+            private string MembersName;
         };
+
         private void TripBtn_Click(object sender, RoutedEventArgs e)
         {
             isViewing = true;
             HideSearchCondition();
             tripDetailGrid.Visibility = Visibility.Visible;
-            
+
             var button = sender as Button;
             //var tempList = new BindingList<dynamic>();
             //tempList.Add(button.DataContext);
@@ -482,17 +482,17 @@ namespace We_Split
             var locationList = new LocationDAOsqlserver().GetLocationNameByTripID(tripIDSelected);
             //save data for update use
             var updateData = new BindingList<memberCost>();
-            foreach(var member in memberList)
+            foreach (var member in memberList)
             {
                 var updateCostList = new List<memberCostSingle>();
                 var costListFromDB = new MemberCostsDAOsqlserver().GetAllByTripIDAndMemberID(tripIDSelected, member.MemberID);
-                foreach(var cost in costListFromDB)
+                foreach (var cost in costListFromDB)
                 {
                     updateCostList.Add(new memberCostSingle()
                     {
                         costNameMemberCost = cost.CostName,
                         costValueMemberCost = cost.Cost.ToString()
-                    }); 
+                    });
                 }
                 updateData.Add(new memberCost()
                 {
@@ -922,6 +922,50 @@ namespace We_Split
             int membersCount = new MembersDAOsqlserver().GetAllByTripID(updatingTripID).Count;
 
             var membercostList = testListView.ItemsSource as BindingList<memberCost>;
+
+            //if (isValid)
+            //{
+            while (addListView.Items.Count != 0)
+            {
+                addListView.Items.RemoveAt(0);
+            }
+
+            foreach (var item in membercostList)
+            {
+                AddNewItemAddtListView();
+                ListViewItem listViewItem = (ListViewItem)addListView.Items[addListView.Items.Count - 1];
+
+                TextBox textBox = (TextBox)listViewItem.FindName("memberNameTextBox");
+                textBox.Text = item.memberName;
+
+                ListView listView = (ListView)listViewItem.FindName("costAddListView");
+
+                foreach (var subItem in item.cost)
+                {
+                    Console.WriteLine(item.cost.Count);
+                    ListViewItem subListViewItem = (ListViewItem)listView.Items[listView.Items.Count - 1];
+                    TextBox costName = (TextBox)subListViewItem.FindName("costNameTextBox");
+                    TextBox costValue = (TextBox)subListViewItem.FindName("costValueTextBox");
+
+                    costName.Text = subItem.costNameMemberCost;
+                    costValue.Text = subItem.costValueMemberCost;
+
+                    var listviewitemXaml = XamlWriter.Save(listViewItemTemp);
+                    StringReader stringReader = new StringReader(listviewitemXaml);
+                    XmlReader xmlReader = XmlReader.Create(stringReader);
+                    ListViewItem newItem = (ListViewItem)XamlReader.Load(xmlReader);
+
+                    listView.Items.Add(newItem);
+                    var itemTemp = (ListViewItem)listView.Items[listView.Items.Count - 1];
+                    var newCostNameTextBoxTemp = (TextBox)itemTemp.FindName("costNameTextBox");
+                    var newCostValueTextBoxTemp = (TextBox)itemTemp.FindName("costValueTextBox");
+
+                    newCostNameTextBoxTemp.TextChanged += AllTextBox_TextChanged;
+                    newCostValueTextBoxTemp.TextChanged += AllTextBox_TextChanged;
+                }
+
+                listView.Items.RemoveAt(listView.Items.Count - 1);
+            }
         }
 
         private void backToDetailBtn_Click(object sender, RoutedEventArgs e)
