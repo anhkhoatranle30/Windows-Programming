@@ -853,12 +853,20 @@ namespace We_Split
                 }
                 else
                 {
+                    nameSearchTextBlock.Text = "Kết quả tìm kiếm cho " + "\"" + "searchTextBox.Text" + "\":";
+
                     if ((bool)searchByTrip.IsChecked)//Tìm theo chuyến đi
                     {
+                        nameSearchGrid.Visibility = Visibility.Visible;
+                        searchResultGrid.Visibility = Visibility.Visible;
                     }
                     else // tìm theo tên thành viên
                     {
+                        nameSearchGrid.Visibility = Visibility.Visible;
+                        searchResultGrid.Visibility = Visibility.Visible;
                     }
+
+                    backToHomeBtn.Visibility = Visibility.Visible;
                 }
             }
         }
@@ -869,7 +877,7 @@ namespace We_Split
 
         private void updateBtn_Click(object sender, RoutedEventArgs e)//Nhấn vào nút update
         {
-            tripDetailGrid.Visibility = Visibility.Visible;
+            addTripGrid.Visibility = Visibility.Visible;
             backToDetailBtn.Visibility = Visibility.Visible;
             backBtn.Visibility = Visibility.Collapsed;
         }
@@ -877,12 +885,15 @@ namespace We_Split
         private void backToDetailBtn_Click(object sender, RoutedEventArgs e)
         {
             backToDetailBtn.Visibility = Visibility.Hidden;
-            tripDetailGrid.Visibility = Visibility.Collapsed;
+            addTripGrid.Visibility = Visibility.Collapsed;
             backBtn.Visibility = Visibility.Visible;
         }
 
         private void backToHomeBtn_Click(object sender, RoutedEventArgs e)
         {
+            nameSearchGrid.Visibility = Visibility.Collapsed;
+            searchResultGrid.Visibility = Visibility.Collapsed;
+            backToHomeBtn.Visibility = Visibility.Hidden;
         }
     }
 }

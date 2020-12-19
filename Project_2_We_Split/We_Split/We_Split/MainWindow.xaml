@@ -815,11 +815,11 @@
                                 </ListView>
                             </Grid>
 
-                            <Grid x:Name="nameSearchGrid" Visibility="Collapsed" Grid.Row="0">
-                                <TextBlock Foreground="Gray" FontSize="23" FontWeight="DemiBold" VerticalAlignment="Center" />
+                            <Grid x:Name="nameSearchGrid" Visibility="Collapsed" Background="#333333" Grid.Row="0">
+                                <TextBlock x:Name="nameSearchTextBlock" Foreground="Gray" FontSize="23" FontWeight="DemiBold" VerticalAlignment="Center" />
                             </Grid>
                             <Grid x:Name="searchResultGrid" Visibility="Collapsed"  Background="#333333" Grid.Row="1">
-                                <ListView x:Name="searchResultListView" Visibility="Collapsed" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#333333" BorderThickness="0" Grid.ColumnSpan="6" Margin="0,0,0,0.2">
+                                <ListView x:Name="searchResultListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#333333" BorderThickness="0" Grid.ColumnSpan="6" Margin="0,0,0,0.2">
                                     <ListView.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <WrapPanel />
