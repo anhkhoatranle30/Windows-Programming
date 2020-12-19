@@ -27,8 +27,6 @@ namespace We_Split
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly PagingCollectionView _tripsView;
-
         public MainWindow()
         {
             InitializeComponent();
@@ -458,6 +456,7 @@ namespace We_Split
         }
 
         private bool isViewing = false;
+        private bool isSearching = false;
 
         private void TripBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -564,6 +563,7 @@ namespace We_Split
             if (isViewing)
             {
                 backBtn.Visibility = Visibility.Visible;
+                backToHomeBtn.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -825,8 +825,17 @@ namespace We_Split
 
         private void backBtn_Click(object sender, RoutedEventArgs e)
         {
-            backBtn.Visibility = Visibility.Hidden;
             tripDetailGrid.Visibility = Visibility.Collapsed;
+
+            if (isSearching)
+            {
+                isSearching = false;
+                backToHomeBtn.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                backBtn.Visibility = Visibility.Hidden;
+            }
         }
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
@@ -853,7 +862,8 @@ namespace We_Split
                 }
                 else
                 {
-                    nameSearchTextBlock.Text = "Kết quả tìm kiếm cho " + "\"" + "searchTextBox.Text" + "\":";
+                    isSearching = true;
+                    nameSearchTextBlock.Text = "Kết quả tìm kiếm cho " + "\"" + searchTextBox.Text + "\":";
                     var searchedList = new BindingList<TRIP>();
                     if ((bool)searchByTrip.IsChecked)//Tìm theo chuyến đi
                     {
@@ -871,10 +881,6 @@ namespace We_Split
                     backToHomeBtn.Visibility = Visibility.Visible;
                 }
             }
-        }
-
-        private void TripSearchBtn_Click(object sender, RoutedEventArgs e)//Nhấn vào chuyến đi trong search result grid
-        {
         }
 
         private void updateBtn_Click(object sender, RoutedEventArgs e)//Nhấn vào nút update

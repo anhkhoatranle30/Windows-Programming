@@ -47,5 +47,13 @@ namespace We_Split
                 this.Close();
             }
         }
+
+        private void showSplashScreen_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(
+                ConfigurationUserLevel.None);
+            config.AppSettings.Settings["ShowSplashScreen"].Value = "true";
+            config.Save(ConfigurationSaveMode.Minimal);
+        }
     }
 }

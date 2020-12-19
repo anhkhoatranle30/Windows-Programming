@@ -317,6 +317,7 @@
                                            TextWrapping="Wrap"
                                            FontSize="22"
                                            Foreground="Orange" />
+                                        <TextBlock x:Name="memberTextBlockAllTrip" Foreground="Gray" FontSize="20" TextWrapping="Wrap" FontWeight="DemiBold" />
                                     </StackPanel>
                                     <TextBlock Text="Chi tiết&gt;&gt;" VerticalAlignment="Bottom"
                                                HorizontalAlignment="Right"
@@ -741,6 +742,7 @@
             <Grid Grid.Column="0">
                 <Button x:Name="backBtn" Visibility="Hidden" Click="backBtn_Click" Style="{StaticResource backBtnStyle}" VerticalAlignment="Top" Margin="32,56,31.2,0" />
                 <Button x:Name="backToHomeBtn" Visibility="Hidden" Click="backToHomeBtn_Click" Style="{StaticResource backBtnStyle}" VerticalAlignment="Top" Margin="32,56,31.2,0" />
+                <Button x:Name="backToSearchBtn" Visibility="Hidden" Click="backToHomeBtn_Click" Style="{StaticResource backBtnStyle}" VerticalAlignment="Top" Margin="32,56,31.2,0" />
                 <Button x:Name="backToDetailBtn" Visibility="Hidden" Click="backToDetailBtn_Click" Style="{StaticResource backBtnStyle}" VerticalAlignment="Top" Margin="32,56,31.2,0" />
                 <StackPanel VerticalAlignment="Center">
                     <Button x:Name="homeBtn" Click="homeBtn_Click" Style="{StaticResource homeBtnStyle}" />
@@ -1437,6 +1439,8 @@
                                 <CheckBox.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="10" />
+                                        <Setter Property="Width" Value="20" />
+                                        <Setter Property="Height" Value="20" />
                                     </Style>
                                 </CheckBox.Resources>
                             </CheckBox>

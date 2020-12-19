@@ -144,31 +144,33 @@
         </Grid.Background>
         <Border Margin="10" Background="Transparent" BorderThickness="2" BorderBrush="White">
             <Grid>
-                <CheckBox x:Name="showSplashScreen" Checked="showSplashScreen_Checked" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="5" Background="Transparent" BorderThickness="1" BorderBrush="White" Content="Không hiện màn hình này mỗi khi khởi động" Foreground="White" Style="{DynamicResource CheckBoxStyle1}">
+                <CheckBox x:Name="showSplashScreen" VerticalContentAlignment="Center" FontSize="16" Checked="showSplashScreen_Checked" Unchecked="showSplashScreen_Unchecked" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="5" Background="Transparent" BorderThickness="1" BorderBrush="White" Content="Không hiện màn hình này mỗi khi khởi động" Foreground="White" Style="{DynamicResource CheckBoxStyle1}">
                     <CheckBox.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10" />
+                            <Setter Property="Width" Value="20" />
+                            <Setter Property="Height" Value="20" />
                         </Style>
                     </CheckBox.Resources>
                 </CheckBox>
                 <Grid>
-                        <TextBlock Text="Bạn có biết?"
+                    <TextBlock Text="Welcome to We Split"
                                Foreground="White"
                                FontStyle="Italic"
                                FontSize="40"
                                FontWeight="DemiBold"
-                               HorizontalAlignment="Center" Margin="283,50,274.8,306.4" />
-                    <Border BorderThickness="0,3"  BorderBrush="LightGray" VerticalAlignment="Center" HorizontalAlignment="Center">
+                               HorizontalAlignment="Center" Margin="0,20" />
+                    <Border BorderThickness="0,3"  BorderBrush="WhiteSmoke" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <TextBlock x:Name="infor1"
                                        Text=" asd asd asf asdf asdf asdf asd fasd fad fadsfad fa fd  fs asd ds dsff dss fas daf sdfa fas fd adf asdf asfd asf d dgsd gdf gdsfg ds gsdfg sdfgsdfg sd gsd"
-                                       Foreground="LightGray"
+                                       Foreground="WhiteSmoke"
                                        FontStyle="Italic"
-                                       FontSize="23"
+                                       FontSize="16"
                                        FontWeight="DemiBold"
-                                       Margin="10"
+                                       Margin="8"
                                        TextWrapping="Wrap"
                                        TextAlignment="Justify"
-                                       MaxWidth="400" />
+                                       MaxWidth="600" />
                     </Border>
                 </Grid>
                 <Button x:Name="shutdownScreen" Click="shutdownScreen_Click"
@@ -176,7 +178,8 @@
                         VerticalAlignment="Bottom" HorizontalAlignment="Right"
                         Content="Bỏ qua >"
                         BorderThickness="0"
-                        Foreground="White" Style="{DynamicResource ButtonStyle1}">
+                        FontSize="15"
+                        Foreground="WhiteSmoke" Style="{DynamicResource ButtonStyle1}">
                 </Button>
             </Grid>
         </Border>
