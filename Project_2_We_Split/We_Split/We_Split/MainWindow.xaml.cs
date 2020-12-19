@@ -318,6 +318,8 @@ namespace We_Split
 
         private void addImgBtn_Click(object sender, RoutedEventArgs e)
         {
+            tripImgSource = new BindingList<string>();
+
             OpenFileDialog fd = new OpenFileDialog();
             fd.Multiselect = true;
 
@@ -338,6 +340,7 @@ namespace We_Split
 
         private void cancelAddImgBtn_Click(object sender, RoutedEventArgs e)
         {
+            imgAddListView.ItemsSource = null;
         }
 
         private void addCostBtnAll_Click(object sender, RoutedEventArgs e)
@@ -648,10 +651,11 @@ namespace We_Split
 
             if (choice == MessageBoxResult.Yes)
             {
-                //tripNameTextBox.Text = null;
-                //locationsTextBox.Text = null;
-                //statusComboBox.SelectedItem = null;
-                //addListView.Items.Refresh();
+                tripNameTextBox.Text = null;
+                locationsTextBox.Text = null;
+                statusComboBox.SelectedItem = null;
+                imgAddListView.ItemsSource = null;
+
                 while (addListView.Items.Count != 0)
                 {
                     addListView.Items.RemoveAt(0);
@@ -698,10 +702,9 @@ namespace We_Split
             }
 
             List<memberCost> myList = new List<memberCost>();
+
             if (isValid)
             {
-                
-
                 foreach (ListViewItem item in addListView.Items)
                 {
                     TextBox textBox = (TextBox)item.FindName("memberNameTextBox");
@@ -721,95 +724,95 @@ namespace We_Split
                     Console.WriteLine(myList);
                 }
 
+                //add functional
+                var sttComboBox = statusComboBox.SelectedItem as ComboBoxItem;
+                var sttString = sttComboBox.Content.ToString();
+
+                //trip
+                var tripToAdd = new TRIP()
+                {
+                    TripName = tripNameTextBox.Text,
+                    Status = new StatusDAOsqlserver().GetStatusIDByText(sttString),
+                    TripDes = ""
+                };
+                new TripsDAOsqlserver().Add(tripToAdd);
+                int addedTripID = new TripsDAOsqlserver().GetAll().Last().TripID;
+                //add location
+                var locationToAdd = new LOCATION()
+                {
+                    TripID = addedTripID,
+                    LocationName = locationsTextBox.Text
+                };
+                new LocationDAOsqlserver().Add(locationToAdd);
+                //add member + memberspertrip + membercost
+                foreach (var mc in myList)
+                {
+                    var memberToAdd = new MEMBER()
+                    {
+                        MemberName = mc.memberName
+                    };
+                    //add member
+                    new MembersDAOsqlserver().Add(memberToAdd);
+
+                    int addedMemberID = new MembersDAOsqlserver().GetAll().Last().MemberID;
+                    var mptToAdd = new MEMBERSPERTRIP()
+                    {
+                        MemberID = addedMemberID,
+                        TripID = addedTripID
+                    };
+                    //add memberpertrip
+                    new MembersPerTripDAOsqlserver().Add(mptToAdd);
+                    foreach (var cost in mc.cost)
+                    {
+                        var membercostToAdd = new MEMBERCOST()
+                        {
+                            TripID = addedTripID,
+                            MemberID = addedMemberID,
+                            CostName = cost.costNameMemberCost,
+                            Cost = int.Parse(cost.costValueMemberCost)
+                        };
+                        //add membercost
+                        new MemberCostsDAOsqlserver().Add(membercostToAdd);
+                    }
+                }
+
+                //trip image
+                var tripImageList = imgAddListView.ItemsSource as BindingList<string>;
+                //create folder
+                var tripImageFolderPath = AppDomain.CurrentDomain.BaseDirectory + "Images\\Trips\\" + addedTripID.ToString();
+                //if folderexisted
+                if (!Directory.Exists(tripImageFolderPath))
+                {
+                    Directory.CreateDirectory(tripImageFolderPath);
+                }
+                foreach (var tripImagePath in tripImageList)
+                {
+                    var newImagePath = Guid.NewGuid().ToString() + ".jpg";
+                    var newImageFileName = tripImageFolderPath + "\\" + newImagePath;
+                    File.Copy(tripImagePath, newImageFileName);
+                    new TripImagesDAOsqlserver().Add(new TRIPIMAGE()
+                    {
+                        TripID = addedTripID,
+                        Path = newImagePath
+                    });
+                }
+
+                tripNameTextBox.Text = null;
+                locationsTextBox.Text = null;
+                statusComboBox.SelectedItem = null;
+                imgAddListView.ItemsSource = null;
+
+                while (addListView.Items.Count != 0)
+                {
+                    addListView.Items.RemoveAt(0);
+                }
+                AddNewItemAddtListView();
+
                 var choice = MessageBox.Show("Đã thêm chuyến đi",
                                 "Thông báo",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Information);
             }
-
-
-
-
-
-            //add functional
-            var sttComboBox = statusComboBox.SelectedItem as ComboBoxItem;
-            var sttString = sttComboBox.Content.ToString();
-
-            //trip
-            var tripToAdd = new TRIP()
-            {
-                TripName = tripNameTextBox.Text,
-                Status = new StatusDAOsqlserver().GetStatusIDByText(sttString),
-                TripDes = ""
-            };
-            new TripsDAOsqlserver().Add(tripToAdd);
-            int addedTripID = new TripsDAOsqlserver().GetAll().Last().TripID;
-            //add location
-            var locationToAdd = new LOCATION()
-            {
-                TripID = addedTripID,
-                LocationName = locationsTextBox.Text
-            };
-            new LocationDAOsqlserver().Add(locationToAdd);
-            //add member + memberspertrip + membercost
-            foreach (var mc in myList)
-            {
-                var memberToAdd = new MEMBER()
-                {
-                    MemberName = mc.memberName
-                };
-                //add member
-                new MembersDAOsqlserver().Add(memberToAdd);
-
-                int addedMemberID = new MembersDAOsqlserver().GetAll().Last().MemberID;
-                var mptToAdd = new MEMBERSPERTRIP()
-                {
-                    MemberID = addedMemberID,
-                    TripID = addedTripID
-                };
-                //add memberpertrip
-                new MembersPerTripDAOsqlserver().Add(mptToAdd);
-                foreach (var cost in mc.cost)
-                {
-                    var membercostToAdd = new MEMBERCOST()
-                    {
-                        TripID = addedTripID,
-                        MemberID = addedMemberID,
-                        CostName = cost.costNameMemberCost,
-                        Cost = int.Parse(cost.costValueMemberCost)
-                    };
-                    //add membercost
-                    new MemberCostsDAOsqlserver().Add(membercostToAdd);
-                }
-            }
-
-
-
-
-
-
-            //trip image
-            var tripImageList = imgAddListView.ItemsSource as BindingList<string>;
-            //create folder 
-            var tripImageFolderPath = AppDomain.CurrentDomain.BaseDirectory + "Images\\Trips\\" + addedTripID.ToString();
-            //if folderexisted
-            if (!Directory.Exists(tripImageFolderPath))
-            {
-                Directory.CreateDirectory(tripImageFolderPath);
-            }
-            foreach (var tripImagePath in tripImageList)
-            {
-                var newImagePath = Guid.NewGuid().ToString() + ".jpg";
-                var newImageFileName = tripImageFolderPath + "\\" + newImagePath;
-                File.Copy(tripImagePath, newImageFileName);
-                new TripImagesDAOsqlserver().Add(new TRIPIMAGE()
-                {
-                    TripID = addedTripID,
-                    Path = newImagePath
-                });
-            }
-
-
 
             homeBtn_Click(sender, e);
             addTripGrid.Visibility = Visibility.Collapsed;
@@ -890,6 +893,31 @@ namespace We_Split
             homeBtn_Click(sender, e);
             tripDetailGrid.Visibility = Visibility.Collapsed;
             allTripsGrid.Visibility = Visibility.Visible;
+        }
+
+        private void searchTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                if (searchTextBox.Text == "")
+                {
+                    nameSearchGrid.Visibility = Visibility.Collapsed;
+                    searchResultGrid.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    if ((bool)searchByTrip.IsChecked)//Tìm theo chuyến đi
+                    {
+                    }
+                    else // tìm theo tên thành viên
+                    {
+                    }
+                }
+            }
+        }
+
+        private void TripSearchBtn_Click(object sender, RoutedEventArgs e)//Nhấn vào chuyến đi trong search result grid
+        {
         }
     }
 }
