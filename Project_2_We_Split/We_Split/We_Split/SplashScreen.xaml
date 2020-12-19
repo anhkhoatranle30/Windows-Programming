@@ -95,7 +95,8 @@
                             </Grid.ColumnDefinitions>
                             <Border x:Name="checkBoxBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                                 <Grid x:Name="markGrid">
-                                    <Path x:Name="optionMark" Data="F1 M 9.97498,1.22334L 4.6983,9.09834L 4.52164,9.09834L 0,5.19331L 1.27664,3.52165L 4.255,6.08833L 8.33331,1.52588e-005L 9.97498,1.22334 Z " Fill="{StaticResource OptionMark.Static.Glyph}" Margin="1" Opacity="0" Stretch="None" />
+                                    <Path x:Name="optionMark" VerticalAlignment="Center" HorizontalAlignment="Center" Data="M12.676537,1.5569782 L5.9707563,11.579705 5.7462508,11.579705 0,6.6096673 1.6223967,4.4821 5.4073958,7.7487836 10.590248,1.9420291E-05 12.676537,1.5569782 z" Fill="{StaticResource OptionMark.Static.Glyph}"
+                                           Opacity="0" Stretch="None" Height="11.2" Width="12.2" />
                                     <Rectangle x:Name="indeterminateMark" Fill="{StaticResource OptionMark.Static.Glyph}" Margin="2" Opacity="0" />
                                 </Grid>
                             </Border>
