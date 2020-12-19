@@ -7,7 +7,46 @@ using System.Threading.Tasks;
 
 namespace We_Split
 {
-    
+    class TripBuilder 
+    { 
+        private string TripName { get; set; }
+        private int Status { get; set; }
+        private string TripDes { get; set; }
+        public TripBuilder SetTripName(string tripName)
+        {
+            TripName = tripName;
+            return this;
+        }
+        public TripBuilder SetStatus(int status)
+        {
+            Status = status;
+            return this;
+        }
+        public TripBuilder SetStatus(string statusDisplayText)
+        {
+            Status = new StatusDAOsqlserver().GetStatusIDByText(statusDisplayText);
+            return this;
+        }
+        public TripBuilder SetDes(string tripDes)
+        {
+            TripDes = tripDes;
+            return this;
+        }
+        public TRIP Build()
+        {
+            if (TripDes == null)
+            {
+                TripDes = " ";
+            }
+            var result = new TRIP()
+            {
+                Status = Status,
+                TripName = TripName,
+                TripDes = TripDes
+            };
+            return result;
+        }
+    }
     class Trips
     {
        
@@ -65,6 +104,25 @@ namespace We_Split
             var db = new WP_Project2_WeSplitEntities();
             db.TRIPs.Add(trip);
             db.SaveChanges();
+        }
+
+        /// <summary>
+        /// Hàm thêm chuyến đi vào sql server
+        /// </summary>
+        /// <param name="TripName"></param>
+        /// <param name="statusDisplayText"></param>
+        /// <param name="TripDes"></param>
+        /// <returns>Trả về tripID của chuyến đi vừa mới thêm vào</returns>
+        public int AddTripToDB(string TripName, string statusDisplayText, string TripDes = "")
+        {
+            var addingTrip = new TripBuilder()
+                                    .SetTripName(TripName)
+                                    .SetStatus(statusDisplayText)
+                                    .SetDes(TripDes)
+                                    .Build();
+            Add(addingTrip);
+            int addedTripID = new TripsDAOsqlserver().GetAll().Last().TripID;
+            return addedTripID;
         }
         public override void Delete(TRIP trip)
         {

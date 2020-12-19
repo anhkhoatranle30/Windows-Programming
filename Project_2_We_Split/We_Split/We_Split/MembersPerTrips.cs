@@ -31,6 +31,15 @@ namespace We_Split
             db.MEMBERSPERTRIPs.Add(info);
             db.SaveChanges();
         }
+        public void AddMembersPerTripToDB(int tripID, int memberID)
+        {
+            var addingMPT = new MEMBERSPERTRIP()
+            {
+                TripID = tripID,
+                MemberID = memberID
+            };
+            Add(addingMPT);
+        }
         public override void Delete(MEMBERSPERTRIP info)
         {
             var db = new WP_Project2_WeSplitEntities();

@@ -51,6 +51,16 @@ namespace We_Split
             db.MEMBERs.Add(member);
             db.SaveChanges();
         }
+        public int AddMemberToDB(string MemberName)
+        {
+            var addingMember = new MEMBER()
+            {
+                MemberName = MemberName
+            };
+            Add(addingMember);
+            int addedMemberID = GetAll().Last().MemberID;
+            return addedMemberID;
+        }
         public override void Delete(MEMBER member)
         {
             var db = new WP_Project2_WeSplitEntities();
