@@ -32,14 +32,7 @@ namespace Cake_Shop
 
         private void homeRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            if (homeGrid == null)
-            {
-                Console.WriteLine("dang loi");
-            }
-            else
-            {
-                homeGrid.Visibility = Visibility.Visible;
-            }
+            homeGrid.Visibility = Visibility.Visible;
         }
 
         private void addRadioButton_Checked(object sender, RoutedEventArgs e)
@@ -90,6 +83,8 @@ namespace Cake_Shop
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             homeRadioButton.IsChecked = true;
+            badgedCart.Badge = null;
+            moneyTextBlock1.DataContext = "6270000";
         }
 
         private void menuToggleButton_Checked(object sender, RoutedEventArgs e)
@@ -102,13 +97,19 @@ namespace Cake_Shop
             Grid.SetZIndex(menuGrid, 1);
         }
 
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
-        {
-        }
-
         private void mainGrid_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             menuToggleButton.IsChecked = false;
+        }
+
+        private void cakeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("nhan vao nut");
+        }
+
+        private void addToCartButton_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("nhan vao nut them vao gio");
         }
     }
 }

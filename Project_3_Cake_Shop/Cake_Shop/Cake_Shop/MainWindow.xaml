@@ -4,9 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cake_Shop"
+
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1200"
+        Title="MainWindow" Height="800" Width="1300"
+
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Loaded="Window_Loaded"
@@ -27,24 +29,10 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Grey.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Brown.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
-            <Storyboard x:Key="openMenu">
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="menuGrid">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="70" />
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200" />
-                </DoubleAnimationUsingKeyFrames>
-            </Storyboard>
-
-            <Storyboard x:Key="closeMenu">
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="menuGrid">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="200" />
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="70" />
-                </DoubleAnimationUsingKeyFrames>
-            </Storyboard>
-
+            <local:MoneyFormatConverter x:Key="MoneyFormatConverter" />
             <Style TargetType="{x:Type Button}">
                 <Setter Property="BorderThickness"
                     Value="0" />
@@ -66,13 +54,44 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
+            <Style x:Key="cakeButtonStyle" TargetType="{x:Type Button}">
+                <Setter Property="Width"
+                        Value="80" />
+                <Setter Property="Height"
+                        Value="80" />
+                <Setter Property="Cursor"
+                    Value="Hand" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4"
+                                                 Padding="32">
+                                <materialDesign:Card.Content>
+                                    <StackPanel>
+                                        <TextBlock>
+                                        </TextBlock>
+                                        <Image Source="Images/img_test.jpeg">
+                                        </Image>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Style="{StaticResource MaterialDesignOutlinedButton}"
+                                                    ToolTip="MaterialDesignOutlinedButton"
+                                                    Content="Thêm vào giỏ" />
+                                            <TextBlock />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </materialDesign:Card.Content>
+                            </materialDesign:Card>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </Window.Resources>
 
     <Border CornerRadius="50" Background="WhiteSmoke">
         <Grid Background="Transparent">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*" />
+                <RowDefinition Height="1.6*" />
                 <RowDefinition Height="20*" />
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
@@ -83,7 +102,7 @@
                         Margin="8">
                     <TextBlock Text="Cake Shop" FontSize="31" VerticalAlignment="Center" Padding="10" HorizontalAlignment="Center" FontWeight="Bold" />
                 </Border>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="25,5,25,20">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="25,3,25,18">
                     <Button Margin="5">
                         <Button.Content>
                             <Image Source="Images/icon_mini_screen.png" />
@@ -103,12 +122,12 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1">
-                <Grid x:Name="menuGrid" Width="70" Background="WhiteSmoke" HorizontalAlignment="Left">
+                <Grid x:Name="menuGrid" Width="70" Background="WhiteSmoke" HorizontalAlignment="Left" Margin="3,0,0,35">
                     <StackPanel>
                         <ToggleButton Style="{DynamicResource MaterialDesignHamburgerToggleButton}"
                                   VerticalAlignment="Top"
                                   HorizontalAlignment="Right"
-                                  Margin="15,0"
+                                  Margin="15,6,15,5"
                                   Name="menuToggleButton"
                                   Checked="menuToggleButton_Checked"
                                   Unchecked="menuToggleButton_Unchecked">
@@ -148,7 +167,7 @@
                                 </EventTrigger>
                             </ToggleButton.Triggers>
                         </ToggleButton>
-                        <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,0,56,0" Background="WhiteSmoke">
+                        <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10,0,16,0" Background="WhiteSmoke">
                             <RadioButton GroupName="menuRadioButtonGroup"
                                          Style="{StaticResource MaterialDesignChoiceChipRadioButton}"
                                          Height="100" Margin="0,0,0,0"
@@ -218,21 +237,209 @@
                             Width="40" Height="40">
                         <materialDesign:PackIcon Kind="ArrowBack" Foreground="Black" Height="30" Width="30" />
                     </Button>
+                    <materialDesign:Badged HorizontalAlignment="Right"
+                                           Badge="3"
+                                           Name="badgedCart"
+                                           BadgeColorZoneMode="Dark"
+                                           Margin="20,0">
+                        <Button Grid.Row="0">
+                            <Button.Content>
+                                <materialDesign:PackIcon Kind="CartVariant" Width="40" Height="40" Foreground="Black" />
+                            </Button.Content>
+                        </Button>
+                    </materialDesign:Badged>
                     <Grid Grid.Row="1" Background="WhiteSmoke" Margin="5,0,5,30">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="101*" />
-                            <ColumnDefinition Width="1089*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid Visibility="Collapsed"  x:Name="homeGrid" Grid.ColumnSpan="2" Margin="0,0,0,0.6">
-                            <TextBlock Text="hoho" />
+                        <Grid x:Name="homeGrid">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="12*" />
+                            </Grid.RowDefinitions>
+                            <Grid Background="LightGray">
+                                <ListBox Style="{StaticResource MaterialDesignChoiceChipListBox}"
+                                     x:Name="RadioButtonGroupChoiceChip"
+                                     HorizontalAlignment="Center" VerticalContentAlignment="Center">
+                                    <ListBoxItem Content="Cakes" Margin="30,0" VerticalAlignment="Center" FontSize="20" Height="50" />
+                                    <ListBoxItem Content="Cakes1" Margin="30,0" VerticalAlignment="Center" FontSize="20" Height="50" />
+                                    <ListBoxItem Content="Cakes2" Margin="30,0" VerticalAlignment="Center" FontSize="20" Height="50" />
+                                    <ListBoxItem Content="Cakes3" Margin="30,0" VerticalAlignment="Center" FontSize="20" Height="50" />
+                                    <ListBoxItem Content="Cakes4" Margin="30,0" VerticalAlignment="Center" FontSize="20" Height="50" />
+                                </ListBox>
+                            </Grid>
+                            <Grid Grid.Row="1" Margin="0,5,0,0">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <WrapPanel Margin="88,0">
+                                        <Grid>
+                                            <Button x:Name="cakeButton" Click="cakeButton_Click"
+                                                Style="{DynamicResource MaterialDesignRaisedButton}"
+                                                materialDesign:ShadowAssist.ShadowDepth="Depth4"
+                                                Width="270" Height="300" Margin="2"
+                                                Background="WhiteSmoke">
+                                                <Button.Content>
+                                                    <StackPanel Width="240" Height="275">
+                                                        <TextBlock Text="Angel Pony Cake" FontSize="21" Foreground="Gray" HorizontalAlignment="Center" Padding="4" />
+                                                        <Image Source="Images/img_test.jpeg" Width="190" Height="205" Stretch="Fill" />
+                                                        <TextBlock x:Name="moneyTextBlock1"
+                                                               HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                                               FontSize="20"
+                                                                  Margin="0,10,1,0"
+                                                               Foreground="Red"
+                                                               Text="1,670,000" />
+                                                    </StackPanel>
+                                                </Button.Content>
+                                            </Button>
+                                            <Button x:Name="addToCartButton" Click="addToCartButton_Click" Style="{StaticResource MaterialDesignOutlinedButton}"
+                                                                Content="Thêm vào giỏ  +"
+                                                                HorizontalAlignment="Left" Margin="16,261,0,16" Height="Auto" />
+                                        </Grid>
+
+                                        <Button Style="{DynamicResource MaterialDesignRaisedButton}"
+                                            materialDesign:ShadowAssist.ShadowDepth="Depth4"
+                                           Width="270" Height="300"
+                                            Background="WhiteSmoke" Margin="2">
+                                            <Button.Content>
+                                                <StackPanel>
+                                                    <TextBlock Text="Angel Pony Cake" FontSize="21" Foreground="Gray" />
+                                                    <Image Source="Images/img_test.jpeg">
+                                                    </Image>
+                                                    <Grid>
+                                                        <Button Style="{StaticResource MaterialDesignOutlinedButton}"
+                                                            ToolTip="MaterialDesignOutlinedButton"
+                                                            Content="Thêm vào giỏ  +"
+                                                            HorizontalAlignment="Left" />
+                                                        <TextBlock x:Name="moneyTextBlock2"
+                                                               HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                               FontSize="21"
+                                                               Foreground="Red"
+                                                               Text="{Binding Converter={StaticResource MoneyFormatConverter}}" />
+                                                    </Grid>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Style="{DynamicResource MaterialDesignRaisedButton}"
+                                            materialDesign:ShadowAssist.ShadowDepth="Depth4"
+                                           Width="270" Height="300" Margin="2"
+                                            Background="WhiteSmoke">
+                                            <Button.Content>
+                                                <StackPanel>
+                                                    <TextBlock Text="Angel Pony Cake" FontSize="21" Foreground="Gray" />
+                                                    <Image Source="Images/img_test.jpeg">
+                                                    </Image>
+                                                    <Grid>
+                                                        <Button Style="{StaticResource MaterialDesignOutlinedButton}"
+                                                            ToolTip="MaterialDesignOutlinedButton"
+                                                            Content="Thêm vào giỏ  +"
+                                                            HorizontalAlignment="Left" />
+                                                        <TextBlock x:Name="moneyTextBlock3"
+                                                               HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                               FontSize="21"
+                                                               Foreground="Red"
+                                                               Text="{Binding Converter={StaticResource MoneyFormatConverter}}" />
+                                                    </Grid>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Style="{DynamicResource MaterialDesignRaisedButton}"
+                                            materialDesign:ShadowAssist.ShadowDepth="Depth4"
+                                            Width="270" Height="300" Margin="2"
+                                            Background="WhiteSmoke">
+                                            <Button.Content>
+                                                <StackPanel>
+                                                    <TextBlock Text="Angel Pony Cake" FontSize="21" Foreground="Gray" />
+                                                    <Image Source="Images/img_test.jpeg">
+                                                    </Image>
+                                                    <Grid>
+                                                        <Button Style="{StaticResource MaterialDesignOutlinedButton}"
+                                                            ToolTip="MaterialDesignOutlinedButton"
+                                                            Content="Thêm vào giỏ  +"
+                                                            HorizontalAlignment="Left" />
+                                                        <TextBlock x:Name="moneyTextBlock4"
+                                                               HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                               FontSize="21"
+                                                               Foreground="Red"
+                                                               Text="{Binding Converter={StaticResource MoneyFormatConverter}}" />
+                                                    </Grid>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+                                    </WrapPanel>
+                                </ScrollViewer>
+                            </Grid>
                         </Grid>
-                        <Grid Visibility="Collapsed"  x:Name="addGrid" Grid.ColumnSpan="2" Margin="0,0,0,0.6">
+                        <Grid x:Name="addGrid" Visibility="Collapsed" Grid.ColumnSpan="2" Margin="0,0,0.4,0.4" Grid.RowSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Margin="10" VerticalAlignment="Top">
+                                <TextBlock Text="Giỏ hàng của bạn" Foreground="White" Background="Black"
+                                           FontSize="21"
+                                           Padding="115,10" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" Margin="10" VerticalAlignment="Top">
+                                <TextBlock Text="Thông tin khách hàng" Foreground="White" Background="Black"
+                                           FontSize="21"
+                                           Padding="90,10" />
+                                <StackPanel Background="WhiteSmoke" Margin="10">
+                                    <StackPanel.DataContext>
+                                        <local:AddOrderView />
+                                    </StackPanel.DataContext>
+                                    <TextBox materialDesign:HintAssist.Hint="Tên khách hàng"
+                                         FontSize="21"
+                                         Foreground="Black"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         VerticalAlignment="Center"
+                                         Margin="0,20">
+                                        <TextBox.Text>
+                                            <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <local:NotEmptyValidationRule />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                    <TextBox materialDesign:HintAssist.Hint="Số điện thoại"
+                                         FontSize="21"
+                                         Foreground="Black"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         VerticalAlignment="Center"
+                                         Margin="0,20">
+                                        <TextBox.Text>
+                                            <Binding Path="PhoneNumber" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <local:NotEmptyValidationRule />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                    <TextBox materialDesign:HintAssist.Hint="Địa chỉ"
+                                         FontSize="21"
+                                         Foreground="Black"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         VerticalAlignment="Center"
+                                         Margin="0,20">
+                                        <TextBox.Text>
+                                            <Binding Path="Address" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <local:NotEmptyValidationRule />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Margin="10" VerticalAlignment="Top">
+                                <TextBlock Text="Đơn hàng của bạn" Foreground="White" Background="Black"
+                                           FontSize="21"
+                                           Padding="110,10" />
+                            </StackPanel>
                         </Grid>
-                        <Grid  Visibility="Collapsed" x:Name="chartGrid" Grid.ColumnSpan="2" Margin="0,0,0,0.6">
+                        <Grid  Visibility="Collapsed" x:Name="chartGrid" Grid.ColumnSpan="2" Margin="0,0,0.4,0.4" Grid.RowSpan="2">
                         </Grid>
-                        <Grid  Visibility="Collapsed" x:Name="settingGrid" Grid.ColumnSpan="2" Margin="0,0,0,0.6">
+                        <Grid  Visibility="Collapsed" x:Name="settingGrid" Grid.ColumnSpan="2" Margin="0,0,0.4,0.4" Grid.RowSpan="2">
                         </Grid>
-                        <Grid Visibility="Collapsed" x:Name="aboutGrid" Grid.ColumnSpan="2" Margin="0,0,0,0.6">
+                        <Grid Visibility="Collapsed" x:Name="aboutGrid" Grid.ColumnSpan="2" Margin="0,0,0.4,0.4" Grid.RowSpan="2">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*" />
                                 <RowDefinition Height="1*" />
