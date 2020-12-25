@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,9 @@ namespace Cake_Shop
             InitializeComponent();
         }
 
+        private bool isBackToDetail = false;
+        private bool isBackToCart = false;
+
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -33,26 +37,41 @@ namespace Cake_Shop
         private void homeRadioButton_Checked(object sender, RoutedEventArgs e)
         {
             homeGrid.Visibility = Visibility.Visible;
+            cartGrid.Visibility = Visibility.Collapsed;
+            detailCakeGrid.Visibility = Visibility.Collapsed;
+            gridName.Text = "Trang Chủ";
         }
 
-        private void addRadioButton_Checked(object sender, RoutedEventArgs e)
+        private void addCakeRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            addGrid.Visibility = Visibility.Visible;
+            addCakeGrid.Visibility = Visibility.Visible;
+            cartGrid.Visibility = Visibility.Collapsed;
+            detailCakeGrid.Visibility = Visibility.Collapsed;
+            gridName.Text = "Thêm sản phẩm";
         }
 
         private void chartRadioButton_Checked(object sender, RoutedEventArgs e)
         {
             chartGrid.Visibility = Visibility.Visible;
+            cartGrid.Visibility = Visibility.Collapsed;
+            detailCakeGrid.Visibility = Visibility.Collapsed;
+            gridName.Text = "Thống kê";
         }
 
         private void settingRadioButton_Checked(object sender, RoutedEventArgs e)
         {
             settingGrid.Visibility = Visibility.Visible;
+            cartGrid.Visibility = Visibility.Collapsed;
+            detailCakeGrid.Visibility = Visibility.Collapsed;
+            gridName.Text = "Cài đặt";
         }
 
         private void aboutRadioButton_Checked(object sender, RoutedEventArgs e)
         {
             aboutGrid.Visibility = Visibility.Visible;
+            cartGrid.Visibility = Visibility.Collapsed;
+            detailCakeGrid.Visibility = Visibility.Collapsed;
+            gridName.Text = "Chúng tôi";
         }
 
         private void homeRadioButton_Unchecked(object sender, RoutedEventArgs e)
@@ -60,9 +79,9 @@ namespace Cake_Shop
             homeGrid.Visibility = Visibility.Collapsed;
         }
 
-        private void addRadioButton_Unchecked(object sender, RoutedEventArgs e)
+        private void addCakeRadioButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            addGrid.Visibility = Visibility.Collapsed;
+            addCakeGrid.Visibility = Visibility.Collapsed;
         }
 
         private void chartRadioButton_Unchecked(object sender, RoutedEventArgs e)
@@ -105,11 +124,82 @@ namespace Cake_Shop
         private void cakeButton_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("nhan vao nut");
+            isBackToDetail = true;
+            backButton.IsEnabled = true;
+            detailCakeGrid.Visibility = Visibility.Visible;
+            homeGrid.Visibility = Visibility.Collapsed;
         }
 
         private void addToCartButton_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("nhan vao nut them vao gio");
+        }
+
+        private void cartButton_Click(object sender, RoutedEventArgs e)
+        {
+            gridName.Text = "Giỏ hảng";
+            cartGrid.Visibility = Visibility.Visible;
+            homeGrid.Visibility = Visibility.Collapsed;
+            addCakeGrid.Visibility = Visibility.Collapsed;
+            settingGrid.Visibility = Visibility.Collapsed;
+            aboutGrid.Visibility = Visibility.Collapsed;
+            detailCakeGrid.Visibility = Visibility.Collapsed;
+
+            backButton.IsEnabled = true;
+        }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (isBackToDetail && cartGrid.Visibility == Visibility.Visible)
+            {
+                cartGrid.Visibility = Visibility.Collapsed;
+                detailCakeGrid.Visibility = Visibility.Visible;
+
+                isBackToDetail = false;
+            }
+            else
+            {
+                cartGrid.Visibility = Visibility.Collapsed;
+
+                if (homeRadioButton.IsChecked == true)
+                {
+                    homeGrid.Visibility = Visibility.Visible;
+                }
+                else if (addCakeRadioButton.IsChecked == true)
+                {
+                    addCakeGrid.Visibility = Visibility.Visible;
+                }
+                else if (settingRadioButton.IsChecked == true)
+                {
+                    settingGrid.Visibility = Visibility.Visible;
+                }
+                else if (aboutRadioButton.IsChecked == true)
+                {
+                    aboutGrid.Visibility = Visibility.Visible;
+                }
+
+                backButton.IsEnabled = false;
+            }
+        }
+
+        private void addCakeImgButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fd = new OpenFileDialog();
+
+            if (fd.ShowDialog() == true)
+            {
+                ImageBrush myBrush = new ImageBrush();
+                Image image = new Image();
+                image.Source = new BitmapImage(
+                    new Uri(fd.FileName));
+                myBrush.ImageSource = image.Source;
+                addCakeImgCard.Background = myBrush;
+            }
+        }
+
+        private void Grid_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            menuToggleButton.IsChecked = false;
         }
     }
 }
