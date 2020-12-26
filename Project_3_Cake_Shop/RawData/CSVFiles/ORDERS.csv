@@ -1,0 +1,11 @@
+﻿OrderID,CustomerName,PhoneNumber,HomeAddress,CreatedAt,PaymentType
+1,Đỗ Ðông Nguyên,84937426460,"410 Nguyen Dinh Chieu, Ward 4, Dist.3, Ho Chi Minh",1/1/2020,0
+2,Huỳnh Hải Quân,84918188890,"164/22 Le Dinh Tham Str., Ho Chi Minh",2/2/2020,1
+3,Lưu Kim Phú,84918414666,"5/9 Ap Tay Vinh Phu Thuan An Binh Duong, Ho Chi Minh",3/3/2020,2
+4,Mạch Thiện Luân,84918770546,"67 / 140 Bui Dinh Tuy Street, Ward12, Binh Thanh Dist, Ho Chi Minh",4/4/2020,3
+5,Lê Tấn Lợi,84919955975,"376 / 24 Nguyen Dinh Chieu Street. District 3, Ho Chi Minh",5/5/2020,0
+6,Nguyễn Thảo Uyên,84903944056,"10/1A Tan Quy St., Ho Chi Minh",6/6/2020,1
+7,Dương Vân Trinh,84392279355,"65/18B Nguyen Văn Luong, Ward 10, Dist.6",7/7/2020,2
+8,La Hoa Thiên,84121730312,"482/3 Le Quang Dinh Street, Ward 11",8/8/2020,3
+9,Nghiêm Mai Thanh,84121459565," 56/26 Thich Quang Duc Street, Ward 5",9/9/2020,0
+10,Đỗ Trường Thành,84121890743,"57 Nguyen Hue Street, Ben Nghe Ward, District 1",10/10/2020,1

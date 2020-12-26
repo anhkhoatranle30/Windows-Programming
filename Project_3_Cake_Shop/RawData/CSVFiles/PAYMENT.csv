@@ -1,0 +1,5 @@
+﻿PaymentType,PaymentMethod,IsShipping
+0,Mua tại cửa hàng - Tiền mặt,0
+1,Mua tại cửa hàng - Thẻ,0
+2,Giao tận nơi - tiền mặt,1
+3,Giao tận nơi - thẻ,1
