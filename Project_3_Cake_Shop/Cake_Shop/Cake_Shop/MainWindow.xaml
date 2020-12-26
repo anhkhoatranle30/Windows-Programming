@@ -56,31 +56,37 @@
             </Style>
             <Style x:Key="cakeButtonStyle" TargetType="{x:Type Button}">
                 <Setter Property="Width"
-                        Value="80" />
+                        Value="270" />
                 <Setter Property="Height"
-                        Value="80" />
+                        Value="300" />
                 <Setter Property="Cursor"
                     Value="Hand" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Button}">
-                            <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4"
-                                                 Padding="32">
-                                <materialDesign:Card.Content>
-                                    <StackPanel>
-                                        <TextBlock>
-                                        </TextBlock>
-                                        <Image Source="Images/img_test.jpeg">
-                                        </Image>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Button Style="{StaticResource MaterialDesignOutlinedButton}"
-                                                    ToolTip="MaterialDesignOutlinedButton"
-                                                    Content="Thêm vào giỏ" />
-                                            <TextBlock />
+                            <Grid>
+                                <Button x:Name="cakeButton" Click="cakeButton_Click"
+                                                Style="{DynamicResource MaterialDesignRaisedButton}"
+                                                materialDesign:ShadowAssist.ShadowDepth="Depth4"
+                                                Width="270" Height="300" Margin="2"
+                                                Background="WhiteSmoke">
+                                    <Button.Content>
+                                        <StackPanel Width="240" Height="275">
+                                            <TextBlock Text="Angel Pony Cake" FontSize="21" Foreground="Gray" HorizontalAlignment="Center" Padding="4" />
+                                            <Image Source="{Binding}" Width="190" Height="205" Stretch="Fill" />
+                                            <TextBlock x:Name="moneyTextBlock"
+                                                       HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                                       FontSize="20"
+                                                       Margin="0,10,1,0"
+                                                       Foreground="Red"
+                                                       Text="{Binding Converter={StaticResource MoneyFormatConverter}}" />
                                         </StackPanel>
-                                    </StackPanel>
-                                </materialDesign:Card.Content>
-                            </materialDesign:Card>
+                                    </Button.Content>
+                                </Button>
+                                <Button x:Name="addToCartButton" Click="addToCartButton_Click" Style="{StaticResource MaterialDesignOutlinedButton}"
+                                        Content="Thêm vào giỏ  +"
+                                        HorizontalAlignment="Left" Margin="16,261,0,16" Height="Auto" />
+                            </Grid>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -254,7 +260,7 @@
                         </materialDesign:Badged>
                     </Grid>
                     <Grid Grid.Row="1" Background="WhiteSmoke" Margin="5,0,5,30">
-                        <Grid x:Name="homeGrid" Visibility="Collapsed">
+                        <Grid x:Name="homeGrid" Visibility="Visible">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*" />
                                 <RowDefinition Height="12*" />
@@ -271,126 +277,18 @@
                                 </ListBox>
                             </Grid>
                             <Grid Grid.Row="1" Margin="0,1,0,0">
-                                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                    <WrapPanel Margin="88,0">
-                                        <Grid>
-                                            <Button x:Name="cakeButton" Click="cakeButton_Click"
-                                                Style="{DynamicResource MaterialDesignRaisedButton}"
-                                                materialDesign:ShadowAssist.ShadowDepth="Depth4"
-                                                Width="270" Height="300" Margin="2"
-                                                Background="WhiteSmoke">
-                                                <Button.Content>
-                                                    <StackPanel Width="240" Height="275">
-                                                        <TextBlock Text="Angel Pony Cake" FontSize="21" Foreground="Gray" HorizontalAlignment="Center" Padding="4" />
-                                                        <Image Source="Images/img_test.jpeg" Width="190" Height="205" Stretch="Fill" />
-                                                        <TextBlock x:Name="moneyTextBlock1"
-                                                               HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                                               FontSize="20"
-                                                                  Margin="0,10,1,0"
-                                                               Foreground="Red"
-                                                               Text="1,670,000" />
-                                                    </StackPanel>
-                                                </Button.Content>
-                                            </Button>
-                                            <Button x:Name="addToCartButton" Click="addToCartButton_Click" Style="{StaticResource MaterialDesignOutlinedButton}"
-                                                                Content="Thêm vào giỏ  +"
-                                                                HorizontalAlignment="Left" Margin="16,261,0,16" Height="Auto" />
-                                        </Grid>
-
-                                        <Button Style="{DynamicResource MaterialDesignRaisedButton}"
-                                            materialDesign:ShadowAssist.ShadowDepth="Depth4"
-                                           Width="270" Height="300"
-                                            Background="WhiteSmoke" Margin="2">
-                                            <Button.Content>
-                                                <StackPanel>
-                                                    <TextBlock Text="Angel Pony Cake" FontSize="21" Foreground="Gray" />
-                                                    <Image Source="Images/img_test.jpeg">
-                                                    </Image>
-                                                    <Grid>
-                                                        <Button Style="{StaticResource MaterialDesignOutlinedButton}"
-                                                            ToolTip="MaterialDesignOutlinedButton"
-                                                            Content="Thêm vào giỏ  +"
-                                                            HorizontalAlignment="Left" />
-                                                        <TextBlock x:Name="moneyTextBlock2"
-                                                               HorizontalAlignment="Right" VerticalAlignment="Center"
-                                                               FontSize="21"
-                                                               Foreground="Red"
-                                                               Text="{Binding Converter={StaticResource MoneyFormatConverter}}" />
-                                                    </Grid>
-                                                </StackPanel>
-                                            </Button.Content>
-                                        </Button>
-                                        <Button Style="{DynamicResource MaterialDesignRaisedButton}"
-                                            materialDesign:ShadowAssist.ShadowDepth="Depth4"
-                                           Width="270" Height="300" Margin="2"
-                                            Background="WhiteSmoke">
-                                            <Button.Content>
-                                                <StackPanel>
-                                                    <TextBlock Text="Angel Pony Cake" FontSize="21" Foreground="Gray" />
-                                                    <Image Source="Images/img_test.jpeg">
-                                                    </Image>
-                                                    <Grid>
-                                                        <Button Style="{StaticResource MaterialDesignOutlinedButton}"
-                                                            ToolTip="MaterialDesignOutlinedButton"
-                                                            Content="Thêm vào giỏ  +"
-                                                            HorizontalAlignment="Left" />
-                                                        <TextBlock x:Name="moneyTextBlock3"
-                                                               HorizontalAlignment="Right" VerticalAlignment="Center"
-                                                               FontSize="21"
-                                                               Foreground="Red"
-                                                               Text="{Binding Converter={StaticResource MoneyFormatConverter}}" />
-                                                    </Grid>
-                                                </StackPanel>
-                                            </Button.Content>
-                                        </Button>
-                                        <Button Style="{DynamicResource MaterialDesignRaisedButton}"
-                                            materialDesign:ShadowAssist.ShadowDepth="Depth4"
-                                            Width="270" Height="300" Margin="2"
-                                            Background="WhiteSmoke">
-                                            <Button.Content>
-                                                <StackPanel>
-                                                    <TextBlock Text="Angel Pony Cake" FontSize="21" Foreground="Gray" />
-                                                    <Image Source="Images/img_test.jpeg">
-                                                    </Image>
-                                                    <Grid>
-                                                        <Button Style="{StaticResource MaterialDesignOutlinedButton}"
-                                                            ToolTip="MaterialDesignOutlinedButton"
-                                                            Content="Thêm vào giỏ  +"
-                                                            HorizontalAlignment="Left" />
-                                                        <TextBlock x:Name="moneyTextBlock4"
-                                                               HorizontalAlignment="Right" VerticalAlignment="Center"
-                                                               FontSize="21"
-                                                               Foreground="Red"
-                                                               Text="{Binding Converter={StaticResource MoneyFormatConverter}}" />
-                                                    </Grid>
-                                                </StackPanel>
-                                            </Button.Content>
-                                        </Button>
-                                        <Button Style="{DynamicResource MaterialDesignRaisedButton}"
-                                            materialDesign:ShadowAssist.ShadowDepth="Depth4"
-                                            Width="270" Height="300" Margin="2"
-                                            Background="WhiteSmoke">
-                                            <Button.Content>
-                                                <StackPanel>
-                                                    <TextBlock Text="Angel Pony Cake" FontSize="21" Foreground="Gray" />
-                                                    <Image Source="Images/img_test.jpeg">
-                                                    </Image>
-                                                    <Grid>
-                                                        <Button Style="{StaticResource MaterialDesignOutlinedButton}"
-                                                            ToolTip="MaterialDesignOutlinedButton"
-                                                            Content="Thêm vào giỏ  +"
-                                                            HorizontalAlignment="Left" />
-                                                        <TextBlock
-                                                               HorizontalAlignment="Right" VerticalAlignment="Center"
-                                                               FontSize="21"
-                                                               Foreground="Red"
-                                                               Text="{Binding Converter={StaticResource MoneyFormatConverter}}" />
-                                                    </Grid>
-                                                </StackPanel>
-                                            </Button.Content>
-                                        </Button>
-                                    </WrapPanel>
-                                </ScrollViewer>
+                                <ListView x:Name="cakeListView">
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel />
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Button Style="{StaticResource cakeButtonStyle}" />
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
                             </Grid>
                         </Grid>
                         <Grid x:Name="addCakeGrid" Margin="30,10" Visibility="Collapsed" Grid.ColumnSpan="2">
