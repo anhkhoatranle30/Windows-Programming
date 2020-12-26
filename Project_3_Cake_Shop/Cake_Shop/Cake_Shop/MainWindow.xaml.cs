@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LiveCharts;
 
 namespace Cake_Shop
 {
@@ -28,6 +29,8 @@ namespace Cake_Shop
         {
             InitializeComponent();
         }
+
+        public Func<ChartPoint, string> PointLabel { set; get; }
 
         private bool isBackToDetail = false;
 
@@ -116,6 +119,9 @@ namespace Cake_Shop
 
             showSplashScreenCheckBox.IsChecked = showSplash;
             var test = RevenueDAOSQLServer.GetAllMonths();
+
+            PointLabel = chartPoint =>
+              string.Format("{0}đ", chartPoint.Y);
         }
 
         private void menuToggleButton_Checked(object sender, RoutedEventArgs e)

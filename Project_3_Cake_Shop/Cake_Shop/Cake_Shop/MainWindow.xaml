@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cake_Shop"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="820" Width="1300"
         WindowStartupLocation="CenterScreen"
@@ -283,7 +283,7 @@
                                 </ListBox>
                             </Grid>
                             <Grid Grid.Row="1" Margin="0,1,0,0">
-                                <ListView x:Name="cakeListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2" Margin="0,0,0.4,-0.6">
+                                <ListView x:Name="cakeListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                                     <ListView.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <WrapPanel />
@@ -460,6 +460,10 @@
                                             </Binding>
                                         </TextBox.Text>
                                     </TextBox>
+                                    <DatePicker FontSize="21" Foreground="Black"
+                                                materialDesign:HintAssist.Hint="Pick Date"
+                                                Margin="0,20"
+                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Grid.Column="2" Margin="10" VerticalAlignment="Top">
@@ -490,7 +494,31 @@
                                 </StackPanel>
                             </StackPanel>
                         </Grid>
-                        <Grid  Visibility="Collapsed" x:Name="chartGrid">
+                        <Grid  Visibility="Visible" x:Name="chartGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Margin="20">
+                                <lvc:CartesianChart Name="cartesianChart" FontSize="16" Foreground="Black" Series="{Binding SeriesCollection}" LegendLocation="Bottom">
+                                    <lvc:CartesianChart.AxisY>
+                                        <lvc:Axis Title="Doanh thu" />
+                                    </lvc:CartesianChart.AxisY>
+                                    <lvc:CartesianChart.AxisX>
+                                        <lvc:Axis Title="Tháng" Labels="" />
+                                    </lvc:CartesianChart.AxisX>
+                                    <lvc:CartesianChart.DataTooltip>
+                                        <lvc:DefaultTooltip Background="Black" />
+                                    </lvc:CartesianChart.DataTooltip>
+                                </lvc:CartesianChart>
+                            </Grid>
+                            <Grid Grid.Column="1" Margin="20">
+                                <lvc:PieChart Name="pieChart" Foreground="White" FontSize="16" HoverPushOut="10" BorderThickness="0" LegendLocation="Bottom" Height="239">
+                                    <lvc:PieChart.DataTooltip>
+                                        <lvc:DefaultTooltip Background="Black" />
+                                    </lvc:PieChart.DataTooltip>
+                                </lvc:PieChart>
+                            </Grid>
                         </Grid>
                         <Grid  Visibility="Collapsed" x:Name="detailCakeGrid">
                             <Grid.ColumnDefinitions>
