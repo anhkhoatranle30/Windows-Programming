@@ -4,11 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cake_Shop"
-
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="MainWindow" Height="820" Width="1300"
-
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Loaded="Window_Loaded"
@@ -33,7 +31,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <local:MoneyFormatConverter x:Key="MoneyFormatConverter" />
-            <local:CakeImageConverter x:Key="CakeImageConverter"/>
+            <local:CakeImageConverter x:Key="CakeImageConverter" />
             <Style TargetType="{x:Type Button}">
                 <Setter Property="BorderThickness"
                     Value="0" />
@@ -57,9 +55,9 @@
             </Style>
             <Style x:Key="cakeButtonStyle" TargetType="{x:Type Button}">
                 <Setter Property="Width"
-                        Value="270" />
-                <Setter Property="Height"
                         Value="300" />
+                <Setter Property="Height"
+                        Value="310" />
                 <Setter Property="Cursor"
                     Value="Hand" />
                 <Setter Property="Template">
@@ -68,17 +66,20 @@
                             <Grid>
                                 <Button x:Name="cakeButton" Click="cakeButton_Click"
                                                 Style="{DynamicResource MaterialDesignRaisedButton}"
-                                                materialDesign:ShadowAssist.ShadowDepth="Depth4"
-                                                Width="270" Height="300" Margin="2"
+                                                Width="290" Height="300" Margin="1"
                                                 Background="WhiteSmoke">
                                     <Button.Content>
-                                        <StackPanel Width="240" Height="275">
-                                            <TextBlock Text="{Binding CakeName}" FontSize="21" Foreground="Gray" HorizontalAlignment="Center" Padding="4" />
-                                            <Image Source="{Binding CakeID, Converter={StaticResource CakeImageConverter}}" Width="190" Height="205" Stretch="Fill" />
+                                        <StackPanel Width="250" Height="275">
+                                            <TextBlock Text="{Binding CakeName}"
+                                                       FontSize="17" Foreground="Gray" HorizontalAlignment="Center"
+                                                       Padding="4" />
+                                            <Image Source="{Binding CakeID, Converter={StaticResource CakeImageConverter}}"
+                                                   Width="230"
+                                                   Height="205" Stretch="Fill" />
                                             <TextBlock x:Name="moneyTextBlock"
                                                        HorizontalAlignment="Right" VerticalAlignment="Bottom"
                                                        FontSize="20"
-                                                       Margin="0,10,1,0"
+                                                       Margin="0,13,1,0"
                                                        Foreground="Red"
                                                        Text="{Binding Price, Converter={StaticResource MoneyFormatConverter}}" />
                                         </StackPanel>
@@ -261,28 +262,28 @@
                         </materialDesign:Badged>
                     </Grid>
                     <Grid Grid.Row="1" Background="WhiteSmoke" Margin="5,0,5,30">
-                        <Grid x:Name="homeGrid" Visibility="Visible">
+                        <Grid x:Name="homeGrid" Visibility="Collapsed">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*" />
                                 <RowDefinition Height="12*" />
                             </Grid.RowDefinitions>
                             <Grid Background="LightGray">
                                 <ListBox Style="{StaticResource MaterialDesignChoiceChipListBox}"
-                                     x:Name="RadioButtonGroupChoiceChip"
-                                     HorizontalAlignment="Center" VerticalContentAlignment="Center"
+                                         x:Name="RadioButtonGroupChoiceChip"
+                                         HorizontalAlignment="Center" VerticalContentAlignment="Center"
+                                         Margin="0,5"
                                          SelectionChanged="RadioButtonGroupChoiceChip_SelectionChanged">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
-                                                <ListBoxItem Content="{Binding CatName}" Margin="30,0" VerticalAlignment="Center" FontSize="20" Height="50" />
+                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                                <TextBlock Text="{Binding CatName}" Margin="20,0" VerticalAlignment="Center" FontSize="16" />
                                             </StackPanel>
                                         </DataTemplate>
                                     </ListBox.ItemTemplate>
-                                    
                                 </ListBox>
                             </Grid>
                             <Grid Grid.Row="1" Margin="0,1,0,0">
-                                <ListView x:Name="cakeListView">
+                                <ListView x:Name="cakeListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2" Margin="0,0,0.4,-0.6">
                                     <ListView.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <WrapPanel />
@@ -307,20 +308,20 @@
                                 <StackPanel Grid.Column="0" Margin="30,0">
                                     <TextBox materialDesign:HintAssist.Hint="Tên sản phẩm" Margin="0,30" FontSize="21"
                                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                             VerticalAlignment="Center" 
-                                             Name="CakeNameTextBox"/>
+                                             VerticalAlignment="Center"
+                                             Name="CakeNameTextBox" />
                                     <TextBox materialDesign:HintAssist.Hint="Giá sản phẩm" Margin="0,30" FontSize="21"
                                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                             VerticalAlignment="Center" 
-                                             Name="CakePriceTextBox"/>
+                                             VerticalAlignment="Center"
+                                             Name="CakePriceTextBox" />
                                     <TextBox Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" Margin="0,40" FontSize="21"
                                              VerticalAlignment="Top"
                                              Height="auto"
                                              AcceptsReturn="True"
                                              TextWrapping="Wrap"
                                              VerticalScrollBarVisibility="Auto"
-                                             materialDesign:HintAssist.Hint="Mô tả sản phẩm" 
-                                             Name="CakeDescriptionTextBox"/>
+                                             materialDesign:HintAssist.Hint="Mô tả sản phẩm"
+                                             Name="CakeDescriptionTextBox" />
                                 </StackPanel>
                                 <StackPanel Grid.Column="1" Margin="30,0">
                                     <StackPanel Orientation="Horizontal" Margin="0,40,0,30">
@@ -371,14 +372,42 @@
                         </Grid>
                         <Grid x:Name="cartGrid" Visibility="Collapsed" Grid.ColumnSpan="2" Margin="0,0,0.4,0.4" Grid.RowSpan="2">
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.3*" />
                                 <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1.25*" />
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" Margin="10" VerticalAlignment="Top">
                                 <TextBlock Text="Giỏ hàng của bạn" Foreground="White" Background="Black"
                                            FontSize="21"
                                            Padding="115,10" />
+                                <Grid>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Width="200" Height="260" Margin="10,10,5,10">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="Images/img_test.jpeg" Stretch="Fill" />
+                                            </Button.Background>
+                                        </Button>
+                                        <StackPanel>
+                                            <TextBlock Text="Angel Pony Cake" TextWrapping="Wrap" FontSize="26" FontWeight="DemiBold" Margin="10" />
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Giá" FontSize="21" FontWeight="DemiBold" Margin="10" />
+                                                <TextBlock Text="160,000" FontSize="21" FontWeight="DemiBold" Margin="10" />
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Số lượng:" FontSize="21" FontWeight="DemiBold" Margin="10" />
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button x:Name="decButtonCart" Click="decButtonCart_Click" Style="{StaticResource MaterialDesignOutlinedButton}"
+                                        Content="-" FontSize="31" Padding="0,-5" HorizontalContentAlignment="Center" />
+                                                    <TextBlock x:Name="quantityTextBlockCart" Text="1" FontSize="31" Width="30" Padding="5" />
+                                                    <Button x:Name="incButtonCart" Click="incButtonCart_Click" Style="{StaticResource MaterialDesignOutlinedButton}"
+                                        Content="+" FontSize="31" Padding="0,-5" HorizontalContentAlignment="Center" />
+                                                </StackPanel>
+                                            </StackPanel>
+                                            <Button Style="{StaticResource MaterialDesignOutlinedButton}"
+                                                    Content="XÓA" FontSize="21" FontWeight="DemiBold" Margin="15" HorizontalAlignment="Left" Width="150" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
                             </StackPanel>
 
                             <StackPanel Grid.Column="1" Margin="10" VerticalAlignment="Top">
@@ -437,15 +466,60 @@
                                 <TextBlock Text="Đơn hàng của bạn" Foreground="White" Background="Black"
                                            FontSize="21"
                                            Padding="110,10" />
+                                <Grid  Margin="10">
+                                    <TextBlock Text="Tạm tính: " FontSize="26" FontWeight="Bold" Margin="10" />
+                                    <TextBlock Text="160,000" HorizontalAlignment="Right" Margin="10" FontSize="26" FontWeight="Bold" />
+                                </Grid>
+                                <Grid Margin="10">
+                                    <TextBlock Text="Phí vận chuyển: " FontSize="26" FontWeight="Bold" Margin="10" />
+                                    <Button Style="{StaticResource MaterialDesignOutlinedButton}"
+                                            Content="Nhấn để tính phí" HorizontalAlignment="Right" FontSize="21" FontWeight="DemiBold"
+                                            Name="calcFeeButton" Click="calcFeeButton_Click" />
+                                    <TextBlock  HorizontalAlignment="Right" FontSize="26" Margin="10" FontWeight="DemiBold"
+                                                Name="calcFeeTextBlock" />
+                                </Grid>
+                                <Grid Margin="10">
+                                    <TextBlock Text="Tổng: " FontSize="26" FontWeight="Bold" Margin="10" />
+                                    <TextBlock Text="160,000" HorizontalAlignment="Right" Margin="10" FontSize="26" FontWeight="Bold" />
+                                </Grid>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                                        Content="Thanh toán" HorizontalAlignment="Right" Margin="10,0" />
+                                    <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                                        Content="Hủy" Background="Red"  Foreground="White" HorizontalAlignment="Left" Margin="10,0" />
+                                </StackPanel>
                             </StackPanel>
                         </Grid>
-                        <Grid  Visibility="Collapsed" x:Name="chartGrid" Grid.ColumnSpan="2" Margin="0,0,0.4,0.4" Grid.RowSpan="2">
+                        <Grid  Visibility="Collapsed" x:Name="chartGrid">
                         </Grid>
-                        <Grid  Visibility="Collapsed" x:Name="detailCakeGrid" Grid.ColumnSpan="2" Margin="0,0,0.4,0.4" Grid.RowSpan="2">
+                        <Grid  Visibility="Collapsed" x:Name="detailCakeGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="Images/img_test.jpeg" Margin="40,20,20,20" />
+                            <StackPanel Grid.Column="1" Margin="0,40,20,40">
+                                <TextBlock Text="Angel Poney Cake" FontSize="31" FontWeight="Bold" Margin="0,0,0,20" />
+                                <TextBlock Text="750,000" FontSize="31" FontWeight="Bold" Margin="0,20" />
+                                <TextBlock Text="Mô tả" FontSize="31" FontWeight="Bold" Margin="0,10" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="1" Margin="20">
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="decButton" Click="decButton_Click" Style="{StaticResource MaterialDesignOutlinedButton}"
+                                        Content="-" FontSize="31" Padding="0,-5" HorizontalContentAlignment="Center" />
+                                    <TextBlock x:Name="quantityTextBlock" Text="1" FontSize="31" Width="30" Padding="5" />
+                                    <Button x:Name="incButton" Click="incButton_Click" Style="{StaticResource MaterialDesignOutlinedButton}"
+                                        Content="+" FontSize="31" Padding="0,-5" HorizontalContentAlignment="Center" />
+                                </StackPanel>
+                                <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                            Content="Thêm vào giỏ" Margin="40,0,20,0" />
+                            </StackPanel>
                         </Grid>
-                        <Grid  Visibility="Collapsed" x:Name="settingGrid" Grid.ColumnSpan="2" Margin="0,0,0.4,0.4" Grid.RowSpan="2">
+                        <Grid  Visibility="Collapsed" x:Name="settingGrid">
+                            <CheckBox Content="Hiện Splash Screen mỗi khi khởi động" FontSize="26" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30"
+                                      Name="showSplashScreenCheckBox" Checked="showSplashScreenCheckBox_Checked" Unchecked="showSplashScreenCheckBox_Unchecked" />
                         </Grid>
-                        <Grid Visibility="Collapsed" x:Name="aboutGrid" Grid.ColumnSpan="2" Margin="0,0,0.4,0.4" Grid.RowSpan="2">
+                        <Grid Visibility="Collapsed" x:Name="aboutGrid">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*" />
                                 <RowDefinition Height="1*" />

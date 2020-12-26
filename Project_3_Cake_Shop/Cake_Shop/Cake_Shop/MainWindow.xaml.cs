@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,6 @@ namespace Cake_Shop
         public MainWindow()
         {
             InitializeComponent();
-            
         }
 
         private bool isBackToDetail = false;
@@ -110,6 +110,11 @@ namespace Cake_Shop
             backButton.IsEnabled = false;
             cakeListView.ItemsSource = CakeDAOSQLServer.GetAll();
             RadioButtonGroupChoiceChip.ItemsSource = CategoryDAOSQLServer.GetAll();
+
+            var value = ConfigurationManager.AppSettings["showSplashScreen"];
+            var showSplash = bool.Parse(value);
+
+            showSplashScreenCheckBox.IsChecked = showSplash;
             var test = RevenueDAOSQLServer.GetAllMonths();
         }
 
@@ -130,11 +135,15 @@ namespace Cake_Shop
 
         private void cakeButton_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("nhan vao nut");
             isBackToDetail = true;
             backButton.IsEnabled = true;
             detailCakeGrid.Visibility = Visibility.Visible;
             homeGrid.Visibility = Visibility.Collapsed;
+
+            if (int.Parse(quantityTextBlock.Text) == 1)
+            {
+                decButton.IsEnabled = false;
+            }
         }
 
         private void addToCartButton_Click(object sender, RoutedEventArgs e)
@@ -144,7 +153,7 @@ namespace Cake_Shop
 
         private void cartButton_Click(object sender, RoutedEventArgs e)
         {
-            gridName.Text = "Giỏ hảng";
+            gridName.Text = "Giỏ hàng";
             cartGrid.Visibility = Visibility.Visible;
             homeGrid.Visibility = Visibility.Collapsed;
             addCakeGrid.Visibility = Visibility.Collapsed;
@@ -167,6 +176,7 @@ namespace Cake_Shop
             else
             {
                 cartGrid.Visibility = Visibility.Collapsed;
+                detailCakeGrid.Visibility = Visibility.Collapsed;
 
                 if (homeRadioButton.IsChecked == true)
                 {
@@ -216,6 +226,70 @@ namespace Cake_Shop
             var catID = selectedCategory.CatID;
 
             cakeListView.ItemsSource = CakeDAOSQLServer.GetAllByCatID(catID);
+        }
+
+        private void calcFeeButton_Click(object sender, RoutedEventArgs e)
+        {
+            calcFeeTextBlock.Text = "50,000";
+            calcFeeButton.Visibility = Visibility.Collapsed;
+        }
+
+        private void showSplashScreenCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(
+                ConfigurationUserLevel.None);
+            config.AppSettings.Settings["ShowSplashScreen"].Value = "true";
+            config.Save(ConfigurationSaveMode.Minimal);
+        }
+
+        private void showSplashScreenCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(
+                ConfigurationUserLevel.None);
+            config.AppSettings.Settings["ShowSplashScreen"].Value = "false";
+            config.Save(ConfigurationSaveMode.Minimal);
+        }
+
+        private void decButton_Click(object sender, RoutedEventArgs e)
+        {
+            int num = int.Parse(quantityTextBlock.Text);
+            num--;
+            quantityTextBlock.Text = num.ToString();
+
+            if (num == 1)
+            {
+                decButton.IsEnabled = false;
+            }
+        }
+
+        private void incButton_Click(object sender, RoutedEventArgs e)
+        {
+            int num = int.Parse(quantityTextBlock.Text);
+            num++;
+
+            quantityTextBlock.Text = num.ToString();
+            decButton.IsEnabled = true;
+        }
+
+        private void decButtonCart_Click(object sender, RoutedEventArgs e)
+        {
+            int num = int.Parse(quantityTextBlockCart.Text);
+            num--;
+            quantityTextBlockCart.Text = num.ToString();
+
+            if (num == 1)
+            {
+                decButtonCart.IsEnabled = false;
+            }
+        }
+
+        private void incButtonCart_Click(object sender, RoutedEventArgs e)
+        {
+            int num = int.Parse(quantityTextBlockCart.Text);
+            num++;
+
+            quantityTextBlockCart.Text = num.ToString();
+            decButtonCart.IsEnabled = true;
         }
     }
 }
