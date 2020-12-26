@@ -8,13 +8,33 @@
   </Connection>
 </Query>
 
-var query = ORDER_DETAILs.GroupJoin(CAKEs,
+var RevByCakeIDquery = ORDER_DETAILs.GroupJoin(CAKEs,
 								o => o.CakeID,
 								c => c.CakeID,
-								(o, gc) => new {o, gc}
+								(o, gc) => new { o, gc }
 								)
 							.SelectMany(r => r.gc.DefaultIfEmpty(),
-										(r, gc) => new {r.o.CakeID, Money = gc.Price * r.o.Quantity})
+										(r, gc) => new { r.o.CakeID, Money = gc.Price * r.o.Quantity })
 							.GroupBy(r => r.CakeID)
-							.Select(r => new {CakeID = r.Key, Money = r.Sum(rev => rev.Money)});
-query.Dump();
+							.Select(r => new { CakeID = r.Key, Money = r.Sum(rev => rev.Money) });
+var RevByCatIDquery = CAKEs.Join(RevByCakeIDquery,
+							c => c.CakeID,
+							q => q.CakeID,
+							(c, q) => new { CatID = c.CategoryID, Money = q.Money })
+				.GroupBy(r => r.CatID)
+				.Select(r => new 
+						{	
+							CatID = r.Key, 
+							Money = (int)r.Sum(i => i.Money) 
+						});
+var RevByCatNameQuery = RevByCatIDquery.GroupJoin(
+						CATEGORies,
+						q => q.CatID,
+						c => c.CatID,
+						(q, gr) => new {q, gr})
+						.SelectMany(r => r.gr.DefaultIfEmpty(),
+									(r, gr) => new {CatName = gr.CatName,
+													Money = r.q.Money});
+RevByCakeIDquery.Dump();
+RevByCatIDquery.Dump();
+RevByCatNameQuery.Dump();

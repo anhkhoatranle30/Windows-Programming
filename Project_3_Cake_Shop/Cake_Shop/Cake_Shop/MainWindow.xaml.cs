@@ -110,8 +110,7 @@ namespace Cake_Shop
             backButton.IsEnabled = false;
             cakeListView.ItemsSource = CakeDAOSQLServer.GetAll();
             RadioButtonGroupChoiceChip.ItemsSource = CategoryDAOSQLServer.GetAll();
-
-            RevenueDAOSQLServer.GetAllCategories();
+            var test = RevenueDAOSQLServer.GetAllMonths();
         }
 
         private void menuToggleButton_Checked(object sender, RoutedEventArgs e)
