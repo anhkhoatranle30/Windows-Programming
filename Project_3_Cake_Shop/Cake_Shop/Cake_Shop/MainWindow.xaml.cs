@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,8 @@ namespace Cake_Shop
             cartGrid.Visibility = Visibility.Collapsed;
             detailCakeGrid.Visibility = Visibility.Collapsed;
             gridName.Text = "Thêm sản phẩm";
+
+            AddGridCategoryComboBox.ItemsSource = CategoryDAOSQLServer.GetAll();
         }
 
         private void chartRadioButton_Checked(object sender, RoutedEventArgs e)
@@ -105,6 +108,8 @@ namespace Cake_Shop
             homeRadioButton.IsChecked = true;
             badgedCart.Badge = null;
             backButton.IsEnabled = false;
+            cakeListView.ItemsSource = CakeDAOSQLServer.GetAll();
+            RadioButtonGroupChoiceChip.ItemsSource = CategoryDAOSQLServer.GetAll();
         }
 
         private void menuToggleButton_Checked(object sender, RoutedEventArgs e)
@@ -201,6 +206,15 @@ namespace Cake_Shop
         private void Grid_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             menuToggleButton.IsChecked = false;
+        }
+
+        private void RadioButtonGroupChoiceChip_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var listbox = sender as ListBox;
+            var selectedCategory = listbox.SelectedItem as CATEGORY;
+            var catID = selectedCategory.CatID;
+
+            cakeListView.ItemsSource = CakeDAOSQLServer.GetAllByCatID(catID);
         }
     }
 }

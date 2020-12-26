@@ -24,5 +24,15 @@ namespace Cake_Shop.DAO
             var result = db.CAKEs.Find(cakeID);
             return result;
         }
+        public static BindingList<CAKE> GetAllByCatID(int catID)
+        {
+            var db = new WP_Project3_CakeShopAppEntities();
+            var cakeList = db.CAKEs.ToList();
+            var query = cakeList
+                                .Where(c => c.CategoryID == catID)
+                                .ToList();
+            var result = new BindingList<CAKE>(query);
+            return result;
+        }
     }
 }

@@ -33,6 +33,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <local:MoneyFormatConverter x:Key="MoneyFormatConverter" />
+            <local:CakeImageConverter x:Key="CakeImageConverter"/>
             <Style TargetType="{x:Type Button}">
                 <Setter Property="BorderThickness"
                     Value="0" />
@@ -72,14 +73,14 @@
                                                 Background="WhiteSmoke">
                                     <Button.Content>
                                         <StackPanel Width="240" Height="275">
-                                            <TextBlock Text="Angel Pony Cake" FontSize="21" Foreground="Gray" HorizontalAlignment="Center" Padding="4" />
-                                            <Image Source="{Binding}" Width="190" Height="205" Stretch="Fill" />
+                                            <TextBlock Text="{Binding CakeName}" FontSize="21" Foreground="Gray" HorizontalAlignment="Center" Padding="4" />
+                                            <Image Source="{Binding CakeID, Converter={StaticResource CakeImageConverter}}" Width="190" Height="205" Stretch="Fill" />
                                             <TextBlock x:Name="moneyTextBlock"
                                                        HorizontalAlignment="Right" VerticalAlignment="Bottom"
                                                        FontSize="20"
                                                        Margin="0,10,1,0"
                                                        Foreground="Red"
-                                                       Text="{Binding Converter={StaticResource MoneyFormatConverter}}" />
+                                                       Text="{Binding Price, Converter={StaticResource MoneyFormatConverter}}" />
                                         </StackPanel>
                                     </Button.Content>
                                 </Button>
@@ -268,12 +269,16 @@
                             <Grid Background="LightGray">
                                 <ListBox Style="{StaticResource MaterialDesignChoiceChipListBox}"
                                      x:Name="RadioButtonGroupChoiceChip"
-                                     HorizontalAlignment="Center" VerticalContentAlignment="Center">
-                                    <ListBoxItem Content="Cakes" Margin="30,0" VerticalAlignment="Center" FontSize="20" Height="50" />
-                                    <ListBoxItem Content="Cakes1" Margin="30,0" VerticalAlignment="Center" FontSize="20" Height="50" />
-                                    <ListBoxItem Content="Cakes2" Margin="30,0" VerticalAlignment="Center" FontSize="20" Height="50" />
-                                    <ListBoxItem Content="Cakes3" Margin="30,0" VerticalAlignment="Center" FontSize="20" Height="50" />
-                                    <ListBoxItem Content="Cakes4" Margin="30,0" VerticalAlignment="Center" FontSize="20" Height="50" />
+                                     HorizontalAlignment="Center" VerticalContentAlignment="Center"
+                                         SelectionChanged="RadioButtonGroupChoiceChip_SelectionChanged">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <ListBoxItem Content="{Binding CatName}" Margin="30,0" VerticalAlignment="Center" FontSize="20" Height="50" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                    
                                 </ListBox>
                             </Grid>
                             <Grid Grid.Row="1" Margin="0,1,0,0">
@@ -302,27 +307,32 @@
                                 <StackPanel Grid.Column="0" Margin="30,0">
                                     <TextBox materialDesign:HintAssist.Hint="Tên sản phẩm" Margin="0,30" FontSize="21"
                                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                             VerticalAlignment="Center" />
+                                             VerticalAlignment="Center" 
+                                             Name="CakeNameTextBox"/>
                                     <TextBox materialDesign:HintAssist.Hint="Giá sản phẩm" Margin="0,30" FontSize="21"
                                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                             VerticalAlignment="Center" />
+                                             VerticalAlignment="Center" 
+                                             Name="CakePriceTextBox"/>
                                     <TextBox Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" Margin="0,40" FontSize="21"
                                              VerticalAlignment="Top"
                                              Height="auto"
                                              AcceptsReturn="True"
                                              TextWrapping="Wrap"
                                              VerticalScrollBarVisibility="Auto"
-                                             materialDesign:HintAssist.Hint="Mô tả sản phẩm" />
+                                             materialDesign:HintAssist.Hint="Mô tả sản phẩm" 
+                                             Name="CakeDescriptionTextBox"/>
                                 </StackPanel>
                                 <StackPanel Grid.Column="1" Margin="30,0">
                                     <StackPanel Orientation="Horizontal" Margin="0,40,0,30">
                                         <materialDesign:PackIcon Kind="PlusCircle" Width="30" Height="30" Foreground="Brown" />
                                         <TextBlock Text="Loại sản phẩm" FontSize="21" VerticalAlignment="Center" Margin="5,0" Foreground="Black" />
                                     </StackPanel>
-                                    <ComboBox FontSize="21">
-                                        <ComboBoxItem Content="Test" />
-                                        <ComboBoxItem  Content="Test2" />
-                                        <ComboBoxItem Content="Test3" />
+                                    <ComboBox FontSize="21" Name="AddGridCategoryComboBox">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <ComboBoxItem Content="{Binding CatName}" />
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
                                     </ComboBox>
                                     <StackPanel Orientation="Horizontal" Margin="0,80,0,0">
                                         <Button x:Name="addCakeImgButton" Click="addCakeImgButton_Click">
