@@ -112,7 +112,7 @@
                     <TextBlock Text="Cake Shop" FontSize="40"  VerticalAlignment="Center" Padding="15" HorizontalAlignment="Center" FontWeight="ExtraBold" />
                 </Border>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="25,3,25,18">
-                    <Button Margin="5">
+                    <Button x:Name="minimizeWindowButton" Click="minimizeWindowButton_Click" Margin="5">
                         <Button.Content>
                             <Image Source="Images/icon_mini_screen.png" />
                         </Button.Content>

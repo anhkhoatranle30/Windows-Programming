@@ -291,5 +291,10 @@ namespace Cake_Shop
             quantityTextBlockCart.Text = num.ToString();
             decButtonCart.IsEnabled = true;
         }
+
+        private void minimizeWindowButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
     }
 }
