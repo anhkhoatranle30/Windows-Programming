@@ -26,6 +26,10 @@ namespace Cake_Shop.DAO
         }
         public static BindingList<CAKE> GetAllByCatID(int catID)
         {
+            if(catID == -1)
+            {
+                return GetAll();
+            }
             var db = new WP_Project3_CakeShopAppEntities();
             var cakeList = db.CAKEs.ToList();
             var query = cakeList
