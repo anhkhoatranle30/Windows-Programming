@@ -1,0 +1,43 @@
+Thông tin thú vị một loại bánh
+Doanh thu theo tháng => có transaction
+tỉ lệ doanh thu theo loại bánh
+
+CAKE {
+	CakeID
+	CakeName
+	Description
+	Price
+	Image
+
+	CategoryID
+}
+
+CATEGORY {
+	CatID
+	CatName
+}
+
+PAYMENT {
+	PaymentType
+	PaymentMethod
+	IsShipping
+}
+
+ORDERS {
+	OrderID
+	CustomerName
+	PhoneNumber
+	HomeAddress
+	CreatedAt
+
+	PaymentType
+}
+
+ORDER_DETAIL {
+	OrderID
+	CakeID
+	Quantity
+}
+
+
+
