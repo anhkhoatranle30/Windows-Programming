@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Cake_Shop.DAO;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace Cake_Shop
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
         private bool isBackToDetail = false;
