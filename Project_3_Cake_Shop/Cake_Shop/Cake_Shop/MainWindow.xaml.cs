@@ -27,7 +27,6 @@ namespace Cake_Shop
         }
 
         private bool isBackToDetail = false;
-        private bool isBackToCart = false;
 
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
@@ -103,7 +102,7 @@ namespace Cake_Shop
         {
             homeRadioButton.IsChecked = true;
             badgedCart.Badge = null;
-            moneyTextBlock1.DataContext = "6270000";
+            backButton.IsEnabled = false;
         }
 
         private void menuToggleButton_Checked(object sender, RoutedEventArgs e)
