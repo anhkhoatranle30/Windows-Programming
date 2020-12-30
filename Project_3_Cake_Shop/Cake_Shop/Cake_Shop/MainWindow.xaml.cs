@@ -289,30 +289,13 @@ namespace Cake_Shop
             decButton.IsEnabled = true;
         }
 
-        private void decButtonCart_Click(object sender, RoutedEventArgs e)
-        {
-            int num = int.Parse(quantityTextBlockCart.Text);
-            num--;
-            quantityTextBlockCart.Text = num.ToString();
-
-            if (num == 1)
-            {
-                decButtonCart.IsEnabled = false;
-            }
-        }
-
-        private void incButtonCart_Click(object sender, RoutedEventArgs e)
-        {
-            int num = int.Parse(quantityTextBlockCart.Text);
-            num++;
-
-            quantityTextBlockCart.Text = num.ToString();
-            decButtonCart.IsEnabled = true;
-        }
-
         private void minimizeWindowButton_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
+        }
+
+        private void cakeCartItemButton_Click(object sender, RoutedEventArgs e)
+        {
         }
 
 

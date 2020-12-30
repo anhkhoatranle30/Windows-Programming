@@ -93,6 +93,35 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <Style x:Key="cartItemStyle" TargetType="{x:Type Button}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <StackPanel Orientation="Horizontal">
+                                <Button Width="200" Height="260" Margin="10,10,5,10">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="Images/img_test.jpeg" Stretch="Fill" />
+                                    </Button.Background>
+                                </Button>
+                                <StackPanel>
+                                    <TextBlock Name="cakeNameTextBlock" TextWrapping="Wrap" FontSize="26" FontWeight="DemiBold" Margin="10" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Giá" FontSize="21" FontWeight="DemiBold" Margin="10" />
+                                        <TextBlock x:Name="cakeCostTextBlock" FontSize="21" FontWeight="DemiBold" Margin="10" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Số lượng:" FontSize="21" FontWeight="DemiBold" Margin="10" />
+                                        <TextBlock x:Name="quantityTextBlock" Text="" FontSize="21" FontWeight="DemiBold" Margin="10" />
+                                    </StackPanel>
+
+                                    <Button x:Name="deleteItemCartButton" Style="{StaticResource MaterialDesignOutlinedButton}"
+                                                Content="XÓA" FontSize="21" FontWeight="DemiBold" Margin="15" HorizontalAlignment="Left" Width="150" />
+                                </StackPanel>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </Window.Resources>
 
@@ -331,7 +360,7 @@
                                     <ComboBox FontSize="21" Name="AddGridCategoryComboBox">
                                         <ComboBox.ItemTemplate>
                                             <DataTemplate>
-                                                <ComboBoxItem Content="{Binding CatName}" />
+                                                <TextBlock Text="{Binding CatName}" />
                                             </DataTemplate>
                                         </ComboBox.ItemTemplate>
                                     </ComboBox>
@@ -353,24 +382,17 @@
                                         </materialDesign:Card>
                                     </Grid>
                                 </StackPanel>
-                                <StackPanel Grid.Column="2" Margin="30,0">
-                                    <TextBox materialDesign:HintAssist.Hint="Tên sản phẩm" Margin="0,20" FontSize="21"
-                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                             VerticalAlignment="Center" />
-                                    <TextBox materialDesign:HintAssist.Hint="Giá sản phẩm" Margin="0,20" FontSize="21"
-                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                             VerticalAlignment="Center" />
-                                    <TextBox Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" Margin="0,20" FontSize="21"
-                                             VerticalAlignment="Top"
-                                             Height="auto"
-                                             AcceptsReturn="True"
-                                             TextWrapping="Wrap"
-                                             VerticalScrollBarVisibility="Auto"
-                                             materialDesign:HintAssist.Hint="Mô tả sản phẩm" />
+                                <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="30,0">
+                                    <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                            x:Name="addCakeButton"
+                                            Content="Thêm bánh" FontSize="26" Margin="10,0,10,20" Height="60" />
+                                    <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                            x:Name="cancleButton"
+                                            Content="Hủy" FontSize="26" Margin="10,20,10,0" Height="60" />
                                 </StackPanel>
                             </Grid>
                         </Grid>
-                        <Grid x:Name="cartGrid" Visibility="Collapsed" Grid.ColumnSpan="2" Margin="0,0,0.4,0.4" Grid.RowSpan="2">
+                        <Grid x:Name="cartGrid" Visibility="Visible" Grid.ColumnSpan="2" Margin="0,0,0.4,0.4" Grid.RowSpan="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1.3*" />
                                 <ColumnDefinition Width="1*" />
@@ -380,34 +402,18 @@
                                 <TextBlock Text="Giỏ hàng của bạn" Foreground="White" Background="Black"
                                            FontSize="21"
                                            Padding="115,10" />
-                                <Grid>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Button Width="200" Height="260" Margin="10,10,5,10">
-                                            <Button.Background>
-                                                <ImageBrush ImageSource="Images/img_test.jpeg" Stretch="Fill" />
-                                            </Button.Background>
-                                        </Button>
-                                        <StackPanel>
-                                            <TextBlock Text="Angel Pony Cake" TextWrapping="Wrap" FontSize="26" FontWeight="DemiBold" Margin="10" />
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="Giá" FontSize="21" FontWeight="DemiBold" Margin="10" />
-                                                <TextBlock Text="160,000" FontSize="21" FontWeight="DemiBold" Margin="10" />
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="Số lượng:" FontSize="21" FontWeight="DemiBold" Margin="10" />
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Button x:Name="decButtonCart" Click="decButtonCart_Click" Style="{StaticResource MaterialDesignOutlinedButton}"
-                                        Content="-" FontSize="31" Padding="0,-5" HorizontalContentAlignment="Center" />
-                                                    <TextBlock x:Name="quantityTextBlockCart" Text="1" FontSize="31" Width="30" Padding="5" />
-                                                    <Button x:Name="incButtonCart" Click="incButtonCart_Click" Style="{StaticResource MaterialDesignOutlinedButton}"
-                                        Content="+" FontSize="31" Padding="0,-5" HorizontalContentAlignment="Center" />
-                                                </StackPanel>
-                                            </StackPanel>
-                                            <Button Style="{StaticResource MaterialDesignOutlinedButton}"
-                                                    Content="XÓA" FontSize="21" FontWeight="DemiBold" Margin="15" HorizontalAlignment="Left" Width="150" />
-                                        </StackPanel>
-                                    </StackPanel>
-                                </Grid>
+                                <ListView x:Name="cartListView">
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="cartItemButton" Style="{StaticResource cartItemStyle}" />
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
                             </StackPanel>
 
                             <StackPanel Grid.Column="1" Margin="10" VerticalAlignment="Top">
@@ -461,7 +467,7 @@
                                         </TextBox.Text>
                                     </TextBox>
                                     <DatePicker FontSize="21" Foreground="Black"
-                                                materialDesign:HintAssist.Hint="Pick Date"
+                                                materialDesign:HintAssist.Hint="Ngày xuất đơn"
                                                 Margin="0,20"
                                                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                                 </StackPanel>
@@ -494,7 +500,7 @@
                                 </StackPanel>
                             </StackPanel>
                         </Grid>
-                        <Grid  Visibility="Visible" x:Name="chartGrid">
+                        <Grid  Visibility="Collapsed" x:Name="chartGrid">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*" />
                                 <ColumnDefinition Width="1*" />
