@@ -403,7 +403,7 @@
                                 <TextBlock Text="Giỏ hàng của bạn" Foreground="White" Background="Black"
                                            FontSize="21"
                                            Padding="115,10" />
-                                <ListView x:Name="cartListView">
+                                <ListView x:Name="cartListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="600" ScrollViewer.VerticalScrollBarVisibility="Auto">
                                     <ListView.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <StackPanel />
@@ -539,7 +539,7 @@
                             </Grid.ColumnDefinitions>
                             <Image x:Name="detailCakeImage" Source="{Binding Converter={StaticResource CakeImageConverter}}" Margin="40,20,20,20" />
                             <StackPanel Grid.Column="1" Margin="0,40,20,40">
-                                <TextBlock Name="detailCakeID" Visibility="Collapsed"/>
+                                <TextBlock Name="detailCakeID" Visibility="Collapsed" />
                                 <TextBlock x:Name="detailCakeName" Text="Angel Poney Cake" FontSize="36" TextWrapping="Wrap" FontWeight="Bold" Margin="0,0,0,20" />
                                 <StackPanel Orientation="Horizontal">
 
