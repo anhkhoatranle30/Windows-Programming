@@ -14,13 +14,13 @@ namespace Cake_Shop.DAO
         {
             return new BindingList<CartItem>();
         }
-        public static void AddCakeToCart(ref BindingList<CartItem> cart, CAKE cake)
+        public static void AddCakeToCart(ref BindingList<CartItem> cart, CAKE cake, int quantity = 1)
         {
             for(int i = 0; i < cart.Count; i++)
             {
                 if(cart[i].CakeItem.CakeID == cake.CakeID)
                 {
-                    cart[i].Quantity++;
+                    cart[i].Quantity += quantity;
                     return;
                 }
             }
@@ -28,7 +28,7 @@ namespace Cake_Shop.DAO
             cart.Add(new CartItem()
             {
                 CakeItem = cake,
-                Quantity = 1
+                Quantity = quantity
             });
         }
         public static int CalcCakePay(BindingList<CartItem> cart)

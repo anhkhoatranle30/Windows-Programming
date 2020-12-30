@@ -171,9 +171,15 @@ namespace Cake_Shop
         {
             //retrieve the selected cake
             int cakeIDSelected;
+            int quantity = 1;
             if(sender.GetType() == typeof(string))
             {
                 cakeIDSelected = int.Parse(sender as string);
+            }
+            else if(sender.GetType() == typeof(CartItem))
+            {
+                cakeIDSelected = ((CartItem)sender).CakeItem.CakeID;
+                quantity = ((CartItem)sender).Quantity;
             }
             else
             {
@@ -183,12 +189,10 @@ namespace Cake_Shop
             var cakeSelected = CakeDAOSQLServer.GetByID(cakeIDSelected);
 
             //Add cake to cart
-            CartItemDAO.AddCakeToCart(ref _cartList, cakeSelected);
+            CartItemDAO.AddCakeToCart(ref _cartList, cakeSelected, quantity);
             cartListView.ItemsSource = _cartList;
             //Money part
-            int cakePay = CartItemDAO.CalcCakePay(_cartList);
-            cakePayTextBlock.Text = cakePay.ToString();
-            totalPayTextBlock.Text = (cakePay + 50000).ToString();
+            CalcMoneyCart();
         }
 
         private void cartButton_Click(object sender, RoutedEventArgs e)
@@ -322,7 +326,15 @@ namespace Cake_Shop
 
         private void detailAddToCart_Click(object sender, RoutedEventArgs e)
         {
-            addToCartButton_Click(detailCakeID.Text, e);
+            int selectedCakeID = int.Parse(detailCakeID.Text);
+            var selectedCake = CakeDAOSQLServer.GetByID(selectedCakeID);
+            int quantity = int.Parse(quantityTextBlock.Text);
+            var sentEvent = new CartItem()
+            {
+                CakeItem = selectedCake,
+                Quantity = quantity
+            };
+            addToCartButton_Click(sentEvent, e);
         }
 
         private void payButton_Click(object sender, RoutedEventArgs e)
@@ -345,17 +357,20 @@ namespace Cake_Shop
         private void canclePayButton_Click(object sender, RoutedEventArgs e)
         {
         }
-
+        public void CalcMoneyCart()
+        {
+            //Money part
+            int cakePay = CartItemDAO.CalcCakePay(_cartList);
+            cakePayTextBlock.Text = cakePay.ToString();
+            totalPayTextBlock.Text = (cakePay + 50000).ToString();
+        }
         private void deleteItemCartButton_Click(object sender, RoutedEventArgs e)
         {
             var dataContext = ((Button)sender).DataContext;
             var selectedCartItem = (CartItem)dataContext;
             _cartList.Remove(selectedCartItem);
             cartListView.ItemsSource = _cartList;
-            //Money part
-            int cakePay = CartItemDAO.CalcCakePay(_cartList);
-            cakePayTextBlock.Text = cakePay.ToString();
-            totalPayTextBlock.Text = (cakePay + 50000).ToString();
+            CalcMoneyCart();
         }
     }
 }
