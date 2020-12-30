@@ -431,8 +431,16 @@ namespace Cake_Shop
             badgedCart.Badge = CartItemDAO.CountTotalItems(_cartList);
             //Money part
             int cakePay = CartItemDAO.CalcCakePay(_cartList);
+
             cakePayTextBlock.DataContext = cakePay.ToString();
-            totalPayTextBlock.DataContext = cakePay.ToString();
+            if(calcFeeButton.Visibility == Visibility.Collapsed)
+            {
+                totalPayTextBlock.DataContext = (cakePay + 50000).ToString();
+            }
+            else
+            {
+                totalPayTextBlock.DataContext = (cakePay).ToString();
+            }
         }
 
         private void deleteItemCartButton_Click(object sender, RoutedEventArgs e)
