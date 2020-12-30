@@ -38,5 +38,23 @@ namespace Cake_Shop.DAO
             var result = new BindingList<CAKE>(query);
             return result;
         }
+        public static string ImagesFolder(int cakeID)
+        {
+            var result = AppDomain.CurrentDomain.BaseDirectory + "\\Images\\Cakes\\" + cakeID.ToString();
+            return result;
+        }
+        public static int Add(CAKE cake)
+        {
+            var db = new WP_Project3_CakeShopAppEntities();
+            int nextCakeID = db.CAKEs.ToList().Last().CakeID + 1;
+            if (cake.CakeID != nextCakeID)
+            {
+                cake.CakeID = nextCakeID;
+            }
+            db.CAKEs.Add(cake);
+            db.SaveChanges();
+
+            return nextCakeID;
+        }
     }
 }

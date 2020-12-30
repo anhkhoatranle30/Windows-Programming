@@ -24,6 +24,8 @@ namespace Cake_Shop.Business
             }
         }
 
+        
+
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }
