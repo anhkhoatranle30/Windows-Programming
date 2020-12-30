@@ -124,7 +124,6 @@ namespace Cake_Shop
             var showSplash = bool.Parse(value);
 
             showSplashScreenCheckBox.IsChecked = showSplash;
-            var test = RevenueDAOSQLServer.GetAllMonths();
 
             PointLabel = chartPoint =>
               string.Format("{0}đ", chartPoint.Y);
@@ -328,6 +327,19 @@ namespace Cake_Shop
 
         private void payButton_Click(object sender, RoutedEventArgs e)
         {
+            var newOrder = new ORDER()
+            {
+                CustomerName = CustomerNameTextBox.Text,
+                PhoneNumber = PhoneNumberTextBox.Text,
+                HomeAddress = AddressTextBox.Text,
+                CreatedAt = DateTime.Now,
+                PaymentType = 2
+            };
+
+            int addedOrderID = OrderDAOSQLServer.Add(newOrder);
+            OrderDetailSQLServer.Add(_cartList, addedOrderID);
+
+            MessageBox.Show("Them thanh cong");
         }
 
         private void canclePayButton_Click(object sender, RoutedEventArgs e)
