@@ -106,8 +106,8 @@
                                 <StackPanel>
                                     <TextBlock Text="{Binding CakeItem.CakeName}" Name="cakeNameTextBlock" TextWrapping="Wrap" FontSize="26" FontWeight="DemiBold" Margin="10" />
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Giá" FontSize="21" FontWeight="DemiBold" Margin="10" />
-                                        <TextBlock Text="{Binding CakeItem.Price}" x:Name="cakeCostTextBlock" FontSize="21" FontWeight="DemiBold" Margin="10" />
+                                        <TextBlock Text="Giá:" FontSize="21" FontWeight="DemiBold" Margin="10" />
+                                        <TextBlock Text="{Binding CakeItem.Price, Converter={StaticResource MoneyFormatConverter}}" x:Name="cakeCostTextBlock" FontSize="21" FontWeight="DemiBold" Margin="10" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="Số lượng:" FontSize="21" FontWeight="DemiBold" Margin="10" />
@@ -471,6 +471,7 @@
                                         </TextBox.Text>
                                     </TextBox>
                                     <DatePicker FontSize="21" Foreground="Black"
+                                                Name="datePicker"
                                                 materialDesign:HintAssist.Hint="Ngày xuất đơn"
                                                 Margin="0,20"
                                                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
@@ -482,22 +483,22 @@
                                            Padding="110,10" />
                                 <Grid  Margin="10">
                                     <TextBlock Text="Tạm tính: " FontSize="26" FontWeight="Bold" Margin="10" />
-                                    <TextBlock x:Name="cakePayTextBlock" Text="160,000" HorizontalAlignment="Right" Margin="10" FontSize="26" FontWeight="Bold" />
+                                    <TextBlock x:Name="cakePayTextBlock" Text="{Binding Converter={StaticResource MoneyFormatConverter}}" HorizontalAlignment="Right" Margin="10" FontSize="26" FontWeight="Bold" />
                                 </Grid>
                                 <Grid Margin="10">
                                     <TextBlock Text="Phí vận chuyển: " FontSize="26" FontWeight="Bold" Margin="10" />
                                     <Button Style="{StaticResource MaterialDesignOutlinedButton}"
                                             Content="Nhấn để tính phí" HorizontalAlignment="Right" FontSize="21" FontWeight="DemiBold"
                                             Name="calcFeeButton" Click="calcFeeButton_Click" />
-                                    <TextBlock  HorizontalAlignment="Right" FontSize="26" Margin="10" FontWeight="DemiBold"
-                                                Name="calcFeeTextBlock" />
+                                    <TextBlock  HorizontalAlignment="Right" FontSize="26" Margin="10" FontWeight="DemiBold" Visibility="Collapsed"
+                                                Name="calcFeeTextBlock" Text="50,000" />
                                 </Grid>
                                 <Grid Margin="10">
                                     <TextBlock Text="Tổng: " FontSize="26" FontWeight="Bold" Margin="10" />
-                                    <TextBlock x:Name="totalPayTextBlock" Text="160,000" HorizontalAlignment="Right" Margin="10" FontSize="26" FontWeight="Bold" />
+                                    <TextBlock x:Name="totalPayTextBlock" Text="{Binding Converter={StaticResource MoneyFormatConverter}}" HorizontalAlignment="Right" Margin="10" FontSize="26" FontWeight="Bold" />
                                 </Grid>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                    <Button Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                                    <Button Style="{StaticResource MaterialDesignFlatMidBgButton}" IsEnabled="False"
                                             Name="payButton" Click="payButton_Click"
                                         Content="Thanh toán" HorizontalAlignment="Right" Margin="10,0" />
                                     <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
@@ -520,14 +521,14 @@
                                         <lvc:Axis Title="Tháng" Labels="" />
                                     </lvc:CartesianChart.AxisX>
                                     <lvc:CartesianChart.DataTooltip>
-                                        <lvc:DefaultTooltip Background="Black" />
+                                        <lvc:DefaultTooltip Background="Gray" />
                                     </lvc:CartesianChart.DataTooltip>
                                 </lvc:CartesianChart>
                             </Grid>
-                            <Grid Grid.Column="1" Margin="20">
-                                <lvc:PieChart Name="pieChart" Foreground="White" FontSize="16" HoverPushOut="10" BorderThickness="0" LegendLocation="Bottom" Height="239">
+                            <Grid Grid.Column="1" Margin="20" Background="WhiteSmoke">
+                                <lvc:PieChart Name="pieChart" Foreground="Black" FontSize="16" HoverPushOut="10" BorderThickness="0" LegendLocation="Bottom" Height="239">
                                     <lvc:PieChart.DataTooltip>
-                                        <lvc:DefaultTooltip Background="Black" />
+                                        <lvc:DefaultTooltip Background="Gray" />
                                     </lvc:PieChart.DataTooltip>
                                 </lvc:PieChart>
                             </Grid>

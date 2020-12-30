@@ -309,7 +309,15 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 485 "..\..\MainWindow.xaml"
+        #line 474 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.DatePicker datePicker;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 486 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBlock cakePayTextBlock;
         
@@ -317,7 +325,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 491 "..\..\MainWindow.xaml"
+        #line 492 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button calcFeeButton;
         
@@ -325,7 +333,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 493 "..\..\MainWindow.xaml"
+        #line 494 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBlock calcFeeTextBlock;
         
@@ -333,7 +341,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 497 "..\..\MainWindow.xaml"
+        #line 498 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBlock totalPayTextBlock;
         
@@ -341,7 +349,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 501 "..\..\MainWindow.xaml"
+        #line 502 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button payButton;
         
@@ -349,7 +357,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 504 "..\..\MainWindow.xaml"
+        #line 505 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button canclePayButton;
         
@@ -357,7 +365,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 509 "..\..\MainWindow.xaml"
+        #line 510 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Grid chartGrid;
         
@@ -365,7 +373,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 515 "..\..\MainWindow.xaml"
+        #line 516 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal LiveCharts.Wpf.CartesianChart cartesianChart;
         
@@ -373,7 +381,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 528 "..\..\MainWindow.xaml"
+        #line 529 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal LiveCharts.Wpf.PieChart pieChart;
         
@@ -381,7 +389,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 535 "..\..\MainWindow.xaml"
+        #line 536 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Grid detailCakeGrid;
         
@@ -389,7 +397,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 540 "..\..\MainWindow.xaml"
+        #line 541 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Image detailCakeImage;
         
@@ -397,7 +405,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 542 "..\..\MainWindow.xaml"
+        #line 543 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBlock detailCakeID;
         
@@ -405,7 +413,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 543 "..\..\MainWindow.xaml"
+        #line 544 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBlock detailCakeName;
         
@@ -413,7 +421,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 547 "..\..\MainWindow.xaml"
+        #line 548 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBlock detailCakePrice;
         
@@ -421,7 +429,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 550 "..\..\MainWindow.xaml"
+        #line 551 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBlock detailCakeDescription;
         
@@ -429,7 +437,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 554 "..\..\MainWindow.xaml"
+        #line 555 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button decButton;
         
@@ -437,7 +445,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 556 "..\..\MainWindow.xaml"
+        #line 557 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBlock quantityTextBlock;
         
@@ -445,7 +453,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 557 "..\..\MainWindow.xaml"
+        #line 558 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button incButton;
         
@@ -453,7 +461,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 561 "..\..\MainWindow.xaml"
+        #line 562 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button detailAddToCart;
         
@@ -461,7 +469,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 564 "..\..\MainWindow.xaml"
+        #line 565 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Grid settingGrid;
         
@@ -469,7 +477,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 566 "..\..\MainWindow.xaml"
+        #line 567 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.CheckBox showSplashScreenCheckBox;
         
@@ -477,7 +485,7 @@ namespace Cake_Shop {
         #line hidden
         
         
-        #line 568 "..\..\MainWindow.xaml"
+        #line 569 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Grid aboutGrid;
         
@@ -750,117 +758,120 @@ namespace Cake_Shop {
             this.AddressTextBox = ((System.Windows.Controls.TextBox)(target));
             return;
             case 39:
-            this.cakePayTextBlock = ((System.Windows.Controls.TextBlock)(target));
+            this.datePicker = ((System.Windows.Controls.DatePicker)(target));
             return;
             case 40:
+            this.cakePayTextBlock = ((System.Windows.Controls.TextBlock)(target));
+            return;
+            case 41:
             this.calcFeeButton = ((System.Windows.Controls.Button)(target));
             
-            #line 491 "..\..\MainWindow.xaml"
+            #line 492 "..\..\MainWindow.xaml"
             this.calcFeeButton.Click += new System.Windows.RoutedEventHandler(this.calcFeeButton_Click);
             
             #line default
             #line hidden
             return;
-            case 41:
+            case 42:
             this.calcFeeTextBlock = ((System.Windows.Controls.TextBlock)(target));
             return;
-            case 42:
+            case 43:
             this.totalPayTextBlock = ((System.Windows.Controls.TextBlock)(target));
             return;
-            case 43:
+            case 44:
             this.payButton = ((System.Windows.Controls.Button)(target));
             
-            #line 501 "..\..\MainWindow.xaml"
+            #line 502 "..\..\MainWindow.xaml"
             this.payButton.Click += new System.Windows.RoutedEventHandler(this.payButton_Click);
             
             #line default
             #line hidden
             return;
-            case 44:
+            case 45:
             this.canclePayButton = ((System.Windows.Controls.Button)(target));
             
-            #line 504 "..\..\MainWindow.xaml"
+            #line 505 "..\..\MainWindow.xaml"
             this.canclePayButton.Click += new System.Windows.RoutedEventHandler(this.canclePayButton_Click);
             
             #line default
             #line hidden
             return;
-            case 45:
+            case 46:
             this.chartGrid = ((System.Windows.Controls.Grid)(target));
             return;
-            case 46:
+            case 47:
             this.cartesianChart = ((LiveCharts.Wpf.CartesianChart)(target));
             return;
-            case 47:
+            case 48:
             this.pieChart = ((LiveCharts.Wpf.PieChart)(target));
             return;
-            case 48:
+            case 49:
             this.detailCakeGrid = ((System.Windows.Controls.Grid)(target));
             return;
-            case 49:
+            case 50:
             this.detailCakeImage = ((System.Windows.Controls.Image)(target));
             return;
-            case 50:
+            case 51:
             this.detailCakeID = ((System.Windows.Controls.TextBlock)(target));
             return;
-            case 51:
+            case 52:
             this.detailCakeName = ((System.Windows.Controls.TextBlock)(target));
             return;
-            case 52:
+            case 53:
             this.detailCakePrice = ((System.Windows.Controls.TextBlock)(target));
             return;
-            case 53:
+            case 54:
             this.detailCakeDescription = ((System.Windows.Controls.TextBlock)(target));
             return;
-            case 54:
+            case 55:
             this.decButton = ((System.Windows.Controls.Button)(target));
             
-            #line 554 "..\..\MainWindow.xaml"
+            #line 555 "..\..\MainWindow.xaml"
             this.decButton.Click += new System.Windows.RoutedEventHandler(this.decButton_Click);
             
             #line default
             #line hidden
             return;
-            case 55:
+            case 56:
             this.quantityTextBlock = ((System.Windows.Controls.TextBlock)(target));
             return;
-            case 56:
+            case 57:
             this.incButton = ((System.Windows.Controls.Button)(target));
             
-            #line 557 "..\..\MainWindow.xaml"
+            #line 558 "..\..\MainWindow.xaml"
             this.incButton.Click += new System.Windows.RoutedEventHandler(this.incButton_Click);
             
             #line default
             #line hidden
             return;
-            case 57:
+            case 58:
             this.detailAddToCart = ((System.Windows.Controls.Button)(target));
             
-            #line 561 "..\..\MainWindow.xaml"
+            #line 562 "..\..\MainWindow.xaml"
             this.detailAddToCart.Click += new System.Windows.RoutedEventHandler(this.detailAddToCart_Click);
             
             #line default
             #line hidden
             return;
-            case 58:
+            case 59:
             this.settingGrid = ((System.Windows.Controls.Grid)(target));
             return;
-            case 59:
+            case 60:
             this.showSplashScreenCheckBox = ((System.Windows.Controls.CheckBox)(target));
             
-            #line 566 "..\..\MainWindow.xaml"
+            #line 567 "..\..\MainWindow.xaml"
             this.showSplashScreenCheckBox.Checked += new System.Windows.RoutedEventHandler(this.showSplashScreenCheckBox_Checked);
             
             #line default
             #line hidden
             
-            #line 566 "..\..\MainWindow.xaml"
+            #line 567 "..\..\MainWindow.xaml"
             this.showSplashScreenCheckBox.Unchecked += new System.Windows.RoutedEventHandler(this.showSplashScreenCheckBox_Unchecked);
             
             #line default
             #line hidden
             return;
-            case 60:
+            case 61:
             this.aboutGrid = ((System.Windows.Controls.Grid)(target));
             return;
             }

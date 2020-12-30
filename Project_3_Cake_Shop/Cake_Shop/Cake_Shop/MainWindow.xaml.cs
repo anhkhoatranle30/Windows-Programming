@@ -74,7 +74,7 @@ namespace Cake_Shop
             //pieChart
             pieChart.Series.Clear();
             var revenueByCat = RevenueDAOSQLServer.GetAllCategories();
-            foreach(var revEachCat in revenueByCat)
+            foreach (var revEachCat in revenueByCat)
             {
                 pieChart.Series.Add(new PieSeries()
                 {
@@ -82,7 +82,6 @@ namespace Cake_Shop
                     Values = new ChartValues<double>() { revEachCat.Value }
                 });
             }
-
 
             //cartesianChart
             SeriesCollection = new SeriesCollection();
@@ -95,6 +94,8 @@ namespace Cake_Shop
                     Values = new ChartValues<double>() { revEachMonth.Value }
                 });
             }
+
+            cartesianChart.Series = SeriesCollection;
         }
 
         private void settingRadioButton_Checked(object sender, RoutedEventArgs e)
@@ -201,11 +202,11 @@ namespace Cake_Shop
             //retrieve the selected cake
             int cakeIDSelected;
             int quantity = 1;
-            if(sender.GetType() == typeof(string))
+            if (sender.GetType() == typeof(string))
             {
                 cakeIDSelected = int.Parse(sender as string);
             }
-            else if(sender.GetType() == typeof(CartItem))
+            else if (sender.GetType() == typeof(CartItem))
             {
                 cakeIDSelected = ((CartItem)sender).CakeItem.CakeID;
                 quantity = ((CartItem)sender).Quantity;
@@ -303,8 +304,11 @@ namespace Cake_Shop
 
         private void calcFeeButton_Click(object sender, RoutedEventArgs e)
         {
-            calcFeeTextBlock.Text = "50,000";
+            calcFeeTextBlock.Visibility = Visibility.Visible;
             calcFeeButton.Visibility = Visibility.Collapsed;
+            payButton.IsEnabled = true;
+            int cakePay = CartItemDAO.CalcCakePay(_cartList);
+            totalPayTextBlock.DataContext = (cakePay + 50000).ToString();
         }
 
         private void showSplashScreenCheckBox_Checked(object sender, RoutedEventArgs e)
@@ -368,23 +372,58 @@ namespace Cake_Shop
 
         private void payButton_Click(object sender, RoutedEventArgs e)
         {
-            var newOrder = new ORDER()
+            if (CustomerNameTextBox.Text == "" || PhoneNumberTextBox.Text == "" || AddressTextBox.Text == "" || datePicker.Text == "")
             {
-                CustomerName = CustomerNameTextBox.Text,
-                PhoneNumber = PhoneNumberTextBox.Text,
-                HomeAddress = AddressTextBox.Text,
-                CreatedAt = DateTime.Now,
-                PaymentType = 2
-            };
+                CustomerNameTextBox.Text = null;
+                PhoneNumberTextBox.Text = null;
+                AddressTextBox.Text = null;
+                datePicker.Text = null;
+                MessageBox.Show("Vui lòng điền các trường thông tin",
+               "Thông báo",
+               MessageBoxButton.OK,
+               MessageBoxImage.Warning);
+            }
+            else
+            {
+                var newOrder = new ORDER()
+                {
+                    CustomerName = CustomerNameTextBox.Text,
+                    PhoneNumber = PhoneNumberTextBox.Text,
+                    HomeAddress = AddressTextBox.Text,
+                    CreatedAt = DateTime.Now,
+                    PaymentType = 2
+                };
 
-            int addedOrderID = OrderDAOSQLServer.Add(newOrder);
-            OrderDetailSQLServer.Add(_cartList, addedOrderID);
+                int addedOrderID = OrderDAOSQLServer.Add(newOrder);
+                OrderDetailSQLServer.Add(_cartList, addedOrderID);
 
-            MessageBox.Show("Them thanh cong");
+                MessageBox.Show("Thêm thành công",
+                    "Thông báo",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+            }
         }
 
         private void canclePayButton_Click(object sender, RoutedEventArgs e)
         {
+            var choice = MessageBox.Show("Bạn chắc muốn hủy bỏ?",
+                                "Thông báo",
+                                MessageBoxButton.YesNo,
+                                MessageBoxImage.Question);
+
+            if (choice == MessageBoxResult.Yes)
+            {
+                cartListView.ItemsSource = null;
+                CustomerNameTextBox.Text = null;
+                PhoneNumberTextBox.Text = null;
+                AddressTextBox.Text = null;
+                datePicker.Text = null;
+                cakePayTextBlock.Text = null;
+                totalPayTextBlock.Text = null;
+                calcFeeButton.Visibility = Visibility.Visible;
+                calcFeeTextBlock.Visibility = Visibility.Collapsed;
+                payButton.IsEnabled = false;
+            }
         }
         public void UpdateCart()
         {
@@ -392,9 +431,10 @@ namespace Cake_Shop
             badgedCart.Badge = CartItemDAO.CountTotalItems(_cartList);
             //Money part
             int cakePay = CartItemDAO.CalcCakePay(_cartList);
-            cakePayTextBlock.Text = cakePay.ToString();
-            totalPayTextBlock.Text = (cakePay + 50000).ToString();
+            cakePayTextBlock.DataContext = cakePay.ToString();
+            totalPayTextBlock.DataContext = cakePay.ToString();
         }
+
         private void deleteItemCartButton_Click(object sender, RoutedEventArgs e)
         {
             var dataContext = ((Button)sender).DataContext;
