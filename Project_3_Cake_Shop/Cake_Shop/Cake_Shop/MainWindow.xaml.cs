@@ -157,7 +157,7 @@ namespace Cake_Shop
 
             detailCakeImage.DataContext = cakeSelected.CakeID;
             detailCakeName.Text = cakeSelected.CakeName;
-            detailCakePrice.Text = cakeSelected.Price.ToString();
+            detailCakePrice.DataContext = cakeSelected.Price.ToString();
             detailCakeDescription.Text = cakeSelected.Description;
             //Debug.Write("a");
         }
@@ -297,7 +297,6 @@ namespace Cake_Shop
         private void cakeCartItemButton_Click(object sender, RoutedEventArgs e)
         {
         }
-
 
         private void detailAddToCart_Click(object sender, RoutedEventArgs e)
         {

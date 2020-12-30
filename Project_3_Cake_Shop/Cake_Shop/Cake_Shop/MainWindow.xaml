@@ -494,8 +494,10 @@
                                 </Grid>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                     <Button Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                                            Name="payButton" Click="payButton_Click"
                                         Content="Thanh toán" HorizontalAlignment="Right" Margin="10,0" />
                                     <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                                            Name="canclePayButton" Click="canclePayButton_Click"
                                         Content="Hủy" Background="Red"  Foreground="White" HorizontalAlignment="Left" Margin="10,0" />
                                 </StackPanel>
                             </StackPanel>
@@ -533,10 +535,14 @@
                             </Grid.ColumnDefinitions>
                             <Image x:Name="detailCakeImage" Source="{Binding Converter={StaticResource CakeImageConverter}}" Margin="40,20,20,20" />
                             <StackPanel Grid.Column="1" Margin="0,40,20,40">
-                                <TextBlock x:Name="detailCakeName" Text="Angel Poney Cake" FontSize="31" FontWeight="Bold" Margin="0,0,0,20" />
-                                <TextBlock x:Name="detailCakePrice" Text="750,000" FontSize="31" FontWeight="Bold" Margin="0,20" />
-                                <TextBlock Text="Mô tả" FontSize="31" FontWeight="Bold" Margin="0,10" />
-                                <TextBlock x:Name="detailCakeDescription" FontSize="31" FontWeight="Bold" Margin="0,20" />
+                                <TextBlock x:Name="detailCakeName" Text="Angel Poney Cake" FontSize="36" TextWrapping="Wrap" FontWeight="Bold" Margin="0,0,0,20" />
+                                <StackPanel Orientation="Horizontal">
+
+                                    <TextBlock Text="Giá: " FontSize="31" FontWeight="Bold" />
+                                    <TextBlock x:Name="detailCakePrice" Foreground="Red" Text="{Binding Converter={StaticResource MoneyFormatConverter}}" FontSize="31" FontWeight="Bold" />
+                                </StackPanel>
+                                <TextBlock Text="Mô tả:" FontSize="31" FontWeight="Bold"  Margin="0,20,0,0" />
+                                <TextBlock x:Name="detailCakeDescription" TextAlignment="Justify" FontSize="24" TextWrapping="Wrap" FontWeight="DemiBold" Margin="0,5,0,20" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="1" Margin="20">
                                 <StackPanel Orientation="Horizontal">
@@ -547,7 +553,7 @@
                                         Content="+" FontSize="31" Padding="0,-5" HorizontalContentAlignment="Center" />
                                 </StackPanel>
                                 <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-                                            Content="Thêm vào giỏ" Margin="40,0,20,0" x:Name="detailAddToCart" Click="detailAddToCart_Click"/>
+                                            Content="Thêm vào giỏ" Margin="40,0,20,0" x:Name="detailAddToCart" Click="detailAddToCart_Click" />
                             </StackPanel>
                         </Grid>
                         <Grid  Visibility="Collapsed" x:Name="settingGrid">
