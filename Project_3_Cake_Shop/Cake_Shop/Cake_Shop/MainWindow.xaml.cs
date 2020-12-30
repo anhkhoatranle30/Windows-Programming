@@ -27,7 +27,8 @@ namespace Cake_Shop
     /// </summary>
     public partial class MainWindow : Window
     {
-        BindingList<CartItem> _cartList;
+        private BindingList<CartItem> _cartList;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -66,6 +67,29 @@ namespace Cake_Shop
             cartGrid.Visibility = Visibility.Collapsed;
             detailCakeGrid.Visibility = Visibility.Collapsed;
             gridName.Text = "Thống kê";
+
+            ////pieChart
+            //pieChart.Series.Clear();
+            //foreach (var member in memberList)
+            //{
+            //    pieChart.Series.Add(new PieSeries()
+            //    {
+            //        Title = member.MemberName,
+            //        Values = new ChartValues<double> { MyUtils.calcTotalCostMember(tripIDSelected, member.MemberID) }
+            //    });
+            //}
+
+            ////cartesianChart
+            //SeriesCollection = new SeriesCollection();
+            //var costList = MyUtils.findCostNameAndCostByTripID(tripIDSelected);
+            //foreach (var cost in costList)
+            //{
+            //    SeriesCollection.Add(new ColumnSeries()
+            //    {
+            //        Title = cost.CostName,
+            //        Values = new ChartValues<double>() { (int)cost.Cost }
+            //    });
+            //}
         }
 
         private void settingRadioButton_Checked(object sender, RoutedEventArgs e)
@@ -171,7 +195,7 @@ namespace Cake_Shop
         {
             //retrieve the selected cake
             int cakeIDSelected;
-            if(sender.GetType() == typeof(string))
+            if (sender.GetType() == typeof(string))
             {
                 cakeIDSelected = int.Parse(sender as string);
             }
