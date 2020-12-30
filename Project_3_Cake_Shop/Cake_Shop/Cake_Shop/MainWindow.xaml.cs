@@ -302,5 +302,13 @@ namespace Cake_Shop
         {
             addToCartButton_Click(sender, e);
         }
+
+        private void payButton_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void canclePayButton_Click(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }
