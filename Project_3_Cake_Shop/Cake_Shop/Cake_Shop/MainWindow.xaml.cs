@@ -19,6 +19,7 @@ using System.Windows.Shapes;
 using LiveCharts;
 using Cake_Shop.Business;
 using System.ComponentModel;
+using LiveCharts.Wpf;
 
 namespace Cake_Shop
 {
@@ -35,6 +36,7 @@ namespace Cake_Shop
         }
 
         public Func<ChartPoint, string> PointLabel { set; get; }
+        public SeriesCollection SeriesCollection { get; private set; }
 
         private bool isBackToDetail = false;
 
@@ -68,28 +70,30 @@ namespace Cake_Shop
             detailCakeGrid.Visibility = Visibility.Collapsed;
             gridName.Text = "Thống kê";
 
-            ////pieChart
-            //pieChart.Series.Clear();
-            //foreach (var member in memberList)
-            //{
-            //    pieChart.Series.Add(new PieSeries()
-            //    {
-            //        Title = member.MemberName,
-            //        Values = new ChartValues<double> { MyUtils.calcTotalCostMember(tripIDSelected, member.MemberID) }
-            //    });
-            //}
+            //pieChart
+            pieChart.Series.Clear();
+            var revenueByCat = RevenueDAOSQLServer.GetAllCategories();
+            foreach(var revEachCat in revenueByCat)
+            {
+                pieChart.Series.Add(new PieSeries()
+                {
+                    Title = revEachCat.Name,
+                    Values = new ChartValues<double>() { revEachCat.Value }
+                });
+            }
 
-            ////cartesianChart
-            //SeriesCollection = new SeriesCollection();
-            //var costList = MyUtils.findCostNameAndCostByTripID(tripIDSelected);
-            //foreach (var cost in costList)
-            //{
-            //    SeriesCollection.Add(new ColumnSeries()
-            //    {
-            //        Title = cost.CostName,
-            //        Values = new ChartValues<double>() { (int)cost.Cost }
-            //    });
-            //}
+
+            //cartesianChart
+            SeriesCollection = new SeriesCollection();
+            var revenueByMonths = RevenueDAOSQLServer.GetAllMonths();
+            foreach (var revEachMonth in revenueByMonths)
+            {
+                SeriesCollection.Add(new ColumnSeries()
+                {
+                    Title = revEachMonth.Name,
+                    Values = new ChartValues<double>() { revEachMonth.Value }
+                });
+            }
         }
 
         private void settingRadioButton_Checked(object sender, RoutedEventArgs e)
