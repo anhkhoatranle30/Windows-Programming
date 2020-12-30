@@ -17,6 +17,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LiveCharts;
+using Cake_Shop.Business;
+using System.ComponentModel;
 
 namespace Cake_Shop
 {
@@ -25,6 +27,7 @@ namespace Cake_Shop
     /// </summary>
     public partial class MainWindow : Window
     {
+        BindingList<CartItem> _cartList;
         public MainWindow()
         {
             InitializeComponent();
@@ -111,6 +114,9 @@ namespace Cake_Shop
             homeRadioButton.IsChecked = true;
             badgedCart.Badge = null;
             backButton.IsEnabled = false;
+
+            _cartList = CartItemDAO.CreateList();
+
             cakeListView.ItemsSource = CakeDAOSQLServer.GetAll();
             RadioButtonGroupChoiceChip.ItemsSource = CategoryDAOSQLServer.GetAll();
 
@@ -155,18 +161,35 @@ namespace Cake_Shop
             var cakeIDSelected = ((CAKE)dataContext).CakeID;
             var cakeSelected = CakeDAOSQLServer.GetByID(cakeIDSelected);
 
+            detailCakeID.Text = cakeIDSelected.ToString();
             detailCakeImage.DataContext = cakeSelected.CakeID;
             detailCakeName.Text = cakeSelected.CakeName;
             detailCakePrice.DataContext = cakeSelected.Price.ToString();
             detailCakeDescription.Text = cakeSelected.Description;
-            //Debug.Write("a");
         }
 
         private void addToCartButton_Click(object sender, RoutedEventArgs e)
         {
-            var dataContext = ((Button)sender).DataContext;
-            var cakeIDSelected = ((CAKE)dataContext).CakeID;
+            //retrieve the selected cake
+            int cakeIDSelected;
+            if(sender.GetType() == typeof(string))
+            {
+                cakeIDSelected = int.Parse(sender as string);
+            }
+            else
+            {
+                var dataContext = ((Button)sender).DataContext;
+                cakeIDSelected = ((CAKE)dataContext).CakeID;
+            }
             var cakeSelected = CakeDAOSQLServer.GetByID(cakeIDSelected);
+
+            //Add cake to cart
+            CartItemDAO.AddCakeToCart(ref _cartList, cakeSelected);
+            cartListView.ItemsSource = _cartList;
+            //Money part
+            int cakePay = CartItemDAO.CalcCakePay(_cartList);
+            cakePayTextBlock.Text = cakePay.ToString();
+            totalPayTextBlock.Text = (cakePay + 50000).ToString();
         }
 
         private void cartButton_Click(object sender, RoutedEventArgs e)
@@ -300,7 +323,7 @@ namespace Cake_Shop
 
         private void detailAddToCart_Click(object sender, RoutedEventArgs e)
         {
-            addToCartButton_Click(sender, e);
+            addToCartButton_Click(detailCakeID.Text, e);
         }
 
         private void payButton_Click(object sender, RoutedEventArgs e)
@@ -309,6 +332,18 @@ namespace Cake_Shop
 
         private void canclePayButton_Click(object sender, RoutedEventArgs e)
         {
+        }
+
+        private void deleteItemCartButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dataContext = ((Button)sender).DataContext;
+            var selectedCartItem = (CartItem)dataContext;
+            _cartList.Remove(selectedCartItem);
+            cartListView.ItemsSource = _cartList;
+            //Money part
+            int cakePay = CartItemDAO.CalcCakePay(_cartList);
+            cakePayTextBlock.Text = cakePay.ToString();
+            totalPayTextBlock.Text = (cakePay + 50000).ToString();
         }
     }
 }

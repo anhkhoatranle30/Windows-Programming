@@ -100,22 +100,23 @@
                             <StackPanel Orientation="Horizontal">
                                 <Button Width="200" Height="260" Margin="10,10,5,10">
                                     <Button.Background>
-                                        <ImageBrush ImageSource="Images/img_test.jpeg" Stretch="Fill" />
+                                        <ImageBrush ImageSource="{Binding CakeItem.CakeID, Converter={StaticResource CakeImageConverter}}" Stretch="Fill" />
                                     </Button.Background>
                                 </Button>
                                 <StackPanel>
-                                    <TextBlock Name="cakeNameTextBlock" TextWrapping="Wrap" FontSize="26" FontWeight="DemiBold" Margin="10" />
+                                    <TextBlock Text="{Binding CakeItem.CakeName}" Name="cakeNameTextBlock" TextWrapping="Wrap" FontSize="26" FontWeight="DemiBold" Margin="10" />
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="Giá" FontSize="21" FontWeight="DemiBold" Margin="10" />
-                                        <TextBlock x:Name="cakeCostTextBlock" FontSize="21" FontWeight="DemiBold" Margin="10" />
+                                        <TextBlock Text="{Binding CakeItem.Price}" x:Name="cakeCostTextBlock" FontSize="21" FontWeight="DemiBold" Margin="10" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="Số lượng:" FontSize="21" FontWeight="DemiBold" Margin="10" />
-                                        <TextBlock x:Name="quantityTextBlock" Text="" FontSize="21" FontWeight="DemiBold" Margin="10" />
+                                        <TextBlock Text="{Binding Quantity}"  x:Name="quantityTextBlock" FontSize="21" FontWeight="DemiBold" Margin="10" />
                                     </StackPanel>
 
                                     <Button x:Name="deleteItemCartButton" Style="{StaticResource MaterialDesignOutlinedButton}"
-                                                Content="XÓA" FontSize="21" FontWeight="DemiBold" Margin="15" HorizontalAlignment="Left" Width="150" />
+                                            Click="deleteItemCartButton_Click"
+                                            Content="XÓA" FontSize="21" FontWeight="DemiBold" Margin="15" HorizontalAlignment="Left" Width="150" />
                                 </StackPanel>
                             </StackPanel>
                         </ControlTemplate>
@@ -478,7 +479,7 @@
                                            Padding="110,10" />
                                 <Grid  Margin="10">
                                     <TextBlock Text="Tạm tính: " FontSize="26" FontWeight="Bold" Margin="10" />
-                                    <TextBlock Text="160,000" HorizontalAlignment="Right" Margin="10" FontSize="26" FontWeight="Bold" />
+                                    <TextBlock x:Name="cakePayTextBlock" Text="160,000" HorizontalAlignment="Right" Margin="10" FontSize="26" FontWeight="Bold" />
                                 </Grid>
                                 <Grid Margin="10">
                                     <TextBlock Text="Phí vận chuyển: " FontSize="26" FontWeight="Bold" Margin="10" />
@@ -490,7 +491,7 @@
                                 </Grid>
                                 <Grid Margin="10">
                                     <TextBlock Text="Tổng: " FontSize="26" FontWeight="Bold" Margin="10" />
-                                    <TextBlock Text="160,000" HorizontalAlignment="Right" Margin="10" FontSize="26" FontWeight="Bold" />
+                                    <TextBlock x:Name="totalPayTextBlock" Text="160,000" HorizontalAlignment="Right" Margin="10" FontSize="26" FontWeight="Bold" />
                                 </Grid>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                     <Button Style="{StaticResource MaterialDesignFlatMidBgButton}"
@@ -535,6 +536,7 @@
                             </Grid.ColumnDefinitions>
                             <Image x:Name="detailCakeImage" Source="{Binding Converter={StaticResource CakeImageConverter}}" Margin="40,20,20,20" />
                             <StackPanel Grid.Column="1" Margin="0,40,20,40">
+                                <TextBlock Name="detailCakeID" Visibility="Collapsed"/>
                                 <TextBlock x:Name="detailCakeName" Text="Angel Poney Cake" FontSize="36" TextWrapping="Wrap" FontWeight="Bold" Margin="0,0,0,20" />
                                 <StackPanel Orientation="Horizontal">
 
