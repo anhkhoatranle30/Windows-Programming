@@ -13,6 +13,10 @@ namespace Cake_Shop
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if(value == null)
+            {
+                return new object();
+            }
             var cakeID = (int)value;
             var cakeImage = CakeDAOSQLServer.GetByID(cakeID).Image;
             var result = AppDomain.CurrentDomain.BaseDirectory + "Images\\Cakes\\" + cakeID.ToString() + "\\" + cakeImage;

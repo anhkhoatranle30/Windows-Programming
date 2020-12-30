@@ -150,11 +150,23 @@ namespace Cake_Shop
             {
                 decButton.IsEnabled = false;
             }
+
+            var dataContext = ((Button)sender).DataContext;
+            var cakeIDSelected = ((CAKE)dataContext).CakeID;
+            var cakeSelected = CakeDAOSQLServer.GetByID(cakeIDSelected);
+
+            detailCakeImage.DataContext = cakeSelected.CakeID;
+            detailCakeName.Text = cakeSelected.CakeName;
+            detailCakePrice.Text = cakeSelected.Price.ToString();
+            detailCakeDescription.Text = cakeSelected.Description;
+            //Debug.Write("a");
         }
 
         private void addToCartButton_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("nhan vao nut them vao gio");
+            var dataContext = ((Button)sender).DataContext;
+            var cakeIDSelected = ((CAKE)dataContext).CakeID;
+            var cakeSelected = CakeDAOSQLServer.GetByID(cakeIDSelected);
         }
 
         private void cartButton_Click(object sender, RoutedEventArgs e)
@@ -301,6 +313,12 @@ namespace Cake_Shop
         private void minimizeWindowButton_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
+        }
+
+
+        private void detailAddToCart_Click(object sender, RoutedEventArgs e)
+        {
+            addToCartButton_Click(sender, e);
         }
     }
 }
