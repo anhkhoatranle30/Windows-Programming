@@ -240,6 +240,7 @@ namespace Cake_Shop
             homeGrid.Visibility = Visibility.Collapsed;
             addCakeGrid.Visibility = Visibility.Collapsed;
             settingGrid.Visibility = Visibility.Collapsed;
+            chartGrid.Visibility = Visibility.Collapsed;
             aboutGrid.Visibility = Visibility.Collapsed;
             detailCakeGrid.Visibility = Visibility.Collapsed;
             updateCakeGrid.Visibility = Visibility.Collapsed;
@@ -446,6 +447,7 @@ namespace Cake_Shop
                 payButton.IsEnabled = false;
             }
         }
+
         public void UpdateCart()
         {
             //Number of items in cart
@@ -454,7 +456,7 @@ namespace Cake_Shop
             int cakePay = CartItemDAO.CalcCakePay(_cartList);
 
             cakePayTextBlock.DataContext = cakePay.ToString();
-            if(calcFeeButton.Visibility == Visibility.Collapsed)
+            if (calcFeeButton.Visibility == Visibility.Collapsed)
             {
                 totalPayTextBlock.DataContext = (cakePay + 50000).ToString();
             }
@@ -508,6 +510,17 @@ namespace Cake_Shop
 
         private void updateCakeImgButton_Click(object sender, RoutedEventArgs e)
         {
+            OpenFileDialog fd = new OpenFileDialog();
+
+            if (fd.ShowDialog() == true)
+            {
+                ImageBrush myBrush = new ImageBrush();
+                Image image = new Image();
+                image.Source = new BitmapImage(
+                    new Uri(fd.FileName));
+                myBrush.ImageSource = image.Source;
+                UpdateCakeImgCard.Background = myBrush;
+            }
         }
     }
 }
