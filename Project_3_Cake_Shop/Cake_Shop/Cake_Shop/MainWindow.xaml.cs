@@ -40,6 +40,8 @@ namespace Cake_Shop
 
         private bool isBackToDetail = false;
 
+        private bool isUpdate = false;
+
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -48,6 +50,7 @@ namespace Cake_Shop
         private void homeRadioButton_Checked(object sender, RoutedEventArgs e)
         {
             homeGrid.Visibility = Visibility.Visible;
+            updateCakeGrid.Visibility = Visibility.Collapsed;
             cartGrid.Visibility = Visibility.Collapsed;
             detailCakeGrid.Visibility = Visibility.Collapsed;
             gridName.Text = "Trang Chủ";
@@ -55,7 +58,9 @@ namespace Cake_Shop
 
         private void addCakeRadioButton_Checked(object sender, RoutedEventArgs e)
         {
+            isUpdate = false;
             addCakeGrid.Visibility = Visibility.Visible;
+            updateCakeGrid.Visibility = Visibility.Collapsed;
             cartGrid.Visibility = Visibility.Collapsed;
             detailCakeGrid.Visibility = Visibility.Collapsed;
             gridName.Text = "Thêm sản phẩm";
@@ -66,6 +71,7 @@ namespace Cake_Shop
         private void chartRadioButton_Checked(object sender, RoutedEventArgs e)
         {
             chartGrid.Visibility = Visibility.Visible;
+            updateCakeGrid.Visibility = Visibility.Collapsed;
             cartGrid.Visibility = Visibility.Collapsed;
             detailCakeGrid.Visibility = Visibility.Collapsed;
             gridName.Text = "Thống kê";
@@ -100,6 +106,7 @@ namespace Cake_Shop
         private void settingRadioButton_Checked(object sender, RoutedEventArgs e)
         {
             settingGrid.Visibility = Visibility.Visible;
+            updateCakeGrid.Visibility = Visibility.Collapsed;
             cartGrid.Visibility = Visibility.Collapsed;
             detailCakeGrid.Visibility = Visibility.Collapsed;
             gridName.Text = "Cài đặt";
@@ -108,6 +115,7 @@ namespace Cake_Shop
         private void aboutRadioButton_Checked(object sender, RoutedEventArgs e)
         {
             aboutGrid.Visibility = Visibility.Visible;
+            updateCakeGrid.Visibility = Visibility.Collapsed;
             cartGrid.Visibility = Visibility.Collapsed;
             detailCakeGrid.Visibility = Visibility.Collapsed;
             gridName.Text = "Chúng tôi";
@@ -233,18 +241,31 @@ namespace Cake_Shop
             settingGrid.Visibility = Visibility.Collapsed;
             aboutGrid.Visibility = Visibility.Collapsed;
             detailCakeGrid.Visibility = Visibility.Collapsed;
+            updateCakeGrid.Visibility = Visibility.Collapsed;
 
             backButton.IsEnabled = true;
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            if (isBackToDetail && cartGrid.Visibility == Visibility.Visible)
+            if (isBackToDetail && cartGrid.Visibility == Visibility.Visible && isUpdate)
+            {
+                cartGrid.Visibility = Visibility.Collapsed;
+                updateCakeGrid.Visibility = Visibility.Visible;
+            }
+            else if (isBackToDetail && cartGrid.Visibility == Visibility.Visible)
             {
                 cartGrid.Visibility = Visibility.Collapsed;
                 detailCakeGrid.Visibility = Visibility.Visible;
 
                 isBackToDetail = false;
+            }
+            else if (isBackToDetail && isUpdate)
+            {
+                updateCakeGrid.Visibility = Visibility.Collapsed;
+                detailCakeGrid.Visibility = Visibility.Visible;
+
+                isUpdate = false;
             }
             else
             {
@@ -440,6 +461,18 @@ namespace Cake_Shop
             _cartList.Remove(selectedCartItem);
             cartListView.ItemsSource = _cartList;
             CalcMoneyCart();
+        }
+
+        private void updateButton_Click(object sender, RoutedEventArgs e)
+        {
+            isUpdate = true;
+            updateCakeGrid.Visibility = Visibility.Visible;
+            detailCakeGrid.Visibility = Visibility.Collapsed;
+            gridName.Text = "Sửa sản phẩm";
+        }
+
+        private void updateCakeImgButton_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }
