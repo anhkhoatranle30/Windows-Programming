@@ -40,6 +40,16 @@ namespace Cake_Shop.DAO
             }
             return result;
         }
+
+        public static int CountTotalItems(BindingList<CartItem> cartList)
+        {
+            int result = 0;
+            foreach (var item in cartList)
+            {
+                result += item.Quantity;
+            }
+            return result;
+        }
     }
     
 }

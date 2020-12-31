@@ -20,6 +20,7 @@ using LiveCharts;
 using Cake_Shop.Business;
 using System.ComponentModel;
 using LiveCharts.Wpf;
+using Cake_Shop.MyUtils;
 
 namespace Cake_Shop
 {
@@ -229,7 +230,7 @@ namespace Cake_Shop
             CartItemDAO.AddCakeToCart(ref _cartList, cakeSelected, quantity);
             cartListView.ItemsSource = _cartList;
             //Money part
-            CalcMoneyCart();
+            UpdateCart();
         }
 
         private void cartButton_Click(object sender, RoutedEventArgs e)
@@ -445,13 +446,22 @@ namespace Cake_Shop
                 payButton.IsEnabled = false;
             }
         }
-
-        public void CalcMoneyCart()
+        public void UpdateCart()
         {
+            //Number of items in cart
+            badgedCart.Badge = CartItemDAO.CountTotalItems(_cartList);
             //Money part
             int cakePay = CartItemDAO.CalcCakePay(_cartList);
+
             cakePayTextBlock.DataContext = cakePay.ToString();
-            totalPayTextBlock.DataContext = cakePay.ToString();
+            if(calcFeeButton.Visibility == Visibility.Collapsed)
+            {
+                totalPayTextBlock.DataContext = (cakePay + 50000).ToString();
+            }
+            else
+            {
+                totalPayTextBlock.DataContext = (cakePay).ToString();
+            }
         }
 
         private void deleteItemCartButton_Click(object sender, RoutedEventArgs e)
@@ -460,7 +470,32 @@ namespace Cake_Shop
             var selectedCartItem = (CartItem)dataContext;
             _cartList.Remove(selectedCartItem);
             cartListView.ItemsSource = _cartList;
-            CalcMoneyCart();
+            UpdateCart();
+        }
+
+        private void addCakeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var newCakeName = CakeNameTextBox.Text;
+            var newCakeDes = CakeDescriptionTextBox.Text;
+            int newCakePrice;
+            int.TryParse(CakePriceTextBox.Text, out newCakePrice);
+            var category = (CATEGORY)AddGridCategoryComboBox.SelectedItem;
+            var imagePath = SystemPathParser.UriSourceParse(((ImageBrush)addCakeImgCard.Background).ImageSource.ToString());
+
+            int newCakeID = CakeDAOSQLServer.GetAll().Last().CakeID + 1;
+            var newCakeImage = MoveFiles.MoveImageToSpecifiedFolder(imagePath, CakeDAOSQLServer.ImagesFolder(newCakeID));
+
+            var newCake = new CAKE()
+            {
+                CakeID = newCakeID,
+                CakeName = newCakeName,
+                CategoryID = category.CatID,
+                Description = newCakeDes,
+                Price = newCakePrice,
+                Image = newCakeImage
+            };
+
+            CakeDAOSQLServer.Add(newCake);
         }
 
         private void updateButton_Click(object sender, RoutedEventArgs e)

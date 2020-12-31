@@ -120,6 +120,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="MyUtils\MoveFiles.cs" />
+    <Compile Include="MyUtils\SystemPathParser.cs" />
     <Compile Include="ORDER.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -385,7 +385,7 @@
                                 </StackPanel>
                                 <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="30,0">
                                     <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-                                            x:Name="addCakeButton"
+                                            x:Name="addCakeButton" Click="addCakeButton_Click"
                                             Content="Thêm bánh" FontSize="26" Margin="10,0,10,20" Height="60" />
                                     <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                             x:Name="cancleButton"
