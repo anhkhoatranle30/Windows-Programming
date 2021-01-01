@@ -15,5 +15,13 @@ namespace Cake_Shop.MyUtils
             var result = tokens[0];
             return result;
         }
+        public static string toRelativePath(string absolutePath, string seperator)
+        {
+            string[] seperators = { seperator };
+            var tokens = absolutePath.Split(seperators
+                                    , StringSplitOptions.RemoveEmptyEntries);
+            var relativepath = tokens[0];
+            return relativepath;
+        }
     }
 }

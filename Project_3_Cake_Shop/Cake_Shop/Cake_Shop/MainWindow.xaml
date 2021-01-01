@@ -452,7 +452,7 @@
                                 <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="30,0">
                                     <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                             x:Name="SaveCakeUpdateButton"
-                                            Content="Lưu" FontSize="26" Margin="10,0,10,20" Height="60" />
+                                            Content="Lưu" Click="SaveCakeUpdateButton_Click" FontSize="26" Margin="10,0,10,20" Height="60" />
                                     <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                             x:Name="cancleUpdateButton"
                                             Content="Hủy" FontSize="26" Margin="10,20,10,0" Height="60" />

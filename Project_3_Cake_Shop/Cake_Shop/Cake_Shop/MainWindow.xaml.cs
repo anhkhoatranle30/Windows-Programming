@@ -498,6 +498,7 @@ namespace Cake_Shop
             };
 
             CakeDAOSQLServer.Add(newCake);
+            ShowHomeScreen();
         }
 
         private void updateButton_Click(object sender, RoutedEventArgs e)
@@ -506,6 +507,27 @@ namespace Cake_Shop
             updateCakeGrid.Visibility = Visibility.Visible;
             detailCakeGrid.Visibility = Visibility.Collapsed;
             gridName.Text = "Sửa sản phẩm";
+
+            int selectedCakeID = int.Parse(detailCakeID.Text);
+            if(selectedCakeID != 0)
+            {
+                var selectedCake = CakeDAOSQLServer.GetByID(selectedCakeID);
+                UpdateCakeNameTextBox.Text = selectedCake.CakeName;
+                UpdateCakePriceTextBox.Text = selectedCake.Price.ToString();
+                UpdateCakeDescriptionTextBox.Text = selectedCake.Description;
+                var cakeCat = (int)selectedCake.CategoryID;
+                UpdateGridCategoryComboBox.ItemsSource = CategoryDAOSQLServer.GetAll();
+                UpdateGridCategoryComboBox.SelectedIndex = cakeCat;
+
+                #region Image
+                ImageBrush myBrush = new ImageBrush();
+                Image image = new Image();
+                image.Source = new BitmapImage(
+                    new Uri(CakeDAOSQLServer.ImagesFolder(selectedCakeID) + "\\" + selectedCake.Image));
+                myBrush.ImageSource = image.Source;
+                UpdateCakeImgCard.Background = myBrush;
+                #endregion
+            }
         }
 
         private void updateCakeImgButton_Click(object sender, RoutedEventArgs e)
@@ -521,6 +543,38 @@ namespace Cake_Shop
                 myBrush.ImageSource = image.Source;
                 UpdateCakeImgCard.Background = myBrush;
             }
+        }
+
+        private void SaveCakeUpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            int updatingCakeID = int.Parse(detailCakeID.Text);
+            if (updatingCakeID != 0)
+            {
+                var imagePath = SystemPathParser.UriSourceParse(((ImageBrush)UpdateCakeImgCard.Background).ImageSource.ToString());
+                var updatingCakeImage = MoveFiles.MoveImageToSpecifiedFolder(imagePath, CakeDAOSQLServer.ImagesFolder(updatingCakeID));
+                var updatingCake = new CAKE()
+                {
+                    CakeID = updatingCakeID,
+                    CakeName = UpdateCakeNameTextBox.Text,
+                    Price = int.Parse(UpdateCakePriceTextBox.Text),
+                    Description = UpdateCakeDescriptionTextBox.Text,
+                    CategoryID = UpdateGridCategoryComboBox.SelectedIndex,
+                    Image = updatingCakeImage
+                };
+                CakeDAOSQLServer.Update(updatingCake);
+                ShowHomeScreen();
+            }
+        }
+        public void ShowHomeScreen()
+        {
+            homeGrid.Visibility = Visibility.Visible;
+            updateCakeGrid.Visibility = Visibility.Collapsed;
+            addCakeGrid.Visibility = Visibility.Collapsed;
+            cartGrid.Visibility = Visibility.Collapsed;
+            detailCakeGrid.Visibility = Visibility.Collapsed;
+            gridName.Text = "Trang Chủ";
+            RadioButtonGroupChoiceChip.SelectedItem = 0;
+            cakeListView.ItemsSource = CakeDAOSQLServer.GetAll();
         }
     }
 }

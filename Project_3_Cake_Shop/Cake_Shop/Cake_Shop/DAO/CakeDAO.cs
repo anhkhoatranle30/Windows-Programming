@@ -56,5 +56,13 @@ namespace Cake_Shop.DAO
 
             return nextCakeID;
         }
+        public static void Update(CAKE cake)
+        {
+            var db = new WP_Project3_CakeShopAppEntities();
+            var oldInfo = db.CAKEs.Find(cake.CakeID);
+            db.CAKEs.Remove(oldInfo);
+            db.CAKEs.Add(cake);
+            db.SaveChanges();
+        }
     }
 }

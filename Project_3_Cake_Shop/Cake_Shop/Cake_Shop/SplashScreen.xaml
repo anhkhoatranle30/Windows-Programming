@@ -38,7 +38,7 @@
                 </Border>
             </Grid>
             <Border BorderThickness="0,5" Margin="0,0,0,60" BorderBrush="WhiteSmoke" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Foreground="White" FontSize="31" Text="Thông tin thú dị" TextWrapping="Wrap"  MaxWidth="450" TextAlignment="Justify" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="10" FontWeight="DemiBold" />
+                <TextBlock x:Name="infoTextBlock" Foreground="White" FontSize="20" Text="Thông tin thú dị" TextWrapping="Wrap"  MaxWidth="450" TextAlignment="Justify" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="10" FontWeight="DemiBold" />
             </Border>
             <CheckBox x:Name="showSplashScreen" Checked="showSplashScreen_Checked" Unchecked="showSplashScreen_Unchecked" Padding="0,4" Content="Không hiển thị màn hình khi khởi động" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="16" Foreground="White" />
             <Button x:Name="skipSplashScreen" Style="{StaticResource MaterialDesignFlatButton}"

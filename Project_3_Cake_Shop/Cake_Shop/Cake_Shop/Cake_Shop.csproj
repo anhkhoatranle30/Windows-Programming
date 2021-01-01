@@ -111,10 +111,14 @@
     <Compile Include="DAO\CakeDAO.cs" />
     <Compile Include="DAO\CartItemDAO.cs" />
     <Compile Include="DAO\CategoryDAO.cs" />
+    <Compile Include="DAO\InfoDAO.cs" />
     <Compile Include="DAO\OrderDAO.cs" />
     <Compile Include="DAO\OrderDetailDAO.cs" />
     <Compile Include="DAO\PaymentDAO.cs" />
     <Compile Include="DAO\RevenueDAO.cs" />
+    <Compile Include="INFO.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

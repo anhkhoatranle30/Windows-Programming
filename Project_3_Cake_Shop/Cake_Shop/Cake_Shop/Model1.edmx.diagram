@@ -14,6 +14,7 @@
         <AssociationConnector Association="WP_Project3_CakeShopAppModel.FK_ORDER_DETAIL_CAKE" ManuallyRouted="false" />
         <AssociationConnector Association="WP_Project3_CakeShopAppModel.FK_ORDER_DETAIL_ORDERS" ManuallyRouted="false" />
         <AssociationConnector Association="WP_Project3_CakeShopAppModel.FK_ORDERS_PAYMENT" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WP_Project3_CakeShopAppModel.INFO" Width="1.5" PointX="6.625" PointY="4" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

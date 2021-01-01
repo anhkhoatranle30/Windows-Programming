@@ -32,6 +32,7 @@ namespace Cake_Shop
         public virtual DbSet<ORDER_DETAIL> ORDER_DETAIL { get; set; }
         public virtual DbSet<ORDER> ORDERS { get; set; }
         public virtual DbSet<PAYMENT> PAYMENTs { get; set; }
+        public virtual DbSet<INFO> INFOes { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

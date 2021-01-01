@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cake_Shop.DAO;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -21,13 +22,16 @@ namespace Cake_Shop
     public partial class SplashScreen : Window
     {
         private MainWindow _screen;
-
+        private Random _rng = new Random();
         public SplashScreen()
         {
             InitializeComponent();
             _screen = new MainWindow();
             _screen.Show();
             _screen.Visibility = Visibility.Hidden;
+
+            var info = InfoDAOSQLServer.GetRandom();
+            infoTextBlock.Text = info.FullDes;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
